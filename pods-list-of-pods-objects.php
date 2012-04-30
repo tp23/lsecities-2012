@@ -79,14 +79,16 @@ $TRACE_PREFIX = 'pods-list-of-pods-objects';
             <?php switch(get_post_meta(get_the_ID(), 'list_pods', true)):
               case 'research_projects':
                 $HIDE_CURRENT_PROJECTS = true;
+                $HIDE_PAST_PROJECTS = false;
                 $BASE_URI = '/media/objects/events/';
                 $IN_CONTENT_AREA = false;
             ?>
             <?php get_template_part( 'nav', 'research' ); ?>                
             <?php break;
               case 'past_research_projects':
-                $HIDE_CURRENT_PROJECTS = true;
-                $IN_CONTENT_AREA = true;
+                $HIDE_PAST_PROJECTS = true;
+                $HIDE_CURRENT_PROJECTS = false;
+                $IN_CONTENT_AREA = false;
                 $BASE_URI = '/objects/research-projects/';
             ?>
             <?php get_template_part( 'nav', 'research' ); ?>              
