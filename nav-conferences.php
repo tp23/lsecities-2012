@@ -70,3 +70,18 @@ if(count($button_links)) :
   </nav>
 </div>
 <?php endif; ?>
+<!--
+<?php
+$conference_list = new Pod('list', 'urban-age-conferences');
+$pod_type = $conference_list->get_field('pod_type.slug');
+$pod_list = $conference_list->get_field('list');
+if(count($pod_list)) : ?>
+<ul>
+<?php foreach($pod_list as $key => $item) :
+    $item_pod = new Pod($pod_type, get_post_meta($item['ID'], 'pod_slug', true)); ?>
+    <li><a href="<?php echo get_permalink($item['ID']); ?>"><?php if($item_pod->get_field('conference_title')) { echo $item_pod->get_field('conference_title') . '<br/>'; }?><?php echo $item_pod->get_field('city') . ' | ' . $item_pod->get_field('year'); ?></a></li>
+<?php endforeach; ?>
+</ul>
+<?php endif;
+?>
+-->
