@@ -82,6 +82,7 @@ $people_with_blurb = $speakers_output['with_blurb'] + $respondents_output['with_
 
 $event_blurb = do_shortcode($pod->get_field('blurb'));
 $event_blurb_after_event = do_shortcode($pod->get_field('blurb_after_event'));
+echo var_trace('blurb_after_event', $event_blurb_after_event, $TRACE_PREFIX, $TRACE_ENABLED);
 $event_contact_info = do_shortcode($pod->get_field('contact_info'));
 
 $event_media = $pod->get_field('media_attachments');
@@ -135,17 +136,17 @@ $poster_pdf = $poster_pdf[0]['guid'];
                 <header>
                   <h1><?php echo $pod->get_field('name'); ?></h1>
                 </header>
-                <?php if(!$is_future_event): ?>
+                <?php if($is_future_event): ?>
                   <?php if($event_blurb): ?>
                   <div class="blurb"><?php echo $event_blurb; ?></div>
                   <?php endif; ?>
                 <?php else: ?>
                   <?php if($event_blurb_after_event): ?>
-                  <div class="blurb"><?php echo $event_blurb_after_event; ?></div>
+                  <div class="blurb after-event"><?php echo $event_blurb_after_event; ?></div>
                   <?php elseif($event_blurb): ?>
                   <div class="blurb"><?php echo $event_blurb; ?></div>
                   <?php endif; ?>
-                <?php endif; // !$is_future_event ?>
+                <?php endif; // $is_future_event ?>
                 <?php if($event_contact_info and $is_future_event): ?>
                   <aside class="booking-and-access"><?php echo $event_contact_info; ?></aside>
                 <?php endif; ?>
@@ -172,12 +173,13 @@ $poster_pdf = $poster_pdf[0]['guid'];
                       <dt>Event series</dt>
                       <dd><em><?php echo do_shortcode($pod->get_field('event_series')); ?></em></dd>
                     <?php endif; ?>
-                    
-                    <?php if($event_contact_info and $is_future_event): ?>
+
+<!--
+                    <?php if(false and $event_contact_info and $is_future_event): ?>
                       <dt>Access &amp; booking</dt>
                       <dd><?php echo $event_contact_info; ?></dd>
                     <?php endif; ?>
-
+-->
                     <?php if($poster_pdf || $freakin_site_map) : ?>
                       <dt>Downloads</dt>
                       <?php if($poster_pdf): ?>
