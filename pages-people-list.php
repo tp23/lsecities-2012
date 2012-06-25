@@ -14,13 +14,13 @@ $people_list = get_post_meta($post->ID, 'people_list', true);
 
 $lists = array(
   'lsecities-staff' =>
-    array('lsecities-staff-management'),
+    array('lsecities-staff-mgmt'),
     array('lsecities-staff')
 );
   
 function generate_list($list_id, $mode = 'full_list') {
   if($list_id == 'lsecities-staff') {
-    $output .= generate_section('lsecities-staff-management');
+    $output .= generate_section('lsecities-staff-mgmt');
     $output .= generate_section('lsecities-staff');
   }
   
