@@ -2,6 +2,7 @@
 $TRACE_ENABLED = is_user_logged_in();
 $TRACE_PREFIX = 'nav.php -- ';
 $current_post_id = $post->ID;
+$publication_pod = $GLOBALS['publication_pod'];
 ?>
 
 <nav id="publication-side-toc">
