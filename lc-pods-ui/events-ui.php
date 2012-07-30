@@ -8,15 +8,13 @@ Author: Andrea Rota
 Author URI: http://lsecities.net/
 */
 
-function pods_ui_events()
-{
+function pods_ui_events() {
   $icon = '';
-  add_object_page('Events', 'Events', 'read', 'pods-events', '', $icon);
-  add_submenu_page('pods-events', 'Events', 'Events', 'read', 'pods-events', 'event_page');
+  add_object_page('Events', 'Events', 'read', 'events', '', $icon);
+  add_submenu_page('pods-events', 'Events', 'Events', 'read', 'events', 'event_page');
 }
 
-function event_page()
-{
+function event_page() {
   $object = new Pod('event');
   $object->ui = array(
     'title'   => 'Event',
