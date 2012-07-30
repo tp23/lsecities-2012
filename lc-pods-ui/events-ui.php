@@ -16,10 +16,6 @@ function pods_ui_events() {
 
 function event_page() {
   $object = new Pod('event');
-  $add_fields = $edit_fields = array(
-    'slug',
-    'name'
-  );
   $object->ui = array(
     'title'   => 'Event',
     'columns' => array(
@@ -29,9 +25,7 @@ function event_page() {
       'speakers'   => 'Speakers',
       'created'    => 'Date Created',
       'modified'   => 'Last Modified'
-    ),
-    'add_fields'  => $add_fields,
-    'edit_fields' => $edit_fields
+    )
   );
   pods_ui_manage($object);
 }
