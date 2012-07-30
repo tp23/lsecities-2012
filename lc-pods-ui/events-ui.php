@@ -11,7 +11,7 @@ Author URI: http://lsecities.net/
 function pods_ui_events() {
   $icon = '';
   add_object_page('Events', 'Events', 'read', 'events', '', $icon);
-  add_submenu_page('pods-events', 'Events', 'Events', 'read', 'events', 'event_page');
+  add_submenu_page('events', 'Events', 'Events', 'read', 'events', 'event_page');
 }
 
 function event_page() {
