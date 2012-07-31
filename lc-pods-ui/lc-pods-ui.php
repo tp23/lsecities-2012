@@ -20,12 +20,16 @@ function event_page() {
   $object->ui = array(
     'title'   => 'Event',
     'columns' => array(
-      'name'       => 'Title',
-      'date_start' => 'Date',
-      'venue'      => 'Venue',
-      'speakers'   => 'Speakers',
-      'created'    => 'Date Created',
-      'modified'   => 'Last Modified'
+      'name'         => 'Title',
+      'date_start'   => 'Date',
+      'event_type'   => 'Event type',
+      'event_series' => 'Event series',
+      'venue'        => 'Venue',
+      'speakers'     => 'Speakers',
+      'hosted_by'    => 'Hosted by',
+      'partners'     => 'Event partners',
+      'created'      => 'Date Created',
+      'modified'     => 'Last Modified'
     ),
     'sort'    => 'date_start'
   );
