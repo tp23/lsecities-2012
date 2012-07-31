@@ -26,7 +26,8 @@ function event_page() {
       'speakers'   => 'Speakers',
       'created'    => 'Date Created',
       'modified'   => 'Last Modified'
-    )
+    ),
+    'sort'    => 'date_start'
   );
   pods_ui_manage($object);
 }
