@@ -124,13 +124,11 @@ if(!$slider) {
   $featured_image_uri = get_the_post_thumbnail(get_the_ID(), array(960,367));
 }
 
-$META_media_attributions = array();
-
 // if this is an event, grab the image URI from the Pod
 if(!$is_conference) {
   $featured_image_uri = honor_ssl_for_attachments($pod->get_field('heading_image.guid'));
   $attachment_ID = $pod->get_field('heading_image.ID');
-  $META_media_attributions = push_media_attribution($META_media_attributions, $attachment_ID);
+  push_media_attribution($attachment_ID);
 }
 
 $event_date_start = new DateTime($pod->get_field('date_start'));
