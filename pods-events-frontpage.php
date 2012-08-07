@@ -133,8 +133,8 @@ $event_dtstart = $event_date_start->format(DATE_ISO8601);
 $event_dtend = $event_date_end->format(DATE_ISO8601);
 // $event_date_string = $pod->get_field('date_freeform');
 $event_date_string = $event_date_start->format("l j F Y | ");
-$event_date_string .= '<time class="dt-start dtstart" datetime="' . $event_dtstart . '">' . $event_date_start->format("H:i") . '</time>';
-$event_date_string .=  '-' . '<time class="dt-end dtend" datetime="' . $event_dtend . '">' . $event_date_end->format("H:i") . '</time>';
+$event_date_string .= '<time class="dt-start dtstart" itemprop="startDate" datetime="' . $event_dtstart . '">' . $event_date_start->format("H:i") . '</time>';
+$event_date_string .=  '-' . '<time class="dt-end dtend" itemprop="endDate" datetime="' . $event_dtend . '">' . $event_date_end->format("H:i") . '</time>';
 $datetime_now = new DateTime('now');
 $is_future_event = ($event_date_start > $datetime_now) ? true : false;
 
@@ -197,7 +197,7 @@ $poster_pdf = honor_ssl_for_attachments($poster_pdf[0]['guid']);
               <?php endif; ?>
               <article class='wireframe eightcol'>
                 <header>
-                  <h1 class="summary"><?php echo $pod->get_field('name'); ?></h1>
+                  <h1 class="p-name summary"><?php echo $pod->get_field('name'); ?></h1>
                   <p class="event-info"><?php echo $event_info; ?></p>
                 </header>
                 <?php if($is_future_event): ?>
@@ -230,7 +230,7 @@ $poster_pdf = honor_ssl_for_attachments($poster_pdf[0]['guid']);
               
                     <?php if($event_location): ?>
                       <dt>Where</dt>
-                      <dd class="p-location location"><?php echo $event_location; ?></dd>
+                      <dd class="h-card vcard"><span class="p-location location"><?php echo $event_location; ?></span></dd>
                     <?php endif; ?>
 <!--
                     <?php if(false and $event_contact_info and $is_future_event): ?>
