@@ -12,6 +12,7 @@
 $BASE_URI = PODS_BASEURI_RESEARCH_PROJECTS;
 $TRACE_ENABLED = is_user_logged_in();
 global $IN_CONTENT_AREA, $HIDE_CURRENT_PROJECTS, $HIDE_PAST_PROJECTS;
+global $pod_page_title;
 $TRACE_PREFIX = 'pods-research-projects';
 $pods_toplevel_ancestor = 306;
 
@@ -31,6 +32,8 @@ if(!$pod_from_page) {
 
 echo var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 $pod = new Pod('research_project', $pod_slug);
+
+$pod_page_title = $pod->get_field('name') . ' | Research | ';
 $pod_title = $pod->get_field('name');
 $pod_tagline = $pod->get_field('tagline');
 $pod_summary = do_shortcode($pod->get_field('summary'));
