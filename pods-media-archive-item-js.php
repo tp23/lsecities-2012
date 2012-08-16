@@ -17,6 +17,8 @@ $TRACE_ENABLED = is_user_logged_in();
 $PODS_BASEURI_MEDIA_ARCHIVE_SEARCH = '/media/search/';
 
 if($TRACE_ENABLED) { error_log('pod_slug: ' . $pod_slug); }
+if($TRACE_ENABLED) { error_log('search: ' . $search); }
+
 $pod = new Pod('media_item');
 $params = Array();
 $params['where'] = 't.name LIKE "%' . $search . '%"';
