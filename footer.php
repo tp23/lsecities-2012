@@ -113,7 +113,6 @@
             $('input:radio[name=group[8245]]')[0].checked = true;
           };
           
-          <?php if(is_user_logged_in()): ?>
           // track clicks to PDFs hosted in WordPress.
           // based on http://www.wduffy.co.uk/blog/tracking-google-goals-with-no-url-using-jquery/.
           // uses regex jQuery filter (http://james.padolsey.com/javascript/regex-selector-for-jquery/).
@@ -121,10 +120,12 @@
             var re = /^(http:\/\/lsecities\.net)?(.*)$/gi;
             var originalhref = $(this).attr('href');
             var href = originalhref.replace(re, '$2');
+            <?php if(is_user_logged_in()): ?>
             console.log("PDF download at URI %s tracked with event label '%s'", originalhref, href);
+            <?php endif; ?>            
             _gaq.push(['_trackEvent', 'PDF', 'download', href]);
           });
-          <?php endif; ?>
+          
         });
       //]]>
 </script>
