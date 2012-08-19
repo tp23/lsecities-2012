@@ -202,11 +202,13 @@ body > #container > header #socialbuttons ul li a { margin: 0 0.3125em; padding:
 #mainmenus #level2nav ul a:hover { background-color: #ddd; color: #000; }
 #mainmenus #level2nav { background-color: #000; color: #fff; }
 #mainmenus #level2nav ul { background-color: inherit; }
+#mainmenus #level2nav ul li a { -moz-transition: background-color 0.4s ease-out 0s, color 0.1s ease 0.1s; -webkit-transition: background-color 0.4s ease-out 0s, color 0.1s ease 0.1s; -o-transition: background-color 0.4s ease-out 0s, color 0.1s ease 0.1s; transition: background-color 0.4s ease-out 0s, color 0.1s ease 0.1s; }
 
 nav#level1nav, nav#level2nav { line-height: 1.2em; font-family: proxima-nova, "Helvetica Neue", Helvetica, sans-serif; text-transform: uppercase; }
 nav#level1nav ul li, nav#level2nav ul li { line-height: 1.5em; margin-bottom: 0; }
 
 #level1nav { margin-top: 4em; }
+#level1nav ul li { -moz-transition: background-color 0.4s ease-out 0s; -webkit-transition: background-color 0.4s ease-out 0s; -o-transition: background-color 0.4s ease-out 0s; transition: background-color 0.4s ease-out 0s; }
 #level1nav ul li a, #level1nav ul li a:active, #level1nav ul li a:visited { color: #000; }
 #level1nav ul li.current, #level1nav ul li.current_page_item, #level1nav ul li.current_page_ancestor { background-color: red; color: #fff; }
 #level1nav ul li.current a, #level1nav ul li.current_page_item a, #level1nav ul li.current_page_ancestor a { color: #fff; }
