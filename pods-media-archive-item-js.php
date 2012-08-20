@@ -26,7 +26,7 @@ if(!$search) {
 if($TRACE_ENABLED) { error_log('pod_slug: ' . $pod_slug); }
 if($TRACE_ENABLED) { error_log('search: ' . $search); }
 
-$pod = new Pod('media_item');
+$pod = new Pod('media_item_v0');
 $params = Array();
 $params['where'] = 't.name LIKE "%' . $search . '%"';
 $pod->findRecords($params);
