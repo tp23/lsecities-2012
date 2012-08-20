@@ -31,17 +31,22 @@ $params = array(
 );
 $pod = new Pod('media_item_v0', $params);
 
-$media_item = Array();
+$media_items = array();
 
-$media_item['id'] = $pod->get_field('slug');
-$media_item['title'] = $pod->get_field('name');
-$media_item['date'] = $pod->get_field('date');
-$media_item['youtube_uri'] = $pod->get_field('youtube_uri');
-$media_item['video_uri'] = $pod->get_field('video_uri');
-$media_item['audio_uri'] = $pod->get_field('audio_uri');
-$media_item['presentation_uri'] = $pod->get_field('presentation_uri');
-$media_item['tags'] = $pod->get_field('tag.name');
-$media_item['geotags'] = $pod->get_field('geotags.name');
+while($pod->fetchRecord()) {
+  $media_item = array (
+    'id' => $pod->get_field('slug'),
+    'title' => $pod->get_field('name'),
+    'date' => $pod->get_field('date'),
+    'youtube_uri' => $pod->get_field('youtube_uri'),
+    'video_uri' => $pod->get_field('video_uri'),
+    'audio_uri' => $pod->get_field('audio_uri'),
+    'presentation_uri' => $pod->get_field('presentation_uri'),
+    'tags' => $pod->get_field('tag.name'),
+    'geotags' => $pod->get_field('geotags.name')
+  );
+  array_push($media_items, $media_item);
+}
 
-echo json_encode($media_item);
+echo json_encode($media_items);
 ?>
