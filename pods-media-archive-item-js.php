@@ -27,7 +27,7 @@ if($TRACE_ENABLED) { error_log('pod_slug: ' . $pod_slug); }
 if($TRACE_ENABLED) { error_log('search: ' . $search); }
 
 $params = array(
-  'where' => 't.name LIKE "%' . $search . '%"'
+  'where' => 't.name LIKE "%' . $search . '%" OR session.speakers.family_name LIKE "%' . $search . '%"'
 );
 $pod = new Pod('media_item_v0', $params);
 
