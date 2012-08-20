@@ -15,7 +15,10 @@
 $TRACE_ENABLED = is_user_logged_in();
 $PODS_BASEURI_MEDIA_ARCHIVE_SEARCH = '/media/search/';
 
+// setting search string from post meta is used in WP pages with hardcoded queries
 $search = get_post_meta($post->ID, 'pod_slug', true);
+
+// otherwise we expect the search string as a GET parameter
 if(!$search) {
   $search = pods_url_variable('search', 'get');
 }
