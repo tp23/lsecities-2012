@@ -12,9 +12,13 @@
  * Pods initialization
  * URI: /media/search/?search=<search_string>
  */
-$search = get_post_meta($post->ID, 'pod_slug', true) || pods_url_variable('search', 'get');
 $TRACE_ENABLED = is_user_logged_in();
 $PODS_BASEURI_MEDIA_ARCHIVE_SEARCH = '/media/search/';
+
+$search = get_post_meta($post->ID, 'pod_slug', true);
+if(!$search) {
+  $search = pods_url_variable('search', 'get');
+}
 
 if($TRACE_ENABLED) { error_log('pod_slug: ' . $pod_slug); }
 if($TRACE_ENABLED) { error_log('search: ' . $search); }
