@@ -8,6 +8,17 @@ Author: Andrea Rota
 Author URI: http://lsecities.net/
 */
 
+/**
+ * Hide WP Page editor box when we are editing a WP Page with a Pods
+ * template that doesn't grab content from the WP Page itself
+ */
+function hide_editor_box_when_editing_pods_pages($hook) {
+    if($hook != 'post.php')
+        return;
+    wp_enqueue_script('hide_editor_box', plugins_url('/lc-pods-ui.js', __FILE__));
+}
+add_action('admin_enqueue_scripts', 'hide_editor_box_when_editing_pods_pages');
+
 /* event pod */
 function pods_ui_events() {
   $icon = '';
