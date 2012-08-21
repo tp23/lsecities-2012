@@ -1,0 +1,12 @@
+lsecities-pods-ui (1.3) stable; urgency=low
+  
+  release 1.3 "<nickname>"
+  
+  * first public release
+  * [feature] split code off plugins bundle
+    'lsecities-wordpress-plugins'
+  * [feature] hide WP Pages editor box in admin UI when a Pods template
+    is selected for the page being edited (closes: #4)
+  * [feature] consolidated all the Pods UI plugins into a single plugin
+    
+ -- andrea rota <a.rota@lse.ac.uk>  DDD, DD MMM YYYY HH:MM:SS +0100

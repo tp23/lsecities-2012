@@ -3,7 +3,7 @@
 Plugin Name: LSE Cities Pods UI
 Plugin URI: http://lsecities.net/labs/
 Description: Customized Pods UI LSE Cities Pods
-Version: 0.4.0
+Version: 1.3b0
 Author: Andrea Rota
 Author URI: http://lsecities.net/
 */
@@ -15,7 +15,7 @@ Author URI: http://lsecities.net/
 function hide_editor_box_when_editing_pods_pages($hook) {
     if($hook != 'post.php')
         return;
-    wp_enqueue_script('hide_editor_box', plugins_url('/lc-pods-ui.js', __FILE__));
+    wp_enqueue_script('hide_editor_box', plugins_url('/lsecities-pods-ui.js', __FILE__));
 }
 add_action('admin_enqueue_scripts', 'hide_editor_box_when_editing_pods_pages');
 
