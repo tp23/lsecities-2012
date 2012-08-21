@@ -1,13 +1,17 @@
 jQuery(document).ready(function($) {
   var editorElement = '#postdivrich';
-  if(/^pods-/.test($('#page_template').val())) {
-    $(editorElement).hide();
+  var podsPrefix = /^pods-/;
+  
+  function hideElementIfUnused(element, match, val) {
+    if(match.test(val)) {
+      $(element).hide();
+    } else {
+      $(element).show();
+    }
   }
-  $('#page_template').change(function(){
-        if (/^pods-/.test($(this).val())) {
-            $(editorElement).hide();
-        } else {
-            $(editorElement).show();
-        }
-    });
+  
+  hideElementIfUnused(editorElement, podsPrefix, $('#page_template').val());
+  $('#page_template').change(function() {
+    hideElementIfUnused(editorElement, podsPrefix, $(this).val());
+  });
 });
