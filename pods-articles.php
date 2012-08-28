@@ -21,6 +21,9 @@ if($pod_slug) {
   $pod_from_page = false;
 }
 
+global $this_pod;
+$this_pod = new LC\PodObject($pod, 'Articles');
+
 global $pods_toplevel_ancestor;
 $pods_toplevel_ancestor = 309;
 global $nav_show_conferences;
