@@ -2,13 +2,13 @@
 namespace LC;
 
 class PodObject {
-  public static $page_title;
-  public static $page_section;
-  private static $pod;
+  public $page_title;
+  public $page_section;
+  private $pod;
   
   function __construct($pod, $page_section) {
-    self::$pod = $pod;
-    self::$page_title = $pod->get_field('name');
-    self::$page_section = $page_section;
+    $this->pod = $pod;
+    $this->page_title = $this->pod->get_field('name');
+    $this->page_section = $page_section;
   }
 }
