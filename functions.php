@@ -110,7 +110,7 @@ function set_pod_page_title($title, $sep, $seplocation) {
   var_trace($title, 'page_title', is_user_logged_in(), 'syslog');
   return $title;
 }
-add_filter('wp_title', 'set_pod_page_title', null, 3);
+add_filter('wp_title', 'set_pod_page_title', 5, 3);
 
 // from http://webcheatsheet.com/php/get_current_page_url.php
 function get_current_page_URI() {
