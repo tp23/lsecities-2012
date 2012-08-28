@@ -99,6 +99,7 @@
           regex = new RegExp(matchParams.join('').replace(/^\s+|\s+$/g,''), regexFlags);
           return regex.test(jQuery(elem)[attr.method](attr.property));
         };
+        
         jQuery(document).ready(function($) {
           $('.flexslider').flexslider(({
             animation: "slide",
@@ -113,10 +114,11 @@
             $('input:radio[name=group[8245]]')[0].checked = true;
           };
           
-          // track clicks to PDFs hosted in WordPress.
+          // track clicks to binary files hosted in WordPress.
           // based on http://www.wduffy.co.uk/blog/tracking-google-goals-with-no-url-using-jquery/.
           // uses regex jQuery filter (http://james.padolsey.com/javascript/regex-selector-for-jquery/).
-          $(':regex(href,(http:\/\/lsecities\.net\/)?\/files\/.*.pdf)').click(function() {
+          <?php if(is_user_logged_in()): ?>
+          function addGAEventTracker(uri) {
             var re = /^(http:\/\/lsecities\.net)?(.*)$/gi;
             var originalhref = $(this).attr('href');
             var href = originalhref.replace(re, '$2');
@@ -124,8 +126,27 @@
             console.log("PDF download at URI %s tracked with event label '%s'", originalhref, href);
             <?php endif; ?>            
             _gaq.push(['_trackEvent', 'PDF', 'download', href]);
+          }
+          $(':regex(href,(http:\/\/lsecities\.net\/)?\/files\/.*.pdf)').click(function() {
+            console.log('download');
           });
+          $(':regex(href,(http:\/\/lsecities\.net\/)?\/files\/.*)').click(function() {
+            var re = /^(http:\/\/lsecities\.net)?(.*\.(.*))$/gi;
+            var originalhref = $(this).attr('href');
+            var href = originalhref.replace(re, '$2');
+            var extension = originalhref.match(/^.*(\..*)$/);
+            console.log('Download (type: %s) at URI %s tracked with event label \'%s\'', extension, originalhref, href);
+          });
+          <?php else: ?>
           
+          $(':regex(href,(http:\/\/lsecities\.net\/)?\/files\/.*.pdf)').click(function() {
+            var re = /^(http:\/\/lsecities\.net)?(.*)$/gi;
+            var originalhref = $(this).attr('href');
+            var href = originalhref.replace(re, '$2');
+            console.log("PDF download at URI %s tracked with event label '%s'", originalhref, href);
+            _gaq.push(['_trackEvent', 'PDF', 'download', href]);
+          });
+          <?php endif; ?>
         });
       //]]>
 </script>
