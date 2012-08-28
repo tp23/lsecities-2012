@@ -95,7 +95,7 @@ function generate_person_profile($slug, $extra_title, $mode = MODE_FULL_LIST) {
   }
   
   $qualifications_list = array_map(function($string) { return trim($string); }, explode("\n", $pod->get_field('qualifications')));
-  $profile_photo_uri = $pod->get_field('photo.guid');
+  $profile_photo_uri = honor_ssl_for_attachments($pod->get_field('photo.guid'));
   $email_address = preg_replace('/\@/', ' [AT] ', $pod->get_field('email_address'));
   
   if(!$profile_photo_uri and $pod->get_field('photo_legacy')) {
