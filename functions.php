@@ -96,6 +96,7 @@ function shorten_string($string, $wordsreturned) {
 include_once('inc/pods/pod_class.php');
 function set_pod_page_title($title, $sep, $seplocation) {
   global $this_pod;
+  var_trace($this_pod, 'this_pod', is_user_logged_in(), 'syslog');
   if(isset($this_pod) and $this_pod->page_title){
     $title = $this_pod->page_title;
     
