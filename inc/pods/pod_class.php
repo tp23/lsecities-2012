@@ -2,9 +2,9 @@
 namespace LC;
 
 class PodObject {
-  public $page_title;
-  public $page_section;
-  private $pod;
+  public static $page_title;
+  public static $page_section;
+  private static $pod;
   
   function __construct($pod, $page_section) {
     self::$pod = $pod;
