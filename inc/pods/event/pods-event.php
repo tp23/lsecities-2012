@@ -94,8 +94,8 @@ $moderators_output = people_list($event_moderators, "Moderator", "Moderators");
 
 $people_with_blurb = $speakers_output['with_blurb'] + $respondents_output['with_blurb'] + $chairs_output['with_blurb'] + $moderators_output['with_blurb'];
 
-$event_blurb = honor_ssl_for_attachments(do_shortcode($pod->get_field('blurb')));
-$event_blurb_after_event = honor_ssl_for_attachments(do_shortcode($pod->get_field('blurb_after_event')));
+$event_blurb = do_https_shortcode($pod->get_field('blurb'));
+$event_blurb_after_event = do_https_shortcode($pod->get_field('blurb_after_event'));
 echo var_trace($event_blurb_after_event, $TRACE_PREFIX . 'blurb_after_event', $TRACE_ENABLED);
 $event_contact_info = do_shortcode($pod->get_field('contact_info'));
 
@@ -108,8 +108,8 @@ if(!$slider) {
 
 // if this is an event, grab the image URI from the Pod
 if(!$is_conference) {
-  $featured_image_uri = honor_ssl_for_attachments($pod->get_field('heading_image.guid'));
   $attachment_ID = $pod->get_field('heading_image.ID');
+  $featured_image_uri = wp_get_attachment_url($attachment_ID);
   push_media_attribution($attachment_ID);
 }
 
@@ -151,4 +151,4 @@ if($event_partner_organizations) {
 }
 
 $poster_pdf = $pod->get_field('poster_pdf');
-$poster_pdf = honor_ssl_for_attachments($poster_pdf[0]['guid']);
+$poster_pdf = wp_get_attachment_url($poster_pdf[0]['ID']);
