@@ -12,7 +12,6 @@
 $BASE_URI = PODS_BASEURI_RESEARCH_PROJECTS;
 $TRACE_ENABLED = is_user_logged_in();
 global $IN_CONTENT_AREA, $HIDE_CURRENT_PROJECTS, $HIDE_PAST_PROJECTS;
-global $this_pod;
 $TRACE_PREFIX = 'pods-research-projects';
 $pods_toplevel_ancestor = 306;
 
