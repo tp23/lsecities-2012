@@ -111,7 +111,7 @@ function set_pod_page_title($title, $sep, $seplocation) {
   
   return $title;
 }
-add_filter('wp_title', 'set_pod_page_title', null, 3);
+add_filter('wp_title', 'set_pod_page_title', 5, 3);
 
 // from http://webcheatsheet.com/php/get_current_page_url.php
 function get_current_page_URI() {
