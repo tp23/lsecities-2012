@@ -35,7 +35,7 @@ global $publication_pod;
 $publication_pod = new Pod('publication_wrappers', $pod->get_field('in_publication.id'));
 
 // grab the image URI from the Pod
-$featured_image_uri = honor_ssl_for_attachments($pod->get_field('heading_image.guid'));
+$featured_image_uri = wp_get_attachment_url($pod->get_field('heading_image.ID'));
 
 if($TRACE_ENABLED) { error_log('request_language: ' . $lang); }
 if($TRACE_ENABLED) { error_log('article_lang2: ' . $article_lang2); }
@@ -47,7 +47,7 @@ if(!empty($lang) && $lang == $article_lang2) {
   $article_summary = do_shortcode($pod->get_field('summary_lang2'));
   $article_text = do_shortcode($pod->get_field('text_lang2'));
   $article_extra_content = do_shortcode($pod->get_field('extra_content_lang2'));
-  $pdf_uri = honor_ssl_for_attachments($pod->get_field('article_pdf_lang2.guid'));
+  $pdf_uri = wp_get_attachment_url($pod->get_field('article_pdf_lang2.ID'));
   if(empty($pdf_uri)) {
     $pdf_uri = $pod->get_field('article_pdf_uri_lang2');
   }
@@ -58,7 +58,7 @@ if(!empty($lang) && $lang == $article_lang2) {
   $article_summary = do_shortcode($pod->get_field('summary'));
   $article_text = do_shortcode($pod->get_field('text'));
   $article_extra_content = do_shortcode($pod->get_field('extra_content'));
-  $pdf_uri = honor_ssl_for_attachments($pod->get_field('article_pdf.guid'));
+  $pdf_uri = wp_get_attachment_url($pod->get_field('article_pdf.ID'));
   if(empty($pdf_uri)) {
     $pdf_uri = $pod->get_field('article_pdf_uri');
   }
@@ -180,7 +180,7 @@ if(count($attachments)) {
                   <?php
                     if(is_array($attachments)) :
                       foreach($attachments as $attachment) :?>
-                      <li><a class='downloadthis pdf button' href="<?php echo honor_ssl_for_attachments($attachment['guid']); ?>" /><?php echo $attachment['post_title']; ?></a></li>
+                      <li><a class='downloadthis pdf button' href="<?php echo wp_get_attachment_url($attachment['ID']); ?>" /><?php echo $attachment['post_title']; ?></a></li>
                   <?php
                       endforeach;
                     endif; ?>

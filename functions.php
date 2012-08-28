@@ -43,6 +43,13 @@ function honor_ssl_for_attachments($url) {
   }
 }
 
+add_filter('lc_do_shortcode', 'honor_ssl_for_attachments');
+
+function do_https_shortcode($content) {
+  $content = apply_filters('lc_do_shortcode', (do_shortcode($content)));
+  return $content;
+}
+
 function var_trace($var, $prefix = 'pods', $enabled = true, $destination = 'page') {
   if($enabled) {
     $output_string = "tracing $prefix : " . var_export($var, true) . "\n\n";

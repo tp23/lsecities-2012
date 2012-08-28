@@ -93,10 +93,10 @@ function compose_slide($column_spans, $tiles) {
         $target_uri = PODS_BASEURI_RESEARCH_PROJECTS . '/' . $tile->get_field('target_research_project.slug');
       } elseif($tile->get_field('target_uri')) {
         $target_uri = $tile->get_field('target_uri');
-      } elseif($tile->get_field('target_page.guid')) {
-        $target_uri = honor_ssl_for_attachments($tile->get_field('target_page.guid'));
-      } elseif($tile->get_field('target_post.guid')) {
-        $target_uri = honor_ssl_for_attachments($tile->get_field('target_post.guid'));
+      } elseif($tile->get_field('target_page.ID')) {
+        $target_uri = get_permalink($tile->get_field('target_page.ID'));
+      } elseif($tile->get_field('target_post.ID')) {
+        $target_uri = get_permalink($tile->get_field('target_post.ID'));
       }
       
       array_push($slide_column['tiles'],
@@ -110,7 +110,7 @@ function compose_slide($column_spans, $tiles) {
           'plain_content' => $tile->get_field('plain_content'),
           'posts_category' => $tile->get_field('posts_category.term_id'),
           'target_uri' => $target_uri,
-          'image' => honor_ssl_for_attachments($tile->get_field('image.guid')),
+          'image' => wp_get_attachment_url($tile->get_field('image.ID')),
           'target_event' => array(
             'month' => $target_event_month,
             'day' => $target_event_day

@@ -18,7 +18,7 @@ $publication_pod = $pod; // TODO refactor code and move generation of list of ar
 $pod_title = $pod->get_field('name');
 $pod_subtitle = $pod->get_field('publication_subtitle');
 $pod_issuu_uri = $pod->get_field('issuu_uri');
-$pod_cover = honor_ssl_for_attachments($pod->get_field('snapshot.guid'));
+$pod_cover = wp_get_attachment_url($pod->get_field('snapshot.ID'));
 $pod_abstract = do_shortcode($pod->get_field('abstract'));
 
 // get tiles for heading slider
@@ -29,14 +29,14 @@ foreach((array)$slider_pod->get_field('tiles.slug') as $tile_slug) {
   echo var_trace($tile_slug, $TRACE_PREFIX. '--tiles.slug', $TRACE_ENABLED);
   $tile = new Pod('tile', $tile_slug);
   if($tile) {
-    array_push($heading_slides, honor_ssl_for_attachments($tile->get_field('image.guid')));
+    array_push($heading_slides, wp_get_attachment_url($tile->get_field('image.ID')));
   }
 }
 
-$pod_pdf = $pod->get_field('publication_pdf.guid') ? honor_ssl_for_attachments($pod->get_field('publication_pdf.guid')) : $pod->get_field('publication_pdf_uri');
-$pod_alt_pdf = $pod->get_field('publication_alt_pdf.guid') ? honor_ssl_for_attachments($pod->get_field('publication_alt_pdf.guid')) : $pod->get_field('publication_alt_pdf_uri');
-$pod_pdf_lang2 = $pod->get_field('publication_pdf_lang2.guid') ? honor_ssl_for_attachments($pod->get_field('publication_pdf_lang2.guid')) : $pod->get_field('publication_pdf_lang2_uri');
-$pod_alt_pdf_lang2 = $pod->get_field('publication_alt_pdf_lang2.guid') ? honor_ssl_for_attachments($pod->get_field('publication_alt_pdf_lang2.guid')) : $pod->get_field('publication_alt_pdf_lang2_uri');
+$pod_pdf = $pod->get_field('publication_pdf.guid') ? wp_get_attachment_url($pod->get_field('publication_pdf.ID')) : $pod->get_field('publication_pdf_uri');
+$pod_alt_pdf = $pod->get_field('publication_alt_pdf.guid') ? wp_get_attachment_url($pod->get_field('publication_alt_pdf.ID')) : $pod->get_field('publication_alt_pdf_uri');
+$pod_pdf_lang2 = $pod->get_field('publication_pdf_lang2.guid') ? wp_get_attachment_url($pod->get_field('publication_pdf_lang2.ID')) : $pod->get_field('publication_pdf_lang2_uri');
+$pod_alt_pdf_lang2 = $pod->get_field('publication_alt_pdf_lang2.guid') ? wp_get_attachment_url($pod->get_field('publication_alt_pdf_lang2.ID')) : $pod->get_field('publication_alt_pdf_lang2_uri');
 
 $extra_publication_metadata = $pod->get_field('extra_publication_metadata');
 
