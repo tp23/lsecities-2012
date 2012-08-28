@@ -20,6 +20,7 @@ $pods_toplevel_ancestor = 311;
 include_once('inc/pods/event/pods-event.php');
 
 global $this_pod;
+var_trace($pod, 'event pod', $TRACE_ENABLED, 'syslog');
 $this_pod = new LC\PodObject($pod, 'Events');
 ?>
 
