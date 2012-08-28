@@ -98,7 +98,6 @@ function set_pod_page_title($title, $sep, $seplocation) {
   global $this_pod;
   var_trace($this_pod, 'this_pod', is_user_logged_in(), 'syslog');
   if(isset($this_pod) and $this_pod->page_title){
-    var_trace($this_pod->page_title, 'this_pod->page_title', is_user_logged_in(), 'syslog');
     $title = $this_pod->page_title;
     
     if($this_pod->page_section){
@@ -106,8 +105,10 @@ function set_pod_page_title($title, $sep, $seplocation) {
     }
     
     $title .= " $sep ";
+    
+    var_trace($title, 'page_title', is_user_logged_in(), 'syslog');
   }
-  var_trace($title, 'page_title', is_user_logged_in(), 'syslog');
+  
   return $title;
 }
 add_filter('wp_title', 'set_pod_page_title', 5, 3);
