@@ -1,22 +1,26 @@
 lsecities-2012 (1.3) stable; urgency=low
   
-  release 1.3 "<nickname>"
+  release 1.3 "noix"
   
   * people pages
-    * [feature] added hCard microformat
+    * [feature] [SEO] added hCard microformat
   * events pages
-    * [feature] added hCalendar microformat
+    * [feature] [SEO] added hCalendar microformat
   * all pods pages
-    * [feature] set HTML title tag according to current pod object
+    * [feature] [SEO] set HTML title tag according to current pod object
       (previously the title tag was set with text from the URI path
       fragments)
   * general
     * [feature] added support for media attachments attribution metadata
       display
+    * [design] CSS transitions applied to navigation elements
+    * [feature] started refactoring of source code, files and
+      deployment strategy
+    * [feature] 
   * license
     * [update] updated license to GNU AGPLv3
 
- -- andrea rota <a.rota@lse.ac.uk>  DDD, DD MMM YYYY HH:MM:SS +0100
+ -- andrea rota <a.rota@lse.ac.uk>  Fri, 31 Aug 2012 16:30:00 +0100
 
 lsecities-2012 (1.2) stable; urgency=low
   
