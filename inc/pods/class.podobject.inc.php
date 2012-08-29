@@ -1,4 +1,14 @@
 <?php
+/**
+ * Pod object class
+ * 
+ * Accessory metadata for all Pods
+ * 
+ * @package lsecities-2012
+ * @author Andrea Rota <a.rota@lse.ac.uk>
+ * @copyright 2012 LSE Cities, London School of Economics and Political Science
+ * @license AGPLv3
+ */
 namespace LC;
 
 class PodObject {
