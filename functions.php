@@ -93,7 +93,7 @@ function shorten_string($string, $wordsreturned) {
 /* 
  * Set wp_title according to current Pod content
  */
-include_once('inc/pods/pod_class.php');
+include_once('inc/pods/class.podobject.inc.php');
 function set_pod_page_title($title, $sep, $seplocation) {
   global $this_pod;
   var_trace($this_pod, 'this_pod', is_user_logged_in(), 'syslog');
