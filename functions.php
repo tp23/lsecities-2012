@@ -15,6 +15,34 @@ if(is_user_logged_in()) {
   @ini_set('error_log', LSECITIES2012_LOG_FILE); // path to server-writable log file
 }
 
+/**
+ * tracing/debugging output
+ * 
+ * This function can either return a formatted dump of the variable to
+ * debug, or send the dump to the defined error_log. Ideally this
+ * should be coupled with PHP INI settings to enable error log, to
+ * disable error output on pages and to send logs to a specific
+ * file instead
+ * 
+ * @param mixed $var The variable to dump
+ * @param string $prefix Text to prepend to the variable to be dumped
+ * @param bool $enabled Only if true will the function do anything
+ * @param string $destination Whether to return a string ('page') or to
+ *        send output to error_log ('error_log')
+ * @return bool the tracing output if $destination == 'page' or the
+ *         return value of error_log() if $destination == 'error_log'
+ */
+function var_trace($var, $prefix = 'pods', $enabled = true, $destination = 'error_log') {
+  if($enabled) {
+    $output_string = "tracing $prefix : " . var_export($var, true) . "\n\n";
+    
+    if($destination == 'page') {
+      return "<!-- $output_string -->";
+    } elseif($destination == 'error_log') {
+      return error_log($output_string);
+    }
+  }
+}
 // global scope variables
 $META_media_attr = array();
 
@@ -50,17 +78,7 @@ function do_https_shortcode($content) {
   return $content;
 }
 
-function var_trace($var, $prefix = 'pods', $enabled = true, $destination = 'page') {
-  if($enabled) {
-    $output_string = "tracing $prefix : " . var_export($var, true) . "\n\n";
-    
-    if($destination == 'page') {
-      return "<!-- $output_string -->";
-    } elseif($destination == 'syslog') {
-      error_log($output_string);
-    }
-  }
-}
+
 
 function check_parent_conference($post_id) {
   global $post;
@@ -96,7 +114,7 @@ function shorten_string($string, $wordsreturned) {
 include_once('inc/pods/class.podobject.inc.php');
 function set_pod_page_title($title, $sep, $seplocation) {
   global $this_pod;
-  var_trace($this_pod, 'this_pod', is_user_logged_in(), 'syslog');
+  var_trace($this_pod, 'this_pod', is_user_logged_in());
   if(isset($this_pod) and $this_pod->page_title){
     $title = $this_pod->page_title;
     
@@ -106,7 +124,7 @@ function set_pod_page_title($title, $sep, $seplocation) {
     
     $title .= " $sep ";
     
-    var_trace($title, 'page_title', is_user_logged_in(), 'syslog');
+    var_trace($title, 'page_title', is_user_logged_in());
   }
   
   return $title;
@@ -125,7 +143,6 @@ function get_current_page_URI() {
  }
  return $pageURL;
 }
-
 
 /* attribution and license metadata support for media library
  * thanks to jvelez (http://stackoverflow.com/questions/11475741/word-press-saving-custom-field-to-database)
@@ -174,7 +191,7 @@ add_filter('attachment_fields_to_save','save_media_library_item_custom_form_fiel
 function push_media_attribution($attachment_ID) {
   global $META_media_attr;
   $attachment_metadata = wp_get_attachment_metadata($attachment_ID);
-  echo var_trace($attachment_metadata, $TRACE_PREFIX . ': attachment_metadata', $TRACE_ENABLED);
+  var_trace($attachment_metadata, $TRACE_PREFIX . ': attachment_metadata', $TRACE_ENABLED);
   $attribution_uri = get_post_meta($attachment_ID, '_attribution_uri', true);
   $attribution_name = get_post_meta($attachment_ID, '_attribution_name', true);
   // array_push($GLOBALS['META_media_attributions'], array(
