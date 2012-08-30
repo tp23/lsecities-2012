@@ -1,13 +1,13 @@
 <?php
 
 /* LSE Cities Twenty Twelve functions and constant definitions */
-define(PODS_BASEURI_ARTICLES, '/media/objects/articles');
-define(PODS_BASEURI_CONFERENCES, '/media/objects/conferences');
-define(PODS_BASEURI_EVENTS, '/media/objects/events');
-define(PODS_BASEURI_RESEARCH_PROJECTS, '/objects/research-projects');
+define('PODS_BASEURI_ARTICLES', '/media/objects/articles');
+define('PODS_BASEURI_CONFERENCES', '/media/objects/conferences');
+define('PODS_BASEURI_EVENTS', '/media/objects/events');
+define('PODS_BASEURI_RESEARCH_PROJECTS', '/objects/research-projects');
 
 // log php errors
-define(LSECITIES2012_LOG_FILE, '/srv/web/wordpress/www/tmp/lsecities-2012.log');
+define('LSECITIES2012_LOG_FILE', '/srv/web/wordpress/www/tmp/lsecities-2012.log');
 
 if(is_user_logged_in()) {
   @ini_set('log_errors', 'On'); // enable or disable php error logging (use 'On' or 'Off')
