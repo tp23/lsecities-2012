@@ -97,6 +97,8 @@ function compose_slide($column_spans, $tiles) {
         $target_uri = get_permalink($tile->get_field('target_page.ID'));
       } elseif($tile->get_field('target_post.ID')) {
         $target_uri = get_permalink($tile->get_field('target_post.ID'));
+      } else {
+        $target_uri = null;
       }
       
       array_push($slide_column['tiles'],
