@@ -7,11 +7,11 @@ global $IN_CONTENT_AREA;
 global $HIDE_CURRENT_PROJECTS, $HIDE_PAST_PROJECTS;
 $BASE_URI = PODS_BASEURI_RESEARCH_PROJECTS;
 
-echo var_trace('HIDE_CURRENT_PROJECTS: '. $HIDE_CURRENT_PROJECTS, $TRACE_PREFIX, $TRACE_ENABLED);
-echo var_trace('HIDE_PAST_PROJECTS: '. $HIDE_PAST_PROJECTS, $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('HIDE_CURRENT_PROJECTS: '. $HIDE_CURRENT_PROJECTS, $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('HIDE_PAST_PROJECTS: '. $HIDE_PAST_PROJECTS, $TRACE_PREFIX, $TRACE_ENABLED);
 
-echo var_trace('post ID: ' . $current_post_id, $TRACE_PREFIX, $TRACE_ENABLED);
-echo var_trace(var_export($pod, true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('post ID: ' . $current_post_id, $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace(var_export($pod, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
 $projects_pod = new Pod('research_project');
 
@@ -29,14 +29,14 @@ while($projects_pod->fetchRecord()) {
   $current_projects[$projects_pod->get_field('research_stream.name')] = array();
 }
 
-echo var_trace('projects: ' . var_export($current_projects_list, true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('projects: ' . var_export($current_projects_list, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
 foreach($current_projects_list as $project) {
   $key = $project['stream'];
   array_push($current_projects[$key], $project);
 }
 
-echo var_trace('projects (by stream): ' . var_export($current_projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('projects (by stream): ' . var_export($current_projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
 $past_projects_list = array();
 $projects_pod->findRecords(array(
@@ -52,14 +52,14 @@ while($projects_pod->fetchRecord()) {
   $past_projects[$projects_pod->get_field('research_stream.name')] = array();
 }
 
-echo var_trace('projects: ' . var_export($current_projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('projects: ' . var_export($current_projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
 foreach($past_projects_list as $project) {
   $key = $project['stream'];
   array_push($past_projects[$key], $project);
 }
 
-echo var_trace('past projects (by stream): ' . var_export($projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('past projects (by stream): ' . var_export($projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
 ?>
   <?php if(($IN_CONTENT_AREA and !$HIDE_CURRENT_PROJECTS) or (!$IN_CONTENT_AREA and $HIDE_CURRENT_PROJECTS)): ?>
   <nav id="projectsmenu">
