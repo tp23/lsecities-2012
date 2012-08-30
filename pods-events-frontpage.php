@@ -31,10 +31,10 @@ $this_pod = new LC\PodObject($pod, 'Events');
 
 <div id="post-<?php the_ID(); ?>" <?php post_class('lc-article lc-event h-event vevent'); ?>>
 
-<?php echo var_trace($speakers_output, $TRACE_PREFIX, $TRACE_ENABLED);
-      echo var_trace($respondents_output, $TRACE_PREFIX, $TRACE_ENABLED);
-      echo var_trace($chairs_output, $TRACE_PREFIX, $TRACE_ENABLED);
-      echo var_trace($moderators_output, $TRACE_PREFIX, $TRACE_ENABLED);
+<?php var_trace($speakers_output, $TRACE_PREFIX, $TRACE_ENABLED);
+      var_trace($respondents_output, $TRACE_PREFIX, $TRACE_ENABLED);
+      var_trace($chairs_output, $TRACE_PREFIX, $TRACE_ENABLED);
+      var_trace($moderators_output, $TRACE_PREFIX, $TRACE_ENABLED);
 ?>
 
           <div class='ninecol' id='contentarea'>
@@ -169,7 +169,7 @@ $this_pod = new LC\PodObject($pod, 'Events');
             
               
               <?php if($people_with_blurb): ?>
-              <?php echo var_trace($event_all_the_people, $TRACE_PREFIX, $TRACE_ENABLED); ?>
+              <?php var_trace($event_all_the_people, $TRACE_PREFIX, $TRACE_ENABLED); ?>
               <section id='speaker-profiles' class='clearfix'>
                 <header>
                   <h1>Profiles</h1>

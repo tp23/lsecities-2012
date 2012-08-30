@@ -29,7 +29,7 @@ if(!$pod_from_page) {
   $pods_toplevel_ancestor = 306;
 }
 
-echo var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 $pod = new Pod('research_project', $pod_slug);
 
 global $this_pod;
@@ -42,10 +42,10 @@ $pod_blurb = do_shortcode($pod->get_field('blurb'));
 
 // get tiles for heading slider
 $heading_slides = array();
-echo var_trace($pod->get_field('heading_slides.slug'), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace($pod->get_field('heading_slides.slug'), $TRACE_PREFIX, $TRACE_ENABLED);
 $slider_pod = new Pod('slide', $pod->get_field('heading_slides.slug'));
 foreach($slider_pod->get_field('tiles.slug') as $tile_slug) {
-  echo var_trace($tile_slug, $TRACE_PREFIX, $TRACE_ENABLED);
+  var_trace($tile_slug, $TRACE_PREFIX, $TRACE_ENABLED);
   $tile = new Pod('tile', $tile_slug);
   array_push($heading_slides, wp_get_attachment_url($tile->get_field('image.ID')));
 }

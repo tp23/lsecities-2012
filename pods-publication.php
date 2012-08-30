@@ -12,7 +12,7 @@ $TRACE_ENABLED = is_user_logged_in();
 $TRACE_PREFIX = 'pods-publications';
 
 $publication_slug = get_post_meta($post->ID, 'pod_slug', true);
-echo var_trace('pod_slug: ' . $publication_slug, $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('pod_slug: ' . $publication_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 $pod = new Pod('publication_wrappers', $publication_slug);
 $publication_pod = $pod; // TODO refactor code and move generation of list of articles to sub used both in pods-articles and pods-publication
 $pod_title = $pod->get_field('name');
@@ -23,10 +23,10 @@ $pod_abstract = do_shortcode($pod->get_field('abstract'));
 
 // get tiles for heading slider
 $heading_slides = array();
-echo var_trace($pod->get_field('heading_slides.slug'), $TRACE_PREFIX . '--heading_slides.slug', $TRACE_ENABLED);
+var_trace($pod->get_field('heading_slides.slug'), $TRACE_PREFIX . '--heading_slides.slug', $TRACE_ENABLED);
 $slider_pod = new Pod('slide', $pod->get_field('heading_slides.slug'));
 foreach((array)$slider_pod->get_field('tiles.slug') as $tile_slug) {
-  echo var_trace($tile_slug, $TRACE_PREFIX. '--tiles.slug', $TRACE_ENABLED);
+  var_trace($tile_slug, $TRACE_PREFIX. '--tiles.slug', $TRACE_ENABLED);
   $tile = new Pod('tile', $tile_slug);
   if($tile) {
     array_push($heading_slides, wp_get_attachment_url($tile->get_field('image.ID')));
@@ -83,7 +83,7 @@ foreach(preg_split("/\n/", $publication_pod->get_field('sections')) as $section_
     array_push($publication_sections, array( 'id' => $matches[1], 'title' => $matches[2]));
   }
 }
-echo var_trace('sections: ' . var_export($publication_sections, true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('sections: ' . var_export($publication_sections, true), $TRACE_PREFIX, $TRACE_ENABLED);
               
 
 ?><?php get_header(); ?>
@@ -171,7 +171,7 @@ echo var_trace('sections: ' . var_export($publication_sections, true), $TRACE_PR
         </aside><!-- #keyfacts -->
       </div><!-- .top-content -->
       <div class='extra-content row'>
-          <?php echo var_trace(var_export($pod->get_field('reviews_category.term_id'), true), $TRACE_PREFIX, $TRACE_ENABLED); ?>
+          <?php var_trace(var_export($pod->get_field('reviews_category.term_id'), true), $TRACE_PREFIX, $TRACE_ENABLED); ?>
           <?php if($pod->get_field('reviews_category.term_id')):
                   $wp_posts_reviews = get_posts(array('category' => $pod->get_field('reviews_category.term_id'), 'numberposts' => 10));
                   if(count($wp_posts_reviews)): ?>
@@ -213,7 +213,7 @@ echo var_trace('sections: ' . var_export($publication_sections, true), $TRACE_PR
                     // remove trailing comma
                     $author_names = substr($author_names, 0, -2);
                     $article_title = $articles_pods->get_field('name');
-                    echo var_trace('article Pod object: ' . var_export($articles_pods, true), $TRACE_PREFIX, $TRACE_ENABLED);
+                    var_trace('article Pod object: ' . var_export($articles_pods, true), $TRACE_PREFIX, $TRACE_ENABLED);
                     ?>
                     <div class="article">
                       <h1>

@@ -14,7 +14,7 @@ function people_list($people, $heading_singular, $heading_plural) {
     $output .= "<dd>\n";
     
     foreach($people as $person) {
-      echo var_trace($person, 'people_list:$person', $TRACE_ENABLED);
+      var_trace($person, 'people_list:$person', $TRACE_ENABLED);
       $people_count++;
       if($person['profile_text']) {
         $output .= '<a href="#person-profile-' . $person['slug'] . '">' . $person['name'] . ' ' . $person['family_name'] . "</a>, \n";
@@ -72,18 +72,18 @@ if($pod_slug) {
 
 $META_last_modified = $pod->get_field('modified');
 
-echo var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 
 $button_links = $pod->get_field('links');
 
-echo var_trace('button_links: ' . var_export($button_links, true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('button_links: ' . var_export($button_links, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
 $event_speakers = $pod->get_field('speakers', 'family_name ASC');
 $event_respondents = $pod->get_field('respondents', 'family_name ASC');
 $event_chairs = $pod->get_field('chairs', 'family_name ASC');
 $event_moderators = $pod->get_field('moderators', 'family_name ASC');
 $event_all_the_people = array_merge((array)$event_speakers, (array)$event_respondents, (array)$event_chairs, (array)$event_moderators);
-echo var_trace($event_all_the_people, $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace($event_all_the_people, $TRACE_PREFIX, $TRACE_ENABLED);
 $event_hashtag = ltrim($pod->get_field('hashtag'), '#');
 $event_story_id = $pod->get_field('storify_id');
 
@@ -96,7 +96,7 @@ $people_with_blurb = $speakers_output['with_blurb'] + $respondents_output['with_
 
 $event_blurb = do_https_shortcode($pod->get_field('blurb'));
 $event_blurb_after_event = do_https_shortcode($pod->get_field('blurb_after_event'));
-echo var_trace($event_blurb_after_event, $TRACE_PREFIX . 'blurb_after_event', $TRACE_ENABLED);
+var_trace($event_blurb_after_event, $TRACE_PREFIX . 'blurb_after_event', $TRACE_ENABLED);
 $event_contact_info = do_shortcode($pod->get_field('contact_info'));
 
 $event_media = $pod->get_field('media_attachments');

@@ -35,7 +35,7 @@ switch($pod_type) {
 <div role="main">
 <?php if ( have_posts() ) : the_post(); endif; ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class('lc-article lc-list-of-pods-objects'); ?>>
-<?php echo var_trace($pod_type, $TRACE_PREFIX, $TRACE_ENABLED); ?>
+<?php var_trace($pod_type, $TRACE_PREFIX, $TRACE_ENABLED); ?>
           <div class='ninecol' id='contentarea'>
             <div class='top-content'>
               <article class='wireframe row'>

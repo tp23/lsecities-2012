@@ -47,7 +47,7 @@ function generate_section($section_slug, $section_heading = false, $mode = MODE_
   $pod = new Pod('people_group', $section_slug);
   $people = (array)$pod->get_field('members', 'family_name ASC');
   global $people_in_output_full, $people_in_output_summary;
-  echo var_trace('group_members: ' . var_export($people, true), $TRACE_PREFIX, true);
+  var_trace('group_members: ' . var_export($people, true), $TRACE_PREFIX, true);
   $output = "<section class='people-list $section_slug'>";
   $output .= "<h1>$section_heading</h1>";
   $output .= "<ul>";
@@ -55,9 +55,9 @@ function generate_section($section_slug, $section_heading = false, $mode = MODE_
     $display_after = new DateTime($person['display_after']);
     $display_until = new DateTime($person['display_until']);
     $datetime_now = new DateTime('now');
-    echo var_trace('display_after: ' . var_export($display_after, true), $TRACE_PREFIX, true);
-    echo var_trace('display_until: ' . var_export($display_until, true), $TRACE_PREFIX, true);
-    echo var_trace('datetime_now: ' . var_export($datetime_now, true), $TRACE_PREFIX, true);
+    var_trace('display_after: ' . var_export($display_after, true), $TRACE_PREFIX, true);
+    var_trace('display_until: ' . var_export($display_until, true), $TRACE_PREFIX, true);
+    var_trace('datetime_now: ' . var_export($datetime_now, true), $TRACE_PREFIX, true);
     if($display_after <= $datetime_now and $datetime_now <= $display_until) {
       if($mode == MODE_FULL_LIST) {
         if(!in_array($person['slug'], $people_in_output_full)) {
@@ -72,8 +72,8 @@ function generate_section($section_slug, $section_heading = false, $mode = MODE_
       }
     }
   }
-  echo var_trace('people_in_output_full: ' . var_export($people_in_output_full, true), $TRACE_PREFIX, true);
-  echo var_trace('people_in_output_summary: ' . var_export($people_in_output_summary, true), $TRACE_PREFIX, true);
+  var_trace('people_in_output_full: ' . var_export($people_in_output_full, true), $TRACE_PREFIX, true);
+  var_trace('people_in_output_summary: ' . var_export($people_in_output_summary, true), $TRACE_PREFIX, true);
   $output .= " </ul>";
   $output .= "</section>";
   return $output;

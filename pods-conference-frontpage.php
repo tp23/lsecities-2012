@@ -20,9 +20,9 @@ $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
 $pod = new Pod('conference', $pod_slug);
 $is_conference = true;
 
-echo var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 
-echo var_trace('button_links: ' . var_export($button_links, true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('button_links: ' . var_export($button_links, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
 $event_hashtag = ltrim($pod->get_field('hashtag'), '#');
 
@@ -45,10 +45,10 @@ $research_summary_blurb = $pod->get_field('research_summary.blurb');
 // than one tile to display here, however initially we only process the
 // first one and ignore the rest - later on we should deal with more
 // complex cases (e.g. as a slider or so)
-echo var_trace('tiles: ' . var_export($pod->get_field('research_summary.visualization_tiles'), true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('tiles: ' . var_export($pod->get_field('research_summary.visualization_tiles'), true), $TRACE_PREFIX, $TRACE_ENABLED);
 $visualization_tiles = $pod->get_field('research_summary.visualization_tiles');
 $tile_pod = new Pod('tile', $visualization_tiles[0]['slug']);
-echo var_trace('tile_image: ' . var_export($tile_pod->get_field('image'), true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('tile_image: ' . var_export($tile_pod->get_field('image'), true), $TRACE_PREFIX, $TRACE_ENABLED);
 $research_summary_tile_image = wp_get_attachment_url($tile_pod->get_field('image.ID'));
 $research_summary_pdf_uri = $pod->get_field('research_summary.data_section_pdf_uri');
 ?>
