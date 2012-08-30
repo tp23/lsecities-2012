@@ -6,6 +6,7 @@ define('PODS_BASEURI_CONFERENCES', '/media/objects/conferences');
 define('PODS_BASEURI_EVENTS', '/media/objects/events');
 define('PODS_BASEURI_RESEARCH_PROJECTS', '/objects/research-projects');
 define('TRACE_ENABLED', is_user_logged_in());
+define('TRACE_PREFIX', __FILE__);
 
 // log php errors
 define('LSECITIES2012_LOG_FILE', '/srv/web/wordpress/www/tmp/lsecities-2012.log');
