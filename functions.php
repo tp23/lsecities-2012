@@ -5,6 +5,7 @@ define('PODS_BASEURI_ARTICLES', '/media/objects/articles');
 define('PODS_BASEURI_CONFERENCES', '/media/objects/conferences');
 define('PODS_BASEURI_EVENTS', '/media/objects/events');
 define('PODS_BASEURI_RESEARCH_PROJECTS', '/objects/research-projects');
+define('TRACE_ENABLED', is_user_logged_in());
 
 // log php errors
 define('LSECITIES2012_LOG_FILE', '/srv/web/wordpress/www/tmp/lsecities-2012.log');
@@ -32,7 +33,7 @@ if(is_user_logged_in()) {
  * @return bool the tracing output if $destination == 'page' or the
  *         return value of error_log() if $destination == 'error_log'
  */
-function var_trace($var, $prefix = 'pods', $enabled = true, $destination = 'error_log') {
+function var_trace($var, $prefix = 'pods', $enabled = TRACE_ENABLED, $destination = 'error_log') {
   if($enabled) {
     $output_string = "tracing $prefix : " . var_export($var, true) . "\n\n";
     
@@ -83,7 +84,7 @@ function do_https_shortcode($content) {
 function check_parent_conference($post_id) {
   global $post;
   $current_post_id = $post->ID;
-  echo var_trace('current_post_id: ' . $current_post_id, $TRACE_PREFIX, $TRACE_ENABLED);
+  echo var_trace('current_post_id: ' . $current_post_id, TRACE_PREFIX, TRACE_ENABLED);
   if($current_post_id == $post_id or in_array($post_id, get_post_ancestors($current_post_id))) {
     return true;
   } else {
