@@ -216,7 +216,7 @@ $slides = $pod->get_field('slides');
                                 <?php if($tile['blurb']): ?><div class='feature_blurb'><?php if($tile['target_uri']): ?><a href="<?php echo $tile['target_uri']; ?>"><?php endif; ?><?php echo $tile['blurb']; ?><?php if($tile['target_uri']): ?></a><?php endif; ?></div><?php endif; ?>
                               </div><!-- .feature-info -->
                             <?php endif; ?>
-                            <?php if($slide_column['target_uri']): ?>
+                            <?php if(isset($slide_column['target_uri'])): ?>
                             <?php endif; ?>
                           </div><!-- .tile#slidetile-<?php echo $tile['id']; ?> -->
                         <?php endforeach; ?>
