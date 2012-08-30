@@ -1,5 +1,4 @@
 <?php
-$TRACE_ENABLED = is_user_logged_in();
 $TRACE_PREFIX = 'nav.php -- ';
 global $current_post_id;
 global $BASE_URI;
@@ -8,16 +7,15 @@ $current_post_id = $post->ID;
 $IN_CONTENT_AREA = false;
 $ancestors = get_post_ancestors($current_post_id);
 
-if($TRACE_ENABLED) { error_log($TRACE_PREFIX . 'ancestors: ' . var_export($ancestors, true)); }
+var_trace(var_export($ancestors, true), $TRACE_PREFIX . 'ancestors: ');
 
 global $parent_post_id;
 $parent_post_id = count($ancestors) > 1 ? array_shift($ancestors) : $current_post_id;
 
-if($TRACE_ENABLED) { error_log($TRACE_PREFIX . 'post ID: ' . $current_post_id); }
-if($TRACE_ENABLED) { error_log($TRACE_PREFIX . 'post ID: ' . $parent_post_id); }
-if($TRACE_ENABLED) { error_log($TRACE_PREFIX . 'ancestors: ' . var_export($ancestors, true)); }
-if($TRACE_ENABLED) { error_log($TRACE_PREFIX . 'pods_toplevel_ancestor: ' . var_export($pods_toplevel_ancestor, true)); }
-// var_trace('pod: ' . var_export($Pod), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace($current_post_id, $TRACE_PREFIX . 'post ID: ');
+var_trace($parent_post_id, $TRACE_PREFIX . 'parent post ID: ');
+var_trace(var_export($ancestors, true), $TRACE_PREFIX . 'ancestors: ');
+var_trace(var_export($pods_toplevel_ancestor, true), $TRACE_PREFIX . 'pods_toplevel_ancestor: ');
 ?>
 
 <div class="wireframe threecol last" id="navigationarea">
