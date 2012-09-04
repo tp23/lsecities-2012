@@ -52,6 +52,7 @@ $pods_toplevel_ancestor = 306;
   </div><!-- #post-<?php the_ID(); ?> -->
 <script src="https://raw.github.com/janl/mustache.js/master/mustache.js"></script>
 <script type="text/javascript">
+  // tests: http://jsfiddle.net/xswVa/1/
   $ = jQuery;
   
   var mTemplate = '<ul>\
@@ -71,9 +72,10 @@ $pods_toplevel_ancestor = 306;
           type: "GET",
           url: "/media/search",
           data: datastring,
+          dataType: "json",
           cache: false,
-          success: function(content) {
-            console.log('search results: ' + content);
+          success: function(content, status) {
+            console.log('ajax status: ' + status + "\nsearch results: " + content);
             $('#searchresults').html(Mustache.render(mTemplate, content));
           }
         }
