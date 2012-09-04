@@ -146,6 +146,20 @@
             console.log("PDF download at URI %s tracked with event label '%s'", originalhref, href);
             _gaq.push(['_trackEvent', 'PDF', 'download', href]);
           });
+          $(':regex(href,(http:\/\/lsecities\.net\/)?\/files\/.*.xlsx?)').click(function() {
+            var re = /^(http:\/\/lsecities\.net)?(.*)$/gi;
+            var originalhref = $(this).attr('href');
+            var href = originalhref.replace(re, '$2');
+            console.log("Excel document download at URI %s tracked with event label '%s'", originalhref, href);
+            _gaq.push(['_trackEvent', 'Excel document', 'download', href]);
+          });
+          $(':regex(href,(http:\/\/lsecities\.net\/)?\/files\/.*.docx?)').click(function() {
+            var re = /^(http:\/\/lsecities\.net)?(.*)$/gi;
+            var originalhref = $(this).attr('href');
+            var href = originalhref.replace(re, '$2');
+            console.log("Word document download at URI %s tracked with event label '%s'", originalhref, href);
+            _gaq.push(['_trackEvent', 'Word document', 'download', href]);
+          });
           <?php endif; ?>
         });
       //]]>
