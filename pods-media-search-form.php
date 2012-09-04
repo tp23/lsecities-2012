@@ -84,7 +84,7 @@ $pods_toplevel_ancestor = 306;
       runMediaQuery();
     });
     $('#query').keyup(function() {
-      typewatch(runMediaQuery(), 500);
+      typewatch(runMediaQuery, 500);
     });
   });
 </script>
