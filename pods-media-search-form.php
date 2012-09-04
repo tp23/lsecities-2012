@@ -33,10 +33,12 @@ $pods_toplevel_ancestor = 306;
             <h1>Search media archive</h1>
           </header>
           <div class='entry-content article-text'>
-            <form action='' method='get'>
-              <input type='text' name='search' id='query' />
-              <input type='submit' value='Search' id='searchbutton' />
-            </form>
+            <p>
+              <form action='' method='get'>
+                <input type='text' name='search' id='query' />
+                <input type='submit' value='Search' id='searchbutton' />
+              </form>
+            </p>
             
             <div id='searchresults'>
             </div>
@@ -55,7 +57,7 @@ $pods_toplevel_ancestor = 306;
   // tests: http://jsfiddle.net/xswVa/1/
   $ = jQuery;
   
-  var mTemplate = '<ul>\
+  var mTemplate = '<h2>Search results</h2><ul>\
   {{#items}}\
     <li><a href="https://youtu.be/{{youtube_uri}}">{{title}}</a></li>\
   {{/items}}\
