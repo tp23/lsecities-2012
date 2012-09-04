@@ -48,5 +48,5 @@ while($pod->fetchRecord()) {
   array_push($media_items, $media_item);
 }
 
-echo json_encode($media_items);
+echo json_encode(array('items' => $media_items));
 ?>
