@@ -51,24 +51,39 @@ $pods_toplevel_ancestor = 306;
     </div><!-- #contentarea -->
   </div><!-- #post-<?php the_ID(); ?> -->
 <script type="text/javascript">
+  function runMediaQuery() {
+    var query = $('#query').val();
+    var datastring = 'search=' + query;
+    
+    $.ajax(
+      {
+        type: "GET",
+        url: "/media/search",
+        data: datastring,
+        cache: false,
+        success: function(content) {
+          $('#searchresults').html(content);
+        }
+      }
+    );
+  }
+  
+  var typewatch = (function(){
+    var timer = 0;
+    return function(callback, ms){
+      clearTimeout (timer);
+      timer = setTimeout(callback, ms);
+    }  
+  })();
+
   jQuery(document).ready(function($) {
     $('#searchbutton').click(function(e) {
       e.preventDefault();
-      var query = $('#query').val();
-      var datastring = 'search=' + query;
-      
-      $.ajax(
-        {
-          type: "GET",
-          url: "/media/search",
-          data: datastring,
-          cache: false,
-          success: function(content) {
-            $('#searchresults').html(content);
-          }
-        }
-      );
-    })
+      runMediaQuery();
+    });
+    $('#query').keyup(function() {
+      typewatch(runMediaQuery(), 500);
+    });
   });
 </script>
 </div><!-- role='main'.row -->
