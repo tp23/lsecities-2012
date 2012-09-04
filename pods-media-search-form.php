@@ -55,19 +55,24 @@ $pods_toplevel_ancestor = 306;
   
   function runMediaQuery() {
     var query = $('#query').val();
-    var datastring = 'search=' + query;
     
-    $.ajax(
-      {
-        type: "GET",
-        url: "/media/search",
-        data: datastring,
-        cache: false,
-        success: function(content) {
-          $('#searchresults').html(content);
+    if(query.length) {
+      var datastring = 'search=' + query;
+      
+      $.ajax(
+        {
+          type: "GET",
+          url: "/media/search",
+          data: datastring,
+          cache: false,
+          success: function(content) {
+            $('#searchresults').html(content);
+          }
         }
-      }
-    );
+      );
+    } else {
+      $('#searchresults').html('');
+    }
   }
   
   var typewatch = (function(){
