@@ -52,7 +52,8 @@ $pods_toplevel_ancestor = 306;
   </div><!-- #post-<?php the_ID(); ?> -->
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-    $('#searchbutton').click(function() {
+    $('#searchbutton').click(function(e) {
+      e.preventDefault();
       var query = $('#query').val();
       var datastring = 'search=' + query;
       
