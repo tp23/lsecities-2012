@@ -51,6 +51,8 @@ $pods_toplevel_ancestor = 306;
     </div><!-- #contentarea -->
   </div><!-- #post-<?php the_ID(); ?> -->
 <script type="text/javascript">
+  $ = jQuery;
+  
   function runMediaQuery() {
     var query = $('#query').val();
     var datastring = 'search=' + query;
