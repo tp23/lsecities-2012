@@ -73,6 +73,7 @@ $pods_toplevel_ancestor = 306;
           data: datastring,
           cache: false,
           success: function(content) {
+            console.log('search results: ' + content);
             $('#searchresults').html(Mustache.render(mTemplate, content));
           }
         }
