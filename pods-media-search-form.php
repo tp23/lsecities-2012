@@ -50,9 +50,17 @@ $pods_toplevel_ancestor = 306;
       </div><!-- .extra-content -->
     </div><!-- #contentarea -->
   </div><!-- #post-<?php the_ID(); ?> -->
+<script src="https://raw.github.com/janl/mustache.js/master/mustache.js"></script>
 <script type="text/javascript">
   $ = jQuery;
   
+  var mTemplate = '
+  <ul>
+  {{#items}}
+    <li><a href="https://youtu.be/{{youtube_uri}}">{{title}}</a></li>
+  {{/items}}
+  </ul>
+  ';
   function runMediaQuery() {
     var query = $('#query').val();
     
@@ -66,7 +74,7 @@ $pods_toplevel_ancestor = 306;
           data: datastring,
           cache: false,
           success: function(content) {
-            $('#searchresults').html(content);
+            $('#searchresults').html(Mustache.render(mTemplate, content));
           }
         }
       );
