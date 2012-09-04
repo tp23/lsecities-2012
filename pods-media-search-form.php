@@ -54,13 +54,12 @@ $pods_toplevel_ancestor = 306;
 <script type="text/javascript">
   $ = jQuery;
   
-  var mTemplate = '
-  <ul>
-  {{#items}}
-    <li><a href="https://youtu.be/{{youtube_uri}}">{{title}}</a></li>
-  {{/items}}
-  </ul>
-  ';
+  var mTemplate = '<ul>\
+  {{#items}}\
+    <li><a href="https://youtu.be/{{youtube_uri}}">{{title}}</a></li>\
+  {{/items}}\
+  </ul>';
+  
   function runMediaQuery() {
     var query = $('#query').val();
     
