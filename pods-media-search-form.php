@@ -35,10 +35,10 @@ $pods_toplevel_ancestor = 306;
           <div class='entry-content article-text'>
             <form action='' method='get'>
               <input type='text' name='search' id='query' />
-              <input type='submit' value='Search' id='search-button' />
+              <input type='submit' value='Search' id='searchbutton' />
             </form>
             
-            <div id='search-results'>
+            <div id='searchresults'>
             </div>
           </div>
         </article>
@@ -52,7 +52,7 @@ $pods_toplevel_ancestor = 306;
   </div><!-- #post-<?php the_ID(); ?> -->
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-    $('#search-button').click(function() {
+    $('#searchbutton').click(function() {
       var query = $('#query').val();
       var datastring = 'search=' + query;
       
@@ -63,7 +63,7 @@ $pods_toplevel_ancestor = 306;
           data: datastring,
           cache: false,
           success: function(content) {
-            $('#search-results').html(content);
+            $('#searchresults').html(content);
           }
         }
       );
