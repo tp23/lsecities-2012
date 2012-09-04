@@ -34,8 +34,8 @@ $pods_toplevel_ancestor = 306;
           </header>
           <div class='entry-content article-text'>
             <form action='' method='get'>
-              <input type='text' name='search' id='media-archive-search' />
-              <input type='submit' value='Search' />
+              <input type='text' name='search' id='query' />
+              <input type='submit' value='Search' id='search-button' />
             </form>
             
             <div id='search-results'>
@@ -50,7 +50,26 @@ $pods_toplevel_ancestor = 306;
       </div><!-- .extra-content -->
     </div><!-- #contentarea -->
   </div><!-- #post-<?php the_ID(); ?> -->
-
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $('#search-button').click(function() {
+      var query = $('#query').val();
+      var datastring = 'search=' + query;
+      
+      $.ajax(
+        {
+          type: "GET",
+          url: "/media/search",
+          data: datastring,
+          cache: false,
+          success: function(content) {
+            $('#search-results').html(content);
+          }
+        }
+      );
+    })
+  });
+</script>
 </div><!-- role='main'.row -->
 
 <?php get_sidebar(); ?>
