@@ -1,11 +1,9 @@
 <?php
 /**
- * Template Name: Media Archive item (JSON)
- * Description: The template used to return a JSON view of a Media Archive object's metadata
+ * Template Name: Media Archive item (JSON) (dev)
+ * Description: The template used to return a JSON view of a Media Archive object's metadata (dev)
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package LSE Cities 2012
  */
 ?><?php
 /**
