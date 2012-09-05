@@ -34,7 +34,7 @@ $pods_toplevel_ancestor = 306;
           </header>
           <div class='entry-content article-text'>
             <p>
-              <form>
+              <form action='' method='get'>
                 <input type='text' name='search' id='query' />
                 <input type='submit' value='Search' id='searchbutton' />
               </form>
