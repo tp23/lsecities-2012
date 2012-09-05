@@ -42,7 +42,6 @@ $pods_toplevel_ancestor = 306;
             
             <h2>Search results</h2>
             <div id='searchresults'>
-              <p>No media items match your query.</p>
             </div>
           </div>
         </article>
@@ -71,21 +70,25 @@ $pods_toplevel_ancestor = 306;
   function runMediaQuery() {
     var query = $('#query').val();
 
-    var datastring = 'search=' + query;
-    
-    $.ajax(
-      {
-        type: "GET",
-        url: "/media/search",
-        data: datastring,
-        dataType: "json",
-        cache: false,
-        success: function(content, status) {
-          console.log('ajax status: ' + status + "\nsearch results: " + content);
-          $('#searchresults').html(Mustache.render(mTemplate, content));
+    if(query.length) {
+      var datastring = 'search=' + query;
+      
+      $.ajax(
+        {
+          type: "GET",
+          url: "/media/search",
+          data: datastring,
+          dataType: "json",
+          cache: false,
+          success: function(content, status) {
+            console.log('ajax status: ' + status + "\nsearch results: " + content);
+            $('#searchresults').html(Mustache.render(mTemplate, content));
+          }
         }
-      }
-    );
+      );
+    } else {
+      $('#searchresults').html(Mustache.render(mTemplate, content));
+    }
   }
   
   var typewatch = (function(){
@@ -97,6 +100,7 @@ $pods_toplevel_ancestor = 306;
   })();
 
   jQuery(document).ready(function($) {
+    $('#searchresults').html(Mustache.render(mTemplate, content));
     $('#searchbutton').click(function(e) {
       e.preventDefault();
       runMediaQuery();
