@@ -146,54 +146,56 @@ if(count($attachments)) {
 
 
               <aside class='wireframe fourcol last minorfacts' id='keyfacts'>
-                <dl>
-                <?php if(is_array($article_authors)): ?>
-                  <dt>Authors</dt>
-                  <dd>
-                    <ul>
-                    <?php foreach($article_authors as $author): ?>
-                      <li><?php echo $author['name'] ?> <?php echo $author['family_name'] ?></li>
-                    <?php endforeach; ?>
-                    </ul>
-                  </dd>
-                <?php endif; ?>
-                  <?php if($article_publishing_date): ?>
-                  <dt>Publication date</dt>
-                  <dd><?php echo $article_publishing_date ?></dd>
-                  <?php endif; ?>
-                  <?php if(is_array($article_tags)): ?>
-                  <dt>Tags</dt>
-                  <dd>
-                    <ul>
-                      <?php foreach($article_tags as $tag): ?>
-                        <li><?php echo $tag['name'] ; ?></li>
+                <div>
+                  <dl>
+                  <?php if(is_array($article_authors)): ?>
+                    <dt>Authors</dt>
+                    <dd>
+                      <ul>
+                      <?php foreach($article_authors as $author): ?>
+                        <li><?php echo $author['name'] ?> <?php echo $author['family_name'] ?></li>
                       <?php endforeach; ?>
+                      </ul>
+                    </dd>
+                  <?php endif; ?>
+                    <?php if($article_publishing_date): ?>
+                    <dt>Publication date</dt>
+                    <dd><?php echo $article_publishing_date ?></dd>
+                    <?php endif; ?>
+                    <?php if(is_array($article_tags)): ?>
+                    <dt>Tags</dt>
+                    <dd>
+                      <ul>
+                        <?php foreach($article_tags as $tag): ?>
+                          <li><?php echo $tag['name'] ; ?></li>
+                        <?php endforeach; ?>
+                      </ul>
+                    </dd>
+                    <?php endif; ?>
+                  </dl>
+                  <?php if($pdf_uri or is_array($attachments)) : ?>
+                  <div class="downloads-area">
+                    <ul>
+                    <?php if($pdf_uri): ?>
+                    <li>
+                      <a class='downloadthis pdf button' href="<?php echo $pdf_uri; ?>">Download this article as PDF</a>
+                    </li>
+                    <?php endif; ?>
+                    <?php
+                      if(is_array($attachments)) :
+                        foreach($attachments as $attachment) :?>
+                        <li><a class='downloadthis pdf button' href="<?php echo wp_get_attachment_url($attachment['ID']); ?>" /><?php echo $attachment['post_title']; ?></a></li>
+                    <?php
+                        endforeach;
+                      endif; ?>
                     </ul>
-                  </dd>
-                  <?php endif; ?>
-                </dl>
-                <?php if($pdf_uri or is_array($attachments)) : ?>
-                <div class="downloads-area">
-                  <ul>
-                  <?php if($pdf_uri): ?>
-                  <li>
-                    <a class='downloadthis pdf button' href="<?php echo $pdf_uri; ?>">Download this article as PDF</a>
-                  </li>
-                  <?php endif; ?>
-                  <?php
-                    if(is_array($attachments)) :
-                      foreach($attachments as $attachment) :?>
-                      <li><a class='downloadthis pdf button' href="<?php echo wp_get_attachment_url($attachment['ID']); ?>" /><?php echo $attachment['post_title']; ?></a></li>
-                  <?php
-                      endforeach;
-                    endif; ?>
-                  </ul>
-                </div>
-                <?php endif; ?>           
-
-                <?php get_template_part('snippet-socialmedia-share'); ?>
-                <div class="media-items">
-                  
+                  </div>
+                  <?php endif; ?>           
+  
+                  <?php get_template_part('snippet-socialmedia-share'); ?>
+                  <div class="media-items">
+                    
+                  </div>
                 </div>
               </aside><!-- #keyfacts -->
             </div><!-- .top-content -->
