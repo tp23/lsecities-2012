@@ -81,7 +81,9 @@ $pods_toplevel_ancestor = 306;
           dataType: "json",
           cache: false,
           success: function(content, status) {
+        <?php if(is_user_logged_in()): ?>
             console.log('ajax status: ' + status + "\nsearch results: " + content);
+        <?php endif; ?>
             $('#searchresults').html(Mustache.render(mTemplate, content));
           }
         }
