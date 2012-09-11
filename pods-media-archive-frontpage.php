@@ -89,7 +89,7 @@ $pods_toplevel_ancestor = 306;
         }
       );
     } else {
-      $('#searchresults').html(Mustache.render(mTemplate, content));
+      $('#searchresults').html(Mustache.render(mTemplate, ''));
     }
   }
   
