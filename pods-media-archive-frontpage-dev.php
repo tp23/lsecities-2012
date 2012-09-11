@@ -28,23 +28,62 @@ $pods_toplevel_ancestor = 306;
         </header>
         <?php endif; ?>
         
-        <article class='wireframe eightcol row'>
-          <header class='entry-header'>
-            <h1>Search media archive</h1>
-          </header>
-          <div class='entry-content article-text'>
-            <p>
-              <form action='' method='get'>
-                <input type='text' name='search' id='query' />
-                <input type='submit' value='Search' id='searchbutton' />
-              </form>
-            </p>
-            
-            <h2>Search results</h2>
-            <div id='searchresults'>
-            </div>
-          </div>
-        </article>
+        <article class="wireframe">
+                <section class="clearfix queryarea">
+                  <header class="entry-header fourcol">
+                    <h1 class="entry-title article-title">Media archive</h1>
+                    <h2>Search</h2>
+                  </header>
+                  <div class="eightcol last">
+                    <form method="get" action="">
+                      <div class="fourcol">
+                        <h3>Format</h3>
+                        <ul>
+                          <li>
+                            <label>
+                              <input type="checkbox" value="lecture" disabled="disabled">lecture
+                            </label>
+                          </li>
+                          <li>
+                            <label>
+                              <input type="checkbox" value="talk" disabled="disabled">talk
+                            </label>
+                          </li>
+                          <li>
+                            <label>
+                              <input type="checkbox" value="conference-session" disabled="disabled">conference session
+                            </label>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="fourcol">
+                        <h3>Media</h3>
+                        <ul>
+                          <li>
+                            <label>
+                              <input type="checkbox" value="audio" disabled="disabled">audio
+                            </label>
+                          </li>
+                          <li>
+                            <label>
+                              <input type="checkbox" value="video" disabled="disabled">video
+                            </label>
+                          </li>
+                        </ul>
+                      </div>
+                      <input type="text" placeholder="free text search: enter keywords here" name="search" id="query" class="tencol last">
+                    </form>
+                  </div>
+                </section>
+                <section class="clearfix">
+                  <div class="resultsarea">
+                    <h2>Search results</h2>
+                    <div id="searchresults"></div>
+                  </div>
+                </section>
+              </article>
+              
+              
         <aside class='wireframe fourcol last entry-meta' id='keyfacts'>
           &nbsp;
         </aside><!-- #keyfacts -->
