@@ -40,6 +40,7 @@ $pods_toplevel_ancestor = 306;
               </form>
             </p>
             
+            <h2>Search results</h2>
             <div id='searchresults'>
             </div>
           </div>
@@ -57,15 +58,18 @@ $pods_toplevel_ancestor = 306;
   // tests: http://jsfiddle.net/xswVa/1/
   $ = jQuery;
   
-  var mTemplate = '<h2>Search results</h2><ul>\
+  var mTemplate = '<ul>\
   {{#items}}\
     <li><a href="https://youtu.be/{{youtube_uri}}">{{title}}</a></li>\
   {{/items}}\
-  </ul>';
+  </ul>\
+  {{^items}}\
+    <p>No media items match your query.</p>\
+  {{/items}}';
   
   function runMediaQuery() {
     var query = $('#query').val();
-    
+
     if(query.length) {
       var datastring = 'search=' + query;
       
@@ -77,13 +81,15 @@ $pods_toplevel_ancestor = 306;
           dataType: "json",
           cache: false,
           success: function(content, status) {
+        <?php if(is_user_logged_in()): ?>
             console.log('ajax status: ' + status + "\nsearch results: " + content);
+        <?php endif; ?>
             $('#searchresults').html(Mustache.render(mTemplate, content));
           }
         }
       );
     } else {
-      $('#searchresults').html('');
+      $('#searchresults').html(Mustache.render(mTemplate, ''));
     }
   }
   
@@ -96,6 +102,7 @@ $pods_toplevel_ancestor = 306;
   })();
 
   jQuery(document).ready(function($) {
+    $('#searchresults').html(Mustache.render(mTemplate, ''));
     $('#searchbutton').click(function(e) {
       e.preventDefault();
       runMediaQuery();
