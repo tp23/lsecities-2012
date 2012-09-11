@@ -100,7 +100,7 @@ $pods_toplevel_ancestor = 306;
   })();
 
   jQuery(document).ready(function($) {
-    $('#searchresults').html(Mustache.render(mTemplate, content));
+    $('#searchresults').html(Mustache.render(mTemplate, ''));
     $('#searchbutton').click(function(e) {
       e.preventDefault();
       runMediaQuery();
