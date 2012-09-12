@@ -73,7 +73,7 @@ lsecities-2012 (1.3) stable; urgency=low
 
 lsecities-pods-ui (1.3) stable; urgency=low
   
-  release 1.3 "<nickname>"
+  release 1.3 "houblon" (https://en.wikipedia.org/wiki/French_republican_calendar)
   
   * first public release
   * [feature] split code off plugins bundle
@@ -82,7 +82,7 @@ lsecities-pods-ui (1.3) stable; urgency=low
     is selected for the page being edited (closes: #4)
   * [feature] consolidated all the Pods UI plugins into a single plugin
     
- -- andrea rota <a.rota@lse.ac.uk>  DDD, DD MMM YYYY HH:MM:SS +0100
+ -- andrea rota <a.rota@lse.ac.uk>  Sun, 9 Sep 2012 16:30:00 +0100
 
 lsecities-2012 (1.2) stable; urgency=low
   
