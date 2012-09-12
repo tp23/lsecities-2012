@@ -50,27 +50,28 @@ foreach($slider_pod->get_field('tiles.slug') as $tile_slug) {
   array_push($heading_slides, wp_get_attachment_url($tile->get_field('image.ID')));
 }
 
-$date_start = new DateTime($pod->get_field('date_start'));
-var_trace(var_export($date_start, true));
-$date_end = new DateTime($pod->get_field('date_end'));
-$datetime_now = new DateTime('now');
+$start_year = new DateTime($pod->get_field('date_start') . '-01-01');
+var_trace(var_export($start_year, true));
+$end_year = new DateTime($pod->get_field('date_end') . '-12-31');
+$current_year = date_format(new DateTime('now'), 'Y');
+var_trace($current_year, 'current year');
 
-if($date_start->format('Y')) {
-  if($date_start > $datetime_now) {
+if($start_year->format('Y')) {
+  if($start_year > $current_year) {
     $project_start = 'starting';
   } else {
     $project_start = 'started';
   }
-  $project_start .= ' in ' . $date_start->format('Y');
+  $project_start .= ' in ' . $start_year->format('Y');
 }
 
-if($date_end->format('Y')) {
-  if($date_end > $datetime_now) {
+if($end_year->format('Y')) {
+  if($end_year > $current_year) {
     $project_end = 'set to complete';
   } else {
     $project_end = 'completed';
   }
-  $project_end .= ' in ' . $date_end->format('Y');
+  $project_end .= ' in ' . $end_year->format('Y');
 }
 
 $project_contacts_list = $pod->get_field('contacts');
