@@ -57,7 +57,7 @@ $current_year = date_format(new DateTime('now'), 'Y');
 var_trace($current_year, 'current year');
 
 if($start_year->format('Y')) {
-  if($start_year->format('Y') > $current_year) {
+  if($pod->get_field('status.slug') == 'planning') {
     $project_start = 'starting';
   } else {
     $project_start = 'started';
@@ -66,10 +66,10 @@ if($start_year->format('Y')) {
 }
 
 if($end_year->format('Y')) {
-  if($end_year->format('Y') > $current_year) {
-    $project_end = 'set to complete';
-  } else {
+  if($pod->get_field('status.slug') == 'completed') {
     $project_end = 'completed';
+  } else {
+    $project_end = 'set to complete';
   }
   $project_end .= ' in ' . $end_year->format('Y');
 }
