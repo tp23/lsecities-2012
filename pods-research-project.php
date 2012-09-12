@@ -50,13 +50,11 @@ foreach($slider_pod->get_field('tiles.slug') as $tile_slug) {
   array_push($heading_slides, wp_get_attachment_url($tile->get_field('image.ID')));
 }
 
-$start_year = new DateTime($pod->get_field('date_start') . '-01-01');
-var_trace(var_export($start_year, true));
-$end_year = new DateTime($pod->get_field('date_end') . '-12-31');
+if($pod->get_field('date_start')) { $start_year = new DateTime($pod->get_field('date_start') . '-01-01'); }
+if($pod->get_field('date_end')) { $end_year = new DateTime($pod->get_field('date_end') . '-12-31'); }
 $current_year = date_format(new DateTime('now'), 'Y');
-var_trace($current_year, 'current year');
 
-if($start_year->format('Y')) {
+if(isset($start_year) and $start_year->format('Y')) {
   if($pod->get_field('status.slug') == 'planning') {
     $project_start = 'Starting';
   } else {
@@ -65,7 +63,7 @@ if($start_year->format('Y')) {
   $project_start .= ' in ' . $start_year->format('Y');
 }
 
-if($end_year->format('Y')) {
+if(isset($end_year) and $end_year->format('Y')) {
   if($pod->get_field('status.slug') == 'completed') {
     $project_end = 'Completed';
   } else {
