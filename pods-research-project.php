@@ -57,7 +57,7 @@ $current_year = date_format(new DateTime('now'), 'Y');
 var_trace($current_year, 'current year');
 
 if($start_year->format('Y')) {
-  if($start_year > $current_year) {
+  if($start_year->format('Y') > $current_year) {
     $project_start = 'starting';
   } else {
     $project_start = 'started';
@@ -66,7 +66,7 @@ if($start_year->format('Y')) {
 }
 
 if($end_year->format('Y')) {
-  if($end_year > $current_year) {
+  if($end_year->format('Y') > $current_year) {
     $project_end = 'set to complete';
   } else {
     $project_end = 'completed';
