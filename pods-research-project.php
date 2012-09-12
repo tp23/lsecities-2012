@@ -50,6 +50,29 @@ foreach($slider_pod->get_field('tiles.slug') as $tile_slug) {
   array_push($heading_slides, wp_get_attachment_url($tile->get_field('image.ID')));
 }
 
+$date_start = new DateTime($pod->get_field('date_start'));
+var_trace(var_export($date_start, true));
+$date_end = new DateTime($pod->get_field('date_end'));
+$datetime_now = new DateTime('now');
+
+if($date_start->format('Y')) {
+  if($date_start > $datetime_now) {
+    $project_start = 'starting';
+  } else {
+    $project_start = 'started';
+  }
+  $project_start .= ' in ' . $date_start->format('Y');
+}
+
+if($date_end->format('Y')) {
+  if($date_end > $datetime_now) {
+    $project_end = 'set to complete';
+  } else {
+    $project_end = 'completed';
+  }
+  $project_end .= ' in ' . $date_end->format('Y');
+}
+
 $project_contacts_list = $pod->get_field('contacts');
 foreach($project_contacts_list as $project_contact) {
   $project_contacts .= $project_contact['name'] . ' ' . $project_contact['family_name'] . ', ';
@@ -118,7 +141,16 @@ $project_status = $pod->get_field('project_status.name');
           <?php if($research_stream_title): ?>
             <dt>Research stream</dt>
             <dd><?php echo $research_stream_title; ?></dd>
-          <?php endif; ?>       
+          <?php endif; ?>
+          <?php if(($project_start or $project_end) and is_user_logged_in()): ?>
+            <dt>Timespan</dt>
+            <?php if($project_start): ?>
+            <dd><?php echo $project_start; ?></dd>
+            <?php endif;
+                  if($project_end): ?>
+            <dd><?php echo $project_end; ?></dd>
+            <?php endif; ?>
+          <?php endif; ?>
           </dl>
         </aside><!-- #keyfacts -->
       </div><!-- .top-content -->
