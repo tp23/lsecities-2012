@@ -21,7 +21,7 @@ var_trace('datetime_now: ' . $datetime_now->format(DATE_ATOM), $TRACE_PREFIX, $T
 // prepare array with list of upcoming events
 $upcoming_events = Array();
 $events_pod->findRecords(array(
-  'where' => 't.date_start > NOW()',
+  'where' => 't.date_start > NOW() AND t.hide IS NOT TRUE',
   'orderby' => 't.date_start ASC',
   'limit' => 5
 ));
@@ -41,7 +41,7 @@ $active_year = $current_year; // used to set initial active section for jQuery U
 for($year = 2005; $year <= $current_year; $year++) {
   $events[$year] = Array();
   $events_pod->findRecords(array(
-    'where' => "YEAR(t.date_start) = $year AND t.date_start < NOW()",
+    'where' => 'YEAR(t.date_start) = ' . $year . ' AND t.date_start < NOW() AND t.hide IS NOT TRUE',
     'orderby' => 'date_start DESC',
     'limit' => -1
   ));
