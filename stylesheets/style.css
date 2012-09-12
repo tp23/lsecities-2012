@@ -280,7 +280,7 @@ ol.article-references { list-style-position: inside; }
 ol.article-references li { margin-bottom: 0.25em; }
 ol.article-references li:target { background-color: #ffeeee; }
 
-#contentarea .top-content .entry-content .abstract { font-size: 0.9em; }
+#contentarea .top-content .entry-content .abstract { font-size: 0.9375em; font-style: italic; }
 #contentarea section > h1 { font-weight: bold; font-size: 1.2em; }
 #contentarea .extra-content > section, #contentarea .extra-content > aside { margin-top: 2em; }
 #contentarea .extra-content > section > header, #contentarea .extra-content > aside > header { border-top: 1px solid red; }
