@@ -58,18 +58,18 @@ var_trace($current_year, 'current year');
 
 if($start_year->format('Y')) {
   if($pod->get_field('status.slug') == 'planning') {
-    $project_start = 'starting';
+    $project_start = 'Starting';
   } else {
-    $project_start = 'started';
+    $project_start = 'Started';
   }
   $project_start .= ' in ' . $start_year->format('Y');
 }
 
 if($end_year->format('Y')) {
   if($pod->get_field('status.slug') == 'completed') {
-    $project_end = 'completed';
+    $project_end = 'Completed';
   } else {
-    $project_end = 'set to complete';
+    $project_end = 'Set to complete';
   }
   $project_end .= ' in ' . $end_year->format('Y');
 }
@@ -143,7 +143,7 @@ $project_status = $pod->get_field('project_status.name');
             <dt>Research stream</dt>
             <dd><?php echo $research_stream_title; ?></dd>
           <?php endif; ?>
-          <?php if(($project_start or $project_end) and is_user_logged_in()): ?>
+          <?php if($project_start or $project_end): ?>
             <dt>Timespan</dt>
             <?php if($project_start): ?>
             <dd><?php echo $project_start; ?></dd>
