@@ -186,8 +186,8 @@ function research_project_page() {
       'name'         => 'Title',
       'status'       => 'Status',
       'research_stream' => 'Research stream',
-      'date_started' => 'Start date',
-      'date_ended'   => 'End date'
+      'date_start'   => 'Start date',
+      'date_end'     => 'End date'
     )
   );
   pods_ui_manage($object);
