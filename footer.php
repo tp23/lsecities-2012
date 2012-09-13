@@ -103,6 +103,8 @@
             animation: "slide",
             slideshow: false,
             mousewheel: false,
+            controlNav: false,
+            directionNav: true,
 <?php global $jquery_options; if($jquery_options) { echo $jquery_options; } ?>
 
           }));
