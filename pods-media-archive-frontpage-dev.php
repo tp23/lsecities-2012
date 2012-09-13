@@ -92,7 +92,7 @@ $pods_toplevel_ancestor = 306;
       </div><!-- .extra-content -->
     </div><!-- #contentarea -->
   </div><!-- #post-<?php the_ID(); ?> -->
-<script src="https://raw.github.com/janl/mustache.js/master/mustache.js"></script>
+<?php wp_enqueue_script('mustachejs', get_stylesheet_directory_uri() . '/javascripts/mustache.min.js', array(), '0.7.0', true); ?>
 <script type="text/javascript">
   // tests: http://jsfiddle.net/xswVa/1/
   $ = jQuery;
