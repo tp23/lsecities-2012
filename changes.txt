@@ -2,6 +2,10 @@ lsecities-2012 (1.4) stable; urgency=low
   
   release 1.4 "tonneau"
   
+  * sliders
+    [feature] upgraded to jquery.flexslider 2.0 (also fixes bug with
+    duplicate slider on Urban Age front page when one single slide is
+    set up)
   * events
     * [feature] added support for events that should not be listed
       in the main events pages (e.g. external events linked to research
@@ -11,6 +15,8 @@ lsecities-2012 (1.4) stable; urgency=low
     * [feature] display related events
     * [feature] display research outputs by category
     * [feature] display research partners
+  * general
+    * [feature] script loading optimization
         
  -- andrea rota <a.rota@lse.ac.uk>  Sun, 21 Oct 2012 16:30:00 +0100
 
