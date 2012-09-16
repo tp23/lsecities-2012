@@ -1,5 +1,3 @@
-= LSE Cities TWENTY ELEVEN =
+= LSE Cities TWENTY TWELVE =
 
 * by the LSE Cities team, http://lsecities.net/
-
-== ABOUT TWENTY ELEVEN ==
