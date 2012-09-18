@@ -101,7 +101,7 @@
         jQuery(document).ready(function($) {
           // enable Galleria for embedded slideshows
           try {
-            jQuery('.galleria-embedded').galleria({width: 840, height: 500, _toggleInfo: false, preload: 'all'});
+            jQuery('.galleria-embedded').galleria({width: 840, height: 500, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
           } catch(error) { }
           
           $('.flexslider').flexslider(({
