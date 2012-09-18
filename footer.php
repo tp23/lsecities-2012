@@ -97,14 +97,13 @@
           regex = new RegExp(matchParams.join('').replace(/^\s+|\s+$/g,''), regexFlags);
           return regex.test(jQuery(elem)[attr.method](attr.property));
         };
-        
-        // enable Galleria for embedded slideshows
-        try {
-          jQuery('.galleria-embedded').galleria({width: 840, height: 500});
-        } catch(error) {
-        }
           
         jQuery(document).ready(function($) {
+          // enable Galleria for embedded slideshows
+          try {
+            jQuery('.galleria-embedded').galleria({width: 840, height: 500});
+          } catch(error) { }
+          
           $('.flexslider').flexslider(({
             animation: "slide",
             slideshow: false,
