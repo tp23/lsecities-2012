@@ -100,7 +100,7 @@
         
         // enable Galleria for embedded slideshows
         try {
-          Galleria.run('#galleria-embedded')
+          Galleria.run('.galleria-embedded')
         } catch(error) {
         }
           
