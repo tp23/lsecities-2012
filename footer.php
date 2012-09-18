@@ -100,7 +100,7 @@
         
         // enable Galleria for embedded slideshows
         try {
-          Galleria.run('.galleria-embedded')
+          jQuery('.galleria-embedded').galleria({width: 840, height: 500});
         } catch(error) {
         }
           
