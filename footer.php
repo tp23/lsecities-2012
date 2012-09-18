@@ -98,6 +98,12 @@
           return regex.test(jQuery(elem)[attr.method](attr.property));
         };
         
+        // enable Galleria for embedded slideshows
+        try {
+          Galleria.run('#galleria-embedded')
+        } catch(error) {
+        }
+          
         jQuery(document).ready(function($) {
           $('.flexslider').flexslider(({
             animation: "slide",
