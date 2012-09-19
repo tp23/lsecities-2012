@@ -97,7 +97,6 @@ a:hover { color: #555555; }
 strong, th { font-weight: bold; }
 
 aside { font-family: proxima-nova, "Helvetica Neue", Helvetica, sans-serif; }
-aside p { font-size: 0.875em; line-height: 1.5em; }
 aside.extras { font-family: proxima-nova, "Helvetica Neue", Helvetica, sans-serif; float: right; padding-bottom: 1.2em; background-color: #eee; }
 aside.extras > dl { padding-left: 1em; }
 aside.extras ul.people-list { display: inline; }
