@@ -353,14 +353,15 @@ blockquote::before { color: #999999; content: "“"; display: block; font-size: 
 .watchvideo.onyoutube { background: url("http://lsecities.net/wp-content/themes/lsecities-2012/images/icons/mal/icon_youtubedarkblue_20x20.png") no-repeat scroll 0 0 transparent; padding-left: 28px; padding-bottom: 8px; -moz-transition: opacity 0.4s ease 0s; -webkit-transition: opacity 0.4s ease 0s; -o-transition: opacity 0.4s ease 0s; transition: opacity 0.4s ease 0s; }
 .watchvideo.onyoutube:hover { opacity: 0.6; }
 
+.flexslider .flex-next, .flexslider-research .flex-next { background: transparent url("flexslider/arrow-right.png") no-repeat; right: 0px; /* background-position: -52px 0;
+right: -21px; */ }
+.flexslider .flex-prev, .flexslider-research .flex-prev { /* left: -20px; */ background: transparent url("flexslider/arrow-left.png") no-repeat; left: -2px; }
+
 .flexslider { position: relative; box-shadow: none; margin: 0; /* Direction Nav */ /* Control Nav */ }
 .flexslider .flex-direction-nav { list-style-type: none; }
 .flexslider .flex-direction-nav li a { width: 33px; height: 64px; text-indent: -9999px; border: 0; margin: -13px 0 0; display: block; /* background: url(theme/bg_direction_nav.png) no-repeat 0 0; */ position: absolute; top: 45%; /* top: 50%; */ opacity: 0.9; }
 .flexslider .flex-direction-nav li a:hover { background-position: 0px -65px; opacity: 1; }
 .flexslider .flex-direction-nav li a:active { background-position: 0px -130px; }
-.flexslider .flex-direction-nav li .flex-next { background: transparent url("flexslider/arrow-right.png") no-repeat; right: 0px; /* background-position: -52px 0;
-right: -21px; */ }
-.flexslider .flex-direction-nav li .flex-prev { /* left: -20px; */ background: transparent url("flexslider/arrow-left.png") no-repeat; left: -2px; }
 .flexslider .flex-direction-nav li .flex-disabled { opacity: .3; filter: alpha(opacity=30); cursor: default; }
 .flexslider .flex-control-nav { width: 100%; position: absolute; bottom: -30px; text-align: center; }
 .flexslider .flex-control-nav li { margin: 0 0 0 5px; display: inline-block; zoom: 1; *display: inline; }
