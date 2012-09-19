@@ -105,8 +105,6 @@ aside.extras ul.people-list > li { display: inline; }
 aside.extras ul.people-list li:after { content: ', '; }
 aside.extras ul.people-list li:last-child:after { content: ''; }
 
-.event-extra-content { margin-top: 1.2em; }
-
 #featuresgrid { width: 100%; line-height: 1em; font-family: proxima-nova, "Helvetica Neue", Helvetica, sans-serif; }
 #featuresgrid .featurescolumn { width: 49.5260664%; margin-right: 0.94786739%; margin-bottom: 0.94786739%; float: left; }
 #featuresgrid .featurescolumn.last { margin-right: 0; }
@@ -282,6 +280,7 @@ ol.article-references li:target { background-color: #ffeeee; }
 
 #contentarea .top-content .entry-content .abstract { font-size: 0.9375em; font-style: italic; }
 #contentarea section > h1 { font-weight: bold; font-size: 1.2em; }
+#contentarea .extra-content { margin-top: 3em; padding-top: 1em; font-size: 0.875em; }
 #contentarea .extra-content > section, #contentarea .extra-content > aside { margin-top: 2em; }
 #contentarea .extra-content > section > header, #contentarea .extra-content > aside > header { border-top: 1px solid red; }
 #contentarea .extra-content > section > header > h1, #contentarea .extra-content > aside > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
