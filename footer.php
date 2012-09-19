@@ -110,7 +110,8 @@
               animationLoop: true,
               slideshow: true,
               slideshowSpeed: 5000,
-              pauseOnHover: true
+              pauseOnHover: true,
+              directionNav: true
             });
           } catch(error) { }
           
