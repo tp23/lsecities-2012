@@ -106,7 +106,16 @@
             }
           } catch(error) { }
           
+          // enable Galleria for research pages photo slider
+          try {
+            if(jQuery('.flexslider-research').length > 0) {
+              jQuery('.flexslider-research').galleria({width: 833, height: 500, carousel: false, autoplay: 5000, showInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+            }
+          } catch(error) { }
+          
+          
           // enable photo slider for research pages
+          /*
           try {
             jQuery('.flexslider-research').flexslider({
               animationLoop: true,
@@ -116,6 +125,7 @@
               directionNav: true
             });
           } catch(error) { }
+          */
           
           $('.flexslider').flexslider(({
             animation: "slide",
