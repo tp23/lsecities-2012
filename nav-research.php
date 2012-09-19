@@ -24,19 +24,19 @@ while($projects_pod->fetchRecord()) {
   array_push($current_projects_list, array(
     'slug' => $projects_pod->get_field('slug'),
     'name' => $projects_pod->get_field('name'),
-    'stream' => $projects_pod->get_field('research_stream.name')
+    'strand' => $projects_pod->get_field('research_strand.name')
   ));
-  $current_projects[$projects_pod->get_field('research_stream.name')] = array();
+  $current_projects[$projects_pod->get_field('research_strand.name')] = array();
 }
 
 var_trace('projects: ' . var_export($current_projects_list, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
 foreach($current_projects_list as $project) {
-  $key = $project['stream'];
+  $key = $project['strand'];
   array_push($current_projects[$key], $project);
 }
 
-var_trace('projects (by stream): ' . var_export($current_projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('projects (by strand): ' . var_export($current_projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
 $past_projects_list = array();
 $projects_pod->findRecords(array(
@@ -47,29 +47,29 @@ while($projects_pod->fetchRecord()) {
   array_push($past_projects_list, array(
     'slug' => $projects_pod->get_field('slug'),
     'name' => $projects_pod->get_field('name'),
-    'stream' => $projects_pod->get_field('research_stream.name')
+    'strand' => $projects_pod->get_field('research_strand.name')
   ));
-  $past_projects[$projects_pod->get_field('research_stream.name')] = array();
+  $past_projects[$projects_pod->get_field('research_strand.name')] = array();
 }
 
 var_trace('projects: ' . var_export($current_projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
 foreach($past_projects_list as $project) {
-  $key = $project['stream'];
+  $key = $project['strand'];
   array_push($past_projects[$key], $project);
 }
 
-var_trace('past projects (by stream): ' . var_export($projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace('past projects (by strand): ' . var_export($projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
 ?>
   <?php if(($IN_CONTENT_AREA and !$HIDE_CURRENT_PROJECTS) or (!$IN_CONTENT_AREA and $HIDE_CURRENT_PROJECTS)): ?>
   <nav id="projectsmenu">
     <div id="current-projects">
       <?php if(!$IN_CONTENT_AREA): ?><h1>Current research</h1><?php endif; ?>
       <dl>
-      <?php foreach($current_projects as $stream_name => $stream_projects): ?>
-        <dt><?php echo $stream_name; ?></dt>
-        <?php foreach($stream_projects as $stream_project): ?>
-        <dd><a href="<?php echo $BASE_URI . '/' . $stream_project['slug']; ?>"><?php echo $stream_project['name']; ?></a></dd>
+      <?php foreach($current_projects as $strand_name => $strand_projects): ?>
+        <dt><?php echo $strand_name; ?></dt>
+        <?php foreach($strand_projects as $strand_project): ?>
+        <dd><a href="<?php echo $BASE_URI . '/' . $strand_project['slug']; ?>"><?php echo $strand_project['name']; ?></a></dd>
         <?php endforeach; ?>
       <?php endforeach; ?>
       </dl>
@@ -81,10 +81,10 @@ var_trace('past projects (by stream): ' . var_export($projects, true), $TRACE_PR
     <div id="past-projects">
       <?php if(!$IN_CONTENT_AREA): ?><h1>Completed research</h1><?php endif; ?>
       <dl>
-      <?php foreach($past_projects as $stream_name => $stream_projects): ?>
-        <dt><?php echo $stream_name; ?></dt>
-        <?php foreach($stream_projects as $stream_project): ?>
-        <dd><a href="<?php echo $BASE_URI . '/' . $stream_project['slug']; ?>"><?php echo $stream_project['name']; ?></a></dd>
+      <?php foreach($past_projects as $strand_name => $strand_projects): ?>
+        <dt><?php echo $strand_name; ?></dt>
+        <?php foreach($strand_projects as $strand_project): ?>
+        <dd><a href="<?php echo $BASE_URI . '/' . $strand_project['slug']; ?>"><?php echo $strand_project['name']; ?></a></dd>
         <?php endforeach; ?>
       <?php endforeach; ?>
       </dl>
