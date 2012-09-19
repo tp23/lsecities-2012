@@ -101,7 +101,9 @@
         jQuery(document).ready(function($) {
           // enable Galleria for embedded slideshows
           try {
-            jQuery('.galleria-embedded').galleria({width: 840, height: 500, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+            if(jQuery('.galleria-embedded').length > 0) {
+              jQuery('.galleria-embedded').galleria({width: 840, height: 500, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+            }
           } catch(error) { }
           
           // enable photo slider for research pages
