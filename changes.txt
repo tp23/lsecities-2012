@@ -2,6 +2,9 @@ lsecities-2012 (1.4) stable; urgency=low
   
   release 1.4 "tonneau"
   
+  * research pages
+    [update] updated heading photo slider
+    [update] displaying richer research project metadata
   * sliders
     [feature] upgraded to jquery.flexslider 2.0 (also fixes bug with
     duplicate slider on Urban Age front page when one single slide is
