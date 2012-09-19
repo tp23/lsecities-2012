@@ -50,26 +50,14 @@ foreach($slider_pod->get_field('tiles.slug') as $tile_slug) {
   array_push($heading_slides, wp_get_attachment_url($tile->get_field('image.ID')));
 }
 
-if($pod->get_field('date_start')) { $start_year = new DateTime($pod->get_field('date_start') . '-01-01'); }
-if($pod->get_field('date_end')) { $end_year = new DateTime($pod->get_field('date_end') . '-12-31'); }
-$current_year = date_format(new DateTime('now'), 'Y');
-
-if(isset($start_year) and $start_year->format('Y')) {
-  if($pod->get_field('status.slug') == 'planning') {
-    $project_start = 'Starting';
-  } else {
-    $project_start = 'Started';
-  }
-  $project_start .= ' in ' . $start_year->format('Y');
+if($pod->get_field('date_start')) { 
+  $project_start = new DateTime($pod->get_field('date_start') . '-01-01');
+  $project_start = $project_start->format('Y');
 }
 
-if(isset($end_year) and $end_year->format('Y')) {
-  if($pod->get_field('status.slug') == 'completed') {
-    $project_end = 'Completed';
-  } else {
-    $project_end = 'Set to complete';
-  }
-  $project_end .= ' in ' . $end_year->format('Y');
+if($pod->get_field('date_end')) {
+  $project_end = new DateTime($pod->get_field('date_end') . '-12-31');
+  $project_end = $project_end->format('Y');
 }
 
 $project_contacts_list = $pod->get_field('contacts');
@@ -141,14 +129,9 @@ $project_status = $pod->get_field('project_status.name');
             <dt>Research stream</dt>
             <dd><?php echo $research_stream_title; ?></dd>
           <?php endif; ?>
-          <?php if($project_start or $project_end): ?>
+          <?php if($project_start and $project_end): ?>
             <dt>Timespan</dt>
-            <?php if($project_start): ?>
-            <dd><?php echo $project_start; ?></dd>
-            <?php endif;
-                  if($project_end): ?>
-            <dd><?php echo $project_end; ?></dd>
-            <?php endif; ?>
+            <dd><?php echo $project_start; ?> - <?php echo $project_end; ?></dd>
           <?php endif; ?>
           </dl>
         </aside><!-- #keyfacts -->
