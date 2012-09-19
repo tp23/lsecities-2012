@@ -104,6 +104,16 @@
             jQuery('.galleria-embedded').galleria({width: 840, height: 500, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
           } catch(error) { }
           
+          // enable photo slider for research pages
+          try {
+            jQuery('.flexslider-research').flexslider({
+              animationLoop: true,
+              slideshow: true,
+              slideshowSpeed: 5000,
+              pauseOnHover: true
+            });
+          } catch(error) { }
+          
           $('.flexslider').flexslider(({
             animation: "slide",
             slideshow: false,
