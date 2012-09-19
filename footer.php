@@ -110,6 +110,7 @@
           try {
             if(jQuery('.flexslider-research').length > 0) {
               jQuery('.flexslider-research').galleria({width: 833, height: 334, transition: 'fade', transitionSpeed: 600, carousel: false, thumbnails: false, autoplay: 5000, showInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+              jQuery('.flexslider-research.fullbleed .galleria-thumbnails-container').hide();
             }
           } catch(error) { }
           
