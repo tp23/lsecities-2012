@@ -76,8 +76,8 @@ foreach($project_partners_list as $project_partner) {
   $project_partners .= $project_partner['name'] . ', ';
 }
 $project_partners = substr($project_partners, 0, -2);
-$research_stream_title = $pod->get_field('research_stream.name');
-$research_stream_summary = $pod->get_field('research_stream.summary');
+$research_strand_title = $pod->get_field('research_strand.name');
+$research_strand_summary = $pod->get_field('research_strand.summary');
 
 $project_status = $pod->get_field('project_status.name');
 ?><?php get_header(); ?>
@@ -125,9 +125,9 @@ $project_status = $pod->get_field('project_status.name');
             <dt>Project partners</dt>
             <dd><?php echo $project_partners; ?></dd>
           <?php endif; ?>
-          <?php if($research_stream_title): ?>
-            <dt>Research stream</dt>
-            <dd><?php echo $research_stream_title; ?></dd>
+          <?php if($research_strand_title): ?>
+            <dt>Research strand</dt>
+            <dd><?php echo $research_strand_title; ?></dd>
           <?php endif; ?>
           <?php if($project_start and $project_end): ?>
             <dt>Timespan</dt>
