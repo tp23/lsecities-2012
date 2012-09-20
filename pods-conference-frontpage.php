@@ -114,7 +114,7 @@ $research_summary_pdf_uri = $pod->get_field('research_summary.data_section_pdf_u
               <?php endif; ?>
               <aside id="photoarea" class="eightcol">
                 <?php if($pod->get_field('photo_gallery')): ?>
-                <div id="galleria" style="height: 290px;"></div>
+                <div id="galleria" style="width: 100%; max-width: 100%;"></div>
                 <script type="text/javascript">
                   jQuery(document).ready(function() {
                     jQuery('#galleria').galleria({
@@ -122,7 +122,9 @@ $research_summary_pdf_uri = $pod->get_field('research_summary.data_section_pdf_u
                       picasa: 'useralbum:<?php echo $pod->get_field('photo_gallery'); ?>',
                       picasaOptions: {
                         sort: 'date-posted-asc'
-                      }
+                      },
+                      height: 0.4,
+                      responsive: true 
                     });
                   });
                 </script>
