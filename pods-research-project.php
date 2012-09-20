@@ -94,7 +94,7 @@ $project_status = $pod->get_field('project_status.name');
       <div class='top-content'>
         <?php if(count($heading_slides)) : ?>
         <header class='heading-image'>
-          <div class='flexslider-research wireframe fullbleed'>
+          <div class='flexslider-research wireframe fullbleed' style="width: 100%; max-width: 100%;">
             <ul class='slides'>
               <?php foreach($heading_slides as $slide): ?>
               <li><img src='<?php echo $slide; ?>' /></li>
