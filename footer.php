@@ -99,8 +99,8 @@
         jQuery(document).ready(function($) {
           // enable Galleria for embedded slideshows
           try {
-            if(jQuery('.galleria-embedded').length > 0) {
-              jQuery('.galleria-embedded').galleria({responsive: true, height: 0.75, lightbox: true, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+            if(jQuery('.lc-article .galleria').length > 0) {
+              jQuery('.lc-article .galleria').galleria({responsive: true, height: 0.75, lightbox: true, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
             }
           } catch(error) { }
           
