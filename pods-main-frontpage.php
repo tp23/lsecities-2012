@@ -3,9 +3,7 @@
  * Template Name: Pods - Main frontpages
  * Description: The template used for LSE Cities main frontpage and Urban Age sub-site frontpage
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package LSECities2012
  */
 ?><?php
 /**

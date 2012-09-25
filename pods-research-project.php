@@ -3,9 +3,7 @@
  * Template Name: Pods - Research project
  * Description: The template used for Research projects
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package LSECities2012
  */
 ?><?php
 /* URI: /objects/research-projects */

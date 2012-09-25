@@ -2,9 +2,7 @@
 /**
  * The template used for displaying page content in page.php
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package LSECities2012
  */
 
 $wide_layout = strtolower(get_post_meta(get_the_ID(), "layout", true)) == 'wide' ? 1 : 0;

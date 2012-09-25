@@ -3,9 +3,7 @@
  * Template Name: Pods - Event programme
  * Description: The template used for event programmes
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package LSECities2012
  */
 ?>
 

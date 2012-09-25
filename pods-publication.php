@@ -3,9 +3,7 @@
  * Template Name: Pods - Publications - index
  * Description: The template used for Publications, showing publication info, listing available articles, etc.
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package LSECities2012
  */
 ?><?php
 $TRACE_ENABLED = is_user_logged_in();

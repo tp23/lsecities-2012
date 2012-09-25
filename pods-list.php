@@ -3,9 +3,7 @@
  * Template Name: Pods - List - index
  * Description: The template used for lists of items
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package LSECities2012
  */
 ?>
 

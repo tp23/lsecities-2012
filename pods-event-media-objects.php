@@ -3,9 +3,7 @@
  * Template Name: Pods - Media Objects for Event (CVS)
  * Description: List all media objects associated with an event to sync to YouTube
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package LSECities2012
  */
 ?>
 

@@ -4,9 +4,7 @@
  *
  * Displays all of the <head> section and everything up till <div id="main">
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package LSECities2012
  */
 ?><?php
 $TRACE_ENABLED = is_user_logged_in();

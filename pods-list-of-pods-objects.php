@@ -3,9 +3,7 @@
  * Template Name: Pods - List of Pods objects
  * Description: The template used to list Pods objects
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package LSECities2012
  */
 ?>
 <?php

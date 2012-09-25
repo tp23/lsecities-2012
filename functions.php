@@ -1,4 +1,9 @@
 <?php
+/**
+ * Functions for the LSE Cities 2012 WordPress+Pods theme
+ * 
+ * @package LSECities2012
+ */
 
 /* LSE Cities Twenty Twelve functions and constant definitions */
 define('PODS_BASEURI_ARTICLES', '/media/objects/articles');

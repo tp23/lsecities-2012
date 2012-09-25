@@ -3,7 +3,7 @@
  * Template Name: Media Archive item (JSON)
  * Description: The template used to return a JSON view of a Media Archive object's metadata
  *
- * @package LSE Cities 2012
+ * @package LSECities2012
  */
 ?><?php
 /**

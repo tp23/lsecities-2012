@@ -1,4 +1,12 @@
 <?php
+/**
+ * The main navigation component
+ *
+ * Routes navigation according to current section or Pods doctype
+ *
+ * @package LSECities2012
+ */
+ 
 $TRACE_PREFIX = 'nav.php -- ';
 global $current_post_id;
 global $BASE_URI;

@@ -3,9 +3,7 @@
  * Template Name: Pods - Articles
  * Description: The template used for Article Pods
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package LSECities2012
  */
 $TRACE_ENABLED = is_user_logged_in();
 ?><?php

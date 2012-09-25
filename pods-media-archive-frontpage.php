@@ -3,7 +3,7 @@
  * Template Name: Pods - Media Archive search
  * Description: Media Archive search webapp
  *
- * @package LSE Cities 2012
+ * @package LSECities2012
  */
 ?><?php
 $TRACE_ENABLED = is_user_logged_in();
