@@ -99,16 +99,16 @@
         jQuery(document).ready(function($) {
           // enable Galleria for embedded slideshows
           try {
-            if(jQuery('.lc-article .lc-galleria').length > 0) {
-              jQuery('.lc-article .lc-galleria').galleria({responsive: true, height: 0.75, lightbox: true, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+            if(jQuery('.lc-newspaper-article .lc-galleria').length > 0) {
+              jQuery('.lc-newspaper-article .lc-galleria').galleria({responsive: true, height: 0.75, lightbox: true, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
             }
           } catch(error) { }
           
           // enable Galleria for research pages photo slider
           try {
-            if(jQuery('.flexslider-research').length > 0) {
-              jQuery('.flexslider-research').galleria({responsive: true, height: 0.4, transition: 'fade', transitionSpeed: 600, carousel: false, thumbnails: false, autoplay: 5000, showInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
-              jQuery('.flexslider-research.fullbleed .galleria-thumbnails-container').hide();
+            if(jQuery('.lc-research-project .lc-galleria').length > 0) {
+              jQuery('.lc-research-project .lc-galleria').galleria({responsive: true, height: 0.4, transition: 'fade', transitionSpeed: 600, carousel: false, thumbnails: false, autoplay: 5000, showInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+              jQuery('.lc-research-project .lc-galleria.fullbleed .galleria-thumbnails-container').hide();
             }
           } catch(error) { }
           
