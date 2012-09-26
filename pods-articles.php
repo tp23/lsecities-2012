@@ -147,6 +147,7 @@ var_trace($gallery, 'gallery: ');
                     </div>
 
                     <?php if($gallery and is_user_logged_in()): ?>
+                    <!--
                       <div class="lc-galleria">
                       <?php foreach($gallery['slides'] as $slide): ?>
                         <a href="<?php echo wp_get_attachment_url($slide->ID); ?>">
@@ -158,6 +159,7 @@ var_trace($gallery, 'gallery: ');
                         </a>
                       <?php endforeach; ?>
                       </div>
+                    -->
                     <?php endif; ?>
                     <?php if($article_extra_content): ?>
                     <div class="extra-content"><?php echo $article_extra_content; ?></div>
