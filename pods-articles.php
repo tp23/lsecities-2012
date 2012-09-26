@@ -38,8 +38,8 @@ $publication_pod = new Pod('publication_wrappers', $pod->get_field('in_publicati
 // grab the image URI from the Pod
 $featured_image_uri = wp_get_attachment_url($pod->get_field('heading_image.ID'));
 
-if($TRACE_ENABLED) { error_log('request_language: ' . $lang); }
-if($TRACE_ENABLED) { error_log('article_lang2: ' . $article_lang2); }
+var_trace($lang, 'request_language');
+var_trace($article_lang2, 'article_lang2');
 
 if(!empty($lang) && $lang == $article_lang2) {
   $article_title = $pod->get_field('title_lang2');
