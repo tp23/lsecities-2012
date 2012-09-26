@@ -111,18 +111,7 @@
               jQuery('.lc-research-project .lc-galleria.fullbleed .galleria-thumbnails-container, .lc-publication .lc-galleria .lc-galleria.fullbleed .galleria-thumbnails-container').hide();
             }
           } catch(error) { }
-          
-          // enable Galleria for Conference front pages
-          try {
-            if(jQuery('.lc-conference-frontpage .lc-galleria-picasa').length > 0) {
-              jQuery('.lc-conference-frontpage .lc-galleria-picasa').galleria({
-                carousel: true,
-                height: 0.4,
-                responsive: true 
-              });
-             }
-          } catch(error) { }
-          
+                    
           // enable photo slider for research pages
           /*
           try {

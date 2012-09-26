@@ -7,12 +7,15 @@
   <div class="<?php echo $gallery_class; ?>" id="<?php echo $gallery_id; ?>"></div>
   <script type="text/javascript">
     jQuery(document).ready(function() {
-      jQuery('#<?php echo $gallery_id; ?>').setOptions({
+      jQuery('#<?php echo $gallery_id; ?>').galleria({
+        carousel: true,
+        height: 0.4,
+        responsive: true,
         picasa: 'useralbum:<?php echo $gallery['picasa_gallery_id']; ?>',
         picasaOptions: {
           sort: 'date-posted-asc'
         }
-      }).refreshImage();
+      });
     });
   </script>
 <?php else: ?>
