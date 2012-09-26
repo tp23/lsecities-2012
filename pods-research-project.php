@@ -38,16 +38,6 @@ $pod_tagline = $pod->get_field('tagline');
 $pod_summary = do_shortcode($pod->get_field('summary'));
 $pod_blurb = do_shortcode($pod->get_field('blurb'));
 
-// get tiles for heading slider
-$heading_slides = array();
-var_trace($pod->get_field('heading_slides.slug'), $TRACE_PREFIX, $TRACE_ENABLED);
-$slider_pod = new Pod('slide', $pod->get_field('heading_slides.slug'));
-foreach($slider_pod->get_field('tiles.slug') as $tile_slug) {
-  var_trace($tile_slug, $TRACE_PREFIX, $TRACE_ENABLED);
-  $tile = new Pod('tile', $tile_slug);
-  array_push($heading_slides, wp_get_attachment_url($tile->get_field('image.ID')));
-}
-
 if($pod->get_field('date_start')) { 
   $project_start = new DateTime($pod->get_field('date_start') . '-01-01');
   $project_start = $project_start->format('Y');
@@ -92,19 +82,9 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
   <div id="post-<?php the_ID(); ?>" <?php post_class('lc-article lc-research-project'); ?>>
     <div class='ninecol' id='contentarea'>
       <div class='top-content'>
-        <?php if(count($heading_slides)) : ?>
+        <?php if(count($gallery['slides'])) : ?>
         <header class='heading-image'>
-          <?php if(!is_user_logged_in()): ?>
-          <div class='lc-galleria fullbleed wireframe'>
-            <ul class='slides'>
-              <?php foreach($heading_slides as $slide): ?>
-              <li><img src='<?php echo $slide; ?>' /></li>
-              <?php endforeach; ?>
-            </ul>
-          </div>
-          <?php else: ?>
           <?php include('inc/components/galleria.inc.php'); ?>
-          <?php endif; ?>
         </header>
         <?php endif; ?>
         
