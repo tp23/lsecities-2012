@@ -209,20 +209,27 @@ function push_media_attribution($attachment_ID) {
   ));
 }
 
-function galleria_prepare($pod, $extra_classes) {
+function galleria_prepare($pod, $extra_classes, $gallery_field='gallery') {
   define(GALLERY_MAX_SLIDES_COUNT, 12);
   
   $gallery = array(
-    'slug' => $pod->get_field('gallery.slug'),
+    'slug' => $pod->get_field($gallery_field . '.slug'),
     'extra_classes' => $extra_classes,
     'slides' => array()
   );
 
-  for($i = 1; $i < (GALLERY_MAX_SLIDES_COUNT + 1); $i++) {
-    $slide_id = $pod->get_field('gallery.' . sprintf('slide%02d', $i) . '.ID');
-    var_trace($slide_id);
-    if($slide_id) {
-      array_push($gallery['slides'], array_shift(get_posts(array('post_type'=>'attachment', 'numberposts'=>1, 'p' => $slide_id))));
+  // if picasa_gallery_id is set, add this to the object
+  if($pod->get_field($gallery_field . '.picasa_gallery_id') {
+    $gallery['picasa_gallery_id'] = $pod->get_field($gallery_field . '.picasa_gallery_id';
+  }
+  // otherwise build the slides list
+  else {
+    for($i = 1; $i < (GALLERY_MAX_SLIDES_COUNT + 1); $i++) {
+      $slide_id = $pod->get_field($gallery_field . '.' . sprintf('slide%02d', $i) . '.ID');
+      var_trace($slide_id);
+      if($slide_id) {
+        array_push($gallery['slides'], array_shift(get_posts(array('post_type'=>'attachment', 'numberposts'=>1, 'p' => $slide_id))));
+      }
     }
   }
   var_trace($gallery, 'gallery');
