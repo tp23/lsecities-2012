@@ -101,6 +101,7 @@ $gallery = array(
 
 for($i = 1; $i < 13; $i++) {
   $slide_id = $pod->get_field('gallery.' . sprintf('slide%02d', $i) . '.ID');
+  var_trace($slide_id);
   if($slide_id) {
     array_push($gallery['slides'], get_posts(array('p' => $slide_id)));
   }
