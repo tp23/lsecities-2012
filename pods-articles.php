@@ -93,7 +93,10 @@ if(count($attachments)) {
 */
 
 $gallery_pod = $pod->get_field('gallery');
-$gallery = array();
+$gallery = array(
+  'slides' => array()
+);
+
 for($i = 1; $i < 13; $i++) {
   $slide_id = sprintf('slide%02d', $i);
   var_trace($slide_id);
