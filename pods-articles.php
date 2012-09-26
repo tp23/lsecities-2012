@@ -147,7 +147,7 @@ var_trace($gallery, 'gallery: ');
                     <?php endif; ?>
                     </div>
 
-                    <?php if($gallery and is_user_logged_in()): ?>
+                    <?php if(count($gallery['slides'])): ?>
                       <div class="lc-galleria">
                       <?php foreach($gallery['slides'] as $slide): ?>
                         <a href="<?php echo wp_get_attachment_url($slide->ID); ?>">
