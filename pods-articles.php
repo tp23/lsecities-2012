@@ -100,8 +100,10 @@ $gallery = array(
 );
 
 for($i = 1; $i < 13; $i++) {
-  $slide_id = sprintf('slide%02d', $i);
-  array_push($gallery['slides'], $pod->get_field('gallery.' . $slide_id . '.ID'));
+  $slide_id = $pod->get_field('gallery.' . sprintf('slide%02d', $i) . '.ID');
+  if($slide_id) {
+    array_push($gallery['slides'], get_posts(array('p' => $slide_id)));
+  }
 }
 var_trace($gallery, 'gallery: ');
 ?>
@@ -144,15 +146,15 @@ var_trace($gallery, 'gallery: ');
                     <?php endif; ?>
                     </div>
 
-                    <?php if($gallery and false): ?>
+                    <?php if($gallery and is_user_logged_in()): ?>
                       <div class="lc-galleria">
                       <?php foreach($gallery['slides'] as $slide): ?>
-                        <a href="<?php echo $slide['']; ?>">
-                          <img title="<?php echo wp_get_attachment_url($slide['title']); ?>"
-                            src="<?php echo wp_get_attachment_url($slide['id']); ?>"
-                            alt="<?php echo wp_get_attachment_url($slide['title']); ?>"
-                            data-title="<?php echo wp_get_attachment_url($slide['title']); ?>" 
-                            data-description="" />
+                        <a href="<?php echo wp_get_attachment_url($slide->ID); ?>">
+                          <img title="<?php echo $slide->post_title; ?>"
+                            src="<?php echo wp_get_attachment_url($slide->ID); ?>"
+                            alt="<?php echo $slide->post_title; ?>"
+                            data-title="<?php echo $slide->post_title; ?>" 
+                            data-description="<?php echo $slide->post_excerpt; ?>" />
                         </a>
                       <?php endforeach; ?>
                       </div>
