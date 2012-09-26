@@ -149,7 +149,9 @@ var_trace($gallery, 'gallery: ');
                     </div>
                     <?php if(count($gallery['slides'])): ?>
                     <div class="lc-galleria" id="lc-galleria-<?php echo $gallery['slug']?>">
+                      <ul>
                     <?php foreach($gallery['slides'] as $slide): ?>
+                      <li>
                       <a href="<?php echo wp_get_attachment_url($slide->ID); ?>">
                         <img title="<?php echo $slide->post_title; ?>"
                           src="<?php echo wp_get_attachment_url($slide->ID); ?>"
@@ -157,7 +159,9 @@ var_trace($gallery, 'gallery: ');
                           data-title="<?php echo $slide->post_title; ?>" 
                           data-description="<?php echo $slide->post_excerpt; ?>" />
                       </a>
+                      </li>
                     <?php endforeach; ?>
+                      </ul>
                     </div>
                     <script>
                       jQuery(document).ready(function($) {
