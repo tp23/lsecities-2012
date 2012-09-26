@@ -83,7 +83,7 @@ foreach(preg_split("/\n/", $publication_pod->get_field('sections')) as $section_
 }
 var_trace('sections: ' . var_export($publication_sections, true), $TRACE_PREFIX, $TRACE_ENABLED);
               
-
+$gallery = galleria_prepare($pod, 'fullbleed wireframe');
 ?><?php get_header(); ?>
 
 <div role="main">
@@ -91,15 +91,9 @@ var_trace('sections: ' . var_export($publication_sections, true), $TRACE_PREFIX,
   <div id="post-<?php the_ID(); ?>" <?php post_class('lc-article lc-publication'); ?>>
     <div class='ninecol' id='contentarea'>
       <div class='top-content'>
-        <?php if(count($heading_slides)) : ?>
+        <?php if(count($gallery['slides'])) : ?>
         <header class='heading-image'>
-          <div class='flexslider wireframe'>
-            <ul class='slides'>
-              <?php foreach($heading_slides as $slide): ?>
-              <li><img src='<?php echo $slide; ?>' /></li>
-              <?php endforeach; ?>
-            </ul>
-          </div>
+          <?php include('inc/components/galleria.inc.php'); ?>
         </header>
         <?php endif; ?>
         
