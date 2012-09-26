@@ -91,6 +91,14 @@ if(count($attachments)) {
   }
 }
 */
+
+$gallery_pod = $pod->get_field('gallery');
+$gallery = array();
+for($i = 1; $i < 13; $i++) {
+  $slide_id = sprintf('slide%02d', $i);
+  array_push($gallery['slides'], $gallery_pod[$slide_id]);
+}
+var_trace($gallery, 'gallery: ');
 ?>
 
 <?php get_header(); ?>
@@ -130,6 +138,20 @@ if(count($attachments)) {
                       <?php echo $article_summary; ?>
                     <?php endif; ?>
                     </div>
+
+                    <?php if($gallery and false): ?>
+                      <div class="lc-galleria">
+                      <?php foreach($gallery['slides'] as $slide): ?>
+                        <a href="<?php echo $slide['']; ?>">
+                          <img title="<?php echo wp_get_attachment_url($slide['title']); ?>"
+                            src="<?php echo wp_get_attachment_url($slide['id']); ?>"
+                            alt="<?php echo wp_get_attachment_url($slide['title']); ?>"
+                            data-title="<?php echo wp_get_attachment_url($slide['title']); ?>" 
+                            data-description="" />
+                        </a>
+                      <?php endforeach; ?>
+                      </div>
+                    <?php endif; ?>
                     <?php if($article_extra_content): ?>
                     <div class="extra-content"><?php echo $article_extra_content; ?></div>
                     <?php endif; ?>
