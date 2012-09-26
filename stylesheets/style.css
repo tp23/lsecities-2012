@@ -374,6 +374,8 @@ right: -21px; */ }
 
 .lc-research-project .heading-image .lc-galleria { width: 100%; max-width: 100%; }
 
+.lc-conference-frontpage .lc-galleria-picasa { width: 100%; max-width: 100%; }
+
 .lc-slider-page #main { margin-top: 0; }
 .lc-slider-page .flexslider { font-family: proxima-nova, "Helvetica Neue", Helvetica, sans-serif; position: relative; font-size: 0.875em; border: 0; }
 .lc-slider-page .flexslider .flex-direction-nav li a { -moz-transition-property: none; -webkit-transition-property: none; -o-transition-property: none; transition-property: none; top: 467 -64/2 px; }

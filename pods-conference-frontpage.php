@@ -49,6 +49,9 @@ $tile_pod = new Pod('tile', $visualization_tiles[0]['slug']);
 var_trace('tile_image: ' . var_export($tile_pod->get_field('image'), true), $TRACE_PREFIX, $TRACE_ENABLED);
 $research_summary_tile_image = wp_get_attachment_url($tile_pod->get_field('image.ID'));
 $research_summary_pdf_uri = $pod->get_field('research_summary.data_section_pdf_uri');
+
+$galleria['picasa_gallery_id'] = $pod->get_field('photo_gallery');
+$galleria['slug'] = $pod->get_field('slug');
 ?>
 
 <?php get_header(); ?>
@@ -111,22 +114,7 @@ $research_summary_pdf_uri = $pod->get_field('research_summary.data_section_pdf_u
               </section><!-- #research-summary -->
               <?php endif; ?>
               <aside id="photoarea" class="eightcol">
-                <?php if($pod->get_field('photo_gallery')): ?>
-                <div id="galleria" style="width: 100%; max-width: 100%;"></div>
-                <script type="text/javascript">
-                  jQuery(document).ready(function() {
-                    jQuery('#galleria').galleria({
-                      carousel: true,
-                      picasa: 'useralbum:<?php echo $pod->get_field('photo_gallery'); ?>',
-                      picasaOptions: {
-                        sort: 'date-posted-asc'
-                      },
-                      height: 0.4,
-                      responsive: true 
-                    });
-                  });
-                </script>
-                <?php endif; ?>
+                <?php include('inc/components/galleria.inc.php'); ?>
               </aside>
               <aside id="publicationsarea" class="fourcol last">
                 <?php if($conference_publication_cover and $conference_publication_blurb): ?>

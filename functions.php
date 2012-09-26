@@ -219,8 +219,8 @@ function galleria_prepare($pod, $extra_classes, $gallery_field='gallery') {
   );
 
   // if picasa_gallery_id is set, add this to the object
-  if($pod->get_field($gallery_field . '.picasa_gallery_id') {
-    $gallery['picasa_gallery_id'] = $pod->get_field($gallery_field . '.picasa_gallery_id';
+  if($pod->get_field($gallery_field . '.picasa_gallery_id')) {
+    $gallery['picasa_gallery_id'] = $pod->get_field($gallery_field . '.picasa_gallery_id');
   }
   // otherwise build the slides list
   else {

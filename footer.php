@@ -112,6 +112,14 @@
             }
           } catch(error) { }
           
+          // enable Galleria for Conference front pages
+          try {
+            jQuery('.lc-conference-frontpage .lc-galleria-picasa').galleria({
+              carousel: true,
+              height: 0.4,
+              responsive: true 
+            });
+          } catch(error) { }
           
           // enable photo slider for research pages
           /*
