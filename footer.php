@@ -111,19 +111,6 @@
               jQuery('.lc-research-project .lc-galleria.fullbleed .galleria-thumbnails-container, .lc-publication .lc-galleria .lc-galleria.fullbleed .galleria-thumbnails-container').hide();
             }
           } catch(error) { }
-                    
-          // enable photo slider for research pages
-          /*
-          try {
-            jQuery('.flexslider-research').flexslider({
-              animationLoop: true,
-              slideshow: true,
-              slideshowSpeed: 5000,
-              pauseOnHover: true,
-              directionNav: true
-            });
-          } catch(error) { }
-          */
           
           $('.flexslider').flexslider(({
             animation: "slide",
