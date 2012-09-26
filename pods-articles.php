@@ -92,22 +92,7 @@ if(count($attachments)) {
 }
 */
 
-$gallery_pod = $pod->get_field('gallery');
-var_trace($gallery_pod);
-
-$gallery = array(
-  'slug' => $pod->get_field('gallery.slug'),
-  'slides' => array()
-);
-
-for($i = 1; $i < 13; $i++) {
-  $slide_id = $pod->get_field('gallery.' . sprintf('slide%02d', $i) . '.ID');
-  var_trace($slide_id);
-  if($slide_id) {
-    array_push($gallery['slides'], array_shift(get_posts(array('post_type'=>'attachment', 'numberposts'=>1, 'p' => $slide_id))));
-  }
-}
-var_trace($gallery, 'gallery');
+$gallery = galleria_prepare($pod);
 ?>
 
 <?php get_header(); ?>

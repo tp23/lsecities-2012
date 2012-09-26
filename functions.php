@@ -208,3 +208,23 @@ function push_media_attribution($attachment_ID) {
     'author' => $attribution_name,
   ));
 }
+
+function galleria_prepare($pod) {
+  define(GALLERY_MAX_SLIDES_COUNT, 12);
+  
+  $gallery = array(
+    'slug' => $pod->get_field('gallery.slug'),
+    'slides' => array()
+  );
+
+  for($i = 1; $i < (GALLERY_MAX_SLIDES_COUNT + 1); $i++) {
+    $slide_id = $pod->get_field('gallery.' . sprintf('slide%02d', $i) . '.ID');
+    var_trace($slide_id);
+    if($slide_id) {
+      array_push($gallery['slides'], array_shift(get_posts(array('post_type'=>'attachment', 'numberposts'=>1, 'p' => $slide_id))));
+    }
+  }
+  var_trace($gallery, 'gallery');
+  
+  return $gallery;
+}
