@@ -209,11 +209,12 @@ function push_media_attribution($attachment_ID) {
   ));
 }
 
-function galleria_prepare($pod) {
+function galleria_prepare($pod, $extra_classes) {
   define(GALLERY_MAX_SLIDES_COUNT, 12);
   
   $gallery = array(
     'slug' => $pod->get_field('gallery.slug'),
+    'extra_classes' => $extra_classes,
     'slides' => array()
   );
 

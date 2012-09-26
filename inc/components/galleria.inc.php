@@ -1,5 +1,5 @@
 <?php if(count($gallery['slides'])): ?>
-<div class="lc-galleria" id="lc-galleria-<?php echo $gallery['slug']?>">
+<div class="lc-galleria<?php if($gallery['extra_classes']) { echo ' ' . $gallery['extra_classes']; } ?>" id="lc-galleria-<?php echo $gallery['slug']?>">
   <ul>
 <?php foreach($gallery['slides'] as $slide): ?>
   <li>

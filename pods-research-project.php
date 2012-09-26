@@ -83,6 +83,8 @@ $research_strand_title = $pod->get_field('research_strand.name');
 $research_strand_summary = $pod->get_field('research_strand.summary');
 
 $project_status = $pod->get_field('project_status.name');
+
+$gallery = galleria_prepare($pod, 'fullbleed wireframe');
 ?><?php get_header(); ?>
 
 <div role="main">
@@ -92,6 +94,7 @@ $project_status = $pod->get_field('project_status.name');
       <div class='top-content'>
         <?php if(count($heading_slides)) : ?>
         <header class='heading-image'>
+          <?php if(!is_user_logged_in()): ?>
           <div class='lc-galleria fullbleed wireframe'>
             <ul class='slides'>
               <?php foreach($heading_slides as $slide): ?>
@@ -99,6 +102,9 @@ $project_status = $pod->get_field('project_status.name');
               <?php endforeach; ?>
             </ul>
           </div>
+          <?php else: ?>
+          <?php include('inc/components/galleria.inc.php'); ?>
+          <?php endif; ?>
         </header>
         <?php endif; ?>
         
