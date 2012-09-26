@@ -96,7 +96,14 @@
           return regex.test(jQuery(elem)[attr.method](attr.property));
         };
           
-        jQuery(document).ready(function($) {          
+        jQuery(document).ready(function($) {
+          // enable Galleria for embedded slideshows
+          try {
+            if(jQuery('.lc-newspaper-article .lc-galleria').length > 0) {
+              jQuery('.lc-newspaper-article .lc-galleria').galleria({responsive: true, height: 0.75, lightbox: true, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+            }
+          } catch(error) { }
+          
           // enable Galleria for research pages photo slider
           try {
             if(jQuery('.lc-research-project .lc-galleria').length > 0) {

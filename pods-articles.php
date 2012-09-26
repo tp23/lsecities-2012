@@ -163,16 +163,6 @@ var_trace($gallery, 'gallery: ');
                     <?php endforeach; ?>
                       </ul>
                     </div>
-                    <script>
-                      jQuery(document).ready(function($) {
-                        // enable Galleria for embedded slideshows
-                        try {
-                          if(jQuery('.lc-newspaper-article .lc-galleria').length > 0) {
-                            jQuery('.lc-newspaper-article .lc-galleria').galleria({responsive: true, height: 0.75, lightbox: true, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
-                          }
-                        } catch(error) { }
-                      });
-                    </script>
                     <?php endif; ?>
                     <?php if($article_extra_content): ?>
                     <div class="extra-content"><?php echo $article_extra_content; ?></div>
