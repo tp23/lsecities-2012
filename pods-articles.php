@@ -146,19 +146,18 @@ var_trace($gallery, 'gallery: ');
                       <?php echo $article_summary; ?>
                     <?php endif; ?>
                     </div>
-
                     <?php if(count($gallery['slides'])): ?>
-                      <div class="lc-galleria">
-                      <?php foreach($gallery['slides'] as $slide): ?>
-                        <a href="<?php echo wp_get_attachment_url($slide->ID); ?>">
-                          <img title="<?php echo $slide->post_title; ?>"
-                            src="<?php echo wp_get_attachment_url($slide->ID); ?>"
-                            alt="<?php echo $slide->post_title; ?>"
-                            data-title="<?php echo $slide->post_title; ?>" 
-                            data-description="<?php echo $slide->post_excerpt; ?>" />
-                        </a>
-                      <?php endforeach; ?>
-                      </div>
+                    <div class="lc-galleria">
+                    <?php foreach($gallery['slides'] as $slide): ?>
+                      <a href="<?php echo wp_get_attachment_url($slide->ID); ?>">
+                        <img title="<?php echo $slide->post_title; ?>"
+                          src="<?php echo wp_get_attachment_url($slide->ID); ?>"
+                          alt="<?php echo $slide->post_title; ?>"
+                          data-title="<?php echo $slide->post_title; ?>" 
+                          data-description="<?php echo $slide->post_excerpt; ?>" />
+                      </a>
+                    <?php endforeach; ?>
+                    </div>
                     <?php endif; ?>
                     <?php if($article_extra_content): ?>
                     <div class="extra-content"><?php echo $article_extra_content; ?></div>
