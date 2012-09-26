@@ -96,6 +96,7 @@ $gallery_pod = $pod->get_field('gallery');
 var_trace($gallery_pod);
 
 $gallery = array(
+  'slug' => $pod->get_field('gallery.slug'),
   'slides' => array()
 );
 
@@ -147,17 +148,27 @@ var_trace($gallery, 'gallery: ');
                     <?php endif; ?>
                     </div>
                     <?php if(count($gallery['slides'])): ?>
-                    <div class="lc-galleria">
+                    <div class="lc-galleria" id="lc-galleria-<?php echo $gallery['slug']?>">
                     <?php foreach($gallery['slides'] as $slide): ?>
                       <a href="<?php echo wp_get_attachment_url($slide->ID); ?>">
                         <img title="<?php echo $slide->post_title; ?>"
                           src="<?php echo wp_get_attachment_url($slide->ID); ?>"
-                          alt="<?php echo $slide->post_title; ?>"
+                          alt="<?php echo get_post_meta($slide->ID, '_wp_attachment_image_alt', true) ? get_post_meta($slide->ID, '_wp_attachment_image_alt', true) : $slide->post_title; ?>"
                           data-title="<?php echo $slide->post_title; ?>" 
                           data-description="<?php echo $slide->post_excerpt; ?>" />
                       </a>
                     <?php endforeach; ?>
                     </div>
+                    <script>
+                      jQuery(document).ready(function($) {
+                        // enable Galleria for embedded slideshows
+                        try {
+                          if(jQuery('.lc-newspaper-article .lc-galleria').length > 0) {
+                            jQuery('.lc-newspaper-article .lc-galleria').galleria({responsive: true, height: 0.75, lightbox: true, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+                          }
+                        } catch(error) { }
+                      });
+                    </script>
                     <?php endif; ?>
                     <?php if($article_extra_content): ?>
                     <div class="extra-content"><?php echo $article_extra_content; ?></div>
