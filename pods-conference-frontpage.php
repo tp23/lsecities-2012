@@ -50,8 +50,10 @@ var_trace('tile_image: ' . var_export($tile_pod->get_field('image'), true), $TRA
 $research_summary_tile_image = wp_get_attachment_url($tile_pod->get_field('image.ID'));
 $research_summary_pdf_uri = $pod->get_field('research_summary.data_section_pdf_uri');
 
-$galleria['picasa_gallery_id'] = $pod->get_field('photo_gallery');
-$galleria['slug'] = $pod->get_field('slug');
+$galleria = array(
+ 'picasa_gallery_id' => $pod->get_field('photo_gallery'),
+ 'slug' => $pod->get_field('slug')
+);
 ?>
 
 <?php get_header(); ?>
