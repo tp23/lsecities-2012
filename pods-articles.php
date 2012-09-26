@@ -107,7 +107,7 @@ for($i = 1; $i < 13; $i++) {
     array_push($gallery['slides'], array_shift(get_posts(array('post_type'=>'attachment', 'numberposts'=>1, 'p' => $slide_id))));
   }
 }
-var_trace($gallery, 'gallery: ');
+var_trace($gallery, 'gallery');
 ?>
 
 <?php get_header(); ?>
@@ -147,7 +147,7 @@ var_trace($gallery, 'gallery: ');
                       <?php echo $article_summary; ?>
                     <?php endif; ?>
                     </div>
-                    <?php include('inc/components/galleria.php'); ?>
+                    <?php include('inc/components/galleria.inc.php'); ?>
                     <?php if($article_extra_content): ?>
                     <div class="extra-content"><?php echo $article_extra_content; ?></div>
                     <?php endif; ?>
