@@ -119,7 +119,7 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
             <dd><?php echo $research_strand_title; ?></dd>
           <?php endif; ?>
           <?php if($project_start and $project_end): ?>
-            <dt>Timespan</dt>
+            <dt>Duration</dt>
             <dd><?php echo $project_start; ?> - <?php echo $project_end; ?></dd>
           <?php endif; ?>
           </dl>
