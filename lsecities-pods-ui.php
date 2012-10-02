@@ -190,7 +190,7 @@ function active_tile_page() {
       'created'      => 'Date Created',
       'modified'     => 'Last Modified'
     ),
-    'where' => 'used_in_slides.slug = "urban-age"'
+    'where' => 'used_in_slides.slug <> ""'
   );
   pods_ui_manage($object);
 }
