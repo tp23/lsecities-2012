@@ -48,6 +48,8 @@ lsecities-pods-ui (1.4) stable; urgency=low
   
   release 1.4 "tonneau"
   
+  * tiles UI:
+	* [feature] added display of slides in which a tile is used (closes: #1)
   * [feature] added UI for research projects (closes: #5)
     
  -- andrea rota <a.rota@lse.ac.uk>  Sun, 21 Oct 2012 16:30:00 +0100
