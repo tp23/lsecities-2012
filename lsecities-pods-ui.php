@@ -159,6 +159,7 @@ function tile_page() {
       'name'         => 'Title',
       'tagline'      => 'Subtitle',
       'tile_layout'  => 'Layout',
+      'used_in_slides' => 'Used in slides',
       'class'        => 'Extra classes',
       'created'      => 'Date Created',
       'modified'     => 'Last Modified'
