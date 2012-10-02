@@ -128,7 +128,6 @@ function pods_ui_tiles() {
   add_object_page('Tiles', 'Tiles', 'read', 'tiles', '', $icon);
   add_submenu_page('tiles', 'Tiles', 'Tiles', 'read', 'tiles', 'tile_page');
   add_submenu_page('tiles', 'Active tiles', 'Active tiles', 'read', 'active_tiles', 'active_tile_page');
-  add_submenu_page('tiles', 'Add New Tile', 'Add New', 'read', 'pods-add-tile');
 }
 
 function tile_page() {
