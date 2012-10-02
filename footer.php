@@ -112,6 +112,12 @@
             }
           } catch(error) { }
           
+          $('.lc-galleria').hover(
+			function() {
+			  $(this).Galleria().playToggle();
+			}
+          );
+          
           $('.flexslider').flexslider(({
             animation: "slide",
             slideshow: false,
