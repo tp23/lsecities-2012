@@ -126,7 +126,8 @@ add_action('admin_menu','pods_ui_people');
 function pods_ui_tiles() {
   $icon = '';
   add_object_page('Tiles', 'Tiles', 'read', 'tiles', '', $icon);
-  add_submenu_page('tiles', 'Tiles', 'Tiles', 'read', 'tiles', 'tile_page');
+  add_submenu_page('tiles', 'All tiles', 'All tiles', 'read', 'tiles', 'tile_page');
+  add_submenu_page('tiles', 'Active tiles', 'Active tiles', 'read', 'active_tiles', 'active_tile_page');
 }
 
 function tile_page() {
@@ -166,6 +167,30 @@ function tile_page() {
     ),
     'add_fields'  => $add_fields,
     'edit_fields' => $edit_fields
+  );
+  pods_ui_manage($object);
+}
+
+function active_tile_page() {
+  $object = new Pod('tile');
+  $object->findRecords(array('where' => 'used_in_slides.slug = "urban-age"'));
+  $object->ui = array(
+    'title'   => 'Tile',
+    'reorder' => 'displayorder',
+    'reorder_columns' => array(
+      'name' => 'Title',
+      'tagline'      => 'Subtitle',
+      'tile_layout'  => 'Layout'
+    ),
+    'columns' => array(
+      'name'         => 'Title',
+      'tagline'      => 'Subtitle',
+      'tile_layout'  => 'Layout',
+      'used_in_slides' => 'Used in slides',
+      'class'        => 'Extra classes',
+      'created'      => 'Date Created',
+      'modified'     => 'Last Modified'
+    )
   );
   pods_ui_manage($object);
 }
