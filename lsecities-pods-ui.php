@@ -173,7 +173,6 @@ function tile_page() {
 
 function active_tile_page() {
   $object = new Pod('tile');
-  $object->findRecords(array('where' => 'used_in_slides.slug = "urban-age"'));
   $object->ui = array(
     'title'   => 'Tile',
     'reorder' => 'displayorder',
@@ -190,7 +189,8 @@ function active_tile_page() {
       'class'        => 'Extra classes',
       'created'      => 'Date Created',
       'modified'     => 'Last Modified'
-    )
+    ),
+    'where' => 'used_in_slides.slug = "urban-age"'
   );
   pods_ui_manage($object);
 }
