@@ -176,7 +176,7 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 				<nav id='level1nav'>
 					<ul>
             <li><a href="/" title="Home">Home</a></li>
-					<?php wp_list_pages('depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032'); ?>
+					<?php wp_list_pages('depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032,2476'); ?>
 					</ul>
 				</nav><!-- #level1nav -->
 			</div><!-- row -->
