@@ -31,8 +31,8 @@ if(!$slider) {
   $featured_image_uri = get_the_post_thumbnail(get_the_ID(), array(960,367));
 }
 
-$conference_partners = $pod->get_field('partners');
-$conference_partners_logos = $pod->get_field('partners.logo.ID');
+$conference_partners = $pod->get_field('partners', 'partners.logo.ID ASC');
+$conference_partners_logos = $pod->get_field('partners.logo.ID', 'ID ASC');
 var_trace($conference_partners, 'partners');
 var_trace($conference_partners_logos, 'partner logos');
 
