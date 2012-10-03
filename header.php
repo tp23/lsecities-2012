@@ -29,6 +29,11 @@ $level2nav = wp_list_pages('child_of=' . $toplevel_ancestor . '&depth=1&sort_col
 $GLOBALS['urban_age_section'] = ($toplevel_ancestor == 94) ? true : false;
 $logo_element_id = $GLOBALS['urban_age_section'] ? 'ualogo' : 'logo';
 
+if($post->ID == 2481) { // Labs -> Cities and the crisis
+  $level1nav = wp_list_pages('depth=1&sort_column=menu_order&title_li=&child_of=' . $post->ID);
+} else {
+  $level1nav = wp_list_pages('depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032,2476');
+}
 ?><!DOCTYPE html>
 <!--[if IE 6]>
 <html id="ie6" <?php language_attributes(); ?>>
@@ -176,7 +181,7 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 				<nav id='level1nav'>
 					<ul>
             <li><a href="/" title="Home">Home</a></li>
-					<?php wp_list_pages('depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032,2476'); ?>
+					<?php echo $level1nav; ?>
 					</ul>
 				</nav><!-- #level1nav -->
 			</div><!-- row -->
