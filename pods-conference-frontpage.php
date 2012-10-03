@@ -31,6 +31,11 @@ if(!$slider) {
   $featured_image_uri = get_the_post_thumbnail(get_the_ID(), array(960,367));
 }
 
+$conference_partners = $pod->get_field('partners');
+$conference_partners_logos = $pod->get_field('partners.logo.ID');
+var_trace($conference_partners, 'partners');
+var_trace($conference_partners_logos, 'partner logos');
+
 $conference_publication_blurb = $pod->get_field('conference_newspaper.blurb');
 $conference_publication_cover = wp_get_attachment_url($pod->get_field('conference_newspaper.snapshot.ID'));
 $conference_publication_wp_page = get_permalink($pod->get_field('conference_newspaper.publication_web_page.ID'));
