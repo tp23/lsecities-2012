@@ -30,9 +30,9 @@ $GLOBALS['urban_age_section'] = ($toplevel_ancestor == 94) ? true : false;
 $logo_element_id = $GLOBALS['urban_age_section'] ? 'ualogo' : 'logo';
 
 if($post->ID == 2481) { // Labs -> Cities and the crisis
-  $level1nav = wp_list_pages('depth=1&sort_column=menu_order&title_li=&child_of=' . $post->ID);
+  $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . $post->ID);
 } else {
-  $level1nav = wp_list_pages('depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032,2476');
+  $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032,2476');
 }
 ?><!DOCTYPE html>
 <!--[if IE 6]>
