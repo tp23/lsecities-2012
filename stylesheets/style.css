@@ -293,6 +293,7 @@ ol.article-references li:target { background-color: #ffeeee; }
 #keyfacts dl dt, #navigationarea dl dt { border-bottom: 1px solid #eee; margin-top: 0.5em; }
 #keyfacts dl dt:first-child, #navigationarea dl dt:first-child { margin-top: 0; }
 #keyfacts dl dd, #navigationarea dl dd { line-height: 1.5em; margin-bottom: 0.2em; }
+#keyfacts dl:not(:first-child), #navigationarea dl:not(:first-child) { margin-top: 0.5em; }
 #keyfacts.minorfacts dl dt, #navigationarea.minorfacts dl dt { border-bottom: none; }
 
 /* // keyfacts should always be displayed in smaller font
@@ -448,6 +449,9 @@ right: -21px; */ }
 .lc-conference-frontpage header.heading-image .mainheadings { position: absolute; top: 0; margin: 0.5em; line-height: 1em; color: #fff; text-shadow: black 1px 1px 5px; }
 .lc-conference-frontpage header.heading-image .mainheadings h1, .lc-conference-frontpage header.heading-image .mainheadings h2 { margin: 0; color: #fff !important; }
 .lc-conference-frontpage header.heading-image .mainheadings h1 { text-transform: uppercase; }
+.lc-conference-frontpage #keyfacts #conference-partners ul li { display: list-item; }
+.lc-conference-frontpage #keyfacts #conference-partners ul li:after { content: ''; }
+.lc-conference-frontpage #keyfacts #conference-partners ul li img { padding: 0.5em 0; max-width: 100%; display: block; margin-left: auto; margin-right: auto; }
 
 .lc-publication #keyfacts .cover-thumbnail { padding: 0 4em; }
 .lc-publication #keyfacts .cover-thumbnail img { margin: 1em 0; -moz-transform: rotate(3deg); -webkit-transform: rotate(3deg); -o-transform: rotate(3deg); -ms-transform: rotate(3deg); transform: rotate(3deg); -moz-border-radius: 3px; -webkit-border-radius: 3px; -o-border-radius: 3px; -ms-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; -moz-box-shadow: 3px 3px 3px #cccccc; -webkit-box-shadow: 3px 3px 3px #cccccc; -o-box-shadow: 3px 3px 3px #cccccc; box-shadow: 3px 3px 3px #cccccc; }

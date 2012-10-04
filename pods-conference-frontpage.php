@@ -117,26 +117,24 @@ $gallery = array(
               <aside class='wireframe fourcol last' id='keyfacts'>
                 <?php echo $pod->get_field('info'); ?>
                 <?php if(is_user_logged_in()): ?>
-                <div id="conference-partners">
-	                <dl>
-					  <dt>Partners</dt>
-					  <dd>
-	                    <ul>
-						<?php foreach($partners as $partner): ?>
-	                      <li id="partner-<?php echo $partner['id']; ?>">
-						    <?php if($partner['web_uri']): ?><a href="<?php echo $partner['web_uri']; ?>"><?php endif; ?>
-							<?php if($partner['logo_uri']): ?>
-							<img src="<?php echo $partner['logo_uri']; ?>" alt="<?php echo $partner['name']; ?>" />
-							<?php else: ?>
-							<?php echo $partner['name']; ?>
-							<?php endif; //($partner['logo_uri'])?>
-							<?php if($partner['web_uri']): ?></a><?php endif; ?>
-	                      </li>
-	                    <?php endforeach; //($partners as $partner) ?>
-	                    </ul>
-					  </dd>
-	                </dl>
-                </div>
+                <dl id="conference-partners">
+				  <dt>Partners</dt>
+				  <dd>
+                    <ul>
+					<?php foreach($partners as $partner): ?>
+                      <li id="partner-<?php echo $partner['id']; ?>">
+					    <?php if($partner['web_uri']): ?><a href="<?php echo $partner['web_uri']; ?>"><?php endif; ?>
+						<?php if($partner['logo_uri']): ?>
+						<img src="<?php echo $partner['logo_uri']; ?>" alt="<?php echo $partner['name']; ?>" />
+						<?php else: ?>
+						<?php echo $partner['name']; ?>
+						<?php endif; //($partner['logo_uri'])?>
+						<?php if($partner['web_uri']): ?></a><?php endif; ?>
+                      </li>
+                    <?php endforeach; //($partners as $partner) ?>
+                    </ul>
+				  </dd>
+                </dl>
                 <?php endif; //(is_user_logged_in()) ?>
                 <?php if($event_hashtag): ?>
                 <div class='twitterbox'>
