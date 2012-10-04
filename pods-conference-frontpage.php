@@ -31,7 +31,6 @@ if(!$slider) {
   $featured_image_uri = get_the_post_thumbnail(get_the_ID(), array(960,367));
 }
 
-if(is_user_logged_in()) {
 /* process list of partners */
 $partners = array();
 $conference_partners_slugs = (array) $pod->get_field('partners.slug');
@@ -56,7 +55,6 @@ while($organizations_pod->fetchRecord()) {
 var_trace($slug_list, 'slug_list');
 var_trace($organizations_pod, 'organizations_pod');
 var_trace($partners, 'partners');
-}
 
 $conference_publication_blurb = $pod->get_field('conference_newspaper.blurb');
 $conference_publication_cover = wp_get_attachment_url($pod->get_field('conference_newspaper.snapshot.ID'));
@@ -116,7 +114,6 @@ $gallery = array(
               </div>
               <aside class='wireframe fourcol last' id='keyfacts'>
                 <?php echo $pod->get_field('info'); ?>
-                <?php if(is_user_logged_in()): ?>
                 <dl id="conference-partners">
 				  <dt>Partners</dt>
 				  <dd>
@@ -135,7 +132,6 @@ $gallery = array(
                     </ul>
 				  </dd>
                 </dl>
-                <?php endif; //(is_user_logged_in()) ?>
                 <?php if($event_hashtag): ?>
                 <div class='twitterbox'>
                   <a href="https://twitter.com/#!/search/#<?php echo $event_hashtag; ?>">#<?php echo $event_hashtag; ?></a>
