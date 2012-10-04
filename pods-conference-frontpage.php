@@ -31,10 +31,32 @@ if(!$slider) {
   $featured_image_uri = get_the_post_thumbnail(get_the_ID(), array(960,367));
 }
 
-$conference_partners = $pod->get_field('partners');
-$conference_partners_logos = $pod->get_field('partners.logo.ID');
-var_trace($conference_partners, 'partners');
-var_trace($conference_partners_logos, 'partner logos');
+if(is_user_logged_in()) {
+/* process list of partners */
+$partners = array();
+$conference_partners_slugs = (array) $pod->get_field('partners.slug');
+$slug_list = '(';
+foreach($conference_partners_slugs as $slug) {
+	$slug_list .=  "'$slug',";
+}
+$slug_list = substr($slug_list, 0, -1);
+$slug_list .= ')';
+
+$organizations_pod = new Pod('organization');
+$organizations_pod->findRecords(array('where' => 'slug IN ' . $slug_list));
+
+while($organizations_pod->fetchRecord()) {
+	array_push($partners, array(
+		'id' => $organizations_pod->get_field('slug'),
+		'name' => $organizations_pod->get_field('name'),
+		'logo_uri' => wp_get_attachment_url($organizations_pod->get_field('logo.ID')),
+		'web_uri' => $organizations_pod->get_field('web_uri')
+	));
+}
+var_trace($slug_list, 'slug_list');
+var_trace($organizations_pod, 'organizations_pod');
+var_trace($partners, 'partners');
+}
 
 $conference_publication_blurb = $pod->get_field('conference_newspaper.blurb');
 $conference_publication_cover = wp_get_attachment_url($pod->get_field('conference_newspaper.snapshot.ID'));
@@ -94,6 +116,28 @@ $gallery = array(
               </div>
               <aside class='wireframe fourcol last' id='keyfacts'>
                 <?php echo $pod->get_field('info'); ?>
+                <?php if(is_user_logged_in()): ?>
+                <div id="conference-partners">
+	                <dl>
+					  <dt>Partners</dt>
+					  <dd>
+	                    <ul>
+						<?php foreach($partners as $partner): ?>
+	                      <li id="partner-<?php echo $partner['id']; ?>">
+						    <?php if($partner['web_uri']): ?><a href="<?php echo $partner['web_uri']; ?>"><?php endif; ?>
+							<?php if($partner['logo_uri']): ?>
+							<img src="<?php echo $partner['logo_uri']; ?>" alt="<?php echo $partner['name']; ?>" />
+							<?php else: ?>
+							<?php echo $partner['name']; ?>
+							<?php endif; //($partner['logo_uri'])?>
+							<?php if($partner['web_uri']): ?></a><?php endif; ?>
+	                      </li>
+	                    <?php endforeach; //($partners as $partner) ?>
+	                    </ul>
+					  </dd>
+	                </dl>
+                </div>
+                <?php endif; //(is_user_logged_in()) ?>
                 <?php if($event_hashtag): ?>
                 <div class='twitterbox'>
                   <a href="https://twitter.com/#!/search/#<?php echo $event_hashtag; ?>">#<?php echo $event_hashtag; ?></a>
