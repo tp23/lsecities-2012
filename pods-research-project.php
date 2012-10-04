@@ -35,6 +35,7 @@ $this_pod = new LC\PodObject($pod, 'Research');
 
 $pod_title = $pod->get_field('name');
 $pod_tagline = $pod->get_field('tagline');
+$web_uri = $pod->get_field('web_uri');
 $pod_summary = do_shortcode($pod->get_field('summary'));
 $pod_blurb = do_shortcode($pod->get_field('blurb'));
 
@@ -104,6 +105,10 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
         </article>
         <aside class='wireframe fourcol last entry-meta' id='keyfacts'>
           <dl>
+          <?php if($web_uri): ?>
+            <dt>Website</dt>
+            <dd><a href="<?php echo $web_uri; ?>"><?php echo $web_uri; ?></a></dd>
+          <?php endif; ?>
           <?php if($project_coordinators): ?>
             <dt>Project <?php echo $project_coordinators_count > 1 ?'coordinators' : 'coordinator'; ?></dt>
             <dd><?php echo $project_coordinators; ?></dd>
