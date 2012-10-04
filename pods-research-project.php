@@ -38,15 +38,17 @@ $pod_tagline = $pod->get_field('tagline');
 $pod_summary = do_shortcode($pod->get_field('summary'));
 $pod_blurb = do_shortcode($pod->get_field('blurb'));
 
-if($pod->get_field('date_start')) { 
-  $project_start = new DateTime($pod->get_field('date_start') . '-01-01');
-  $project_start = $project_start->format('Y');
-}
-
-if($pod->get_field('date_end')) {
-  $project_end = new DateTime($pod->get_field('date_end') . '-12-31');
-  $project_end = $project_end->format('Y');
-}
+try {
+  if($pod->get_field('date_start')) { 
+    $project_start = new DateTime($pod->get_field('date_start') . '-01-01');
+    $project_start = $project_start->format('Y');
+  }
+  
+  if($pod->get_field('date_end')) {
+    $project_end = new DateTime($pod->get_field('date_end') . '-12-31');
+    $project_end = $project_end->format('Y');
+  }
+} catch (Exception $e) {}
 
 $project_coordinators_list = $pod->get_field('coordinators');
 $project_coordinators_count = count($project_coordinators_list);
