@@ -7,7 +7,7 @@
   <div class="<?php echo $gallery_class; ?>" id="<?php echo $gallery_id; ?>"></div>
   <script type="text/javascript">
     jQuery(document).ready(function() {
-      jQuery('#<?php echo $gallery_id; ?>').galleria({
+      jQuery('#<?php echo $gallery_id; ?>').galleria({ <?php if(count($gallery['slides']) == 1): ?>showImageNav: false,<?php endif; ?>
         carousel: true,
         height: 0.4,
         responsive: true,
