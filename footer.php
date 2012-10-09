@@ -101,6 +101,7 @@
           try {
             if(jQuery('.lc-newspaper-article .lc-galleria').length > 0) {
               jQuery('.lc-newspaper-article .lc-galleria').galleria({responsive: true, height: 0.75, lightbox: true, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+              jQuery('.lc-newspaper-article .lc-galleria.single').galleria({showImageNav: false, responsive: true, height: 0.75, lightbox: true, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
             }
           } catch(error) { }
           
@@ -108,6 +109,7 @@
           try {
             if(jQuery('.lc-research-project .lc-galleria, .lc-publication .lc-galleria').length > 0) {
               jQuery('.lc-research-project .lc-galleria, .lc-publication .lc-galleria').galleria({responsive: true, height: 0.4, transition: 'fade', transitionSpeed: 600, carousel: false, thumbnails: false, autoplay: 5000, showInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+              jQuery('.lc-research-project .lc-galleria.single, .lc-publication .lc-galleria.single').galleria({showImageNav: false, responsive: true, height: 0.4, transition: 'fade', transitionSpeed: 600, carousel: false, thumbnails: false, autoplay: 5000, showInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
               jQuery('.lc-research-project .lc-galleria.fullbleed .galleria-thumbnails-container, .lc-publication .lc-galleria .lc-galleria.fullbleed .galleria-thumbnails-container').hide();
             }
           } catch(error) { }
