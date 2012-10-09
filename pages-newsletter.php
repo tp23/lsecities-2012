@@ -5,7 +5,6 @@
  * 
  * @package LSECities2012
  */
- */
 $TRACE_ENABLED = is_user_logged_in();
 
 $our_permalink = preg_replace('/^https/', 'http', get_permalink($id));
