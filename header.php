@@ -91,7 +91,7 @@ if($post->ID == 2481) { // Labs -> Cities and the crisis
 <?php wp_enqueue_script('jquery-ui-tabs', '', '', '', true); ?>
 <?php wp_enqueue_script('jquery-sticky', get_stylesheet_directory_uri() . '/javascripts/jquery.sticky.min.js', 'jquery', false, true); ?>
 <?php wp_enqueue_script('jquery-mediaelement', get_stylesheet_directory_uri() . '/javascripts/mediaelement-and-player.js', 'jquery', '2.9.2', false); ?>
-<script async="async" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+<!-- <script async="async" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script> -->
 <?php wp_enqueue_script('cookie-control', plugins_url() . '/cookie-control/js/cookieControl-5.1.min.js', 'jquery', false, true); ?>
 <?php wp_enqueue_style('jquery-mediaelement', get_stylesheet_directory_uri() .'/stylesheets/mediaelement/mediaelementplayer.css'); ?>
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
