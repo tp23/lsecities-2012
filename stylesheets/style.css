@@ -277,12 +277,14 @@ ol.article-references { list-style-position: inside; }
 ol.article-references li { margin-bottom: 0.25em; }
 ol.article-references li:target { background-color: #ffeeee; }
 
-#contentarea .top-content .entry-content .abstract { font-size: 0.9375em; font-style: italic; }
+.top-content .entry-content .abstract { font-size: 0.9375em; font-style: italic; }
+
+.extra-content { margin-top: 3em; padding-top: 1em; font-size: 0.875em; }
+.extra-content > section, .extra-content > aside { margin-top: 2em; }
+.extra-content > section > header, .extra-content > aside > header { border-top: 1px solid red; }
+.extra-content > section > header > h1, .extra-content > aside > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
+
 #contentarea section > h1 { font-weight: bold; font-size: 1.2em; }
-#contentarea .extra-content { margin-top: 3em; padding-top: 1em; font-size: 0.875em; }
-#contentarea .extra-content > section, #contentarea .extra-content > aside { margin-top: 2em; }
-#contentarea .extra-content > section > header, #contentarea .extra-content > aside > header { border-top: 1px solid red; }
-#contentarea .extra-content > section > header > h1, #contentarea .extra-content > aside > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
 #contentarea .top-content { margin-bottom: 1em; }
 #contentarea .top-content > header { margin-bottom: 1em; }
 #contentarea .top-content article header { margin-bottom: 1em; }
@@ -430,6 +432,7 @@ right: -21px; */ }
 .lc-slider-page .flexslider .feature_info .feature_blurb { float: left; line-height: 1.08em; max-height: 0; overflow: hidden; width: 100%; }
 .lc-slider-page .flexslider ul { list-style-type: none; }
 .lc-slider-page .flexslider ul li { list-style-type: inherit; }
+.lc-slider-page .extra-content { font-size: 1em; margin-top: 0; padding-top: 0; }
 
 .lc-event .event-info { font-size: 0.9em; margin-top: 1em; }
 .lc-event #speaker-profiles .people-list .person h1 { font-size: 1.125em; font-weight: bold; text-transform: inherit; border-bottom: 1px solid #eee; margin-bottom: 0.444444444em; }
