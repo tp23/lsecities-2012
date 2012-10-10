@@ -10,9 +10,8 @@
  * Pods initialization
  * URI: TBD
  */
-$pod_slug = get_post_meta($post->ID, 'pod_slug', true);
+
 $TRACE_PREFIX = 'pods-main-frontpage';
-$TRACE_ENABLED = is_user_logged_in();
 
 $TILES_PER_COLUMN = 2;
 
@@ -50,36 +49,39 @@ function get_tile_classes($tile_layout) {
 }
 
 function compose_slide($column_spans, $tiles) {
-  global $TRACE_ENABLED;
   global $TILES_PER_COLUMN;
   
-  var_trace('compose_slide|tiles: ' . var_export($tiles, true), $TRACE_PREFIX, $TRACE_ENABLED);
+  var_trace('compose_slide|tiles: ' . var_export($tiles, true), $TRACE_PREFIX);
 
   $slide_content = array('columns' => array());
   $tile_index = 0;
   $total_tiles = count($tiles); 
   
-  var_trace('column_spans: ' . var_export($column_spans, true), $TRACE_PREFIX, $TRACE_ENABLED);
+  var_trace('column_spans: ' . var_export($column_spans, true), $TRACE_PREFIX);
   
-  foreach($column_spans as $column_span) {
+  foreach($column_spans as $key => $column_span) {
     $tile_count = $column_span * $TILES_PER_COLUMN;
-    $slide_column = array('layout' => 'col' . $column_span, 'tiles' => array());
+    
+    // add .last class if this is the last column
+    if($key == (count($column_spans) - 1)) { $last_class = ' last'; }
+    
+    $slide_column = array('layout' => 'col' . $column_span . $last_class, 'tiles' => array());
     while($tile_count > 0 and $tile_index <= $total_tiles) {
-      var_trace('tile[slug]: ' . var_export($tiles[$tile_index]['slug'], true), $TRACE_PREFIX, $TRACE_ENABLED);
+      var_trace(var_export($tiles[$tile_index]['slug'], true), 'tile[slug]');
       $tile = new Pod('tile', $tiles[$tile_index++]['slug']);
       $tile_layout = $tile->get_field('tile_layout.name');
-      var_trace('tile[layout]: ' . var_export($tile_layout, true), $TRACE_PREFIX, $TRACE_ENABLED);
+      var_trace(var_export($tile_layout, true), 'tile[layout]');
       $this_tile_count = preg_replace('/x/', '*', $tile_layout);
-      var_trace('this_tile_count: ' . var_export($this_tile_count, true), $TRACE_PREFIX, $TRACE_ENABLED);
+      var_trace(var_export($this_tile_count, true), 'this_tile_count');
       eval('$this_tile_count = ' . $this_tile_count . ';');
       $tile_count -= $this_tile_count;
-      var_trace('tile_countdown: ' . var_export($tile_count, true), $TRACE_PREFIX, $TRACE_ENABLED);
+      var_trace(var_export($tile_count, true), 'tile_countdown');
 
       unset($target_event_month, $target_event_day, $target_uri);
       
       if($tile->get_field('target_event.date_start')) {
         $target_event_date = new DateTime($tile->get_field('target_event.date_start'));
-        var_trace('target_event_date: ' . var_export($target_event_date, true), $TRACE_PREFIX, $TRACE_ENABLED);
+        var_trace('target_event_date: ' . var_export($target_event_date, true), $TRACE_PREFIX);
         $target_event_month = $target_event_date->format('M');
         $target_event_day = $target_event_date->format('j');
         $target_event_slug = $tile->get_field('target_event.slug');
@@ -124,11 +126,12 @@ function compose_slide($column_spans, $tiles) {
   return $slide_content;
 }
 
-var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
+$pod_slug = get_post_meta($post->ID, 'pod_slug', true);
+var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX);
 $pod = new Pod('slider', $pod_slug);
 
 $news_category_ids = $pod->get_field('news_category');
-var_trace('news_category_ids: ' . var_export($news_category_ids, true), $TRACE_PREFIX, $TRACE_ENABLED);
+var_trace(var_export($news_category_ids, true), 'news_category_ids');
 if($news_category_ids) {
   $news_categories = '';
   foreach($news_category_ids as $category) {
@@ -175,7 +178,7 @@ $slides = $pod->get_field('slides');
                 <li>
                   <div class="slide-inner row">
                     <?php foreach($slide_content['columns'] as $slide_column): ?>
-                      <div class="<?php echo $slide_column['layout']; ?>">
+                      <div class="<?php echo $slide_column['layout']; ?> column">
                         <?php foreach($slide_column['tiles'] as $tile): ?>
                         
                           <div class="tile <?php echo $tile['element_class']; ?>" id="slidetile-<?php echo $tile['id']; ?>">
