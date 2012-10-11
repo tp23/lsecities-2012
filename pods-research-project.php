@@ -77,7 +77,13 @@ $research_strand_summary = $pod->get_field('research_strand.summary');
 
 $project_status = $pod->get_field('project_status.name');
 
+// prepare heading gallery
 $gallery = galleria_prepare($pod, 'fullbleed wireframe');
+
+if(is_user_logged_in()) {
+// if we have research photo galleries/photo essays, prepare them
+$research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 'photo_galleries');
+}
 ?><?php get_header(); ?>
 
 <div role="main">
@@ -133,6 +139,7 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
         </aside><!-- #keyfacts -->
       </div><!-- .top-content -->
       <div class='extra-content twelvecol'>
+        
       </div><!-- .extra-content -->
     </div><!-- #contentarea -->
     <?php

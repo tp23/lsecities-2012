@@ -236,3 +236,37 @@ function galleria_prepare($pod, $extra_classes, $gallery_field='gallery') {
   
   return $gallery;
 }
+
+function galleria_prepare_multi($pod, $extra_classes, $gallery_field='galleries') {
+  define(GALLERY_MAX_SLIDES_COUNT, 12);
+  
+  foreach($pod->get_field($gallery_field) as $key => $gallery) {
+    
+    $gallery_object = array(
+      'slug' => $gallery['slug'],
+      'extra_classes' => $extra_classes,
+      'slides' => array()
+    );
+  
+    // if picasa_gallery_id is set, add this to the object
+    if($gallery['picasa_gallery_id']) {
+      $gallery_object['picasa_gallery_id'] = $gallery['picasa_gallery_id'];
+      var_trace($gallery_object, 'gallery_object__picasaweb');
+      array_push($gallery_array, $gallery_object);
+    }
+    // otherwise build the slides list
+    else {
+      for($i = 1; $i < (GALLERY_MAX_SLIDES_COUNT + 1); $i++) {
+        $slide_id = $gallery[sprintf('slide%02d', $i) . '.ID'];
+        var_trace($slide_id);
+        if($slide_id) {
+          array_push($gallery_object['slides'], array_shift(get_posts(array('post_type'=>'attachment', 'numberposts'=>1, 'p' => $slide_id))));
+        }
+      }
+      var_trace($gallery_object, 'gallery_object__slides');
+      array_push($gallery_array, $gallery_object);
+    }
+    var_trace($gallery_array, 'gallery_array');
+  }
+  return $gallery_array;
+}
