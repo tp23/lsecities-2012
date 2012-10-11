@@ -139,7 +139,14 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
         </aside><!-- #keyfacts -->
       </div><!-- .top-content -->
       <div class='extra-content twelvecol'>
-        
+        <!--
+      <?php
+      if(is_user_logged_in()) {
+        foreach($research_photo_galleries as $gallery) {
+          include('inc/components/galleria.inc.php');
+        }
+      } ?>
+        -->
       </div><!-- .extra-content -->
     </div><!-- #contentarea -->
     <?php
