@@ -80,10 +80,8 @@ $project_status = $pod->get_field('project_status.name');
 // prepare heading gallery
 $gallery = galleria_prepare($pod, 'fullbleed wireframe');
 
-if(is_user_logged_in()) {
 // if we have research photo galleries/photo essays, prepare them
 $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 'photo_galleries');
-}
 ?><?php get_header(); ?>
 
 <div role="main">
@@ -140,7 +138,7 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
       </div><!-- .top-content -->
       <div class='extra-content twelvecol'>
       <?php
-      if(is_user_logged_in() and current_user_can('manage_network')):
+      if(is_user_logged_in()):
         var_trace($research_photo_galleries, 'research_photo_galleries');
         if(count($research_photo_galleries)): ?>
         <section id="photo-essays">
@@ -156,7 +154,7 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
         </section>
         <?php
         endif;
-      endif ?>
+      endif; ?>
       </div><!-- .extra-content -->
     </div><!-- #contentarea -->
     <?php
