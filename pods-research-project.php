@@ -147,7 +147,7 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
           <header><h1>Photo essays</h1></header>
           <?php
           foreach($research_photo_galleries as $key => $gallery): ?>
-            <div class="fourcol">
+            <div class="fourcol<?php if((($key + 1) % 3) == 0): ?> last<?php endif; ?>">
             <?php
             include('inc/components/galleria.inc.php'); ?>
             </div>
