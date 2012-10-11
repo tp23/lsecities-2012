@@ -142,6 +142,7 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
         <!--
       <?php
       if(is_user_logged_in()) {
+        var_trace($research_photo_galleries, 'research_photo_galleries');
         foreach($research_photo_galleries as $gallery) {
           include('inc/components/galleria.inc.php');
         }
