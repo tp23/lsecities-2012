@@ -9,7 +9,7 @@
     jQuery(document).ready(function() {
       jQuery('#<?php echo $gallery_id; ?>').galleria({
         carousel: true,
-        height: 0.4,
+        height: 0.6,
         responsive: true,
         picasa: 'useralbum:<?php echo $gallery['picasa_gallery_id']; ?>',
         picasaOptions: {
