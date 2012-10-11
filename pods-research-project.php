@@ -85,6 +85,7 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
 
 $news_categories = news_categories((array)$pod->get_field('news_category'));
 
+$events = (array)$pod->get_field('events');
 ?><?php get_header(); ?>
 
 <div role="main">
@@ -153,12 +154,29 @@ $news_categories = news_categories((array)$pod->get_field('news_category'));
             include('inc/components/galleria.inc.php'); ?>
             </div>
             <?php
-          endforeach; ?>
+          endforeach; // ($research_photo_galleries as $key => $gallery) ?>
         </section>
         <?php
         endif;
-      endif; ?>
-      <?php include('inc/components/news.inc.php'); ?>
+      // latest news in categories defined for this research project
+      include('inc/components/news.inc.php');
+      
+      // linked events
+      if(count($events)): ?>
+      <section id="linked-events">
+        <header><h1>Events</h1></header>
+        <ul>
+      <?php
+        foreach($events as $event): ?>
+        <li>
+          <a href="<?php echo PODS_BASEURI_EVENTS . '/' . $event['slug']; ?>"><?php echo date('j F', strtotime($event['date_start'])) . ' | ' . $event['name']; ?></a>
+        </li>
+      <?php endforeach; // ($events as $event) ?>
+        </ul>
+      </section>
+      <?php
+      endif; // (count($events)) 
+      endif; // (is_user_logged_in()) ?>
       </div><!-- .extra-content -->
     </div><!-- #contentarea -->
     <?php
