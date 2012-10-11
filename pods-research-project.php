@@ -169,7 +169,7 @@ $events = (array)$pod->get_field('events');
       <?php
         foreach($events as $event): ?>
         <li>
-          <a href="<?php echo PODS_BASEURI_EVENTS . '/' . $event['slug']; ?>"><?php echo date('j F', strtotime($event['date_start'])) . ' | ' . $event['name']; ?></a>
+          <a href="<?php echo PODS_BASEURI_EVENTS . '/' . $event['slug']; ?>"><?php echo date('j F Y', strtotime($event['date_start'])) . ' | ' . $event['name']; ?></a>
         </li>
       <?php endforeach; // ($events as $event) ?>
         </ul>
