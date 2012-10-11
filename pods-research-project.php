@@ -143,7 +143,7 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
       if(is_user_logged_in() and current_user_can('manage_network')) {
         var_trace($research_photo_galleries, 'research_photo_galleries');
         foreach($research_photo_galleries as $key => $gallery) { ?>
-          <div class="threecol">
+          <div class="fourcol">
           <?php
           include('inc/components/galleria.inc.php'); ?>
           </div>
