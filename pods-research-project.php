@@ -140,16 +140,23 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
       </div><!-- .top-content -->
       <div class='extra-content twelvecol'>
       <?php
-      if(is_user_logged_in() and current_user_can('manage_network')) {
+      if(is_user_logged_in() and current_user_can('manage_network')):
         var_trace($research_photo_galleries, 'research_photo_galleries');
-        foreach($research_photo_galleries as $key => $gallery) { ?>
-          <div class="fourcol">
+        if(count($research_photo_galleries)): ?>
+        <section id="photo-essays">
+          <header><h1>Photo essays</h1></header>
           <?php
-          include('inc/components/galleria.inc.php'); ?>
-          </div>
-          <?php
-        }
-      } ?>
+          foreach($research_photo_galleries as $key => $gallery): ?>
+            <div class="fourcol">
+            <?php
+            include('inc/components/galleria.inc.php'); ?>
+            </div>
+            <?php
+          endforeach; ?>
+        </section>
+        <?php
+        endif;
+      endif ?>
       </div><!-- .extra-content -->
     </div><!-- #contentarea -->
     <?php
