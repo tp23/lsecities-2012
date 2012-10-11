@@ -10,6 +10,7 @@
       jQuery('#<?php echo $gallery_id; ?>').galleria({
         carousel: true,
         height: 0.6,
+        lightbox: true,
         responsive: true,
         picasa: 'useralbum:<?php echo $gallery['picasa_gallery_id']; ?>',
         picasaOptions: {
