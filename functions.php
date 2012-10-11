@@ -239,6 +239,7 @@ function galleria_prepare($pod, $extra_classes, $gallery_field='gallery') {
 
 function galleria_prepare_multi($pod, $extra_classes, $gallery_field='galleries') {
   define(GALLERY_MAX_SLIDES_COUNT, 12);
+  $gallery_array = array();
   
   foreach($pod->get_field($gallery_field) as $key => $gallery) {
     
