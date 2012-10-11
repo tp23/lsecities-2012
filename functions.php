@@ -271,3 +271,16 @@ function galleria_prepare_multi($pod, $extra_classes, $gallery_field='galleries'
   }
   return $gallery_array;
 }
+
+function news_categories($pod_news_categories) {
+  var_trace(var_export($pod_news_categories, true), 'news_category_ids');
+  if($pod_news_categories) {
+    $news_categories = '';
+    foreach($pod_news_categories as $category) {
+      $news_categories .= $category['term_id'] . ',';
+    }
+    $news_categories = '&cat='. rtrim($news_categories, ',');
+    var_trace($news_categories, 'news_categories');
+  }
+  return $news_categories;
+}

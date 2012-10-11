@@ -82,6 +82,9 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
 
 // if we have research photo galleries/photo essays, prepare them
 $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 'photo_galleries');
+
+$news_categories = news_categories((array)$pod->get_field('news_category'));
+
 ?><?php get_header(); ?>
 
 <div role="main">
@@ -155,6 +158,7 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
         <?php
         endif;
       endif; ?>
+      <?php include('inc/components/news.inc.php'); ?>
       </div><!-- .extra-content -->
     </div><!-- #contentarea -->
     <?php

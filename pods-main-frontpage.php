@@ -130,16 +130,7 @@ $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
 var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX);
 $pod = new Pod('slider', $pod_slug);
 
-$news_category_ids = $pod->get_field('news_category');
-var_trace(var_export($news_category_ids, true), 'news_category_ids');
-if($news_category_ids) {
-  $news_categories = '';
-  foreach($news_category_ids as $category) {
-    $news_categories .= $category['term_id'] . ',';
-  }
-  $news_categories = '&cat='. rtrim($news_categories, ',');
-  var_trace('news_categories: ' . $news_categories, $TRACE_PREFIX, $TRACE_ENABLED);
-}
+$news_categories = news_categories((array)$pod->get_field('news_category'));
 $jquery_options = $pod->get_field('jquery_options');
 
 $slides = $pod->get_field('slides');
@@ -231,45 +222,7 @@ $slides = $pod->get_field('slides');
             </div>
 
             <div class="extra-content">
-              <?php if($news_categories): ?>
-              <section id='news_area'>
-                <header>
-                  <h1>News</h1>
-                </header>
-                <div class='clearfix row'>
-                  <?php $latest_news = new WP_Query('posts_per_page=3' . $news_categories);
-                    while ($latest_news->have_posts()) :
-                      $latest_news->the_post();
-                      $do_not_duplicate = $post->ID;
-                      if($latest_news->current_post == 2) { $class_extra = " last"; }
-                    ?>
-                  <div class='fourcol<?php echo $class_extra; ?>'>
-                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                    <?php the_excerpt(); ?>
-                  </div>
-                  <?php endwhile;
-                    wp_reset_postdata();
-                  ?>
-                </div><!--.clearfix.row -->
-                <?php $more_news = new WP_Query('posts_per_page=10' . $news_categories);
-                  if($more_news->found_posts > 3) :
-                ?>
-                <ul>
-                <?php
-                    while ($more_news->have_posts()) :
-                      $more_news->the_post();
-                      if ($more_news->current_post > 2) :
-                ?>
-                  <li><a href="<?php the_permalink(); ?>"><?php the_time('j M'); ?> | <?php the_title() ?></a></li>
-                <?php endif;
-                    endwhile;
-                ?>
-                </ul>
-                <?php
-                  endif;
-                ?>
-              </section><!-- #news_area -->
-              <?php endif; ?>
+<?php include('inc/components/news.inc.php'); ?>
             </div><!-- .extra-content -->
 <?php include_once('inc/snippets/page-meta.php'); ?>
       </div>      
