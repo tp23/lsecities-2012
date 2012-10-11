@@ -139,15 +139,17 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
         </aside><!-- #keyfacts -->
       </div><!-- .top-content -->
       <div class='extra-content twelvecol'>
-        <!--
       <?php
-      if(is_user_logged_in()) {
+      if(is_user_logged_in() and current_user_can('manage_network')) {
         var_trace($research_photo_galleries, 'research_photo_galleries');
-        foreach($research_photo_galleries as $gallery) {
-          include('inc/components/galleria.inc.php');
+        foreach($research_photo_galleries as $key => $gallery) { ?>
+          <div class="threecol">
+          <?php
+          include('inc/components/galleria.inc.php'); ?>
+          </div>
+          <?php
         }
       } ?>
-        -->
       </div><!-- .extra-content -->
     </div><!-- #contentarea -->
     <?php
