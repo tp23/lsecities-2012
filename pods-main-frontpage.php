@@ -134,6 +134,7 @@ $news_categories = news_categories((array)$pod->get_field('news_category'));
 $jquery_options = $pod->get_field('jquery_options');
 
 $slides = $pod->get_field('slides');
+$linked_events = (array)$pod->get_field('linked_events');
 ?><?php get_header(); ?>
 
 <div role="main">
@@ -226,7 +227,12 @@ $slides = $pod->get_field('slides');
             </div>
 
             <div class="extra-content">
-<?php include('inc/components/news.inc.php'); ?>
+            <?php
+              if($news_categories and count($linked_events)) {
+                include('inc/components/news.inc.php');
+              } else {
+                include('inc/components/news+highlights.inc.php');
+              } ?>
             </div><!-- .extra-content -->
 <?php include_once('inc/snippets/page-meta.php'); ?>
       </div>      
