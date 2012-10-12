@@ -229,7 +229,7 @@ var_trace($linked_events, 'linked_events');
 
             <div class="extra-content">
             <?php
-              if($news_categories and count($linked_events)) {
+              if($news_categories and count($linked_events) > 1) {
                 include('inc/components/news+highlights.inc.php');
               } else {
                 include('inc/components/news.inc.php');
