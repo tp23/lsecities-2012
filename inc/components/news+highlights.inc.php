@@ -1,5 +1,3 @@
-              
-              <div class="row">
               <?php if($news_categories): ?>
               <section id='news_area' class="fourcol">
                 <header>
@@ -46,4 +44,3 @@
               </section><!-- #linked-events -->
               <?php
               endif; // (count($events)) ?>
-              </div>
