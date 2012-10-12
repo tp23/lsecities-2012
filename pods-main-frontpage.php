@@ -51,7 +51,7 @@ function get_tile_classes($tile_layout) {
 function compose_slide($column_spans, $tiles) {
   global $TILES_PER_COLUMN;
   
-  var_trace('compose_slide|tiles: ' . var_export($tiles, true), $TRACE_PREFIX);
+  var_trace(var_export($tiles, true), 'compose_slide|tiles');
 
   $slide_content = array('columns' => array());
   $tile_index = 0;
@@ -160,7 +160,11 @@ $slides = $pod->get_field('slides');
                   switch($slide_layout) {
                     case 'two-two-one':
                       $slide_content = compose_slide(array(2, 2, 1), $tiles);
-                      var_trace('slide_content_array: ' . var_export($slide_content, true), $TRACE_PREFIX, $TRACE_ENABLED);
+                      var_trace(var_export($slide_content, true), 'slide_content_array');
+                      break;
+                    case 'four-one':
+                      $slide_content = compose_slide(array(4, 1), $tiles);
+                      var_trace(var_export($slide_content, true), 'slide_content_array');
                       break;
                     default:
                       break;
