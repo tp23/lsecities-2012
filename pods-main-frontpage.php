@@ -135,6 +135,7 @@ $jquery_options = $pod->get_field('jquery_options');
 
 $slides = $pod->get_field('slides');
 $linked_events = (array)$pod->get_field('linked_events');
+var_trace($linked_events, 'linked_events');
 ?><?php get_header(); ?>
 
 <div role="main">
