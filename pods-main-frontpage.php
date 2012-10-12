@@ -230,9 +230,9 @@ var_trace($linked_events, 'linked_events');
             <div class="extra-content">
             <?php
               if($news_categories and count($linked_events)) {
-                include('inc/components/news.inc.php');
-              } else {
                 include('inc/components/news+highlights.inc.php');
+              } else {
+                include('inc/components/news.inc.php');
               } ?>
             </div><!-- .extra-content -->
 <?php include_once('inc/snippets/page-meta.php'); ?>
