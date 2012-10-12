@@ -395,6 +395,12 @@ right: -21px; */ }
 .lc-slider-page .flexslider .col2 .tile { margin-right: 1.092%; margin-bottom: 1.092%; }
 .lc-slider-page .flexslider .col2 .tile.onetile { width: 48.908%; }
 .lc-slider-page .flexslider .col2 .tile.twotiles { width: 98.908%; }
+.lc-slider-page .flexslider .col4 { width: 80.351%; float: left; }
+.lc-slider-page .flexslider .col4.last { width: 79.912%; }
+.lc-slider-page .flexslider .col4 .tile { margin-right: 0.546%; margin-bottom: 0.546%; }
+.lc-slider-page .flexslider .col4 .tile.onetile { width: 25%; }
+.lc-slider-page .flexslider .col4 .tile.twotiles { width: 49.454%; }
+.lc-slider-page .flexslider .col4 .tile.fourtiles { width: 98.362%; }
 .lc-slider-page .flexslider .slide-inner { border-left: 0px solid transparent; border-bottom: 0px solid transparent; }
 .lc-slider-page .flexslider .tile { border-right: 0px solid transparent; border-top: 0px solid transparent; float: left; padding: 0em; overflow: hidden; position: relative; min-height: 210px; height: 16em; }
 .lc-slider-page .flexslider .tile a, .lc-slider-page .flexslider .tile a:hover, .lc-slider-page .flexslider .tile a:active, .lc-slider-page .flexslider .tile a:visited { color: inherit; }
