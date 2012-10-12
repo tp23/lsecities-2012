@@ -1,6 +1,6 @@
               
               <div class="row">
-              <?php if($news_categories and $linked_events and $extra_feed): ?>
+              <?php if($news_categories): ?>
               <section id='news_area' class="fourcol">
                 <header>
                   <h1>News</h1>
