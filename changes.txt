@@ -29,6 +29,8 @@ lsecities-2012 (1.4) stable; urgency=low
     * [feature] display related events
     * [feature] display research outputs by category
     * [feature] display research partners
+    * [feature] display keywords (freeform text field)
+    * [feature] link researchers to profile blurb on staff page
   * general
     * [feature] script loading optimization
         
