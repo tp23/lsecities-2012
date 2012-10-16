@@ -59,20 +59,27 @@ var_trace($staff_members, 'staff_members');
 $project_coordinators_list = $pod->get_field('coordinators');
 $project_coordinators_count = count($project_coordinators_list);
 foreach($project_coordinators_list as $project_coordinator) {
-  $project_coordinators .= $project_coordinator['name'] . ' ' . $project_coordinator['family_name'] . ', ';
+  if($project_coordinator['slug'] and array_search($project_coordinator['slug'], $staff_members)) {
+    $project_coordinators .= "\n" . '<a href="/' . get_page_uri(2177) . '#p-' . $project_coordinator['slug'] . '">';
+  }
+  $project_coordinators .= $project_coordinator['name'] . ' ' . $project_coordinator['family_name'];
+  if($project_coordinator['slug'] and array_search($project_coordinator['slug'], $staff_members)) {
+    $project_coordinators .= '</a>';
+  }
+  $project_coordinators .= ', ';
 }
 $project_coordinators = substr($project_coordinators, 0, -2);
 
 $project_researchers_list = $pod->get_field('researchers');
 $project_researchers_count = count($project_researchers_list);
 foreach($project_researchers_list as $project_researcher) {
-  if($project_researcher['slug']) {
+  if($project_researcher['slug'] and array_search($project_researcher['slug'], $staff_members)) {
     $project_researchers .= "\n" . '<a href="/' . get_page_uri(2177) . '#p-' . $project_researcher['slug'] . '">';
   }
   $project_researchers .= $project_researcher['name'] . ' ' . $project_researcher['family_name'];
-  if($project_researcher['slug']) {
+  if($project_researcher['slug'] and array_search($project_researcher['slug'], $staff_members)) {
     $project_researchers .= '</a>';
-  }  
+  }
   $project_researchers .= ', ';
 }
 $project_researchers = substr($project_researchers, 0, -2);
