@@ -55,7 +55,7 @@ try {
 $staff = new Pod('people_group', 'lsecities-staff');
 $staff_mgmt = new Pod('people_group', 'lsecities-staff-mgmt');
 $all_staff = array_merge((array)$staff->get_field('members.slug'), (array)$staff_mgmt->get_field('members.slug'));
-var_trace($staff_members, 'staff_members');
+var_trace($all_staff, 'all_staff');
 
 $project_coordinators_list = $pod->get_field('coordinators');
 $project_coordinators_count = count($project_coordinators_list);
