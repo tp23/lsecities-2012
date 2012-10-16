@@ -229,11 +229,8 @@ var_trace($linked_events, 'linked_events');
 
             <div class="extra-content">
             <?php
-              if($news_categories and count($linked_events) > 1) {
-                include('inc/components/news+highlights.inc.php');
-              } else {
-                include('inc/components/news.inc.php');
-              } ?>
+              component_news((array)$pod->get_field('news_category'), '', $linked_events);
+            ?>
             </div><!-- .extra-content -->
 <?php include_once('inc/snippets/page-meta.php'); ?>
       </div>      
