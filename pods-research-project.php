@@ -51,6 +51,11 @@ try {
   }
 } catch (Exception $e) {}
 
+// build a list of all current members of staff
+$staff = new Pod('authors');
+$staff->findRecords(array('select' => 'groups.slug = "lsecities-staff"'));
+var_trace($staff);
+
 $project_coordinators_list = $pod->get_field('coordinators');
 $project_coordinators_count = count($project_coordinators_list);
 foreach($project_coordinators_list as $project_coordinator) {
