@@ -284,3 +284,43 @@ function news_categories($pod_news_categories) {
   }
   return $news_categories;
 }
+
+/* components */
+define(COMPONENTS_ROOT, 'inc/components');
+
+/**
+ * News component
+ * 
+ * This function outputs a News section or a combined
+ * News/Events/Highlights section as used on Slider frontpages and
+ * Research project pages.
+ * 
+ * If only one or more news categories are provided, the template
+ * used will be News only (three news items with title and blurb, up to
+ * ten further news items with title only). If news/highlights are
+ * passed in, the layout used will be combined News/Highlights.
+ * 
+ * @param array $news_categories_slugs The list of categories slugs
+ * @param string $news_prefix Any text to be displayed in the News heading
+ * @param array $linked_events An array of Events pods
+ * @return string The generated HTML code
+ */
+function component_news($news_categories_slugs, $news_prefix = '', $linked_events = '') {
+  $output = '';
+  
+  if(count($news_categories_slugs) > 0) {
+    $news_categories = news_categories($news_categories_slugs);
+  }
+  
+  if(count($news_categories_slugs) > 0 and count($linked_events) >0) {
+    $template = COMPONENTS_ROOT . '/news.inc.php';
+  } elseif(count($news_categories_slugs)) {
+    $template = COMPONENTS_ROOT . '/news+highlights.inc.php';
+  }
+  if($template) {
+    ob_start();
+    include $template;
+    $output = ob_end_flush();
+  }
+  return $output;
+}

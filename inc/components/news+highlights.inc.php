@@ -1,7 +1,7 @@
               <?php if($news_categories): ?>
               <section id='news_area' class="fourcol">
                 <header>
-                  <h1>News</h1>
+                  <h1><?php if($news_prefix) { echo $news_prefix . '  | '; } ?>News</h1>
                 </header>
                 <?php $more_news = new WP_Query('posts_per_page=10' . $news_categories); ?>
                 <ul>

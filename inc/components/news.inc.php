@@ -1,7 +1,7 @@
               <?php if($news_categories): ?>
               <section id='news_area'>
                 <header>
-                  <h1>News</h1>
+                  <h1><?php if($news_prefix) { echo $news_prefix . '  | '; } ?>News</h1>
                 </header>
                 <div class='clearfix row'>
                   <?php $latest_news = new WP_Query('posts_per_page=3' . $news_categories);
