@@ -61,7 +61,14 @@ $project_coordinators = substr($project_coordinators, 0, -2);
 $project_researchers_list = $pod->get_field('researchers');
 $project_researchers_count = count($project_researchers_list);
 foreach($project_researchers_list as $project_researcher) {
-  $project_researchers .= $project_researcher['name'] . ' ' . $project_researcher['family_name'] . ', ';
+  if($project_researcher['slug']) {
+    $project_researchers .= "\n" . '<a href="' . get_page_uri(2177) . '#' . $project_researcher['slug'] . '">';
+  }
+  $project_researchers .= $project_researcher['name'] . ' ' . $project_researcher['family_name'];
+  if($project_researcher['slug']) {
+    $project_researchers .= '</a>';
+  }  
+  $project_researchers .= ', ';
 }
 $project_researchers = substr($project_researchers, 0, -2);
 
