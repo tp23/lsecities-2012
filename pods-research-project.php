@@ -54,7 +54,7 @@ try {
 // build a list of all current members of staff
 $staff = new Pod('authors');
 $staff->findRecords(array('select' => 'groups.slug = "lsecities-staff"'));
-var_trace($staff);
+var_trace($staff, 'staff');
 
 $project_coordinators_list = $pod->get_field('coordinators');
 $project_coordinators_count = count($project_coordinators_list);
