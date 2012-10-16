@@ -38,6 +38,7 @@ $pod_tagline = $pod->get_field('tagline');
 $web_uri = $pod->get_field('web_uri');
 $pod_summary = do_shortcode($pod->get_field('summary'));
 $pod_blurb = do_shortcode($pod->get_field('blurb'));
+$pod_keywords = $pod->get_field('keywords');
 
 try {
   if($pod->get_field('date_start')) { 
@@ -156,6 +157,10 @@ $events = (array)$pod->get_field('events');
           <?php if($project_start and $project_end): ?>
             <dt>Duration</dt>
             <dd><?php echo $project_start; ?> - <?php echo $project_end; ?></dd>
+          <?php endif; ?>
+          <?php if($pod_keywords): ?>
+            <dt>Keywords</dt>
+            <dd><?php echo $pod_keywords; ?></dd>
           <?php endif; ?>
           </dl>
         </aside><!-- #keyfacts -->
