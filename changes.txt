@@ -1,7 +1,7 @@
 lsecities-2012 (1.4) stable; urgency=low
   
   release 1.4 "tonneau"
-  
+
   * research pages
     [update] updated heading photo slider
     [update] displaying richer research project metadata
@@ -9,13 +9,21 @@ lsecities-2012 (1.4) stable; urgency=low
     project metadata
     [fixed] handle gracefully wrong date formats for start/end years
   * sliders
-    [feature] upgraded to jquery.flexslider 2.0 (also fixes bug with
-    duplicate slider on Urban Age front page when one single slide is
-    set up)
+    * [feature] upgraded to jquery.flexslider 2.0 (also fixes bug with
+      duplicate slider on Urban Age front page when one single slide is
+      set up)
+    * [fixed] slider width is now properly aligned to top menu
+      (level2nav)
+    * [feature] the fix above is actually a side effect of a full
+      refactoring of the slider/columns/tiles sizes/margins calculations
+      in SCSS, in preparation for future improvements to sliders (i.e.
+      more flexibility of hosted content, more tile sizes, etc.)
   * events
     * [feature] added support for events that should not be listed
       in the main events pages (e.g. external events linked to research
-      projects but not hosted by LSE Cities
+      projects but not hosted by LSE Cities)
+  * conferences
+    * [feature] display partners and their logos
   * research projects
     * [feature] display timespan and summary
     * [feature] display related events
