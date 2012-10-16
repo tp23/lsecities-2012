@@ -52,9 +52,9 @@ try {
 } catch (Exception $e) {}
 
 // build a list of all current members of staff
-$staff = new Pod('authors');
-$staff->findRecords(array('where' => 'groups.slug = "lsecities-staff"'));
-var_trace($staff, 'staff');
+$staff = new Pod('people_group', 'lsecities-staff');
+$staff_members = (array)$staff->get_field('members.slug');
+var_trace($staff_members, 'staff_members');
 
 $project_coordinators_list = $pod->get_field('coordinators');
 $project_coordinators_count = count($project_coordinators_list);
