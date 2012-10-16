@@ -159,7 +159,7 @@ $events = (array)$pod->get_field('events');
         <?php
         endif;
       // latest news in categories defined for this research project
-      include('inc/components/news.inc.php');
+      component_news((array)$pod->get_field('news_category'), $pod_title);
       
       // linked events
       if(count($events)): ?>
