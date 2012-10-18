@@ -307,13 +307,12 @@ define(COMPONENTS_ROOT, 'inc/components');
  */
 function component_news($news_categories_slugs, $news_prefix = '', $linked_events = '') {
   $output = '';
+  var_trace(var_export($news_categories_slugs, true), 'news_categories_slugs');
   if(!is_array($news_categories_slug)) return $output;
   
   if(count($news_categories_slugs) > 0) {
     $news_categories = news_categories($news_categories_slugs);
   }
-
-  var_trace(count($news_categories_slugs), 'count($news_categories_slugs)');  
   
   if(count($news_categories_slugs) > 0 and is_array($linked_events) and count($linked_events) >0) {
     $template = COMPONENTS_ROOT . '/news.inc.php';
