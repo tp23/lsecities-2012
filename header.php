@@ -75,10 +75,10 @@ if($post->ID == 2481) { // Labs -> Cities and the crisis
 
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<script type="text/javascript" src="http://use.typekit.com/ftd3lpp.js"></script>
+<script type="text/javascript" src="https://use.typekit.com/ftd3lpp.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-<link href="http://cloud.webtype.com/css/9044dce3-7052-4e0e-9dbb-377978412ca7.css" rel="stylesheet" type="text/css" />
-<?php if(false): // redundant until we switch to PT Sans ?><link href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic|PT+Serif:400,700,700italic,400italic|Sorts+Mill+Goudy:400,400italic&amp;subset=latin,latin-ext" media="screen" rel="stylesheet" type="text/css" /><?php endif; ?>
+<link href="https://cloud.webtype.com/css/9044dce3-7052-4e0e-9dbb-377978412ca7.css" rel="stylesheet" type="text/css" />
+<?php if(false): // redundant until we switch to PT Sans ?><link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic|PT+Serif:400,700,700italic,400italic|Sorts+Mill+Goudy:400,400italic&amp;subset=latin,latin-ext" media="screen" rel="stylesheet" type="text/css" /><?php endif; ?>
 
 <?php
  wp_enqueue_style('jquery.flexslider', get_stylesheet_directory_uri() . '/stylesheets/flexslider/flexslider.css');
