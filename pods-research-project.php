@@ -106,7 +106,9 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
 
 $news_categories = news_categories((array)$pod->get_field('news_category'));
 
-$events = (array)$pod->get_field('events');
+if($pod->get_field('events')) {
+  $events = (array)$pod->get_field('events');
+}
 ?><?php get_header(); ?>
 
 <div role="main">

@@ -16,7 +16,7 @@
                 </ul>
               </section><!-- #news_area -->
               <?php endif; ?>
-              <?php if(count($linked_events)): ?>
+              <?php if(is_array($linked_events) and count($linked_events)): ?>
               <section id="linked-events" class="fourcol">
                 <header><h1>Events</h1></header>
                 <ul>
@@ -30,7 +30,7 @@
               </section><!-- #linked-events -->
               <?php
               endif; // (count($events)) ?>
-              <?php if(count($linked_events)): ?>
+              <?php if(is_array($linked_events) and count($linked_events)): ?>
               <section id="linked-events" class="fourcol last">
                 <header><h1>Events</h1></header>
                 <ul>
