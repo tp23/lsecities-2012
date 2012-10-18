@@ -315,9 +315,9 @@ function component_news($news_categories_slugs, $news_prefix = '', $linked_event
   }
   
   if(count($news_categories_slugs) > 0 and is_array($linked_events) and count($linked_events) >0) {
-    $template = COMPONENTS_ROOT . '/news.inc.php';
-  } elseif(count($news_categories_slugs)) {
     $template = COMPONENTS_ROOT . '/news+highlights.inc.php';
+  } elseif(count($news_categories_slugs) > 0) {
+    $template = COMPONENTS_ROOT . '/news.inc.php';
   }
   if($template) {
     ob_start();
