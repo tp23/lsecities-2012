@@ -308,7 +308,7 @@ define(COMPONENTS_ROOT, 'inc/components');
 function component_news($news_categories_slugs, $news_prefix = '', $linked_events = '') {
   $output = '';
   var_trace(var_export($news_categories_slugs, true), 'news_categories_slugs');
-  if(!is_array($news_categories_slug)) return $output;
+  if(!is_array($news_categories_slugs)) return $output;
   
   if(count($news_categories_slugs) > 0) {
     $news_categories = news_categories($news_categories_slugs);
