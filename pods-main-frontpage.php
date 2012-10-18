@@ -130,11 +130,11 @@ $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
 var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX);
 $pod = new Pod('slider', $pod_slug);
 
-$news_categories = news_categories((array)$pod->get_field('news_category'));
+$news_categories = news_categories($pod->get_field('news_category'));
 $jquery_options = $pod->get_field('jquery_options');
 
 $slides = $pod->get_field('slides');
-$linked_events = (array)$pod->get_field('linked_events', 'date_start DESC');
+$linked_events = $pod->get_field('linked_events', 'date_start DESC');
 var_trace($linked_events, 'linked_events');
 ?><?php get_header(); ?>
 
@@ -229,7 +229,7 @@ var_trace($linked_events, 'linked_events');
 
             <div class="extra-content">
             <?php
-              component_news((array)$pod->get_field('news_category'), '', $linked_events);
+              component_news($pod->get_field('news_category'), '', $linked_events);
             ?>
             </div><!-- .extra-content -->
 <?php include_once('inc/snippets/page-meta.php'); ?>

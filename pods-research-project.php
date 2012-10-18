@@ -54,8 +54,7 @@ try {
 
 // build a list of all current members of staff
 $staff = new Pod('people_group', 'lsecities-staff');
-$staff_mgmt = new Pod('people_group', 'lsecities-staff-mgmt');
-$all_staff = array_merge((array)$staff->get_field('members.slug'), (array)$staff_mgmt->get_field('members.slug'));
+$all_staff = $staff->get_field('members.slug');
 var_trace($all_staff, 'all_staff');
 
 $project_coordinators_list = $pod->get_field('coordinators');
@@ -104,10 +103,10 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
 // if we have research photo galleries/photo essays, prepare them
 $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 'photo_galleries');
 
-$news_categories = news_categories((array)$pod->get_field('news_category'));
+$news_categories = news_categories($pod->get_field('news_category'));
 
 if($pod->get_field('events')) {
-  $events = (array)$pod->get_field('events');
+  $events = $pod->get_field('events');
 }
 ?><?php get_header(); ?>
 
@@ -186,7 +185,7 @@ if($pod->get_field('events')) {
         <?php
         endif;
       // latest news in categories defined for this research project
-      component_news((array)$pod->get_field('news_category'), $pod_title);
+      component_news($pod->get_field('news_category'), $pod_title);
       
       // linked events
       if(count($events)): ?>
