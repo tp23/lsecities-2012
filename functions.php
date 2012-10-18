@@ -313,7 +313,10 @@ function component_news($news_categories_slugs, $news_prefix = '', $linked_event
   if(count($news_categories_slugs) > 0) {
     $news_categories = news_categories($news_categories_slugs);
   }
-  
+
+  var_trace(var_export($news_categories, true), 'news_categories');
+  var_trace(count($news_categories_slug), 'count($news_categories_slugs)');
+
   if(count($news_categories_slugs) > 0 and is_array($linked_events) and count($linked_events) >0) {
     $template = COMPONENTS_ROOT . '/news+highlights.inc.php';
   } elseif(count($news_categories_slugs) > 0) {
