@@ -311,11 +311,12 @@ function component_news($news_categories_slugs, $news_prefix = '', $linked_event
   if(count($news_categories_slugs) > 0) {
     $news_categories = news_categories($news_categories_slugs);
   }
+
+  var_trace(count($news_categories_slugs), 'count($news_categories_slugs)');  
   
   if(count($news_categories_slugs) > 0 and count($linked_events) >0) {
     $template = COMPONENTS_ROOT . '/news.inc.php';
   } elseif(count($news_categories_slugs)) {
-    var_trace(count($news_categories_slugs), 'count($news_categories_slugs)');
     $template = COMPONENTS_ROOT . '/news+highlights.inc.php';
   }
   if($template) {
