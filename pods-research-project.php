@@ -168,7 +168,7 @@ if($pod->get_field('events')) {
       </div><!-- .top-content -->
       <div class='extra-content twelvecol'>
       <?php
-      if(is_user_logged_in()):
+      if(true):
         var_trace($research_photo_galleries, 'research_photo_galleries');
         if(count($research_photo_galleries)): ?>
         <section id="photo-essays">
