@@ -1,0 +1,42 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>
+Created by FontForge 20100429 at Tue Oct 23 15:30:09 2012
+ By root
+Copyright (C) 2012 by original authors @ fontello.com
+</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="364" >
+  <font-face 
+    font-family="fontello"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1000"
+    panose-1="2 0 6 3 0 0 0 0 0 0"
+    ascent="800"
+    descent="-200"
+    bbox="-0.285714 -100 947.286 800"
+    underline-thickness="50"
+    underline-position="-100"
+    unicode-range="U+2302-E800"
+  />
+<missing-glyph 
+d="M33 0v666h265v-666h-265zM66 33h199v600h-199v-600z" />
+    <glyph glyph-name=".notdef" 
+d="M33 0v666h265v-666h-265zM66 33h199v600h-199v-600z" />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="nonmarkingreturn" horiz-adv-x="333" 
+ />
+    <glyph glyph-name="house" unicode="&#x2302;" horiz-adv-x="947" 
+d="M1 339q3 12 14 20l433 356q12 9 25.5 9t25.5 -9l133 -109v61q0 20 20 20h117q20 0 20 -20v-190l144 -118q10 -8 13 -20t-1 -24q-10 -25 -38 -25h-79v-316q0 -17 -11 -28.5t-28 -11.5h-216v237h-198v-237h-217q-17 0 -28.5 11.5t-11.5 28.5v316h-79q-26 0 -37 25
+q-4 12 -1 24z" />
+    <glyph glyph-name="uniE4A2" unicode="&#xe4a2;" horiz-adv-x="900" 
+d="M408 141l209 209l-209 209l-64 -64l145 -145l-145 -145zM900 350q0 -122 -60.5 -225.5t-164 -164t-225.5 -60.5t-225.5 60.5t-164 164t-60.5 225.5t60.5 225.5t164 164t225.5 60.5t225.5 -60.5t164 -164t60.5 -225.5z" />
+    <glyph glyph-name="uniE75E" unicode="&#xe75e;" horiz-adv-x="588" 
+d="M139 800l450 -450l-450 -450l-139 139l311 311l-311 311z" />
+    <glyph glyph-name="uniE800" unicode="&#xe800;" horiz-adv-x="370" 
+d="M113 574l225 -235q17 -17 17 -39t-17 -39q-204 -215 -225 -235q-16 -15 -40 -15.5t-41 15.5q-37 37 0 79l188 195l-188 195q-37 42 0 79q17 16 41 15.5t40 -15.5z" />
+  </font>
+</defs></svg>
