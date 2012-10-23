@@ -45,14 +45,9 @@
             <?php wp_list_pages('title_li=&depth=1&child_of=94&sort_column=menu_order&sort_order=ASC&echo=1'); ?>
           </ul>
         </div>
-  <!--  <section class="fourcol">
-          <h1></h1>
-          <ul>
-            <?php get_template_part('snippet-colophon'); ?>
-          </ul>
-        </section> -->
         <div class="twocol">
           <?php get_template_part('snippet-organizers'); ?>
+          <?php get_template_part('snippet-colophon'); ?>
         </div>
         <div class="onecol last">&nbsp;</div>
       </div>
