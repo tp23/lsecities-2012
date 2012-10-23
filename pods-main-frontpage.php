@@ -168,6 +168,10 @@ var_trace($linked_events, 'linked_events');
                       $slide_content = compose_slide(array(4, 1), $tiles);
                       var_trace(var_export($slide_content, true), 'slide_content_array');
                       break;
+                    case 'five':
+                      $slide_content = compose_slide(array(5), $tiles);
+                      var_trace(var_export($slide_content, true), 'slide_content_array');
+                      break;
                     default:
                       break;
                   }
