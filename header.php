@@ -82,7 +82,6 @@ if($post->ID == 2481) { // Labs -> Cities and the crisis
 
 <?php
  wp_enqueue_style('jquery.flexslider', get_stylesheet_directory_uri() . '/stylesheets/flexslider/flexslider.css');
- wp_enqueue_style('jquery.flexslider', get_stylesheet_directory_uri() . '/stylesheets/fonts/theovand/stylesheet.css');
  wp_enqueue_script('jquery.flexslider', get_stylesheet_directory_uri() . '/javascripts/jquery.flexslider.min.js', 'jquery', false, true);
 ?>
 
@@ -95,7 +94,8 @@ if($post->ID == 2481) { // Labs -> Cities and the crisis
 <!-- <script async="async" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script> -->
 <?php wp_enqueue_script('cookie-control', plugins_url() . '/cookie-control/js/cookieControl-5.1.min.js', 'jquery', false, true); ?>
 <?php wp_enqueue_style('jquery-mediaelement', get_stylesheet_directory_uri() .'/stylesheets/mediaelement/mediaelementplayer.css'); ?>
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+<?php wp_enqueue_style('theovandoegsburg', get_stylesheet_directory_uri() . '/stylesheets/fonts/theovand/stylesheet.css'); ?>
+ <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
