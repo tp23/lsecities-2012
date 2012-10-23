@@ -159,7 +159,7 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 								<input type="hidden" value="lsecities.net" name="sitesearch" />
 								<div id="queryfield">
 									<input type="text" size="35 " placeholder="Search LSE Cities" name="q" />
-									<input type="submit" value="›" />
+									<button><span></span></button>
 								</div>
 							</div>
              </form>
