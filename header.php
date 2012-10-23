@@ -82,6 +82,7 @@ if($post->ID == 2481) { // Labs -> Cities and the crisis
 
 <?php
  wp_enqueue_style('jquery.flexslider', get_stylesheet_directory_uri() . '/stylesheets/flexslider/flexslider.css');
+ wp_enqueue_style('jquery.flexslider', get_stylesheet_directory_uri() . '/stylesheets/fonts/theovand/stylesheet.css');
  wp_enqueue_script('jquery.flexslider', get_stylesheet_directory_uri() . '/javascripts/jquery.flexslider.min.js', 'jquery', false, true);
 ?>
 
