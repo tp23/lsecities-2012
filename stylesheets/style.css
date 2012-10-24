@@ -316,8 +316,8 @@ div.widget h2 { margin-bottom: 0.5em; }
 
 /* organic tabs jquery plugin */
 .organictabs { margin-top: 2em; }
-.organictabs > li { background-color: red; }
-.organictabs > li a, .organictabs > li a:visited, .organictabs > li a:active, .organictabs > li a:focus, .organictabs > li a:hover { color: white; font-weight: bold; display: block; padding: 0.5em; }
+.organictabs > li a, .organictabs > li a:visited, .organictabs > li a:active, .organictabs > li a:focus, .organictabs > li a:hover { color: white; font-weight: bold; display: block; padding: 0.5em; background-color: red; }
+.organictabs > li a.current, .organictabs > li a:visited.current, .organictabs > li a:active.current, .organictabs > li a:focus.current, .organictabs > li a:hover.current { background-color: black; }
 
 .ui-accordion-header { cursor: pointer; }
 
@@ -540,4 +540,3 @@ nav#projectsmenu h1 { font-size: 1.2em; font-weight: bold; margin-bottom: 0.5em;
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; } }
-
