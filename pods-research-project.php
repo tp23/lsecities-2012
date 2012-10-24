@@ -131,7 +131,7 @@ if($pod->get_field('events')) {
             
             <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)): ?>
             <ul class="nav organictabs row">
-              <li class="threecol"><a class="current" href="#tab-info">Research profile</a></li>
+              <li class="threecol"><a class="current" href="#project-info">Research profile</a></li>
               <?php if(is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0): ?>
               <li class="threecol"><a href="#news_area">Project news</a></li>
               <?php endif; ?>
@@ -142,7 +142,9 @@ if($pod->get_field('events')) {
             <?php endif; ?>
           </header>
           <div class='entry-content article-text'>
-            <?php echo $pod->get_field('blurb'); ?>
+            <div id="project-info">
+              <?php echo $pod->get_field('blurb'); ?>
+            </div>
             <?php
             if(true):
               var_trace($research_photo_galleries, 'research_photo_galleries');
@@ -151,7 +153,7 @@ if($pod->get_field('events')) {
                 <header><h1>Photo essays</h1></header>
                 <?php
                 foreach($research_photo_galleries as $key => $gallery): ?>
-                  <div class="fourcol<?php if((($key + 1) % 3) == 0): ?> last<?php endif; ?>">
+                  <div class="sixcol<?php if((($key + 1) % 2) == 0): ?> last<?php endif; ?>">
                   <?php
                   include('inc/components/galleria.inc.php'); ?>
                   </div>
