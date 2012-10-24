@@ -297,7 +297,7 @@ ol.article-references li:target { background-color: #ffeeee; }
 #contentarea .top-content { margin-bottom: 1em; }
 #contentarea .top-content > header { margin-bottom: 1em; }
 #contentarea .top-content article header { margin-bottom: 1em; }
-#contentarea .top-content article header h1 { font-family: museo-sans, PT Sans, sans-serif; font-weight: 900; color: #22273b; }
+#contentarea .top-content article header h1.entry-title { font-family: museo-sans, PT Sans, sans-serif; font-weight: 900; color: #22273b; }
 
 #keyfacts, #navigationarea { font-size: 0.9em; }
 #keyfacts h1, #navigationarea h1 { font-size: 1em; font-weight: bold; }
@@ -506,6 +506,12 @@ right: -21px; */ }
 .lc-publication #tableofcontents .articles > section .article { margin-bottom: 0.5em; }
 .lc-publication #tableofcontents .articles > section .article > h1 { font-size: 1em; }
 .lc-publication #tableofcontents .articles > section .article .excerpt { font-size: 1em; }
+
+.lc-research-project #photo-essays > div { margin-bottom: 1em; }
+.lc-research-project section { margin-top: 2em; }
+.lc-research-project section > header { border-top: 1px solid red; }
+.lc-research-project section > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
+.lc-research-project section > header > h1 { margin-bottom: 0; }
 
 nav#projectsmenu h1 { font-size: 1.2em; font-weight: bold; margin-bottom: 0.5em; }
 

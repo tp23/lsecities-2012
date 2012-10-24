@@ -141,7 +141,7 @@ if($pod->get_field('events')) {
             </ul>
             <?php endif; ?>
           </header>
-          <div class='entry-content article-text'>
+          <div class='entry-content article-text list-wrap'>
             <div id="project-info">
               <?php echo $pod->get_field('blurb'); ?>
             </div>
