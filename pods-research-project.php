@@ -142,30 +142,32 @@ if($pod->get_field('events')) {
             <?php endif; ?>
           </header>
           <div class='entry-content article-text list-wrap'>
-            <div id="project-info">
+            <section id="project-info">
               <?php echo $pod->get_field('blurb'); ?>
-            </div>
+                <?php
+                var_trace($research_photo_galleries, 'research_photo_galleries');
+                if(count($research_photo_galleries)): ?>
+                <section id="photo-essays">
+                  <header><h1>Photo essays</h1></header>
+                  <?php
+                  foreach($research_photo_galleries as $key => $gallery): ?>
+                    <div class="sixcol<?php if((($key + 1) % 2) == 0): ?> last<?php endif; ?>">
+                    <?php
+                    include('inc/components/galleria.inc.php'); ?>
+                    </div>
+                    <?php
+                  endforeach; // ($research_photo_galleries as $key => $gallery) ?>
+                </section>
+                <?php
+                endif; ?>
+              </section>
+            </section>
             <?php
             if(true):
-              var_trace($research_photo_galleries, 'research_photo_galleries');
-              if(count($research_photo_galleries)): ?>
-              <section id="photo-essays">
-                <header><h1>Photo essays</h1></header>
-                <?php
-                foreach($research_photo_galleries as $key => $gallery): ?>
-                  <div class="sixcol<?php if((($key + 1) % 2) == 0): ?> last<?php endif; ?>">
-                  <?php
-                  include('inc/components/galleria.inc.php'); ?>
-                  </div>
-                  <?php
-                endforeach; // ($research_photo_galleries as $key => $gallery) ?>
-              </section>
-              <?php
-              endif;
               if(is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0):
               // latest news in categories defined for this research project
               $more_news = new WP_Query('posts_per_page=10' . news_categories($pod->get_field('news_category'))); ?>
-              <section id="news_area">
+              <section id="news_area" class="hide">
                 <header><h1>Project news</h1></header>
                 <ul>
                 <?php
@@ -182,7 +184,7 @@ if($pod->get_field('events')) {
              endif; // ($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0)
             // linked events
             if(count($events)): ?>
-            <section id="linked-events">
+            <section id="linked-events" class="hide">
               <header><h1>Events</h1></header>
               <ul>
             <?php
