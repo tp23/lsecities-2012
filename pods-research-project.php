@@ -162,8 +162,11 @@ if($pod->get_field('events')) {
               </section>
               <?php
               endif;
-            // latest news in categories defined for this research project
-              $more_news = new WP_Query('posts_per_page=10' . $news_categories); ?>
+              if(is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0):
+              // latest news in categories defined for this research project
+              $more_news = new WP_Query('posts_per_page=10' . news_categories($pod->get_field('news_category'))); ?>
+              <section id="news_area">
+                <header><h1>Project news</h1></header>
                 <ul>
                 <?php
                     while ($more_news->have_posts()) :
@@ -174,7 +177,9 @@ if($pod->get_field('events')) {
                     endwhile;
                 ?>
                 </ul>
+              </section> <!-- #news_area -->
             <?php
+             endif; // ($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0)
             // linked events
             if(count($events)): ?>
             <section id="linked-events">
