@@ -130,6 +130,7 @@ if($pod->get_field('events')) {
             <?php endif; ?>
             
             <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)): ?>
+            <script>jQuery(function() { jQuery("article").organicTabs(); });</script>
             <ul class="nav organictabs row">
               <li class="threecol"><a class="current" href="#project-info">Research profile</a></li>
               <?php if(is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0): ?>
