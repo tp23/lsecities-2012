@@ -163,8 +163,18 @@ if($pod->get_field('events')) {
               <?php
               endif;
             // latest news in categories defined for this research project
-            component_news($pod->get_field('news_category'), $pod_title);
-            
+              $more_news = new WP_Query('posts_per_page=10' . $news_categories); ?>
+                <ul>
+                <?php
+                    while ($more_news->have_posts()) :
+                      $more_news->the_post();
+                ?>
+                  <li><a href="<?php the_permalink(); ?>"><?php the_time('j M'); ?> | <?php the_title() ?></a></li>
+                <?php
+                    endwhile;
+                ?>
+                </ul>
+            <?php
             // linked events
             if(count($events)): ?>
             <section id="linked-events">
