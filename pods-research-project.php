@@ -125,13 +125,61 @@ if($pod->get_field('events')) {
           <header class='entry-header'>
             <h1><?php echo $pod_title; ?></h1>
             <?php if($pod_tagline): ?><h2><?php echo $pod_tagline; ?></h2><?php endif ; ?>
-          </header>
-          <div class='entry-content article-text'>
             <?php if($pod_summary): ?>
             <div class="abstract"><?php echo $pod_summary; ?></div>
             <?php endif; ?>
+            
+            <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)): ?>
+            <ul class="nav organictabs row">
+              <li class="threecol"><a class="current" href="#tab-info">Research profile</a></li>
+              <?php if(is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0): ?>
+              <li class="threecol"><a href="#news_area">Project news</a></li>
+              <?php endif; ?>
+              <?php if(count($events)): ?>
+              <li class="threecol"><a href="#linked-events">Events</a></li>
+              <?php endif; ?>
+            </ul>
+            <?php endif; ?>
+          </header>
+          <div class='entry-content article-text'>
             <?php echo $pod->get_field('blurb'); ?>
-          </div>
+            <?php
+            if(true):
+              var_trace($research_photo_galleries, 'research_photo_galleries');
+              if(count($research_photo_galleries)): ?>
+              <section id="photo-essays">
+                <header><h1>Photo essays</h1></header>
+                <?php
+                foreach($research_photo_galleries as $key => $gallery): ?>
+                  <div class="fourcol<?php if((($key + 1) % 3) == 0): ?> last<?php endif; ?>">
+                  <?php
+                  include('inc/components/galleria.inc.php'); ?>
+                  </div>
+                  <?php
+                endforeach; // ($research_photo_galleries as $key => $gallery) ?>
+              </section>
+              <?php
+              endif;
+            // latest news in categories defined for this research project
+            component_news($pod->get_field('news_category'), $pod_title);
+            
+            // linked events
+            if(count($events)): ?>
+            <section id="linked-events">
+              <header><h1>Events</h1></header>
+              <ul>
+            <?php
+              foreach($events as $event): ?>
+              <li>
+                <a href="<?php echo PODS_BASEURI_EVENTS . '/' . $event['slug']; ?>"><?php echo date('j F Y', strtotime($event['date_start'])) . ' | ' . $event['name']; ?></a>
+              </li>
+            <?php endforeach; // ($events as $event) ?>
+              </ul>
+            </section>
+            <?php
+            endif; // (count($events)) 
+            endif; // (is_user_logged_in()) ?>
+          </div> <!-- .entry-content.article-text -->
         </article>
         <aside class='wireframe fourcol last entry-meta' id='keyfacts'>
           <dl>
@@ -167,42 +215,6 @@ if($pod->get_field('events')) {
         </aside><!-- #keyfacts -->
       </div><!-- .top-content -->
       <div class='extra-content twelvecol'>
-      <?php
-      if(true):
-        var_trace($research_photo_galleries, 'research_photo_galleries');
-        if(count($research_photo_galleries)): ?>
-        <section id="photo-essays">
-          <header><h1>Photo essays</h1></header>
-          <?php
-          foreach($research_photo_galleries as $key => $gallery): ?>
-            <div class="fourcol<?php if((($key + 1) % 3) == 0): ?> last<?php endif; ?>">
-            <?php
-            include('inc/components/galleria.inc.php'); ?>
-            </div>
-            <?php
-          endforeach; // ($research_photo_galleries as $key => $gallery) ?>
-        </section>
-        <?php
-        endif;
-      // latest news in categories defined for this research project
-      component_news($pod->get_field('news_category'), $pod_title);
-      
-      // linked events
-      if(count($events)): ?>
-      <section id="linked-events">
-        <header><h1>Events</h1></header>
-        <ul>
-      <?php
-        foreach($events as $event): ?>
-        <li>
-          <a href="<?php echo PODS_BASEURI_EVENTS . '/' . $event['slug']; ?>"><?php echo date('j F Y', strtotime($event['date_start'])) . ' | ' . $event['name']; ?></a>
-        </li>
-      <?php endforeach; // ($events as $event) ?>
-        </ul>
-      </section>
-      <?php
-      endif; // (count($events)) 
-      endif; // (is_user_logged_in()) ?>
       </div><!-- .extra-content -->
     </div><!-- #contentarea -->
     <?php
