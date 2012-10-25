@@ -50,8 +50,8 @@ function generate_section($section_slug, $section_heading = false, $mode = MODE_
   $output .= "<h1>$section_heading</h1>";
   $output .= "<ul>";
   foreach($people as $person) {
-    $display_after = new DateTime($person['display_after']);
-    $display_until = new DateTime($person['display_until']);
+    $display_after = new DateTime($person['display_after'] . 'T00:00:00.0');
+    $display_until = new DateTime($person['display_until'] . 'T23:59:59.0');
     $datetime_now = new DateTime('now');
     var_trace('display_after: ' . var_export($display_after, true), $TRACE_PREFIX, true);
     var_trace('display_until: ' . var_export($display_until, true), $TRACE_PREFIX, true);
