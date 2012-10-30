@@ -11,14 +11,14 @@
   /* URI: TBD */
   $TRACE_ENABLED = is_user_logged_in();
   $TRACE_PREFIX = 'pods-list';
-  
+
   $pod_slugs = array();
   $lists = array();
   $pod_slugs = get_post_meta($post->ID, 'pod_slug', false);
   var_trace(var_export($pod_slugs, true), 'pod_slugs');
   foreach($pod_slugs as $index => $slug) {
     $this_pod = new Pod('list', $slug);
-    
+
     array_push($lists, array(
       'type' => $this_pod->get_field('pod_type.slug'),
       'title' => $this_pod->get_field('name'),
@@ -27,7 +27,7 @@
       'items' => $this_pod->get_field('list', "menu_order $sort_order")
     ));
   }
-  
+
   $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
   $pod = new Pod('list', $pod_slug);
   $pod_type = $pod->get_field('pod_type.slug');
@@ -56,10 +56,10 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
   <header class="entry-header twelvecol last">
 		<h1 class="entry-title"><?php echo $pod_title; ?></h1>
   </header><!-- .entry-header -->
-  
+
   <article id="post-<?php the_ID(); ?>" <?php post_class('ninecol'); ?>>
     <div class="entry-content">
-    
+
     <?php if(is_user_logged_in()) : ?>
     <?php var_trace($lists, 'pod lists'); ?>
     <?php foreach($lists as $index => $list): ?>
@@ -70,7 +70,7 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
           <ul>
           <?php
             $index = 0;
-            foreach($list['items'] as $key => $item) : 
+            foreach($list['items'] as $key => $item) :
               $item_pod = new Pod($pod_type, get_post_meta($item['ID'], 'pod_slug', true));
           ?>
           <?php if($index % 4 == 0 || $index == 0): ?>
@@ -96,15 +96,15 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
       </section><!-- .list -->
     <?php endif; // (!empty($list['items'])) ?>
     <?php endforeach; // ($lists as $key => $list) ?>
-      
+
     <?php else: ?>
-    
+
     <?php if(!empty($pod_list)) : ?>
       <div class="list">
         <ul>
         <?php
           $index = 0;
-          foreach($pod_list as $key => $item) : 
+          foreach($pod_list as $key => $item) :
             $item_pod = new Pod($pod_type, get_post_meta($item['ID'], 'pod_slug', true));
         ?>
         <?php if($index % 4 == 0 || $index == 0): ?>
@@ -129,7 +129,7 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
       </div><!-- .list -->
     <?php endif; // (!empty($pod_list)) ?>
     <?php endif; // (is_user_logged_in()) ?>
-        
+
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
 </article><!-- #post-<?php the_ID(); ?> -->
