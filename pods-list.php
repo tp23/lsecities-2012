@@ -61,7 +61,7 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
     <div class="entry-content">
     
     <?php if(is_user_logged_in()) : ?>
-    
+    <?php var_trace($lists, 'pod lists'); ?>
     <?php foreach($lists as $index => $list): ?>
     <?php if(!empty($list['items'])) : ?>
       <div class="list">
