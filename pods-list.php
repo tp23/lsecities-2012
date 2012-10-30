@@ -29,8 +29,8 @@
 <?php get_header(); ?>
 
 <?php
-var_trace(var_export($pod_featured_item_permalink, true), $TRACE_PREFIX . ' - featured_item_permalink', $TRACE_ENABLED);
-var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list', $TRACE_ENABLED);
+var_trace(var_export($pod_featured_item_permalink, true), $TRACE_PREFIX . ' - featured_item_permalink');
+var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
 
 ?>
 
