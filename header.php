@@ -14,6 +14,11 @@ array_unshift($ancestors, $post->ID);
 global $pods_toplevel_ancestor;
 $toplevel_ancestor = array_pop($ancestors);
 
+// use ec2012 CSS class if we are being called via the ec2012 microsite
+if($_GET["siteid"] == 'ec2012') {
+  $body_class_extra = 'ec2012';
+}
+
 // If we are on the root frontpage ('/', page ID 393), set ancestor to nil
 if($toplevel_ancestor == 393) { $toplevel_ancestor = ''; }
 
@@ -129,7 +134,7 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 </script>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class($body_class_extra); ?>>
 
     <!--[if lt IE 8 ]>
       <p class='chromeframe'>
