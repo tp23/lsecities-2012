@@ -64,34 +64,36 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
     <?php var_trace($lists, 'pod lists'); ?>
     <?php foreach($lists as $index => $list): ?>
     <?php if(!empty($list['items'])) : ?>
-      <div class="list">
-        <h4><?php echo $list['title']; ?></h4>
-        <ul>
-        <?php
-          $index = 0;
-          foreach($list['items'] as $key => $item) : 
-            $item_pod = new Pod($pod_type, get_post_meta($item['ID'], 'pod_slug', true));
-        ?>
-        <?php if($index % 4 == 0 || $index == 0): ?>
-          <div class="twelvecol">
-        <?php endif; ?>
-          <li class='threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>'>
-            <a href="<?php echo get_permalink($item['ID']); ?>">
-              <img src="<?php echo wp_get_attachment_url($item_pod->get_field('snapshot.ID')); ?>" />
-            </a>
-            <p>
+      <section class="list">
+        <h2><?php echo $list['title']; ?></h2>
+        <p>
+          <ul>
+          <?php
+            $index = 0;
+            foreach($list['items'] as $key => $item) : 
+              $item_pod = new Pod($pod_type, get_post_meta($item['ID'], 'pod_slug', true));
+          ?>
+          <?php if($index % 4 == 0 || $index == 0): ?>
+            <div class="twelvecol">
+          <?php endif; ?>
+            <li class='threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>'>
               <a href="<?php echo get_permalink($item['ID']); ?>">
-                <?php echo $item_pod->get_field('name'); ?>
+                <img src="<?php echo wp_get_attachment_url($item_pod->get_field('snapshot.ID')); ?>" />
               </a>
-            </p>
-          </li>
-        <?php if(($index + 1) % 4 == 0): ?>
-          </div>
-        <?php endif;
-          $index++;
-          endforeach; ?>
-        </ul>
-      </div><!-- .list -->
+              <p>
+                <a href="<?php echo get_permalink($item['ID']); ?>">
+                  <?php echo $item_pod->get_field('name'); ?>
+                </a>
+              </p>
+            </li>
+          <?php if(($index + 1) % 4 == 0): ?>
+            </div>
+          <?php endif;
+            $index++;
+            endforeach; ?>
+          </ul>
+        </p>
+      </section><!-- .list -->
     <?php endif; // (!empty($list['items'])) ?>
     <?php endforeach; // ($lists as $key => $list) ?>
       
