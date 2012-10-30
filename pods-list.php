@@ -11,9 +11,23 @@
   /* URI: TBD */
   $TRACE_ENABLED = is_user_logged_in();
   $TRACE_PREFIX = 'pods-list';
+  
   $pod_slugs = array();
+  $lists = array();
   $pod_slugs = get_post_meta($post->ID, 'pod_slug', false);
   var_trace(var_export($pod_slugs, true), 'pod_slugs');
+  foreach($pod_slugs as $index => $slug) {
+    $this_pod = new Pod('list', $slug);
+    
+    array_push($lists, array(
+      'type' => $this_pod->get_field('pod_type.slug'),
+      'title' => $this_pod->get_field('name'),
+      'page_id' => $this_pod->get_field('featured_item.ID'),
+      'sort_order' => $this_pod->get_field('sort_descending') ? 'DESC' : 'ASC',
+      'items' => $this_pod->get_field('list', "menu_order $sort_order")
+    ));
+  }
+  
   $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
   $pod = new Pod('list', $pod_slug);
   $pod_type = $pod->get_field('pod_type.slug');
@@ -46,7 +60,42 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
   <article id="post-<?php the_ID(); ?>" <?php post_class('ninecol'); ?>>
     <div class="entry-content">
     
-    <?php the_content(); ?>
+    <?php if(is_user_logged_in()) : ?>
+    
+    <?php foreach($lists as $index => $list): ?>
+    <?php if(!empty($list['items'])) : ?>
+      <div class="list">
+        <h4><?php echo $list['title']; ?></h4>
+        <ul>
+        <?php
+          $index = 0;
+          foreach($list['items'] as $key => $item) : 
+            $item_pod = new Pod($pod_type, get_post_meta($item['ID'], 'pod_slug', true));
+        ?>
+        <?php if($index % 4 == 0 || $index == 0): ?>
+          <div class="twelvecol">
+        <?php endif; ?>
+          <li class='threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>'>
+            <a href="<?php echo get_permalink($item['ID']); ?>">
+              <img src="<?php echo wp_get_attachment_url($item_pod->get_field('snapshot.ID')); ?>" />
+            </a>
+            <p>
+              <a href="<?php echo get_permalink($item['ID']); ?>">
+                <?php echo $item_pod->get_field('name'); ?>
+              </a>
+            </p>
+          </li>
+        <?php if(($index + 1) % 4 == 0): ?>
+          </div>
+        <?php endif;
+          $index++;
+          endforeach; ?>
+        </ul>
+      </div><!-- .list -->
+    <?php endif; // (!empty($list['items'])) ?>
+    <?php endforeach; // ($lists as $key => $list) ?>
+      
+    <?php else: ?>
     
     <?php if(!empty($pod_list)) : ?>
       <div class="list">
@@ -76,7 +125,8 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
           endforeach; ?>
         </ul>
       </div><!-- .list -->
-    <?php endif ?>    
+    <?php endif; // (!empty($pod_list)) ?>
+    <?php endif; // (is_user_logged_in()) ?>
         
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
