@@ -11,6 +11,9 @@
   /* URI: TBD */
   $TRACE_ENABLED = is_user_logged_in();
   $TRACE_PREFIX = 'pods-list';
+  $pod_slugs = array();
+  $pod_slugs = get_post_meta($post->ID, 'pod_slug', false);
+  var_trace(var_export($pod_slugs, true), 'pod_slugs');
   $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
   $pod = new Pod('list', $pod_slug);
   $pod_type = $pod->get_field('pod_type.slug');
