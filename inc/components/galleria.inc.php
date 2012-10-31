@@ -8,6 +8,7 @@
   <script type="text/javascript">
     jQuery(document).ready(function() {
       jQuery('#<?php echo $gallery_id; ?>').galleria({
+        wait: true,
         carousel: true,
         height: 0.6,
         lightbox: true,

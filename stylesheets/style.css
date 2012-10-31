@@ -507,7 +507,7 @@ right: -21px; */ }
 .lc-publication #tableofcontents .articles > section .article > h1 { font-size: 1em; }
 .lc-publication #tableofcontents .articles > section .article .excerpt { font-size: 1em; }
 
-.lc-research-project #photo-essays > div { margin-bottom: 1em; }
+.lc-research-project #linked-galleries > div { margin-bottom: 1em; }
 .lc-research-project section { margin-top: 2em; }
 .lc-research-project section > header { border-top: 1px solid red; }
 .lc-research-project section > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }

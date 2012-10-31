@@ -194,7 +194,7 @@ if($pod->get_field('events')) {
             if(count($research_photo_galleries)): 
               var_trace($research_photo_galleries, 'research_photo_galleries');
               ?>
-            <section id="linked-publications" class="hide">
+            <section id="linked-galleries" class="hide later">
               <header><h1>Photo essays</h1></header>
               <?php
               foreach($research_photo_galleries as $key => $gallery): ?>
