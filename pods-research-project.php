@@ -162,7 +162,7 @@ if($pod->get_field('events')) {
                     while ($more_news->have_posts()) :
                       $more_news->the_post();
                 ?>
-                  <li><a href="<?php the_permalink(); ?>"><?php the_time('j M'); ?> | <?php the_title() ?></a></li>
+                  <li><a href="<?php the_permalink(); ?>"><?php the_time('j M Y'); ?> | <?php the_title() ?></a></li>
                 <?php
                     endwhile;
                 ?>
