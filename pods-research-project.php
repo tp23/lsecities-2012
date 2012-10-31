@@ -129,15 +129,18 @@ if($pod->get_field('events')) {
             <div class="abstract"><?php echo $pod_summary; ?></div>
             <?php endif; ?>
             
-            <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)): ?>
+            <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events) or count($research_photo_galleries)): ?>
             <script>jQuery(function() { jQuery("article").organicTabs(); });</script>
             <ul class="nav organictabs row">
               <li class="threecol"><a class="current" href="#project-info">Profile</a></li>
-              <?php if(is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0): ?>
+              <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)): ?>
               <li class="threecol"><a href="#news_area">News</a></li>
               <?php endif; ?>
-              <?php if(count($events)): ?>
-              <li class="threecol"><a href="#linked-events">Events</a></li>
+              <?php if(count($publications_sections)): ?>
+              <li class="threecol"><a href="#linked-publications">Publications</a></li>
+              <?php endif; ?>
+              <?php if(count($research_photo_galleries)): ?>
+              <li class="threecol"><a href="#linked-galleries">Galleries</a></li>
               <?php endif; ?>
             </ul>
             <?php endif; ?>
@@ -145,30 +148,14 @@ if($pod->get_field('events')) {
           <div class='entry-content article-text list-wrap'>
             <section id="project-info">
               <?php echo $pod->get_field('blurb'); ?>
-                <?php
-                var_trace($research_photo_galleries, 'research_photo_galleries');
-                if(count($research_photo_galleries)): ?>
-                <section id="photo-essays">
-                  <header><h1>Photo essays</h1></header>
-                  <?php
-                  foreach($research_photo_galleries as $key => $gallery): ?>
-                    <div class="sixcol<?php if((($key + 1) % 2) == 0): ?> last<?php endif; ?>">
-                    <?php
-                    include('inc/components/galleria.inc.php'); ?>
-                    </div>
-                    <?php
-                  endforeach; // ($research_photo_galleries as $key => $gallery) ?>
-                </section>
-                <?php
-                endif; ?>
               </section>
             </section>
             <?php
-            if(true):
-              if(is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0):
+              if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)):
               // latest news in categories defined for this research project
               $more_news = new WP_Query('posts_per_page=10' . news_categories($pod->get_field('news_category'))); ?>
               <section id="news_area" class="hide">
+                <?php if(is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0): ?>
                 <header><h1>Project news</h1></header>
                 <ul>
                 <?php
@@ -180,25 +167,46 @@ if($pod->get_field('events')) {
                     endwhile;
                 ?>
                 </ul>
+                <?php endif; // (is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) ?>
+                <?php if(count($events)): ?>
+                <header><h1>Events</h1></header>
+                <ul>
+                <?php
+                foreach($events as $event): ?>
+                <li>
+                  <a href="<?php echo PODS_BASEURI_EVENTS . '/' . $event['slug']; ?>"><?php echo date('j F Y', strtotime($event['date_start'])) . ' | ' . $event['name']; ?></a>
+                </li>
+                <?php endforeach; // ($events as $event) ?>
+                </ul>
+                <?php endif; // (count($events)) ?>
               </section> <!-- #news_area -->
             <?php
-             endif; // ($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0)
-            // linked events
-            if(count($events)): ?>
-            <section id="linked-events" class="hide">
-              <header><h1>Events</h1></header>
-              <ul>
-            <?php
-              foreach($events as $event): ?>
-              <li>
-                <a href="<?php echo PODS_BASEURI_EVENTS . '/' . $event['slug']; ?>"><?php echo date('j F Y', strtotime($event['date_start'])) . ' | ' . $event['name']; ?></a>
-              </li>
-            <?php endforeach; // ($events as $event) ?>
-              </ul>
+             endif; // ($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0 or count($events))
+            // publications
+            if(count($publications_sections)): ?>
+            <section id="linked-publications" class="hide">
+              <header><h1>Publications</h1></header>
+              
             </section>
             <?php
-            endif; // (count($events)) 
-            endif; // (is_user_logged_in()) ?>
+            endif; // (count($publications_sections))
+            // photo galleries
+            if(count($research_photo_galleries)): 
+              var_trace($research_photo_galleries, 'research_photo_galleries');
+              ?>
+            <section id="linked-publications" class="hide">
+              <header><h1>Photo essays</h1></header>
+              <?php
+              foreach($research_photo_galleries as $key => $gallery): ?>
+                <div class="sixcol<?php if((($key + 1) % 2) == 0): ?> last<?php endif; ?>">
+                <?php
+                include('inc/components/galleria.inc.php'); ?>
+                </div>
+                <?php
+              endforeach; // ($research_photo_galleries as $key => $gallery) ?>
+            </section>
+            <?php
+            endif; // (count($research_photo_galleries)) ?>
           </div> <!-- .entry-content.article-text -->
         </article>
         <aside class='wireframe fourcol last entry-meta' id='keyfacts'>
