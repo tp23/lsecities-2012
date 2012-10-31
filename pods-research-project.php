@@ -97,6 +97,32 @@ $research_strand_summary = $pod->get_field('research_strand.summary');
 
 $project_status = $pod->get_field('project_status.name');
 
+$featured_post['ID'] = $pod->get_field('featured_post.ID');
+if($featured_post['ID']) {
+  $featured_post['permalink'] = get_permalink($featured_post['ID']);
+  $featured_post['thumbnail_url'] = wp_get_attachment_url(get_post_thumbnail_id($featured_post['ID']));
+  $featured_post['title'] = get_the_title($featured_post['ID']);
+}
+
+$publication_pod_slugs = $pod->get_field('research_outputs.slug');
+var_trace(var_export($publication_pod_slugs, true), 'research_outputs');
+$publications = array();
+foreach($publication_pod_slugs as $publication_pod_slug) {
+  $publication_pod = new Pod('research_output', $publication_pod_slug);
+  foreach((array)$publication_pod->get_field('authors.slug') as $author_pod_slug) {
+    $author_pod = new Pod('authors', $author_pod_slug);
+    $publication_authors .= $author_pod->get_field('name') . ' ' . $author_pod->get_field('surname') . '. ';
+  }
+  $publication_authors = substr($publication_authors, 0, -2);
+  
+  array_push($publications, array(
+    'title' => $publication_pod->get_field('title'),
+    'date' => $publication_pod->get_field('date'),
+    'category' => $publication_pod->get_field('category.title'),
+    'authors' => $publication_authors
+  ));
+}
+
 // prepare heading gallery
 $gallery = galleria_prepare($pod, 'fullbleed wireframe');
 
@@ -183,10 +209,14 @@ if($pod->get_field('events')) {
             <?php
              endif; // ($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0 or count($events))
             // publications
-            if(count($publications_sections)): ?>
+            if(count($publications) and is_user_logged_in()): ?>
             <section id="linked-publications" class="hide">
               <header><h1>Publications</h1></header>
-              
+              <ul>
+              <?php foreach($publications as $publication): ?>
+                <li><?php echo $publication['authors']; ?> - <?php echo $publication['title']; ?> - <? echo $publication['date']; ?> [<?php echo $publication['category']; ?></li>
+              <?php endforeach; // ($publication_list as $publication) ?>
+              </ul>
             </section>
             <?php
             endif; // (count($publications_sections))
@@ -239,6 +269,18 @@ if($pod->get_field('events')) {
             <dt>Keywords</dt>
             <dd><?php echo $pod_keywords; ?></dd>
           <?php endif; ?>
+          <?php if($featured_post['ID']): ?>
+            <dt>Highlights</dt>
+            <dd>
+              <a href="<?php echo $featured_post['permalink']; ?>" title="">
+                <?php if($featured_post['thumbnail_url']): ?>
+                <img src="<?php echo $featured_post['thumbnail_url']; ?>" />
+                <?php else: ?>
+                <?php echo $featured_post['title']; ?>
+                <?php endif; // ?>
+              </a>
+            </dd>
+          <?php endif; // ($featured_post['ID'])?>
           </dl>
         </aside><!-- #keyfacts -->
       </div><!-- .top-content -->
