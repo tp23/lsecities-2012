@@ -117,7 +117,7 @@ foreach($publication_pod_slugs as $publication_pod_slug) {
   $publication_authors = substr($publication_authors, 0, -2);
   
   array_push($publications, array(
-    'title' => $publication_pod->get_field('title'),
+    'title' => $publication_pod->get_field('name'),
     'date' => $publication_pod->get_field('date'),
     'category' => $publication_pod->get_field('category.name'),
     'authors' => $publication_authors
@@ -167,7 +167,7 @@ if($pod->get_field('events')) {
               <li class="threecol"><a href="#linked-publications">Publications</a></li>
               <?php endif; ?>
               <?php if(count($research_photo_galleries)): ?>
-              <li class="threecol"><a href="#linked-galleries">Galleries</a></li>
+              <li class="threecol last"><a href="#linked-galleries">Galleries</a></li>
               <?php endif; ?>
             </ul>
             <?php endif; ?>
