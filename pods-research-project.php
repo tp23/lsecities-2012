@@ -109,16 +109,17 @@ var_trace(var_export($publication_pod_slugs, true), 'research_outputs');
 $publications = array();
 foreach($publication_pod_slugs as $publication_pod_slug) {
   $publication_pod = new Pod('research_output', $publication_pod_slug);
+  $publication_authors = '';
   foreach((array)$publication_pod->get_field('authors.slug') as $author_pod_slug) {
     $author_pod = new Pod('authors', $author_pod_slug);
-    $publication_authors .= $author_pod->get_field('name') . ' ' . $author_pod->get_field('surname') . '. ';
+    $publication_authors .= $author_pod->get_field('name') . ' ' . $author_pod->get_field('family_name') . ', ';
   }
   $publication_authors = substr($publication_authors, 0, -2);
   
   array_push($publications, array(
     'title' => $publication_pod->get_field('title'),
     'date' => $publication_pod->get_field('date'),
-    'category' => $publication_pod->get_field('category.title'),
+    'category' => $publication_pod->get_field('category.name'),
     'authors' => $publication_authors
   ));
 }
@@ -162,7 +163,7 @@ if($pod->get_field('events')) {
               <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)): ?>
               <li class="threecol"><a href="#news_area">News</a></li>
               <?php endif; ?>
-              <?php if(count($publications_sections)): ?>
+              <?php if(count($publications)): ?>
               <li class="threecol"><a href="#linked-publications">Publications</a></li>
               <?php endif; ?>
               <?php if(count($research_photo_galleries)): ?>
@@ -214,7 +215,7 @@ if($pod->get_field('events')) {
               <header><h1>Publications</h1></header>
               <ul>
               <?php foreach($publications as $publication): ?>
-                <li><?php echo $publication['authors']; ?> - <?php echo $publication['title']; ?> - <? echo $publication['date']; ?> [<?php echo $publication['category']; ?></li>
+                <li><?php echo $publication['authors']; ?> - <?php echo $publication['title']; ?> <!-- - <? echo $publication['date']; ?> --> [<?php echo $publication['category']; ?>]</li>
               <?php endforeach; // ($publication_list as $publication) ?>
               </ul>
             </section>
