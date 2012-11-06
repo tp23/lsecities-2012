@@ -105,19 +105,22 @@ if($featured_post['ID']) {
 }
 
 $research_output_categories = array('book', 'journal-article', 'book-chapter', 'report', 'blog-post', 'interview', 'magazine-article');
-$research_event_categories = array('conference', 'presentation', 'public-lecture', 'workshop');
+$research_event_categories = array('conference', 'presentation', 'public-lecture', 'workshop', 'lse-cities-event');
 
 $research_output_pod_slugs = $pod->get_field('research_outputs.slug');
 var_trace(var_export($research_output_pod_slugs, true), 'research_output_pod_slugs');
 $research_outputs = array();
 foreach($research_output_pod_slugs as $research_output_pod_slug) {
   $research_output_pod = new Pod('research_output', $research_output_pod_slug);
+  
+  /* 
   $item_authors = '';
   foreach((array)$research_output_pod->get_field('authors.slug') as $author_pod_slug) {
     $author_pod = new Pod('authors', $author_pod_slug);
     $item_authors .= $author_pod->get_field('name') . ' ' . $author_pod->get_field('family_name') . ', ';
   }
   $item_authors = substr($item_authors, 0, -2);
+  */
   
   var_trace(var_export($research_output_pod->get_field('category'), true), 'output category');
   
@@ -125,10 +128,34 @@ foreach($research_output_pod_slugs as $research_output_pod_slug) {
     'title' => $research_output_pod->get_field('name'),
     'citation' => $research_output_pod->get_field('citation'),
     'date' => $research_output_pod->get_field('date'),
-    'category' => $research_output_pod->get_field('category.slug'),
-    'authors' => $item_authors
+    'uri' => $research_output_pod->get_field('uri')
   );
 }
+
+// add events from the main LSE Cities calendar to the project's 'research output' events
+if($pod->get_field('events')) {
+  foreach($pod->get_field('events') as $event) {
+    $research_outputs['lse-cities-event'][] = array(
+      'title' => $event['name'],
+      'citation' => $event['name'],
+      'date' => date('j F Y', strtotime($event['date_start'])),
+      'uri' => PODS_BASEURI_EVENTS . '/' . $event['slug']
+    );
+  }
+}
+
+// now create a single array with all the events
+$events = array();
+foreach($research_event_categories as $category_slug) {
+  foreach($research_outputs[$category_slug] as $event) {
+    array_push($events, $event);
+  }
+}
+// and sort events by date descending
+foreach($events as $key => $val) {
+  $date[$key] = $val['date'];
+}
+array_multisort($date, SORT_DESC, $events);
 
 var_trace($research_outputs, 'research_outputs');
 
@@ -152,9 +179,6 @@ $research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 
 
 $news_categories = news_categories($pod->get_field('news_category'));
 
-if($pod->get_field('events')) {
-  $events = $pod->get_field('events');
-}
 ?><?php get_header(); ?>
 
 <div role="main">
@@ -202,11 +226,6 @@ if($pod->get_field('events')) {
               // latest news in categories defined for this research project
               $more_news = new WP_Query('posts_per_page=10' . news_categories($pod->get_field('news_category'))); ?>
               <section id="news_area" class="hide">
-                <?php if($project_has_research_events): ?>
-                <header><h1>Project news</h1></header>
-                <ul>
-                </ul>
-                <?php endif; // ($project_has_research_events) ?>
                 <?php if(is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0): ?>
                 <header><h1>Project news</h1></header>
                 <ul>
@@ -226,7 +245,7 @@ if($pod->get_field('events')) {
                 <?php
                 foreach($events as $event): ?>
                 <li>
-                  <a href="<?php echo PODS_BASEURI_EVENTS . '/' . $event['slug']; ?>"><?php echo date('j F Y', strtotime($event['date_start'])) . ' | ' . $event['name']; ?></a>
+                  <a href="<?php echo $event['uri']; ?>"><?php echo $event['date'] . ' | ' . $event['title']; ?></a>
                 </li>
                 <?php endforeach; // ($events as $event) ?>
                 </ul>
