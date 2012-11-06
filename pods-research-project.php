@@ -119,11 +119,11 @@ foreach($research_output_pod_slugs as $research_output_pod_slug) {
   }
   $item_authors = substr($item_authors, 0, -2);
   
-  array_push($research_outputs[$research_output_pod->get_field('category.name')], array(
+  array_push($research_outputs[$research_output_pod->get_field('category.slug')], array(
     'title' => $research_output_pod->get_field('name'),
     'citation' => $research_output_pod->get_field('citation'),
     'date' => $research_output_pod->get_field('date'),
-    'category' => $research_output_pod->get_field('category.name'),
+    'category' => $research_output_pod->get_field('category.slug'),
     'authors' => $item_authors
   ));
 }
