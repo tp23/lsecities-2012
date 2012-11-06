@@ -108,7 +108,7 @@ $research_output_categories = array('book', 'journal-article', 'book-chapter', '
 $research_event_categories = array('conference', 'presentation', 'public-lecture', 'workshop');
 
 $research_output_pod_slugs = $pod->get_field('research_outputs.slug');
-var_trace(var_export($research_output_pod_slugs, true), 'research_outputs');
+var_trace(var_export($research_output_pod_slugs, true), 'research_output_pod_slugs');
 $research_outputs = array();
 foreach($research_output_pod_slugs as $research_output_pod_slug) {
   $research_output_pod = new Pod('research_output', $research_output_pod_slug);
