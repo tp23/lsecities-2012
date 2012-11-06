@@ -8,7 +8,7 @@
  */
 ?><?php
 $TRACE_ENABLED = is_user_logged_in();
-if($TRACE_ENABLED) { error_log('header.php starting for post with ID ' . $post->ID); }
+var_trace('header.php starting for post with ID' . $post->ID);
 $ancestors = get_ancestors($post->ID, 'page');
 array_unshift($ancestors, $post->ID);
 global $pods_toplevel_ancestor;
@@ -25,9 +25,9 @@ if($toplevel_ancestor == 393) { $toplevel_ancestor = ''; }
 // If we are processing a Pods page for the Article pod, manually set our current position
 if($pods_toplevel_ancestor) { $toplevel_ancestor = $pods_toplevel_ancestor; }
 
-if($TRACE_ENABLED) { error_log('ancestors (array): ' . var_export($ancestors, true)); }
-if($TRACE_ENABLED) { error_log('ancestor[0]: ' . $ancestors[0]); }
-if($TRACE_ENABLED) { error_log('toplevel_ancestor: ' . $toplevel_ancestor); }
+var_trace(var_export($ancestors, true), 'ancestors (array)');
+var_trace($ancestors[0], 'ancestor[0]');
+var_trace($toplevel_ancestor, 'toplevel_ancestor');
 $level2nav = wp_list_pages('child_of=' . $toplevel_ancestor . '&depth=1&sort_column=menu_order&title_li=&echo=0');
 
 // check if we are in the Urban Age section

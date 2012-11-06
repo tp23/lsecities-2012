@@ -175,7 +175,7 @@ foreach($research_event_categories as $category) {
 $gallery = galleria_prepare($pod, 'fullbleed wireframe');
 
 // if we have research photo galleries/photo essays, prepare them
-$research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe', 'photo_galleries');
+$research_photo_galleries = galleria_prepare_multi($pod, 'fullbleed wireframe wait', 'photo_galleries');
 
 $news_categories = news_categories($pod->get_field('news_category'));
 
