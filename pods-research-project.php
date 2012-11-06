@@ -177,9 +177,7 @@ if($pod->get_field('events')) {
             <?php endif; ?>
             
             <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events) or count($research_photo_galleries)): ?>
-            <!--[if gte IE 8]>
             <script>jQuery(function() { jQuery("article").organicTabs(); });</script>
-            <![endif]-->
             <ul class="nav organictabs row">
               <li class="threecol"><a class="current" href="#project-info">Profile</a></li>
               <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)): ?>
