@@ -138,7 +138,7 @@ if($pod->get_field('events')) {
     $research_outputs['lse-cities-event'][] = array(
       'title' => $event['name'],
       'citation' => $event['name'],
-      'date' => date('j F Y', strtotime($event['date_start'])),
+      'date' => $event['date_start'],
       'uri' => PODS_BASEURI_EVENTS . '/' . $event['slug']
     );
   }
@@ -245,7 +245,9 @@ $news_categories = news_categories($pod->get_field('news_category'));
                 <?php
                 foreach($events as $event): ?>
                 <li>
-                  <a href="<?php echo $event['uri']; ?>"><?php echo $event['date'] . ' | ' . $event['title']; ?></a>
+                  <?php if($event['uri']): ?><a href="<?php echo $event['uri']; ?>"><?php endif; ?>
+                  <?php echo date('j F Y', strtotime($event['date'])) . ' | ' . $event['citation'] ? $event['citation'] : $event['title']; ?>
+                  <?php if($event['uri']): ?></a><?php endif; ?>
                 </li>
                 <?php endforeach; // ($events as $event) ?>
                 </ul>
