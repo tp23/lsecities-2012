@@ -132,10 +132,11 @@ foreach($research_output_pod_slugs as $research_output_pod_slug) {
   );
 }
 
-// add events from the main LSE Cities calendar to the project's 'research output' events
+// select events from the main LSE Cities
+$events = array();
 if($pod->get_field('events')) {
-  foreach($pod->get_field('events') as $event) {
-    $research_outputs['lse-cities-event'][] = array(
+  foreach($pod->get_field('events', 'date_start DESC') as $event) {
+    $events[] = array(
       'title' => $event['name'],
       'citation' => $event['name'],
       'date' => $event['date_start'],
@@ -144,30 +145,25 @@ if($pod->get_field('events')) {
   }
 }
 
-// now create a single array with all the events
-$events = array();
+// now create a single array with all the research events
+$research_events = array();
 foreach($research_event_categories as $category_slug) {
   foreach($research_outputs[$category_slug] as $event) {
-    array_push($events, $event);
+    array_push($research_events, $event);
   }
 }
-// and sort events by date descending
-foreach($events as $key => $val) {
+
+// and sort research events by date descending
+foreach($research_events as $key => $val) {
   $date[$key] = $val['date'];
 }
-array_multisort($date, SORT_DESC, $events);
+array_multisort($date, SORT_DESC, $research_events);
 
 var_trace($research_outputs, 'research_outputs');
 
 foreach($research_output_categories as $category) {
   if(count($research_outputs[$category])) {
     $project_has_research_outputs = true;
-  }
-}
-
-foreach($research_event_categories as $category) {
-  if(count($research_outputs[$category])) {
-    $project_has_research_events = true;
   }
 }
 
@@ -204,7 +200,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
             <!--[if gt IE 8]><!--> <script>jQuery(function() { jQuery("article").organicTabs(); });</script> <!--<![endif]-->
             <ul class="nav organictabs row">
               <li class="threecol"><a class="current" href="#project-info">Profile</a></li>
-              <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)): ?>
+              <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events) or count($research_events)): ?>
               <li class="threecol"><a href="#news_area">News</a></li>
               <?php endif; ?>
               <?php if($project_has_research_outputs): ?>
@@ -238,7 +234,21 @@ $news_categories = news_categories($pod->get_field('news_category'));
                     endwhile;
                 ?>
                 </ul>
-                <?php endif; // ($project_has_research_events or is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) ?>
+                <?php endif; // (is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) ?>
+                <?php if(count($research_events)): ?>
+                <header><h1>Conferences</h1></header>
+                <ul>
+                <?php
+                foreach($research_events as $event): ?>
+                <li>
+                  <?php if($event['uri']): ?><a href="<?php echo $event['uri']; ?>"><?php endif; ?>
+                  <?php echo date('j F Y', strtotime($event['date'])) . ' | ';
+                        echo $event['citation'] ? $event['citation'] : $event['title']; ?>
+                  <?php if($event['uri']): ?></a><?php endif; ?>
+                </li>
+                <?php endforeach; // ($research_events as $event) ?>
+                </ul>
+                <?php endif; // (count($research_events)) ?>
                 <?php if(count($events)): ?>
                 <header><h1>Events</h1></header>
                 <ul>
