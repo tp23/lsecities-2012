@@ -269,7 +269,11 @@ $news_categories = news_categories($pod->get_field('news_category'));
                   <dd>
                     <ul>
                     <?php foreach($research_outputs[$category_slug] as $publication): ?>
-                      <li><?php echo $publication['citation']; ?></li>
+                      <li>
+                        <?php if($publication['uri']): ?><a href="<?php echo $publication['uri']; ?>"><?php endif; ?>
+                        <?php echo $publication['citation']; ?>
+                        <?php if($publication['uri']): ?></a><?php endif; ?>
+                      </li>
                     <?php
                     endforeach; // ($publication_list as $publication) ?>
                     </ul>
