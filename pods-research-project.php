@@ -128,6 +128,8 @@ foreach($research_output_pod_slugs as $research_output_pod_slug) {
   ));
 }
 
+var_trace($research_outputs, 'research_outputs');
+
 foreach($research_output_categories as $category) {
   if(count($research_outputs[$category])) {
     $project_has_research_outputs = true;
