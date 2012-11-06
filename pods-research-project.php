@@ -207,7 +207,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
               <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)): ?>
               <li class="threecol"><a href="#news_area">News</a></li>
               <?php endif; ?>
-              <?php if($project_has_research_outputs and is_user_logged_in()): ?>
+              <?php if($project_has_research_outputs): ?>
               <li class="threecol"><a href="#linked-publications">Publications</a></li>
               <?php endif; ?>
               <?php if(count($research_photo_galleries)): ?>
@@ -257,7 +257,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
             <?php
              endif; // ($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0 or count($events))
             // publications
-            if($project_has_research_outputs and is_user_logged_in()): ?>
+            if($project_has_research_outputs): ?>
             <section id="linked-publications" class="hide">
               <header><h1>Publications</h1></header>
               <dl>
@@ -298,7 +298,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
               </dl>
             </section>
             <?php
-            endif; // ($project_has_research_outputs and is_user_logged_in())
+            endif; // ($project_has_research_outputs)
             // photo galleries
             if(count($research_photo_galleries)): 
               var_trace($research_photo_galleries, 'research_photo_galleries');
