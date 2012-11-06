@@ -177,7 +177,9 @@ if($pod->get_field('events')) {
             <?php endif; ?>
             
             <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events) or count($research_photo_galleries)): ?>
+            <!--[if gte IE 8]>
             <script>jQuery(function() { jQuery("article").organicTabs(); });</script>
+            <![endif]-->
             <ul class="nav organictabs row">
               <li class="threecol"><a class="current" href="#project-info">Profile</a></li>
               <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)): ?>
@@ -198,10 +200,15 @@ if($pod->get_field('events')) {
               </section>
             </section>
             <?php
-              if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)):
+              if($project_has_research_events or (is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)):
               // latest news in categories defined for this research project
               $more_news = new WP_Query('posts_per_page=10' . news_categories($pod->get_field('news_category'))); ?>
               <section id="news_area" class="hide">
+                <?php if($project_has_research_events): ?>
+                <header><h1>Project news</h1></header>
+                <ul>
+                </ul>
+                <?php endif; // ($project_has_research_events) ?>
                 <?php if(is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0): ?>
                 <header><h1>Project news</h1></header>
                 <ul>
@@ -214,7 +221,7 @@ if($pod->get_field('events')) {
                     endwhile;
                 ?>
                 </ul>
-                <?php endif; // (is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) ?>
+                <?php endif; // ($project_has_research_events or is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) ?>
                 <?php if(count($events)): ?>
                 <header><h1>Events</h1></header>
                 <ul>
