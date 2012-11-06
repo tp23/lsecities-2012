@@ -104,24 +104,40 @@ if($featured_post['ID']) {
   $featured_post['title'] = get_the_title($featured_post['ID']);
 }
 
-$publication_pod_slugs = $pod->get_field('research_outputs.slug');
-var_trace(var_export($publication_pod_slugs, true), 'research_outputs');
-$publications = array();
-foreach($publication_pod_slugs as $publication_pod_slug) {
-  $publication_pod = new Pod('research_output', $publication_pod_slug);
-  $publication_authors = '';
-  foreach((array)$publication_pod->get_field('authors.slug') as $author_pod_slug) {
+$research_output_categories = array('book', 'journal-article', 'book-chapter', 'report', 'blog-post', 'interview', 'magazine-article');
+$research_event_categories = array('conference', 'presentation', 'public-lecture', 'workshop');
+
+$research_output_pod_slugs = $pod->get_field('research_outputs.slug');
+var_trace(var_export($research_output_pod_slugs, true), 'research_outputs');
+$research_outputs = array();
+foreach($research_output_pod_slugs as $research_output_pod_slug) {
+  $research_output_pod = new Pod('research_output', $research_output_pod_slug);
+  $item_authors = '';
+  foreach((array)$research_output_pod->get_field('authors.slug') as $author_pod_slug) {
     $author_pod = new Pod('authors', $author_pod_slug);
-    $publication_authors .= $author_pod->get_field('name') . ' ' . $author_pod->get_field('family_name') . ', ';
+    $item_authors .= $author_pod->get_field('name') . ' ' . $author_pod->get_field('family_name') . ', ';
   }
-  $publication_authors = substr($publication_authors, 0, -2);
+  $item_authors = substr($item_authors, 0, -2);
   
-  array_push($publications, array(
-    'title' => $publication_pod->get_field('name'),
-    'date' => $publication_pod->get_field('date'),
-    'category' => $publication_pod->get_field('category.name'),
-    'authors' => $publication_authors
+  array_push($research_outputs[$research_output_pod->get_field('category.name')], array(
+    'title' => $research_output_pod->get_field('name'),
+    'citation' => $research_output_pod->get_field('citation'),
+    'date' => $research_output_pod->get_field('date'),
+    'category' => $research_output_pod->get_field('category.name'),
+    'authors' => $item_authors
   ));
+}
+
+foreach($research_output_categories as $category) {
+  if(count($research_outputs[$category])) {
+    $project_has_research_outputs = true;
+  }
+}
+
+foreach($research_event_categories as $category) {
+  if(count($research_outputs[$category])) {
+    $project_has_research_events = true;
+  }
 }
 
 // prepare heading gallery
@@ -210,17 +226,38 @@ if($pod->get_field('events')) {
             <?php
              endif; // ($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0 or count($events))
             // publications
-            if(count($publications) and is_user_logged_in()): ?>
+            if($project_has_research_outputs and is_user_logged_in()): ?>
             <section id="linked-publications" class="hide">
               <header><h1>Publications</h1></header>
-              <ul>
-              <?php foreach($publications as $publication): ?>
-                <li><?php echo $publication['authors']; ?> - <?php echo $publication['title']; ?> <!-- - <? echo $publication['date']; ?> --> [<?php echo $publication['category']; ?>]</li>
-              <?php endforeach; // ($publication_list as $publication) ?>
-              </ul>
+              <dl>
+                <?php foreach($research_output_categories as $category_slug): ?>
+                  <dt><?php $category_object = get_category_by_slug($category_slug); echo $category_object->cat_name; ?></dt>
+                  <dd>
+                    <ul>
+                    <?php foreach($research_outputs[$category_slug] as $publication): ?>
+                      <li><?php echo $publication['citation']; ?></li>
+                    <?php endforeach; // ($publication_list as $publication) ?>
+                    </ul>
+                  </dd>
+                <?php endforeach; // ($research_output_categories as $category) ?>
+
+                <!--
+                <?php foreach($publications as $publications_in_category): ?>
+                <dt></dt>
+                <dd>
+                  <ul>
+                  <?php foreach($publications_in_category as $publication): ?>
+                    <li><?php echo $publication['authors']; ?> - <?php echo $publication['title']; ?> <!-- - <? echo $publication['date']; ?> --> [<?php echo $publication['category']; ?>]</li>
+                  <?php endforeach; // ($publication_list as $publication) ?>
+                  </ul>
+                </dd>
+                <?php endforeach; // ($publications as $publication_category) ?>
+                -->
+
+              </dl>
             </section>
             <?php
-            endif; // (count($publications_sections))
+            endif; // ($project_has_research_outputs and is_user_logged_in())
             // photo galleries
             if(count($research_photo_galleries)): 
               var_trace($research_photo_galleries, 'research_photo_galleries');
