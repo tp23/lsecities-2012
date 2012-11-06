@@ -234,16 +234,22 @@ if($pod->get_field('events')) {
             <section id="linked-publications" class="hide">
               <header><h1>Publications</h1></header>
               <dl>
-                <?php foreach($research_output_categories as $category_slug): ?>
+                <?php
+                  foreach($research_output_categories as $category_slug):
+                    if(count($research_outputs[$category_slug])):
+                  ?>
                   <dt><?php $category_object = get_category_by_slug($category_slug); echo $category_object->cat_name; ?></dt>
                   <dd>
                     <ul>
                     <?php foreach($research_outputs[$category_slug] as $publication): ?>
                       <li><?php echo $publication['citation']; ?></li>
-                    <?php endforeach; // ($publication_list as $publication) ?>
+                    <?php
+                    endforeach; // ($publication_list as $publication) ?>
                     </ul>
                   </dd>
-                <?php endforeach; // ($research_output_categories as $category) ?>
+                <?php 
+                    endif; // (count($research_outputs[$category_slug]))
+                  endforeach; // ($research_output_categories as $category) ?>
 
                 <!--
                 <?php foreach($publications as $publications_in_category): ?>
