@@ -183,7 +183,7 @@ if($pod->get_field('events')) {
               <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)): ?>
               <li class="threecol"><a href="#news_area">News</a></li>
               <?php endif; ?>
-              <?php if(count($publications)): ?>
+              <?php if($project_has_research_outputs and is_user_logged_in()): ?>
               <li class="threecol"><a href="#linked-publications">Publications</a></li>
               <?php endif; ?>
               <?php if(count($research_photo_galleries)): ?>
