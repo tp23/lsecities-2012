@@ -209,7 +209,7 @@ function push_media_attribution($attachment_ID) {
   ));
 }
 
-function galleria_prepare($pod, $extra_classes, $gallery_field='gallery') {
+function galleria_prepare($pod, $extra_classes='', $gallery_field='gallery') {
   define(GALLERY_MAX_SLIDES_COUNT, 12);
   
   $gallery = array(
