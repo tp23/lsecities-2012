@@ -246,7 +246,8 @@ $news_categories = news_categories($pod->get_field('news_category'));
                 foreach($events as $event): ?>
                 <li>
                   <?php if($event['uri']): ?><a href="<?php echo $event['uri']; ?>"><?php endif; ?>
-                  <?php echo date('j F Y', strtotime($event['date'])) . ' | ' . $event['citation'] ? $event['citation'] : $event['title']; ?>
+                  <?php echo date('j F Y', strtotime($event['date'])) . ' | ';
+                        echo $event['citation'] ? $event['citation'] : $event['title']; ?>
                   <?php if($event['uri']): ?></a><?php endif; ?>
                 </li>
                 <?php endforeach; // ($events as $event) ?>
