@@ -119,6 +119,8 @@ foreach($research_output_pod_slugs as $research_output_pod_slug) {
   }
   $item_authors = substr($item_authors, 0, -2);
   
+  var_trace(var_export($research_output_pod->get_field('category'), true), 'output category');
+  
   array_push($research_outputs[$research_output_pod->get_field('category.slug')], array(
     'title' => $research_output_pod->get_field('name'),
     'citation' => $research_output_pod->get_field('citation'),
