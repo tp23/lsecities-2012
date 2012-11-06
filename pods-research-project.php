@@ -121,13 +121,13 @@ foreach($research_output_pod_slugs as $research_output_pod_slug) {
   
   var_trace(var_export($research_output_pod->get_field('category'), true), 'output category');
   
-  array_push($research_outputs[$research_output_pod->get_field('category.slug')], array(
+  $research_outputs[$research_output_pod->get_field('category.slug')][] = array(
     'title' => $research_output_pod->get_field('name'),
     'citation' => $research_output_pod->get_field('citation'),
     'date' => $research_output_pod->get_field('date'),
     'category' => $research_output_pod->get_field('category.slug'),
     'authors' => $item_authors
-  ));
+  );
 }
 
 var_trace($research_outputs, 'research_outputs');
