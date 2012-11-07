@@ -44,12 +44,12 @@
         'items' => $this_pod->get_field('list_pages', 'menu_order ' . $sort_order)
       ));
     }
-    
+
     var_trace($this_pod->get_field('list_research_output_category'), 'list_research_output_category');
     var_trace(var_export($items, true), 'list_items');
   }
 
-  if(!is_user_logged_in()) {
+  if(false) {
     $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
     $pod = new Pod('list', $pod_slug);
     $pod_type = $pod->get_field('pod_type.slug');
@@ -83,7 +83,7 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
   <article id="post-<?php the_ID(); ?>" <?php post_class('ninecol'); ?>>
     <div class="entry-content">
 
-    <?php if(is_user_logged_in()) : ?>
+    <?php if(true) : ?>
     <?php var_trace($lists, 'pod lists'); ?>
     <?php foreach($lists as $index => $list): ?>
     <?php if(!empty($list['items'])) : ?>
@@ -91,7 +91,7 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
         <h2><?php echo $list['title']; ?></h2>
         <p>
           <ul>
-          <?php if($list['type'] == 'research_output'): 
+          <?php if($list['type'] == 'research_output'):
             while($list['items']->fetchRecord()): ?>
             <li>
               <?php if($list['items']->get_field('uri')): ?><a href="<?php echo $list['items']->get_field('uri'); ?>"><?php endif; ?>
@@ -132,7 +132,7 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
     <?php endif; // (!empty($list['items'])) ?>
     <?php endforeach; // ($lists as $key => $list) ?>
 
-    <?php else: // (is_user_logged_in()) ?>
+    <?php else: // (true) ?>
 
     <?php if(!empty($pod_list)) : ?>
       <div class="list">
@@ -163,7 +163,7 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
         </ul>
       </div><!-- .list -->
     <?php endif; // (!empty($pod_list)) ?>
-    <?php endif; // (is_user_logged_in()) ?>
+    <?php endif; // (true) ?>
 
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
