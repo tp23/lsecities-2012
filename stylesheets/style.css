@@ -272,11 +272,6 @@ header.heading-image .flexslider .flex-direction-nav li a { top: 352 -64/2 px; }
 header.entry-header { margin-bottom: 1.5em; }
 header.entry-header h1 { font-family: museo-sans, PT Sans, sans-serif; font-weight: 900; color: #22273b; }
 
-.lc-event-programme #contentarea section, .lc-event-programme #contentarea section > section { margin-top: 2em; }
-.lc-event-programme #contentarea section > header, .lc-event-programme #contentarea section > section > header { border-top: 1px solid red; }
-.lc-event-programme #contentarea section > header > h1, .lc-event-programme #contentarea section > section > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
-.lc-event-programme #contentarea section > header > h1, .lc-event-programme #contentarea section > section > header > h1 { margin-bottom: 0; }
-.lc-event-programme #contentarea .list-wrap section, .lc-event-programme #contentarea .list-wrap section > section { margin-top: 0; }
 .lc-event-programme #contentarea .event-programme .session-chairs dt, .lc-event-programme #contentarea .event-programme .session-chairs dd { display: inline; }
 .lc-event-programme #contentarea .event-programme ul.mediaitems { display: inline; }
 .lc-event-programme #contentarea .event-programme ul.mediaitems > li { display: inline; margin-right: 1em; }
@@ -293,6 +288,11 @@ ol.article-references li:target { background-color: #ffeeee; }
 .extra-content > section > header > h1, .extra-content > aside > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
 .extra-content > section { overflow: hidden; *zoom: 1; }
 
+#contentarea section, #contentarea section > section { margin-top: 2em; }
+#contentarea section > header, #contentarea section > section > header { border-top: 1px solid red; }
+#contentarea section > header > h1, #contentarea section > section > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
+#contentarea section > header > h1, #contentarea section > section > header > h1 { margin-bottom: 0; }
+#contentarea .list-wrap section, #contentarea .list-wrap section > section { margin-top: 0; }
 #contentarea section { clear: both; }
 #contentarea section > h1 { font-weight: bold; font-size: 1.2em; }
 #contentarea .top-content { margin-bottom: 1em; }
