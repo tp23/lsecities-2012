@@ -65,7 +65,7 @@ if(count($button_links)) :
 <?php
 $conference_list = new Pod('list', 'urban-age-conferences');
 $pod_type = $conference_list->get_field('pod_type.slug');
-$pod_list = $conference_list->get_field('list', 'menu_order DESC');
+$pod_list = $conference_list->get_field('list_pages', 'menu_order DESC');
 
 if(count($pod_list)) : ?>
 <ul class="citieslist">
