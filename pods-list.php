@@ -24,7 +24,8 @@
     // date (DESC or ASC according to the sort_descending flag
     if($this_pod->get_field('list_research_output_category')) {
       $items = new Pod('research_output', array(
-        'where' => 'category.slug = "' . $this_pod->get_field('list_research_output_category.slug' ) . '"'
+        'where' => 'category.slug = "' . $this_pod->get_field('list_research_output_category.slug' ) . '"',
+        'sort' => 'date ' . $sort_order
       ));
 
       array_push($lists, array(
