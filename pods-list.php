@@ -99,23 +99,31 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
                 $item_pod = new Pod($list['type'], get_post_meta($item['ID'], 'pod_slug', true));
               }
           ?>
-          <?php if($index % 4 == 0 || $index == 0): ?>
-            <div class="twelvecol">
-          <?php endif; ?>
-            <li class='threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>'>
-              <a href="<?php echo get_permalink($item['ID']); ?>">
-                <img src="<?php echo wp_get_attachment_url($item_pod->get_field('snapshot.ID')); ?>" />
-              </a>
-              <p>
-                <a href="<?php echo get_permalink($item['ID']); ?>">
-                  <?php echo $item_pod->get_field('name'); ?>
-                </a>
-              </p>
+          <?php if($list['type'] == 'research_output'): ?>
+            <li>
+              <?php if($item_pod->get_field('uri')): ?><a href="<?php echo $item_pod->get_field('uri'); ?>"><?php endif; ?>
+              <?php echo $item_pod->get_field('citation'); ?>
+              <?php if($item_pod->get_field('uri')): ?></a><?php endif; ?>
             </li>
-          <?php if(($index + 1) % 4 == 0): ?>
-            </div>
-          <?php endif;
-            $index++;
+          <?php else: // ($list['type'] == 'research_output') ?>
+            <?php if($index % 4 == 0 || $index == 0): ?>
+              <div class="twelvecol">
+            <?php endif; ?>
+              <li class='threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>'>
+                <a href="<?php echo get_permalink($item['ID']); ?>">
+                  <img src="<?php echo wp_get_attachment_url($item_pod->get_field('snapshot.ID')); ?>" />
+                </a>
+                <p>
+                  <a href="<?php echo get_permalink($item['ID']); ?>">
+                    <?php echo $item_pod->get_field('name'); ?>
+                  </a>
+                </p>
+              </li><!-- .treecol<?php if((($index + 1) % 4) == 0) : ?>.last<?php endif ; ?>-->
+            <?php if(($index + 1) % 4 == 0): ?>
+              </div><!-- .twelvecol -->
+            <?php endif;
+              $index++;
+            endif; // ($list['type'] == 'research_output')
             endforeach; ?>
           </ul>
         </p>
