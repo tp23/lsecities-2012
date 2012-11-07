@@ -43,6 +43,9 @@
         'items' => $this_pod->get_field('list_pages', 'menu_order ' . $sort_order)
       ));
     }
+    
+    var_trace($this_pod->get_field('list_research_output_category'), 'list_research_output_category');
+    var_trace(var_export($items, true), 'list_items');
   }
 
   if(!is_user_logged_in()) {
