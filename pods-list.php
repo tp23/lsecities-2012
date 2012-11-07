@@ -90,22 +90,21 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
         <h2><?php echo $list['title']; ?></h2>
         <p>
           <ul>
+          <?php if($list['type'] == 'research_output'): 
+            while($list['items']->fetchRecord()): ?>
+            <li>
+              <?php if($list['items']->get_field('uri')): ?><a href="<?php echo $list['items']->get_field('uri'); ?>"><?php endif; ?>
+              <?php echo $list['items']->get_field('citation'); ?>
+              <?php if($list['items']->get_field('uri')): ?></a><?php endif; ?>
+            </li>
+          <?php
+            endwhile; // ($list['items']->fetchRecord())
+            else: // ($list['type'] == 'research_output') ?>
           <?php
             $index = 0;
             foreach($list['items'] as $key => $item) :
-              if($list['type'] == 'research_output') {
-                $item_pod = $item;
-              } else {
-                $item_pod = new Pod($list['type'], get_post_meta($item['ID'], 'pod_slug', true));
-              }
+              $item_pod = new Pod($list['type'], get_post_meta($item['ID'], 'pod_slug', true));
           ?>
-          <?php if($list['type'] == 'research_output'): ?>
-            <li>
-              <?php if($item_pod->get_field('uri')): ?><a href="<?php echo $item_pod->get_field('uri'); ?>"><?php endif; ?>
-              <?php echo $item_pod->get_field('citation'); ?>
-              <?php if($item_pod->get_field('uri')): ?></a><?php endif; ?>
-            </li>
-          <?php else: // ($list['type'] == 'research_output') ?>
             <?php if($index % 4 == 0 || $index == 0): ?>
               <div class="twelvecol">
             <?php endif; ?>
@@ -123,8 +122,9 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
               </div><!-- .twelvecol -->
             <?php endif;
               $index++;
+            endforeach;
             endif; // ($list['type'] == 'research_output')
-            endforeach; ?>
+            ?>
           </ul>
         </p>
       </section><!-- .list -->
