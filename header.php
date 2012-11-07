@@ -128,8 +128,8 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 
 <body <?php body_class($body_class_extra); ?>>
 
-    <!--[if lt IE 8 ]>
-      <p class='chromeframe'>
+    <!--[if lt IE 9 ]>
+      <p class='flash top chromeframe'>
         You are using an outdated browser.
         <a href="http://browsehappy.com/">Upgrade your browser today</a> or
         <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a>
