@@ -88,7 +88,7 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
     <?php foreach($lists as $index => $list): ?>
     <?php if(!empty($list['items'])) : ?>
       <section class="list">
-        <h2><?php echo $list['title']; ?></h2>
+        <?php if(count($lists) > 1) { ?><h2><?php echo $list['title']; ?></h2><?php } ?>
         <p>
           <ul>
           <?php if($list['type'] == 'research_output'):
