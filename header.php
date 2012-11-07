@@ -45,7 +45,7 @@ if($post->ID == 2481) { // Labs -> Cities and the crisis
 <!--[if IE 8]> <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
-<meta http-equiv="x-ua-compatible" content="IE=8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
 <title><?php
