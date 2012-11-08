@@ -28,6 +28,7 @@ if($pods_toplevel_ancestor) { $toplevel_ancestor = $pods_toplevel_ancestor; }
 var_trace(var_export($ancestors, true), 'ancestors (array)');
 var_trace($ancestors[0], 'ancestor[0]');
 var_trace($toplevel_ancestor, 'toplevel_ancestor');
+
 $level2nav = wp_list_pages('child_of=' . $toplevel_ancestor . '&depth=1&sort_column=menu_order&title_li=&echo=0');
 
 // check if we are in the Urban Age section
@@ -36,13 +37,14 @@ $logo_element_id = $GLOBALS['urban_age_section'] ? 'ualogo' : 'logo';
 
 if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities and the crisis
   // If we are navigating the Cities and the crisis minisite via reverse proxy, display appropriate menu
-  $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2481);
+  $level1nav = '<li><a href="/" title="Home">Cities and the Crisis</a></li>';
+  $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2481);
   // And strip prefix
-  $level1nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/cities-and-the-crisis/', '', $level1nav);
+  $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/cities-and-the-crisis/', '', $level1nav);
 } elseif($post->ID == 2701 or in_array(2701, $post->ancestors)) { // Electric City conference minisite
   $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2701);
 } else {
-  $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032,2476');
+  $level1nav = '<li><a href="/" title="Home">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032,2476');
 }
 ?><!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->
@@ -197,7 +199,6 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 				</div><!-- #toolbox -->
 				<nav id='level1nav'>
 					<ul>
-            <li><a href="/" title="Home">Home</a></li>
 					<?php echo $level1nav; ?>
 					</ul>
 				</nav><!-- #level1nav -->
