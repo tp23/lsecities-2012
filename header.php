@@ -34,8 +34,10 @@ $level2nav = wp_list_pages('child_of=' . $toplevel_ancestor . '&depth=1&sort_col
 $GLOBALS['urban_age_section'] = ($toplevel_ancestor == 94) ? true : false;
 $logo_element_id = $GLOBALS['urban_age_section'] ? 'ualogo' : 'logo';
 
-if($post->ID == 2481) { // Labs -> Cities and the crisis
-  $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . $post->ID);
+if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities and the crisis
+  $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2481);
+} elseif($post->ID == 2701 or in_array(2701, $post->ancestors)) { // Electric City conference minisite
+  $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2701);
 } else {
   $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032,2476');
 }
