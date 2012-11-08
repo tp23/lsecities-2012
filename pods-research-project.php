@@ -215,7 +215,6 @@ $news_categories = news_categories($pod->get_field('news_category'));
           <div class='entry-content article-text list-wrap'>
             <section id="project-info">
               <?php echo $pod->get_field('blurb'); ?>
-              </section>
             </section>
             <?php
               if($project_has_research_events or (is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)):
