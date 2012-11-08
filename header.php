@@ -40,7 +40,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
   $level1nav = '<li><a href="/" title="Home">Cities and the Crisis</a></li>';
   $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2481);
   // And strip prefix
-  $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/cities-and-the-crisis/', '', $level1nav);
+  $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/cities-and-the-crisis/', '', $level2nav);
 } elseif($post->ID == 2701 or in_array(2701, $post->ancestors)) { // Electric City conference minisite
   $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2701);
 } else {
