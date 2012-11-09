@@ -230,14 +230,13 @@ var_trace($linked_events, 'linked_events');
                 <?php endforeach; ?>
               </ul>
             </div>
-
-            <div class="extra-content<?php if(count($linked_events)): ?> multi-section<?php endif; ?>">
-            <?php
-              component_news($pod->get_field('news_category'), '', $linked_events);
-            ?>
-            </div><!-- .extra-content -->
-<?php include_once('inc/snippets/page-meta.php'); ?>
       </div>      
+      <div class="extra-content<?php if(count($linked_events)): ?> multi-section<?php endif; ?>">
+      <?php
+        component_news($pod->get_field('news_category'), '', $linked_events);
+      ?>
+      </div><!-- .extra-content -->
+<?php include_once('inc/snippets/page-meta.php'); ?>
     </div><!-- #core.row -->
     </div>        
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
