@@ -15,7 +15,7 @@
                 ?>
                 </ul>
               </section><!-- #news_area -->
-              <?php endif; ?>
+              <?php endif; //($news_categories)?>
               <?php if(is_array($linked_events) and count($linked_events)): ?>
               <section id="linked-events" class="fourcol">
                 <header><h1>Events</h1></header>
@@ -29,18 +29,10 @@
                 </ul>
               </section><!-- #linked-events -->
               <?php
-              endif; // (count($events)) ?>
-              <?php if(is_array($linked_events) and count($linked_events)): ?>
-              <section id="linked-events" class="fourcol last">
-                <header><h1>Events</h1></header>
-                <ul>
+              endif; // (is_array($linked_events) and count($linked_events)) ?>
+              <?php if(false and $we_will_fill_this_when_needed): ?>
+              <section id="extra-highlights" class="fourcol last">
+                <header><h1></h1></header>
+              </section><!-- #extra-highlights -->
               <?php
-                foreach($linked_events as $event): ?>
-                <li>
-                  <a href="<?php echo PODS_BASEURI_EVENTS . '/' . $event['slug']; ?>"><?php echo date('j F Y', strtotime($event['date_start'])) . ' | ' . $event['name']; ?></a>
-                </li>
-              <?php endforeach; // ($events as $event) ?>
-                </ul>
-              </section><!-- #linked-events -->
-              <?php
-              endif; // (count($events)) ?>
+              endif; // (false and $we_will_fill_this_when_needed) ?>
