@@ -77,11 +77,11 @@ nav ul, nav li { margin: 0; list-style: none; list-style-image: none; }
 
 /* uservoice.com integration -- end */
 .yks-mailchimpFormContainer { width: 100%; }
-.yks-mailchimpFormContainer .yks-mailchimpFormDivRow { clear: both; margin-bottom: 0.5em; }
-.yks-mailchimpFormContainer .yks-mailchimpFormDivRowLabel { float: left; width: 30%; margin-right: 3%; }
+.yks-mailchimpFormContainer .yks-mailchimpFormDivRow { overflow: hidden; *zoom: 1; }
+.yks-mailchimpFormContainer .yks-mailchimpFormDivRowLabel { float: left; width: 30%; margin-right: 3%; margin-bottom: 1.5em; }
 .yks-mailchimpFormContainer .yks-mailchimpFormDivRowField { float: left; width: 50%; }
 
-#mc_signup .mc_merge_var { margin-bottom: 1em; width: 100%; clear: both; }
+#mc_signup .mc_merge_var { margin-bottom: 1em; width: 100%; overflow: hidden; *zoom: 1; }
 #mc_signup .mc_merge_var label { width: 30%; margin-right: 3%; float: left; }
 #mc_signup .mc_merge_var input { width: 60%; }
 #mc_signup .mc_merge_var #mc_mv_TOPICS, #mc_signup .mc_merge_var #mc_mv_2012CONF { height: 5em; }
@@ -289,14 +289,14 @@ ol.article-references li:target { background-color: #ffeeee; }
 .extra-content > section, .extra-content > aside { margin-top: 2em; }
 .extra-content > section > header, .extra-content > aside > header { border-top: 1px solid red; }
 .extra-content > section > header > h1, .extra-content > aside > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
-.extra-content > section { overflow: hidden; *zoom: 1; }
+.extra-content.multi-section > section { clear: none; }
 
 #contentarea section, #contentarea section > section { margin-top: 2em; }
 #contentarea section > header, #contentarea section > section > header { border-top: 1px solid red; }
 #contentarea section > header > h1, #contentarea section > section > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
 #contentarea section > header > h1, #contentarea section > section > header > h1 { margin-bottom: 0; }
 #contentarea .list-wrap section, #contentarea .list-wrap section > section { margin-top: 0; }
-#contentarea section { clear: both; }
+#contentarea section { clear: both; overflow: hidden; *zoom: 1; }
 #contentarea section > h1 { font-weight: bold; font-size: 1.2em; }
 #contentarea .top-content { margin-bottom: 1em; }
 #contentarea .top-content > header { margin-bottom: 1em; }
