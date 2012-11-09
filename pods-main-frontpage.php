@@ -231,7 +231,7 @@ var_trace($linked_events, 'linked_events');
               </ul>
             </div>
       </div>      
-      <div class="extra-content<?php if(count($linked_events)): ?> multi-section<?php endif; ?>">
+      <div class="extra-content<?php if(count($linked_events) > 0): ?> multi-section<?php endif; ?>">
       <?php
         component_news($pod->get_field('news_category'), '', $linked_events);
       ?>

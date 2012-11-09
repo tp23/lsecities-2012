@@ -285,7 +285,7 @@ ol.article-references li:target { background-color: #ffeeee; }
 
 .top-content .entry-content .abstract { font-size: 0.9375em; font-style: italic; }
 
-.extra-content { margin-top: 3em; padding-top: 1em; font-size: 0.875em; }
+.extra-content { margin-top: 3em; padding-top: 1em; font-size: 0.875em; clear: both; }
 .extra-content > section, .extra-content > aside { margin-top: 2em; }
 .extra-content > section > header, .extra-content > aside > header { border-top: 1px solid red; }
 .extra-content > section > header > h1, .extra-content > aside > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
@@ -296,7 +296,7 @@ ol.article-references li:target { background-color: #ffeeee; }
 #contentarea section > header > h1, #contentarea section > section > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
 #contentarea section > header > h1, #contentarea section > section > header > h1 { margin-bottom: 0; }
 #contentarea .list-wrap section, #contentarea .list-wrap section > section { margin-top: 0; }
-#contentarea section { clear: both; overflow: hidden; *zoom: 1; }
+#contentarea section { clear: both; }
 #contentarea section > h1 { font-weight: bold; font-size: 1.2em; }
 #contentarea .top-content { margin-bottom: 1em; }
 #contentarea .top-content > header { margin-bottom: 1em; }
