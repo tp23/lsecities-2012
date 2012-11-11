@@ -11,4 +11,9 @@
     </a>
   </li>
   <?php endif; ?>
+  <?php if($GLOBALS['site-cc']): ?>
+  <li>
+    <img alt="HEIF5 Knowledge Exchange" src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_heif5_bw-negative.png" />
+  </li>
+  <?php endif; ?>
 </ul>
