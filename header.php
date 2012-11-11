@@ -43,6 +43,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
   $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2481);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/cities-and-the-crisis/', '', $level2nav);
+  $GLOBALS['site-cc'] = true;
 } elseif($post->ID == 2701 or in_array(2701, $post->ancestors)) { // Electric City conference minisite
   $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2701);
 } else {
@@ -160,7 +161,9 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 				<a href="/ua/">
 					<div class='threecol' id='ualogo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_urbanage_nostrapline.gif" alt="Urban Age logo"></div>
 				</a>
-        <?php else: ?>
+        <?php elseif($GLOBALS['site-cc']): ?>
+					<div class='threecol' id='heif5logo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_heif5_col.png" alt="HEIF5 Knowledge Exchange"></div>
+				<?php else: ?>
         <span class='threecol'>&nbsp;</span>
         <?php endif; ?>
 				<div class='sixcol last' id='toolbox'>
