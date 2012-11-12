@@ -285,6 +285,53 @@ function news_categories($pod_news_categories) {
   return $news_categories;
 }
 
+/**
+ * Loop shortcode
+ * credits: http://digwp.com/2010/01/custom-query-shortcode/
+ */
+function custom_query_shortcode($atts) {
+
+   // EXAMPLE USAGE:
+   // [loop the_query="showposts=100&post_type=page&post_parent=453"]
+   
+   // Defaults
+   extract(shortcode_atts(array(
+      "the_query" => ''
+   ), $atts));
+
+   // de-funkify query
+   $the_query = preg_replace('~&#x0*([0-9a-f]+);~ei', 'chr(hexdec("\\1"))', $the_query);
+   $the_query = preg_replace('~&#0*([0-9]+);~e', 'chr(\\1)', $the_query);
+
+   // query is made               
+   query_posts($the_query);
+   
+   // Reset and setup variables
+   $output = '';
+   $temp_title = '';
+   $temp_link = '';
+   
+   // the loop
+   if (have_posts()) : while (have_posts()) : the_post();
+   
+      $temp_title = get_the_title($post->ID);
+      $temp_link = get_permalink($post->ID);
+      
+      // output all findings - CUSTOMIZE TO YOUR LIKING
+      $output .= "<li><a href='$temp_link'>$temp_title</a></li>";
+          
+   endwhile; else:
+   
+      $output .= "nothing found.";
+      
+   endif;
+   
+   wp_reset_query();
+   return $output;
+   
+}
+add_shortcode("loop", "custom_query_shortcode");
+
 /* components */
 define(COMPONENTS_ROOT, 'inc/components');
 
