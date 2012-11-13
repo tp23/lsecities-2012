@@ -184,42 +184,6 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
         <span class='threecol'>&nbsp;</span>
         <?php endif; // ($GLOBALS['urban_age_section']) ?>
 				<div class='sixcol last' id='toolbox'>
-					<div id="searchbox" class="clearfix">
-						<form method="get" id="search-box" action="http://www.google.com/search">
-							<div class="hiddenFields">
-								<input type="hidden" value="lsecities.net" name="domains" />
-								<input type="hidden" value="lsecities.net" name="sitesearch" />
-								<div id="queryfield">
-									<input type="text" placeholder="Search LSE Cities" name="q" />
-									<button><span>&#xE4A2;</span></button>
-								</div>
-							</div>
-             </form>
-						<span id="socialbuttons">
-							<ul>
-								<li>
-									<a title="Follow us on Twitter" href="https://twitter.com/#!/LSECities">
-										<img src="<?php bloginfo('stylesheet_directory'); ?>/images/icons/mal/icon_twitter-v1lightblue_24x24.png" alt="Follow us on Twitter">
-									</a>
-								</li>
-								<li>
-									<a title="Follow us on Facebook" href="https://facebook.com/lsecities">
-										<img src="<?php bloginfo('stylesheet_directory'); ?>/images/icons/mal/icon_facebook-v2lightblue_24x24.png" alt="Follow us on Facebook">
-									</a>
-								</li>
-								<li>
-									<a title="Follow us on YouTube" href="https://youtube.com/urbanage">
-										<img src="<?php bloginfo('stylesheet_directory'); ?>/images/icons/mal/icon_youtubelightblue_24x24.png" alt="Follow us on YouTube">
-									</a>
-								</li>
-								<li>
-									<a title="News feed" href="http://lsecities.net/feed/">
-										<img src="<?php bloginfo('stylesheet_directory'); ?>/images/icons/mal/icon_rsslightblue_24x24.png" alt="News archive">
-									</a>
-								</li>
-							</ul>
-						</span>
-					</div>
 				</div><!-- #toolbox -->
 				<nav id='level1nav'>
 					<ul>
