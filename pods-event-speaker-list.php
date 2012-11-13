@@ -8,21 +8,28 @@
 ?>
 
 <?php
-  /* URI: NA */
-  $TRACE_ENABLED = is_user_logged_in();
-  $TRACE_PREFIX = __FILE__ . ' -- ';
-  $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
-  $pod = new Pod('event_programme', $pod_slug);
-  $pod_title = $pod->get_field('name');
-  $subsessions = $pod->get_field('sessions.slug');
-  if(count($subsessions) == 1) { $subsessions = array(0 => $subsessions); }
-  
-  $for_conference = $pod->get_field('for_conference.slug');
-  $for_event = $pod->get_field('for_event.slug');
+/* URI: NA */
+$TRACE_ENABLED = is_user_logged_in();
+$TRACE_PREFIX = __FILE__ . ' -- ';
+$pod_slug = get_post_meta($post->ID, 'pod_slug', true);
+$pod = new Pod('event_programme', $pod_slug);
+$pod_title = $pod->get_field('name');
+$subsessions = $pod->get_field('sessions.slug');
+if(count($subsessions) == 1) { $subsessions = array(0 => $subsessions); }
 
-  var_trace(var_export($subsessions, true), 'sessions');
-  
-  $all_speakers = array();
+$for_conference = $pod->get_field('for_conference.slug');
+$for_event = $pod->get_field('for_event.slug');
+
+var_trace(var_export($subsessions, true), 'sessions');
+
+$all_speakers = array();
+
+foreach($subsessions as $session) {
+  process_session($session);
+}
+
+var_trace($all_speakers, 'all_speakers');
+
   
 function process_session($session_slug) {
   global $TRACE_ENABLED, $all_speakers;
@@ -59,7 +66,9 @@ function process_session($session_slug) {
   
   foreach($session_speakers as $session_speaker) {
     var_trace(var_export($session_speaker, true), 'speaker');
-    $all_speakers[$session_speaker['slug']]['speaker'][] = $session_id;
+    $all_speakers[$session_speaker['slug']]['blurb'] = $session_speaker['profile_text'];
+    $all_speakers[$session_speaker['slug']]['photo_uri'] = wp_get_attachment_url($session_speaker['photo.ID']);
+    $all_speakers[$session_speaker['slug']]['speaker_in'][] = $session_id;
   }
 
   if($subsessions) {
@@ -67,8 +76,6 @@ function process_session($session_slug) {
       process_session($session);
     }
   }
-  
-  var_trace($all_speakers, 'all_speakers');
 }
 ?>
 
@@ -91,9 +98,6 @@ function process_session($session_slug) {
       <div class="article row">
         <div class="ninecol event-speaker-list">
           <?php
-          foreach($subsessions as $session) {
-            process_session($session);
-          }
           ?>
         </div>
         <div class="threecol last">
