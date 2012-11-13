@@ -108,7 +108,7 @@ function process_session($session_slug) {
 
     <?php if(!empty($pod->data)) : ?>
       <div class="article row">
-        <?php foreach($all_speakers as $index => $speaker): var_trace($index); ?>
+        <?php foreach($all_speakers as $index => $speaker): var_trace($index, 'speaker_index'); ?>
         <div class="threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>">
           <img style="display: block; width: 10em; height: 10em;" src="<?php echo $speaker['photo_uri']; ?>" />
           <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
