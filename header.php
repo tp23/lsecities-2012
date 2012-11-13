@@ -164,15 +164,23 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 					</div>
           <?php endif; // ($_GET["siteid"] == 'ec2012') ?>
 				</a>
-        <?php if($GLOBALS['urban_age_section']): ?>
-				<a href="/ua/">
-					<div class='threecol' id='ualogo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_urbanage_nostrapline.gif" alt="Urban Age logo"></div>
-				</a>
+        <?php
+          if($GLOBALS['urban_age_section']): 
+            if($_GET["siteid"] == 'ec2012'): ?>
+              <a href="/ua/">
+                <div class='threecol' id='ualogo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logos/logo_urbanage_nostrapline_white.png" alt="Urban Age logo"></div>
+              </a>
+            <?php else: ?>
+              <a href="/ua/">
+                <div class='threecol' id='ualogo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_urbanage_nostrapline.gif" alt="Urban Age logo"></div>
+              </a>
+        <?php
+          endif; // ($_GET["siteid"] == 'ec2012') ?>
         <?php elseif($GLOBALS['site-cc']): ?>
 					<div class='threecol' id='heif5logo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_heif5_col.png" alt="HEIF5 Knowledge Exchange"></div>
 				<?php else: ?>
         <span class='threecol'>&nbsp;</span>
-        <?php endif; ?>
+        <?php endif; // ($GLOBALS['urban_age_section']) ?>
 				<div class='sixcol last' id='toolbox'>
 					<div id="searchbox" class="clearfix">
 						<form method="get" id="search-box" action="http://www.google.com/search">
