@@ -108,12 +108,15 @@ function process_session($session_slug) {
 
     <?php if(!empty($pod->data)) : ?>
       <div class="article row">
-        <?php foreach($all_speakers as $index => $speaker): var_trace($index, 'speaker_index'); ?>
+        <?php
+        $index = 0;
+        foreach($all_speakers as $speaker): ?>
         <div class="threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>">
           <img style="display: block; width: 10em; height: 10em;" src="<?php echo $speaker['photo_uri']; ?>" />
           <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
         </div>
-        <?php endforeach; // ($all_speakers as $speaker)?>
+        <?php $index++; 
+        endforeach; // ($all_speakers as $speaker)?>
       </div>
     <?php endif ?>    
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
