@@ -78,7 +78,7 @@ function process_session($session_slug) {
     if($session_speaker['photo']) {
       $all_speakers[$session_speaker['slug']]['photo_uri'] = wp_get_attachment_url($session_speaker['photo.ID']);
     } elseif($session_speaker['photo_legacy']) {
-      $all_speakers[$session_speaker['slug']]['photo_uri'] = $session_speaker['photo_legacy'];
+      $all_speakers[$session_speaker['slug']]['photo_uri'] = 'http://v0.urban-age.net' . $session_speaker['photo_legacy'];
     }
     $all_speakers[$session_speaker['slug']]['speaker_in'][] = array($session_id, $session_title);
   }
@@ -109,8 +109,8 @@ function process_session($session_slug) {
     <?php if(!empty($pod->data)) : ?>
       <div class="article row">
         <?php foreach($all_speakers as $index => $speaker): ?>
-        <div class="fourcol">
-          <img href="<?php echo $speaker['photo_uri']; ?>" />
+        <div class="fourcol<?php if((($index + 1) % 3) == 0) : ?> last<?php endif ; ?>">
+          <img style="width: 10em; height: 10em;" src="<?php echo $speaker['photo_uri']; ?>" />
           <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
         </div>
         <?php endforeach; // ($all_speakers as $speaker)?>
