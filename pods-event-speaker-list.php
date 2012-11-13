@@ -108,9 +108,9 @@ function process_session($session_slug) {
 
     <?php if(!empty($pod->data)) : ?>
       <div class="article row">
-        <?php foreach($all_speakers as $index => $speaker): ?>
-        <div class="fourcol<?php if((($index + 1) % 3) == 0) : ?> last<?php endif ; ?>">
-          <img style="width: 10em; height: 10em;" src="<?php echo $speaker['photo_uri']; ?>" />
+        <?php foreach($all_speakers as $index => $speaker): var_trace($index); ?>
+        <div class="threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>">
+          <img style="display: block; width: 10em; height: 10em;" src="<?php echo $speaker['photo_uri']; ?>" />
           <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
         </div>
         <?php endforeach; // ($all_speakers as $speaker)?>
