@@ -9,8 +9,8 @@
 ?><?php
 
 if($_GET["siteid"] == 'ec2012') {
-  include('header-ec2012.php');
+  include(__FILE__ . '/header-ec2012.php');
 } else {
-  include('header-default.php');
+  include(__FILE__ . '/header-default.php');
 }
 ?>
