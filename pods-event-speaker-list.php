@@ -22,10 +22,10 @@
 
   var_trace(var_export($subsessions, true), 'sessions');
   
-  $speakers = array();
+  $all_speakers = array();
   
 function process_session($session_slug) {
-  global $TRACE_ENABLED;
+  global $TRACE_ENABLED, $all_speakers;
   $ALLOWED_TAGS_IN_BLURBS = '<strong><em>';
   
   $pod = new Pod('event_session', $session_slug);
@@ -59,16 +59,16 @@ function process_session($session_slug) {
   
   foreach($session_speakers as $session_speaker) {
     var_trace(var_export($session_speaker, true), 'speaker');
-    $speakers[$session_speaker['slug']]['speaker'][] = $session_id;
+    $all_speakers[$session_speaker['slug']]['speaker'][] = $session_id;
   }
-  
-  var_trace($speakers, 'all_speakers');
 
   if($subsessions) {
     foreach($subsessions as $session) {
       process_session($session);
     }
   }
+  
+  var_trace($all_speakers, 'all_speakers');
 }
 ?>
 
