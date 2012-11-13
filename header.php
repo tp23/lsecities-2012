@@ -46,6 +46,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
   $GLOBALS['site-cc'] = true;
 } elseif($post->ID == 2701 or in_array(2701, $post->ancestors)) { // Electric City conference minisite
   $level1nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2701);
+  $GLOBALS['site-ec2012'] = true;
 } else {
   $level1nav = '<li><a href="/" title="Home">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032,2476');
 }
@@ -153,9 +154,15 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 		<header id='header'>
 			<div class='row'>
 				<a href="/">
+          <?php if($_GET["siteid"] == 'ec2012'): ?>
+					<div class='threecol' id='lclogo'>
+						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logos/logo_lsecities_full_white.png" alt="LSE Cities logo">
+					</div>
+          <?php else: ?>
 					<div class='threecol' id='lclogo'>
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_lsecities_fullred.png" alt="LSE Cities logo">
 					</div>
+          <?php endif; // ($_GET["siteid"] == 'ec2012') ?>
 				</a>
         <?php if($GLOBALS['urban_age_section']): ?>
 				<a href="/ua/">
