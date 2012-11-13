@@ -385,8 +385,8 @@ body.ec2012 #level1nav ul li.current, body.ec2012 #level1nav ul li.current_page_
 body.ec2012 #level1nav ul li.current a, body.ec2012 #level1nav ul li.current_page_item a, body.ec2012 #level1nav ul li.current_page_ancestor a { color: black; }
 body.ec2012 #level2nav ul li.current a, body.ec2012 #level2nav ul li.current_page_item a, body.ec2012 #level2nav ul li.current_page_ancestor a, body.ec2012 #level2nav ul li.current_page_parent a { color: black; background-color: #eee111; }
 body.ec2012 #contentarea .top-content article header h1 { color: #eee111; }
-body.ec2012 .extra-content > section > header, body.ec2012 .extra-content > aside > header { border-top: 1px solid #eee111; }
-body.ec2012 .extra-content > section > header > h1, body.ec2012 .extra-content > aside > header > h1 { color: black; background-color: #eee111; }
+body.ec2012 #contentarea section > header, body.ec2012 .extra-content > section > header, body.ec2012 .extra-content > aside > header { border-top: 1px solid #eee111; }
+body.ec2012 #contentarea section > header > h1, body.ec2012 .extra-content > section > header > h1, body.ec2012 .extra-content > aside > header > h1 { color: black; background-color: #eee111; }
 body.ec2012 a, body.ec2012 a:focus, body.ec2012 a:active { color: #eee111; }
 body.ec2012 a:hover { color: #8f870a; }
 body.ec2012 footer#footer a, body.ec2012 footer#footer a:visited, body.ec2012 footer#footer a:active { color: #eee111; }
