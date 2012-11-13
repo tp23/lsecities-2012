@@ -376,7 +376,7 @@ blockquote::before { color: #999999; content: "“"; display: block; font-size: 
 body.ec2012 { background-color: black; color: white; }
 body.ec2012 header #searchbox #queryfield { border: none; border-bottom: 1px solid white; color: white; }
 body.ec2012 header #searchbox #queryfield input[type="text"] { background: transparent; }
-body.ec2012 header .entry-header h1 { color: #eee111; }
+body.ec2012 header.entry-header h1 { color: #eee111; }
 body.ec2012 #level1nav, body.ec2012 #level2nav { font-family: theovandregular; letter-spacing: 1px; }
 body.ec2012 #level1nav a, body.ec2012 #level1nav a:active, body.ec2012 #level1nav a:visited, body.ec2012 #level1nav a:focus { color: #eee111; }
 body.ec2012 #level1nav ul li:hover { background-color: #eee111; }
