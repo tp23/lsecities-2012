@@ -28,6 +28,12 @@ foreach($subsessions as $session) {
   process_session($session);
 }
 
+// sort speakers by family name
+foreach ($all_speakers as $key => $row) {
+    $family_name[$key]  = $row['family_name'];
+}
+array_multisort($family_name, SORT_DESC, $all_speakers);
+
 var_trace($all_speakers, 'all_speakers');
 
   
@@ -66,9 +72,11 @@ function process_session($session_slug) {
   
   foreach($session_speakers as $session_speaker) {
     var_trace(var_export($session_speaker, true), 'speaker');
+    $all_speakers[$session_speaker['slug']]['name'] = $session_speaker['name'];
+    $all_speakers[$session_speaker['slug']]['family_name'] = $session_speaker['family_name'];
     $all_speakers[$session_speaker['slug']]['blurb'] = $session_speaker['profile_text'];
     $all_speakers[$session_speaker['slug']]['photo_uri'] = wp_get_attachment_url($session_speaker['photo.ID']);
-    $all_speakers[$session_speaker['slug']]['speaker_in'][] = $session_id;
+    $all_speakers[$session_speaker['slug']]['speaker_in'][] = array($session_id, $session_title);
   }
 
   if($subsessions) {
@@ -83,7 +91,7 @@ function process_session($session_slug) {
 
 <div role="main" class="row">
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('ninecol lc-article lc-event-programme'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('ninecol lc-article lc-event-speaker-list'); ?>>
   <header class="entry-header">
     <h1 class="entry-title"><?php echo $pod_title; ?></h1>
     <?php if($pod_subtitle) : ?>
@@ -96,14 +104,12 @@ function process_session($session_slug) {
 
     <?php if(!empty($pod->data)) : ?>
       <div class="article row">
-        <div class="ninecol event-speaker-list">
-          <?php
-          ?>
+        <?php foreach($all_speakers as $index => $speaker): ?>
+        <div class="fourcol">
+          <img href="<?php echo $speaker['photo_uri']; ?>" />
+          <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
         </div>
-        <div class="threecol last">
-          <div>
-          </div>
-        </div>
+        <?php endforeach; // ($all_speakers as $speaker)?>
       </div>
     <?php endif ?>    
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
