@@ -58,6 +58,7 @@ function process_session($session_slug) {
   var_trace(var_export($subsessions, true), 'sessions');
   
   foreach($session_speakers as $session_speaker) {
+    var_trace(var_export($session_speaker, true), 'speaker');
     $speakers[$session_speaker['slug']]['speaker'][] = $session_id;
   }
   
