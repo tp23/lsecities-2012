@@ -75,7 +75,7 @@ function process_session($session_slug) {
     $all_speakers[$session_speaker['slug']]['name'] = $session_speaker['name'];
     $all_speakers[$session_speaker['slug']]['family_name'] = $session_speaker['family_name'];
     $all_speakers[$session_speaker['slug']]['blurb'] = $session_speaker['profile_text'];
-    if($session_speaker['photo.ID']) {
+    if($session_speaker['photo']) {
       $all_speakers[$session_speaker['slug']]['photo_uri'] = wp_get_attachment_url($session_speaker['photo.ID']);
     } elseif($session_speaker['photo_legacy']) {
       $all_speakers[$session_speaker['slug']]['photo_uri'] = $session_speaker['photo_legacy'];
