@@ -107,7 +107,7 @@ if($featured_post['ID']) {
 $research_output_categories = array('book', 'journal-article', 'book-chapter', 'report', 'blog-post', 'interview', 'magazine-article');
 $research_event_categories = array('conference', 'presentation', 'public-lecture', 'workshop', 'lse-cities-event');
 
-$research_output_pod_slugs = $pod->get_field('research_outputs.slug');
+$research_output_pod_slugs = (array)$pod->get_field('research_outputs.slug');
 var_trace(var_export($research_output_pod_slugs, true), 'research_output_pod_slugs');
 $research_outputs = array();
 foreach($research_output_pod_slugs as $research_output_pod_slug) {
