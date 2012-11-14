@@ -11,7 +11,19 @@
                       if($latest_news->current_post == 2) { $class_extra = " last"; }
                     ?>
                   <div class='fourcol<?php echo $class_extra; ?>'>
+                    <?php if(is_user_logged_in()): ?>
+                    <div class="feature-info">
+                      <div class="feature-date">
+                        <div class="month"><?php the_time('M'); ?></div>
+                        <div class="day"><?php the_time('j'); ?></div>
+                      </div>
+                      <header>
+                        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                      </header>
+                    </div>
+                    <?php else: ?>
                     <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                    <?php endif; ?>
                     <?php the_excerpt(); ?>
                   </div>
                   <?php endwhile;
