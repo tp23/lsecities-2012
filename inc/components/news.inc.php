@@ -1,5 +1,5 @@
               <?php if($news_categories): ?>
-              <section id='news_area'>
+              <section id='news-area'>
                 <header>
                   <h1><?php if($news_prefix) { echo $news_prefix . '  | '; } ?>News</h1>
                 </header>
