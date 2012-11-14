@@ -201,20 +201,20 @@ var_trace($linked_events, 'linked_events');
                                 <!-- <em>Recent news go here</em> -->
                               </div>
                             <?php elseif($tile['title'] or $tile['subtitle'] or $tile['blurb']): ?>
-                              <div class="feature_info<?php if(!$tile['blurb']): ?> noblurb<?php endif; ?>">
+                              <div class="feature-info<?php if(!$tile['blurb']): ?> noblurb<?php endif; ?>">
                                 <?php if($tile['target_event']['month'] and $tile['target_event']['day']): ?>
-                                <div class="feature_date">
+                                <div class="feature-date">
                                   <div class="month"><?php echo $tile['target_event']['month']; ?></div>
                                   <div class="day"><?php echo $tile['target_event']['day']; ?></div>
                                 </div>
                                 <?php endif; ?>
                                 <?php if($tile['title'] or $tile['subtitle']): ?>
                                 <header>
-                                  <?php if($tile['title']): ?><div class='feature_title'><?php echo $tile['title']; ?></div><?php endif; ?>
-                                  <?php if($tile['subtitle']): ?><div class='feature_caption'><?php echo $tile['subtitle']; ?></div><?php endif; ?>
+                                  <?php if($tile['title']): ?><div class='feature-title'><?php echo $tile['title']; ?></div><?php endif; ?>
+                                  <?php if($tile['subtitle']): ?><div class='feature-caption'><?php echo $tile['subtitle']; ?></div><?php endif; ?>
                                 </header>
                                 <?php endif; ?>
-                                <?php if($tile['blurb']): ?><div class='feature_blurb'><?php echo $tile['blurb']; ?></div><?php endif; ?>
+                                <?php if($tile['blurb']): ?><div class='feature-blurb'><?php echo $tile['blurb']; ?></div><?php endif; ?>
                               </div><!-- .feature-info -->
                             <?php endif; ?>
                             <?php if(isset($slide_column['target_uri'])): ?>
