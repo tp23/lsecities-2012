@@ -85,7 +85,7 @@ foreach($project_researchers_list as $project_researcher) {
 }
 $project_researchers = substr($project_researchers, 0, -2);
 
-$project_partners_list = $pod->get_field('contributors');
+$project_partners_list = $pod->get_field('partners');
 $project_partners_count = count($project_partners_list);
 foreach($project_partners_list as $project_partner) {
   $project_partners .= $project_partner['name'] . ', ';
