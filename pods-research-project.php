@@ -104,7 +104,7 @@ if($featured_post['ID']) {
   $featured_post['title'] = get_the_title($featured_post['ID']);
 }
 
-$research_output_categories = array('book', 'journal-article', 'book-chapter', 'report', 'blog-post', 'interview', 'magazine-article');
+$research_output_categories = array('book', 'journal-article', 'book-chapter', 'research-report', 'report', 'blog-post', 'interview', 'magazine-article');
 $research_event_categories = array('conference', 'presentation', 'public-lecture', 'workshop', 'lse-cities-event');
 
 $research_output_publications_pod_slugs = (array)$pod->get_field('research_outputs_publications.slug');
@@ -127,18 +127,18 @@ foreach($research_output_pod_slugs as $research_output_pod_slug) {
 }
 
 // now add publications from the publication_wrappers aka Publications pod
-$research_output_publications_pod_slugs = (array)$pod->get_field('research_outputs_publications.slug');
+$research_output_publications_pod_slugs = (array)$pod->get_field('research_output_publications.slug');
 var_trace(var_export($research_output_publications_pod_slugs, true), 'research_output_publications_pod_slugs');
 foreach($research_output_publications_pod_slugs as $tmp_slug) {
   $research_output_publication_pod = new Pod('publication_wrappers', $tmp_slug);
   
-  var_trace(var_export($research_output_pod->get_field('category'), true), 'output category');
+  var_trace(var_export($research_output_publication_pod->get_field('category'), true), 'output category');
   
-  $research_outputs[$research_output_pod->get_field('category.slug')][] = array(
+  $research_outputs[$research_output_publication_pod->get_field('category.slug')][] = array(
     'title' => $research_output_publication_pod->get_field('name'),
     'citation' => $research_output_publication_pod->get_field('name'),
     'date' => $research_output_publication_pod->get_field('publishing_date'),
-    'uri' => $research_output_publication_pod->get_field('publication_web_page')
+    'uri' => get_permalink($research_output_publication_pod->get_field('publication_web_page.ID'))
   );
 }
 
