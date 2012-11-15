@@ -107,20 +107,14 @@ if($featured_post['ID']) {
 $research_output_categories = array('book', 'journal-article', 'book-chapter', 'report', 'blog-post', 'interview', 'magazine-article');
 $research_event_categories = array('conference', 'presentation', 'public-lecture', 'workshop', 'lse-cities-event');
 
+$research_output_publications_pod_slugs = (array)$pod->get_field('research_outputs_publications.slug');
+var_trace(var_export($research_output_publications_pod_slugs, true), 'research_output_publications_pod_slugs');
+
 $research_output_pod_slugs = (array)$pod->get_field('research_outputs.slug');
 var_trace(var_export($research_output_pod_slugs, true), 'research_output_pod_slugs');
 $research_outputs = array();
 foreach($research_output_pod_slugs as $research_output_pod_slug) {
   $research_output_pod = new Pod('research_output', $research_output_pod_slug);
-  
-  /* 
-  $item_authors = '';
-  foreach((array)$research_output_pod->get_field('authors.slug') as $author_pod_slug) {
-    $author_pod = new Pod('authors', $author_pod_slug);
-    $item_authors .= $author_pod->get_field('name') . ' ' . $author_pod->get_field('family_name') . ', ';
-  }
-  $item_authors = substr($item_authors, 0, -2);
-  */
   
   var_trace(var_export($research_output_pod->get_field('category'), true), 'output category');
   
@@ -132,7 +126,23 @@ foreach($research_output_pod_slugs as $research_output_pod_slug) {
   );
 }
 
-// select events from the main LSE Cities
+// now add publications from the publication_wrappers aka Publications pod
+$research_output_publications_pod_slugs = (array)$pod->get_field('research_outputs_publications.slug');
+var_trace(var_export($research_output_publications_pod_slugs, true), 'research_output_publications_pod_slugs');
+foreach($research_output_publications_pod_slugs as $tmp_slug) {
+  $research_output_publication_pod = new Pod('publication_wrappers', $tmp_slug);
+  
+  var_trace(var_export($research_output_pod->get_field('category'), true), 'output category');
+  
+  $research_outputs[$research_output_pod->get_field('category.slug')][] = array(
+    'title' => $research_output_publication_pod->get_field('name'),
+    'citation' => $research_output_publication_pod->get_field('name'),
+    'date' => $research_output_publication_pod->get_field('publishing_date'),
+    'uri' => $research_output_publication_pod->get_field('publication_web_page')
+  );
+}
+
+// select events from the main LSE Cities calendar
 $events = array();
 if($pod->get_field('events')) {
   foreach($pod->get_field('events', 'date_start DESC') as $event) {
