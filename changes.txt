@@ -9,6 +9,8 @@ lsecities-2012 (1.4) stable; urgency=low
       within project metadata
     * [fixed] handle gracefully wrong date formats for start/end years
     * [feature] tab navigation interface
+    * [update] link to research partner website, if applicable
+    * [feature] list research funders
   * lists
     * [feature] flexi-lists are now possible, where a page can display
       more than one list (e.g. publications/articles can display
