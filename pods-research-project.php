@@ -99,10 +99,23 @@ foreach($project_researchers_list as $project_researcher) {
 }
 $project_researchers = substr($project_researchers, 0, -2);
 
+/*
 $project_partners_list = $pod->get_field('partners');
 $project_partners_count = count($project_partners_list);
 foreach($project_partners_list as $project_partner) {
   $project_partners .= $project_partner['name'] . ', ';
+}
+$project_partners = substr($project_partners, 0, -2);
+*/
+
+$project_partners_list = $pod->get_field('partners', 'name ASC');
+$project_partners_count = count($project_partners_list);
+foreach($project_partners_list as $project_partner) {
+  if($project_partner['web_uri']) {
+    $project_partners .= '<a href="' . $project_partner['web_uri'] . '">' . $project_partner['name'] . '</a>, ';
+  } else {
+    $project_partners .= $project_partner['name'] . ', ';
+  }
 }
 $project_partners = substr($project_partners, 0, -2);
 
