@@ -112,7 +112,7 @@ $project_partners = substr($project_partners, 0, -2);
 $project_partners_list = $pod->get_field('partners', 'name ASC');
 $project_partners_count = count($project_partners_list);
 foreach($project_partners_list as $project_partner) {
-  if($project_partner['web_uri']) {
+  if($project_partner['web_uri'] and preg_match('/^https?:\/\//', $project_partner['web_uri'])) {
     $project_partners .= '<a href="' . $project_partner['web_uri'] . '">' . $project_partner['name'] . '</a>, ';
   } else {
     $project_partners .= $project_partner['name'] . ', ';
@@ -124,7 +124,7 @@ $project_partners = substr($project_partners, 0, -2);
 $project_funders_list = $pod->get_field('funders', 'name ASC');
 $project_funders_count = count($project_funders_list);
 foreach($project_funders_list as $project_funder) {
-  if($project_funder['web_uri']) {
+  if($project_funder['web_uri'] and preg_match('/^https?:\/\//', $project_funder['web_uri'])) {
     $project_funders .= '<a href="' . $project_funder['web_uri'] . '">' . $project_funder['name'] . '</a>, ';
   } else {
     $project_funders .= $project_funder['name'] . ', ';
