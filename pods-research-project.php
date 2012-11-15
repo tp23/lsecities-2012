@@ -104,7 +104,7 @@ if($featured_post['ID']) {
   $featured_post['title'] = get_the_title($featured_post['ID']);
 }
 
-$research_output_categories = array('book', 'journal-article', 'book-chapter', 'research-report', 'report', 'blog-post', 'interview', 'magazine-article');
+$research_output_categories = array('book', 'journal-article', 'book-chapter', 'research-report', 'conference-newspaper', 'conference-report', 'report', 'blog-post', 'interview', 'magazine-article');
 $research_event_categories = array('conference', 'presentation', 'public-lecture', 'workshop', 'lse-cities-event');
 
 $research_output_publications_pod_slugs = (array)$pod->get_field('research_outputs_publications.slug');
