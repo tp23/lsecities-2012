@@ -40,6 +40,10 @@ $pod_summary = do_shortcode($pod->get_field('summary'));
 $pod_blurb = do_shortcode($pod->get_field('blurb'));
 $pod_keywords = $pod->get_field('keywords');
 
+// project duration
+$project_duration = '';
+
+// get years from start and date fields
 try {
   if($pod->get_field('date_start')) { 
     $project_start = new DateTime($pod->get_field('date_start') . '-01-01');
@@ -51,6 +55,16 @@ try {
     $project_end = $project_end->format('Y');
   }
 } catch (Exception $e) {}
+
+// get freeform duration text, if available
+$project_duration_freeform = $pod->get_field('duration');
+
+// if freeform duration is available, use this
+if($project_duration_freeform) {
+  $project_duration = $project_duration_freeform;
+} elseif($project_start and $project_end) { // otherwise use start and end year
+  $project_duration = $project_start . ' - ' . $project_end;
+}
 
 // build a list of all current members of staff
 $staff = new Pod('people_group', 'lsecities-staff');
@@ -359,9 +373,9 @@ $news_categories = news_categories($pod->get_field('news_category'));
             <dt>Research strand</dt>
             <dd><?php echo $research_strand_title; ?></dd>
           <?php endif; ?>
-          <?php if($project_start and $project_end): ?>
+          <?php if($project_duration): ?>
             <dt>Duration</dt>
-            <dd><?php echo $project_start; ?> - <?php echo $project_end; ?></dd>
+            <dd><?php echo $project_duration; ?></dd>
           <?php endif; ?>
           <?php if($pod_keywords): ?>
             <dt>Keywords</dt>
