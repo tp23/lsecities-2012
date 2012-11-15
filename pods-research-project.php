@@ -108,6 +108,7 @@ foreach($project_partners_list as $project_partner) {
 $project_partners = substr($project_partners, 0, -2);
 */
 
+// generate list of research partners
 $project_partners_list = $pod->get_field('partners', 'name ASC');
 $project_partners_count = count($project_partners_list);
 foreach($project_partners_list as $project_partner) {
@@ -118,6 +119,18 @@ foreach($project_partners_list as $project_partner) {
   }
 }
 $project_partners = substr($project_partners, 0, -2);
+
+// generate list of research funders
+$project_funders_list = $pod->get_field('funders', 'name ASC');
+$project_funders_count = count($project_funders_list);
+foreach($project_funders_list as $project_funder) {
+  if($project_funder['web_uri']) {
+    $project_funders .= '<a href="' . $project_funder['web_uri'] . '">' . $project_funder['name'] . '</a>, ';
+  } else {
+    $project_funders .= $project_funder['name'] . ', ';
+  }
+}
+$project_funders = substr($project_funders, 0, -2);
 
 $research_strand_title = $pod->get_field('research_strand.name');
 $research_strand_summary = $pod->get_field('research_strand.summary');
@@ -381,6 +394,10 @@ $news_categories = news_categories($pod->get_field('news_category'));
           <?php if($project_partners): ?>
             <dt>Project <?php echo $project_partners_count > 1 ? 'partners' : 'partner'; ?></dt>
             <dd><?php echo $project_partners; ?></dd>
+          <?php endif; ?>
+          <?php if($project_funders): ?>
+            <dt>Project <?php echo $project_funders_count > 1 ? 'funders' : 'funder'; ?></dt>
+            <dd><?php echo $project_funders; ?></dd>
           <?php endif; ?>
           <?php if($research_strand_title): ?>
             <dt>Research strand</dt>
