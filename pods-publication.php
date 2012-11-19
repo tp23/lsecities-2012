@@ -131,6 +131,7 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
               <?php endif ; ?>
             </ul>
             <dl>
+            <?php if(false): // switching to only display $extra_publication_metadata until Pods can sort pick items ?>
             <?php if($publication_authors): ?>
               <dt>Authors</dt>
               <dd><?php echo $publication_authors; ?></dd>
@@ -143,6 +144,7 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
               <dt>Contributors</dt>
               <dd><?php echo $publication_contributors; ?></dd>
             <?php endif; ?>
+            <?php endif; // (false) ?>
             <?php if($extra_publication_metadata): ?>
             <?php echo $extra_publication_metadata; ?>
             <?php endif; ?>
