@@ -46,7 +46,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
   $GLOBALS['site-cc'] = true;
 } elseif($post->ID == 2701 or in_array(2701, $post->ancestors)) { // Electric City conference minisite
   // If we are navigating the EC2012 minisite via reverse proxy, display appropriate menu
-  $level1nav = '<li><a href="/" title="Home">Electric City</a></li>';
+  $level1nav = '';
   $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2701);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/ua\/conferences\/2012-london\/site/', '', $level2nav);
@@ -156,43 +156,7 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 
 	<div class='container' id='container'> <!-- ## grid -->
 		<header id='header'>
-			<div class='row'>
-				<a href="/">
-          <?php if($_GET["siteid"] == 'ec2012'): ?>
-					<div class='threecol' id='lclogo'>
-						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logos/logo_lsecities_full_white.png" alt="LSE Cities logo">
-					</div>
-          <?php else: ?>
-					<div class='threecol' id='lclogo'>
-						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_lsecities_fullred.png" alt="LSE Cities logo">
-					</div>
-          <?php endif; // ($_GET["siteid"] == 'ec2012') ?>
-				</a>
-        <?php
-          if($GLOBALS['urban_age_section']): 
-            if($_GET["siteid"] == 'ec2012'): ?>
-              <a href="/ua/">
-                <div class='threecol' id='ualogo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logos/logo_urbanage_nostrapline_white.png" alt="Urban Age logo"></div>
-              </a>
-            <?php else: ?>
-              <a href="/ua/">
-                <div class='threecol' id='ualogo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_urbanage_nostrapline.gif" alt="Urban Age logo"></div>
-              </a>
-        <?php
-          endif; // ($_GET["siteid"] == 'ec2012') ?>
-        <?php elseif($GLOBALS['site-cc']): ?>
-					<div class='threecol' id='heif5logo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_heif5_col.png" alt="HEIF5 Knowledge Exchange"></div>
-				<?php else: ?>
-        <span class='threecol'>&nbsp;</span>
-        <?php endif; // ($GLOBALS['urban_age_section']) ?>
-				<div class='sixcol last' id='toolbox'>
-				</div><!-- #toolbox -->
-				<nav id='level1nav'>
-					<ul>
-					<?php echo $level1nav; ?>
-					</ul>
-				</nav><!-- #level1nav -->
-			</div><!-- row -->
+      <h1 id="ec2012title" class='row'>Electric City</h1>
 			<div class='row' id='mainmenus'>
 				<nav class='twelvecol section-ancestor-<?php echo $toplevel_ancestor ; ?>' id='level2nav'>
 					<ul>
