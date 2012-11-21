@@ -104,13 +104,19 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
 <?php wp_enqueue_script('jquery-sticky', get_stylesheet_directory_uri() . '/javascripts/jquery.sticky.min.js', 'jquery', false, true); ?>
 <?php wp_enqueue_script('jquery-organictabs', get_stylesheet_directory_uri() . '/javascripts/jquery.organictabs.js', 'jquery', false, true); ?>
 <?php wp_enqueue_script('jquery-mediaelement', get_stylesheet_directory_uri() . '/javascripts/mediaelement-and-player.js', 'jquery', '2.9.2', false); ?>
-<?php wp_enqueue_script('jquery-hovercard', get_stylesheet_directory_uri() . '/javascripts/jquery.hovercard.min.js', 'jquery', false, false); ?>
+<?php wp_enqueue_script('jquery-hovercard', get_stylesheet_directory_uri() . '/javascripts/jquery.hovercard.min.js', 'jquery', false, true); ?>
 
 <!-- <script async="async" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script> -->
 <?php wp_enqueue_script('cookie-control', plugins_url() . '/cookie-control/js/cookieControl-5.1.min.js', 'jquery', false, true); ?>
 <?php wp_enqueue_style('jquery-mediaelement', get_stylesheet_directory_uri() .'/stylesheets/mediaelement/mediaelementplayer.css'); ?>
 <?php wp_enqueue_style('font-theovandoegsburg', get_stylesheet_directory_uri() . '/stylesheets/fonts/theovand/stylesheet.css'); ?>
 <?php wp_enqueue_style('font-fontello', get_stylesheet_directory_uri() . '/stylesheets/fonts/fontello/stylesheet.css'); ?>
+<?php
+/* tabzilla */
+wp_enqueue_style('module-tabzilla', get_stylesheet_directory_uri() . '/stylesheets/modules/tabzilla/tabzilla.css');
+wp_enqueue_script('module-tabzilla', get_stylesheet_directory_uri() . '/javascripts/modules/tabzilla/tabzilla.js', 'jquery', false, true);
+?>
+
 <!--[if IE 7]>
 <?php wp_enqueue_style('font-fontello', get_stylesheet_directory_uri() . '/stylesheets/fonts/fontello/css/fontello-ie7.css'); ?>
 <!--[endif]-->
