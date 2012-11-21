@@ -522,7 +522,7 @@ nav#projectsmenu h1 { font-size: 1.2em; font-weight: bold; margin-bottom: 0.5em;
 .lc-media-archive-search .queryarea h3 { font-weight: bold; margin-bottom: 0.5em; }
 .lc-media-archive-search #query { border: none; background-color: #fcfcfc; color: #999; line-height: 2em; padding: 0.5em 1em; font-style: italics; }
 
-.lc-event-speaker-list .hc-details { border: none; -moz-box-shadow: 3px 3px 2px #888888; -webkit-box-shadow: 3px 3px 2px #888888; -o-box-shadow: 3px 3px 2px #888888; box-shadow: 3px 3px 2px #888888; -moz-border-radius: none; -webkit-border-radius: none; -o-border-radius: none; -ms-border-radius: none; -khtml-border-radius: none; border-radius: none; background-color: #fff; color: #333; font-family: inherit; font-size: inherit; left: 0; top: 0; line-height: inherit; margin-right: 5em; padding: 2em 0.5em 0.5em; position: absolute; text-align: left; opacity: 0.85; }
+.lc-event-speaker-list .hc-details { border: none; -moz-box-shadow: 3px 3px 2px #888888; -webkit-box-shadow: 3px 3px 2px #888888; -o-box-shadow: 3px 3px 2px #888888; box-shadow: 3px 3px 2px #888888; -moz-border-radius: none !important; -webkit-border-radius: none !important; -o-border-radius: none !important; -ms-border-radius: none !important; -khtml-border-radius: none !important; border-radius: none !important; background-color: #fff; color: #333; font-family: inherit; font-size: inherit; left: 0; top: 0; line-height: inherit; margin-right: 5em; padding: 2em 0.5em 0.5em; position: absolute; text-align: left; opacity: 0.85; }
 
 /*/mediaquery*/
 /*/mediaquery*/
