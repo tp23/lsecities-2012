@@ -357,6 +357,7 @@ blockquote::before { color: #999999; content: "“"; display: block; font-size: 
 .watchvideo.onyoutube:hover { opacity: 0.6; }
 
 body.ec2012 { background-color: black; color: white; }
+body.ec2012 header.entry-header h1 { color: #eee111; }
 body.ec2012 #ec2012title { font-family: theovandregular; letter-spacing: 2px; font-size: 3em; margin-bottom: 0.5em; }
 body.ec2012 #level1nav, body.ec2012 #level2nav { font-family: theovandregular; letter-spacing: 1px; }
 body.ec2012 #level1nav a, body.ec2012 #level1nav a:active, body.ec2012 #level1nav a:visited, body.ec2012 #level1nav a:focus { color: #eee111; }
