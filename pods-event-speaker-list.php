@@ -128,7 +128,7 @@ function process_session($session_slug) {
           <p><?php echo $speaker['blurb']; ?></p>
           <ul>
             <?php foreach($speaker['speaker_in'] as $speaker_session): ?>
-            <li><?php echo $speaker_session[1]; ?></li>
+            <li><a href="/programme/<?php echo $speaker_session[0]; ?>"><?php echo $speaker_session[1]; ?></a></li>
             <?php endforeach; ?>
           </ul>
         </div>
