@@ -124,7 +124,7 @@ function process_session($session_slug) {
           <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
         </div>
         <div style="display:none;" id="speaker-card-<?php echo $key; ?>">
-          <h4><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></h4>
+          <h1><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></h1>
           <p><?php echo $speaker['blurb']; ?></p>
           <ul>
             <?php foreach($speaker['speaker_in'] as $speaker_session): ?>
