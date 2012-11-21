@@ -119,16 +119,16 @@ function process_session($session_slug) {
         <?php
         $index = 0;
         foreach($all_speakers as $key => $speaker): ?>
-        <div class="threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>">
+        <div id="speaker-profile-<?php echo $key; ?>" class="threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>">
           <img style="display: block; width: 10em; height: 10em;" src="<?php echo $speaker['photo_uri']; ?>" />
-          <strong id="speaker-name-<?php echo $key; ?>"><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
+          <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
         </div>
         <div style="display:none;" id="speaker-card-<?php echo $key; ?>">
           <h4><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></h4>
           <p><?php echo $speaker['blurb']; ?></p>
           <ul>
             <?php foreach($speaker['speaker_in'] as $speaker_session): ?>
-            <li><a href="/programme/<?php echo $speaker_session[0]; ?>"><?php echo $speaker_session[1]; ?></a></li>
+            <li><a href="/programme/#<?php echo $speaker_session[0]; ?>"><?php echo $speaker_session[1]; ?></a></li>
             <?php endforeach; ?>
           </ul>
         </div>
@@ -137,7 +137,7 @@ function process_session($session_slug) {
         <script>
         <?php
         foreach($all_speakers as $key => $speaker): ?>
-          jQuery('#speaker-name-<?php echo $key; ?>').hovercard({detailsHTML:jQuery('#speaker-card-<?php echo $key; ?>').html()});
+          jQuery('#speaker-profile-<?php echo $key; ?>').hovercard({detailsHTML:jQuery('#speaker-card-<?php echo $key; ?>').html()});
         <?php
         endforeach; // ($all_speakers as $speaker)?>
         </script>
