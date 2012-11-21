@@ -120,8 +120,10 @@ function process_session($session_slug) {
         $index = 0;
         foreach($all_speakers as $key => $speaker): ?>
         <div id="speaker-profile-<?php echo $key; ?>" class="threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>">
-          <img style="display: block; width: 10em; height: 10em;" src="<?php echo $speaker['photo_uri']; ?>" />
-          <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
+          <div>
+            <img style="display: block; width: 10em; height: 10em;" src="<?php echo $speaker['photo_uri']; ?>" />
+            <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
+          </div>
         </div>
         <div style="display:none;" id="speaker-card-<?php echo $key; ?>">
           <h1><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></h1>
@@ -137,7 +139,7 @@ function process_session($session_slug) {
         <script>
         <?php
         foreach($all_speakers as $key => $speaker): ?>
-          jQuery('#speaker-profile-<?php echo $key; ?>').hovercard({detailsHTML:jQuery('#speaker-card-<?php echo $key; ?>').html()});
+          jQuery('#speaker-profile-<?php echo $key; ?> > div').hovercard({detailsHTML:jQuery('#speaker-card-<?php echo $key; ?>').html()});
         <?php
         endforeach; // ($all_speakers as $speaker)?>
         </script>
