@@ -115,7 +115,7 @@ function process_session($session_slug) {
     <h1><?php the_title(); ?></h1>
 
     <?php if(!empty($pod->data)) : ?>
-      <div class="article row">
+      <div class="article">
         <?php
         $index = 0;
         foreach($all_speakers as $key => $speaker): ?>
@@ -133,7 +133,14 @@ function process_session($session_slug) {
           </ul>
         </div>
         <?php $index++; 
+        endforeach; // ($all_speakers as $speaker) ?>
+        <script>
+        <?php
+        foreach($all_speakers as $key => $speaker): ?>
+          jQuery('#speaker-name-<?php echo $key; ?>').hovercard({detailsHTML:jQuery('#speaker-card-<?php echo $key; ?>').html()});
+        <?php
         endforeach; // ($all_speakers as $speaker)?>
+        </script>
       </div>
     <?php endif ?>    
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
