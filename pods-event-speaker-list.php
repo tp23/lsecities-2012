@@ -74,12 +74,20 @@ function process_session($session_slug) {
     var_trace(var_export($session_speaker, true), 'speaker');
     $all_speakers[$session_speaker['slug']]['name'] = $session_speaker['name'];
     $all_speakers[$session_speaker['slug']]['family_name'] = $session_speaker['family_name'];
-    $all_speakers[$session_speaker['slug']]['blurb'] = $session_speaker['profile_text'];
+    if($session_speaker['special_blurb_2012ec']) {
+      $all_speakers[$session_speaker['slug']]['blurb'] = $session_speaker['special_blurb_2012ec'];
+    } elseif($session_speaker['profile_text']) {
+      $all_speakers[$session_speaker['slug']]['blurb'] = $session_speaker['profile_text'];
+    } else {
+      $all_speakers[$session_speaker['slug']]['blurb'] = '';
+    }
     if($session_speaker['photo']) {
       $all_speakers[$session_speaker['slug']]['photo_uri'] = wp_get_attachment_url($session_speaker['photo.ID']);
     } elseif($session_speaker['photo_legacy']) {
       $all_speakers[$session_speaker['slug']]['photo_uri'] = 'http://v0.urban-age.net' . $session_speaker['photo_legacy'];
     }
+    $all_speakers[$session_speaker['slug']]['role'] = $session_speaker['role'];
+    $all_speakers[$session_speaker['slug']]['organization'] = $session_speaker['organization'];
     $all_speakers[$session_speaker['slug']]['speaker_in'][] = array($session_id, $session_title);
   }
 
@@ -110,10 +118,19 @@ function process_session($session_slug) {
       <div class="article row">
         <?php
         $index = 0;
-        foreach($all_speakers as $speaker): ?>
+        foreach($all_speakers as $key => $speaker): ?>
         <div class="threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>">
           <img style="display: block; width: 10em; height: 10em;" src="<?php echo $speaker['photo_uri']; ?>" />
-          <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
+          <strong id="speaker-name-<?php echo $key; ?>"><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
+        </div>
+        <div style="display:none;" id="speaker-card-<?php echo $key; ?>">
+          <h4><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></h4>
+          <p><?php echo $speaker['blurb']; ?></p>
+          <ul>
+            <?php foreach($speaker['speaker_in'] as $speaker_session): ?>
+            <li><?php echo $speaker_session[1]; ?></li>
+            <?php endforeach; ?>
+          </ul>
         </div>
         <?php $index++; 
         endforeach; // ($all_speakers as $speaker)?>
