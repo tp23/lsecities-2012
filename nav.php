@@ -26,6 +26,7 @@ var_trace(var_export($ancestors, true), $TRACE_PREFIX . 'ancestors: ');
 var_trace(var_export($pods_toplevel_ancestor, true), $TRACE_PREFIX . 'pods_toplevel_ancestor: ');
 ?>
 
+<?php if(!$GLOBALS['site-ec2012']): ?>
 <div class="wireframe threecol last" id="navigationarea">
 
 <?php
@@ -112,3 +113,4 @@ if($nav_generated == false) {
     //]]>
   </script>
 </div>
+<?php endif; // (!$GLOBALS['site-ec2012']): ?>
