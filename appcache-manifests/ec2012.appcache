@@ -1,0 +1,70 @@
+CACHE MANIFEST
+
+#version 1.0 11-22-2012
+
+CACHE:
+
+#images
+http://0.gravatar.com/avatar/a27ad99aacbab5a984d46e9d6a4af643?s=16&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D16&r=G
+http://0.gravatar.com/avatar/a27ad99aacbab5a984d46e9d6a4af643?s=64&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D64&r=G
+http://lsecities.net/files/2012/10/MoL_supported_by_85key.jpg
+http://lsecities.net/wp-content/themes/lsecities-2012/images/ahs_logo_white.gif
+http://lsecities.net/wp-content/themes/lsecities-2012/images/lse_logo_white.gif
+http://lsecities.net/wp-includes/images/wpmini-blue.png
+http://v0.urban-age.net/0_images/02-DSudjic.jpg
+http://v0.urban-age.net/0_images/02-RBurdett.jpg
+http://v0.urban-age.net/0_images/02-SSassen.jpg
+
+#internal HTML documents
+http://ec.labs.lsecities.net/
+http://ec.labs.lsecities.net/programme/
+http://ec.labs.lsecities.net/speakers/
+
+#style sheets
+chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/style.css
+http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C800%2C300italic%2C400italic%2C800italic&ver=3.4.2
+http://lsecities.net/wp-content/plugins/lsecities-wp-galleria/galleria/themes/classic/galleria.classic.css?ver=3.4.2
+http://lsecities.net/wp-content/plugins/lsecities-wp-galleria/galleria/themes/classic/galleria.classic.lsecities.css?ver=3.4.2
+http://lsecities.net/wp-content/plugins/usernoise/css/admin-bar.css?ver=2.0.3
+http://lsecities.net/wp-content/plugins/usernoise/css/button.css?ver=3.4.2
+http://lsecities.net/wp-content/themes/lsecities-2012/style.css
+http://lsecities.net/wp-content/themes/lsecities-2012/stylesheets/cssgrid.net/1140.css
+http://lsecities.net/wp-content/themes/lsecities-2012/stylesheets/flexslider/flexslider.css?ver=3.4.2
+http://lsecities.net/wp-content/themes/lsecities-2012/stylesheets/fonts/fontello/stylesheet.css?ver=3.4.2
+http://lsecities.net/wp-content/themes/lsecities-2012/stylesheets/fonts/theovand/stylesheet.css?ver=3.4.2
+http://lsecities.net/wp-content/themes/lsecities-2012/stylesheets/mediaelement/mediaelementplayer.css?ver=3.4.2
+http://lsecities.net/wp-includes/css/admin-bar.css?ver=3.4.2
+http://use.typekit.com/k/ftd3lpp-d.css?3bb2a6e53c9684ffdc9a9bf2135b2a62e1c8523d3723984c398725c51f78c30e30a111a53f01facf8f50b0cffe82cfa1922f27e3fea253105249bd8a73e05eeb64d265dfbaa46808fb91de4d2c3c9ebdca2a65f7c55a4f968fb3c584e3ff5a8a68be0001a48ca728353b27c787f0e87731ed41ecf58cd1b40a560cbf9978898f303019dd4ac36f5f83cb9e3c40477de4cc6bff6569
+https://cloud.webtype.com/css/9044dce3-7052-4e0e-9dbb-377978412ca7.css
+
+#style sheet images
+
+
+#javascript files
+http://www.google-analytics.com/ga.js
+https://use.typekit.com/ftd3lpp.js
+http://lsecities.net/wp-includes/js/jquery/jquery.js?ver=1.7.2
+http://lsecities.net/wp-content/plugins/lsecities-wp-galleria/galleria/galleria-1.2.8.min.js?ver=3.4.2
+http://lsecities.net/wp-content/plugins/lsecities-wp-galleria/galleria/plugins/flickr/galleria.flickr.min.js?ver=3.4.2
+http://lsecities.net/wp-content/plugins/lsecities-wp-galleria/galleria/plugins/picasa/galleria.picasa.min.js?ver=3.4.2
+http://lsecities.net/wp-content/plugins/lsecities-wp-galleria/galleria/themes/classic/galleria.classic.min.js?ver=3.4.2
+http://lsecities.net/wp-content/plugins/lsecities-wp-galleria/galleria_extras.js?ver=3.4.2
+http://lsecities.net/wp-content/plugins/modernizr/js/modernizr.js?ver=2.6.1
+http://lsecities.net/wp-content/plugins/usernoise/js/button.js?ver=2.0.3
+http://lsecities.net/wp-content/plugins/wp-donottrack/donottrack-min.js?dntver=0.8.3&ver=3.4.2
+http://lsecities.net/wp-content/themes/lsecities-2012/javascripts/mediaelement-and-player.js?ver=2.9.2
+http://lsecities.net/wp-includes/js/comment-reply.js?ver=3.4.2
+chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/page_context.js
+http://lsecities.net/wp-includes/js/admin-bar.js?ver=3.4.2
+http://lsecities.net/wp-content/themes/lsecities-2012/javascripts/jquery.flexslider.min.js?ver=3.4.2
+http://lsecities.net/wp-includes/js/jquery/ui/jquery.ui.core.min.js?ver=1.8.20
+http://lsecities.net/wp-includes/js/jquery/ui/jquery.ui.widget.min.js?ver=1.8.20
+http://lsecities.net/wp-includes/js/jquery/ui/jquery.ui.accordion.min.js?ver=1.8.20
+http://lsecities.net/wp-includes/js/jquery/ui/jquery.ui.tabs.min.js?ver=1.8.20
+http://lsecities.net/wp-content/themes/lsecities-2012/javascripts/jquery.sticky.min.js?ver=3.4.2
+http://lsecities.net/wp-content/themes/lsecities-2012/javascripts/jquery.organictabs.js?ver=3.4.2
+http://lsecities.net/wp-content/themes/lsecities-2012/javascripts/jquery.hovercard.min.js?ver=3.4.2
+http://lsecities.net/wp-content/plugins/cookie-control/js/cookieControl-5.1.min.js?ver=3.4.2
+
+NETWORK:
+*
