@@ -117,7 +117,7 @@ $gallery = array(
                 <?php if($pod->get_field('programme_pdf')): ?>
                 <dl id="programme">
                   <dt>Programme</dt>
-                  <dd><a class="downloadthis pdf" href="<?php echo wp_get_attachment_url($pod->get_field('programme_pdf')); ?>">Download (PDF)</a></dd>
+                  <dd><a class="downloadthis pdf" href="<?php echo wp_get_attachment_url($pod->get_field('programme_pdf.ID')); ?>">Download (PDF)</a></dd>
                 </dl>
                 <?php endif; //($pod->get_field('programme_pdf') ?>
                 <?php if(count($partners)): ?>
