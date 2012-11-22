@@ -137,11 +137,13 @@ function process_session($session_slug) {
         <?php $index++; 
         endforeach; // ($all_speakers as $speaker) ?>
         <script>
+          jQuery(function(){
         <?php
         foreach($all_speakers as $key => $speaker): ?>
           jQuery('#speaker-profile-<?php echo $key; ?> > div').hovercard({detailsHTML:jQuery('#speaker-card-<?php echo $key; ?>').html()});
         <?php
         endforeach; // ($all_speakers as $speaker)?>
+          });
         </script>
       </div>
     <?php endif ?>    
