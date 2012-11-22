@@ -372,7 +372,9 @@ body.ec2012 #level2nav ul { float: left; }
 body.ec2012 #level2nav ul li.current a, body.ec2012 #level2nav ul li.current_page_item a, body.ec2012 #level2nav ul li.current_page_ancestor a, body.ec2012 #level2nav ul li.current_page_parent a { color: black; background-color: #eee111; }
 body.ec2012 #level2nav ul li:first-child a { padding-left: 0; }
 body.ec2012 #mainmenus { margin-bottom: 1em; }
+body.ec2012 [role='main'] { padding-bottom: 10em; }
 body.ec2012 [role='main'] > article.ninecol { width: 100%; }
+body.ec2012 [role='main'], body.ec2012 #main { overflow: visible; }
 body.ec2012 #contentarea .top-content article header h1 { color: #eee111; }
 body.ec2012 #contentarea > h1 { display: none; }
 body.ec2012 #contentarea section > header, body.ec2012 .extra-content > section > header, body.ec2012 .extra-content > aside > header { border-top: 1px solid #eee111; }
