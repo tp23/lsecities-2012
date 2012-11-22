@@ -365,11 +365,11 @@ body.ec2012 #ec2012title { font-family: theovandregular; letter-spacing: 2px; fo
 body.ec2012 #level1nav, body.ec2012 #level2nav { font-family: theovandregular; letter-spacing: 1px; }
 body.ec2012 #level2nav { background-color: transparent; }
 body.ec2012 #level2nav ul { float: left; }
-body.ec2012 #level2nav ul li { a: hover; a-background-color: inherit; a-color: #8f870a; a-color: #eee111; }
+body.ec2012 #level2nav ul li { a: hover; a-background-color: inherit; a-color: #eee111; a-color: #8f870a; }
 body.ec2012 #level2nav ul li.current, body.ec2012 #level2nav ul li.current_page_item, body.ec2012 #level2nav ul li.current_page_ancestor, body.ec2012 #level2nav ul li.current_page_parent { background-color: inherit; }
-body.ec2012 #level2nav ul li.current a, body.ec2012 #level2nav ul li.current_page_item a, body.ec2012 #level2nav ul li.current_page_ancestor a, body.ec2012 #level2nav ul li.current_page_parent a { background-color: inherit; color: #8f870a; }
-body.ec2012 #level2nav ul li.current a:hover, body.ec2012 #level2nav ul li.current_page_item a:hover, body.ec2012 #level2nav ul li.current_page_ancestor a:hover, body.ec2012 #level2nav ul li.current_page_parent a:hover { background-color: inherit; color: #8f870a; color: #eee111; }
-body.ec2012 #level2nav ul li.current:hover a, body.ec2012 #level2nav ul li.current_page_item:hover a, body.ec2012 #level2nav ul li.current_page_ancestor:hover a, body.ec2012 #level2nav ul li.current_page_parent:hover a { background-color: inherit; color: inherit; }
+body.ec2012 #level2nav ul li.current a, body.ec2012 #level2nav ul li.current_page_item a, body.ec2012 #level2nav ul li.current_page_ancestor a, body.ec2012 #level2nav ul li.current_page_parent a { background-color: inherit; color: #eee111; }
+body.ec2012 #level2nav ul li.current a:hover, body.ec2012 #level2nav ul li.current_page_item a:hover, body.ec2012 #level2nav ul li.current_page_ancestor a:hover, body.ec2012 #level2nav ul li.current_page_parent a:hover { background-color: inherit; color: #eee111; color: #8f870a; }
+body.ec2012 #level2nav ul li.current:hover a, body.ec2012 #level2nav ul li.current_page_item:hover a, body.ec2012 #level2nav ul li.current_page_ancestor:hover a, body.ec2012 #level2nav ul li.current_page_parent:hover a { background-color: inherit; color: #8f870a; }
 body.ec2012 #level2nav ul li:first-child a { padding-left: 0; }
 body.ec2012 #mainmenus { margin-bottom: 1em; }
 body.ec2012 [role='main'] { padding-bottom: 10em; }
