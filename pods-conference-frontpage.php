@@ -114,24 +114,32 @@ $gallery = array(
               </div>
               <aside class='wireframe fourcol last' id='keyfacts'>
                 <?php echo $pod->get_field('info'); ?>
+                <?php if($pod->get_field('programme_pdf')): ?>
+                <dl id="programme">
+                  <dt>Programme</dt>
+                  <dd><a class="downloadthis pdf" href="<?php echo get_permalink($pod->get_field('programme_pdf')); ?>">Download (PDF)</a></dd>
+                </dl>
+                <?php endif; //($pod->get_field('programme_pdf') ?>
+                <?php if(count($partners)): ?>
                 <dl id="conference-partners">
-				  <dt>Partners</dt>
-				  <dd>
+                  <dt>Partners</dt>
+                  <dd>
                     <ul>
-					<?php foreach($partners as $partner): ?>
+                    <?php foreach($partners as $partner): ?>
                       <li id="partner-<?php echo $partner['id']; ?>">
-					    <?php if($partner['web_uri']): ?><a href="<?php echo $partner['web_uri']; ?>"><?php endif; ?>
-						<?php if($partner['logo_uri']): ?>
-						<img src="<?php echo $partner['logo_uri']; ?>" alt="<?php echo $partner['name']; ?>" />
-						<?php else: ?>
-						<?php echo $partner['name']; ?>
-						<?php endif; //($partner['logo_uri'])?>
-						<?php if($partner['web_uri']): ?></a><?php endif; ?>
+                      <?php if($partner['web_uri']): ?><a href="<?php echo $partner['web_uri']; ?>"><?php endif; ?>
+                      <?php if($partner['logo_uri']): ?>
+                        <img src="<?php echo $partner['logo_uri']; ?>" alt="<?php echo $partner['name']; ?>" />
+                      <?php else: ?>
+                        <?php echo $partner['name']; ?>
+                      <?php endif; //($partner['logo_uri'])?>
+                      <?php if($partner['web_uri']): ?></a><?php endif; ?>
                       </li>
                     <?php endforeach; //($partners as $partner) ?>
                     </ul>
-				  </dd>
+                  </dd>
                 </dl>
+                <?php endif; // (count($partners)) ?>
                 <?php if($event_hashtag): ?>
                 <div class='twitterbox'>
                   <a href="https://twitter.com/#!/search/#<?php echo $event_hashtag; ?>">#<?php echo $event_hashtag; ?></a>
