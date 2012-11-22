@@ -366,7 +366,9 @@ body.ec2012 #level1nav ul li:hover a { color: black; }
 body.ec2012 #level1nav ul li.current, body.ec2012 #level1nav ul li.current_page_item, body.ec2012 #level1nav ul li.current_page_ancestor { background-color: #eee111; }
 body.ec2012 #level1nav ul li.current a, body.ec2012 #level1nav ul li.current_page_item a, body.ec2012 #level1nav ul li.current_page_ancestor a { color: black; }
 body.ec2012 #level2nav { background-color: transparent; }
+body.ec2012 #level2nav ul { float: left; }
 body.ec2012 #level2nav ul li.current a, body.ec2012 #level2nav ul li.current_page_item a, body.ec2012 #level2nav ul li.current_page_ancestor a, body.ec2012 #level2nav ul li.current_page_parent a { color: black; background-color: #eee111; }
+body.ec2012 #level2nav ul li:first-child a { padding-left: 0; }
 body.ec2012 #contentarea .top-content article header h1 { color: #eee111; }
 body.ec2012 #contentarea section > header, body.ec2012 .extra-content > section > header, body.ec2012 .extra-content > aside > header { border-top: 1px solid #eee111; }
 body.ec2012 #contentarea section > header > h1, body.ec2012 .extra-content > section > header > h1, body.ec2012 .extra-content > aside > header > h1 { color: black; background-color: #eee111; }
@@ -374,6 +376,7 @@ body.ec2012 a, body.ec2012 a:focus, body.ec2012 a:active { color: #eee111; }
 body.ec2012 a:hover { color: #8f870a; }
 body.ec2012 footer#footer a, body.ec2012 footer#footer a:visited, body.ec2012 footer#footer a:active { color: #eee111; }
 body.ec2012 footer#footer a:hover { color: #8f870a; }
+body.ec2012 #navigationarea { display: none; }
 body.ec2012 .lc-event-speaker-list .hc-details { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; }
 body.ec2012 .lc-event-speaker-list .hc-details a, body.ec2012 .lc-event-speaker-list .hc-details a:visited, body.ec2012 .lc-event-speaker-list .hc-details a:active { color: #e93616; }
 
