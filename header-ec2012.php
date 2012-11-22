@@ -47,7 +47,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
 } elseif($post->ID == 2701 or in_array(2701, $post->ancestors)) { // Electric City conference minisite
   // If we are navigating the EC2012 minisite via reverse proxy, display appropriate menu
   $level1nav = '';
-  $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2701);
+  $level2nav = '<li><a href="/">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2701);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/ua\/conferences\/2012-london\/site/', '', $level2nav);
   $GLOBALS['site-ec2012'] = true;
