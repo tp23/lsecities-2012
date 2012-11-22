@@ -44,6 +44,12 @@
           <ul>
             <?php wp_list_pages('title_li=&depth=1&child_of=94&sort_column=menu_order&sort_order=ASC&echo=1'); ?>
           </ul>
+          <?php if($GLOBALS['site-ec2012']): ?>
+          <h1>Conferences</h1>
+          <ul>
+            <?php wp_list_pages('title_li=&depth=1&child_of=96&sort_column=menu_order&sort_order=ASC&echo=1'); ?>
+          </ul>          
+          <?php endif; ?>
         </div>
         <div class="twocol">
           <?php get_template_part('snippet-organizers'); ?>
