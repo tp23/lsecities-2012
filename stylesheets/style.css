@@ -365,8 +365,10 @@ body.ec2012 #ec2012title { font-family: theovandregular; letter-spacing: 2px; fo
 body.ec2012 #level1nav, body.ec2012 #level2nav { font-family: theovandregular; letter-spacing: 1px; }
 body.ec2012 #level2nav { background-color: transparent; }
 body.ec2012 #level2nav ul { float: left; }
+body.ec2012 #level2nav ul li { a: hover; a-background-color: inherit; a-color: #8f870a; a-color: #eee111; }
 body.ec2012 #level2nav ul li.current, body.ec2012 #level2nav ul li.current_page_item, body.ec2012 #level2nav ul li.current_page_ancestor, body.ec2012 #level2nav ul li.current_page_parent { background-color: inherit; }
-body.ec2012 #level2nav ul li.current a, body.ec2012 #level2nav ul li.current_page_item a, body.ec2012 #level2nav ul li.current_page_ancestor a, body.ec2012 #level2nav ul li.current_page_parent a { color: #eee111; background-color: inherit; }
+body.ec2012 #level2nav ul li.current a, body.ec2012 #level2nav ul li.current_page_item a, body.ec2012 #level2nav ul li.current_page_ancestor a, body.ec2012 #level2nav ul li.current_page_parent a { background-color: inherit; color: #8f870a; }
+body.ec2012 #level2nav ul li.current a:hover, body.ec2012 #level2nav ul li.current_page_item a:hover, body.ec2012 #level2nav ul li.current_page_ancestor a:hover, body.ec2012 #level2nav ul li.current_page_parent a:hover { background-color: inherit; color: #8f870a; color: #eee111; }
 body.ec2012 #level2nav ul li.current:hover a, body.ec2012 #level2nav ul li.current_page_item:hover a, body.ec2012 #level2nav ul li.current_page_ancestor:hover a, body.ec2012 #level2nav ul li.current_page_parent:hover a { background-color: inherit; color: inherit; }
 body.ec2012 #level2nav ul li:first-child a { padding-left: 0; }
 body.ec2012 #mainmenus { margin-bottom: 1em; }
@@ -387,7 +389,7 @@ body.ec2012 article.lc-event.programme .sessiontype-presentation header { border
 body.ec2012 article.lc-event.programme .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
 body.ec2012 .lc-event-speaker-list .hc-details { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; }
 body.ec2012 .lc-event-speaker-list .hc-details a, body.ec2012 .lc-event-speaker-list .hc-details a:visited, body.ec2012 .lc-event-speaker-list .hc-details a:active { color: #e93616; }
-body.ec2012 #un-button { background-color: #eee111; opacity: 0.85; }
+body.ec2012 #un-button { background-color: #eee111 !important; opacity: 0.85 !important; }
 
 .flexslider { position: relative; box-shadow: none; margin: 0; min-width: 60em; /* Direction Nav */ /* Control Nav */ }
 .flexslider .flex-direction-nav { list-style-type: none; }
