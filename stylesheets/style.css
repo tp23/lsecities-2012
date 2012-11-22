@@ -357,6 +357,7 @@ blockquote::before { color: #999999; content: "“"; display: block; font-size: 
 .watchvideo.onyoutube:hover { opacity: 0.6; }
 
 body.ec2012 { background-color: black; color: white; }
+body.ec2012 .reset-layout { clear: both; overflow: hidden; }
 body.ec2012 #container { max-width: 960px; margin-left: auto; margin-right: auto; }
 body.ec2012 header.entry-header { display: none; }
 body.ec2012 header.entry-header h1 { color: #eee111; }

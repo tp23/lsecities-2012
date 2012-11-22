@@ -7,6 +7,7 @@
  * @package LSECities2012
  */
 ?>
+    <div class="reset-layout">&#160;</div>
 	</div><!-- #main -->
 </div><!-- #page -->
 	<footer id="footer">
