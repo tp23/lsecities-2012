@@ -119,9 +119,9 @@ function process_session($session_slug) {
         <?php
         $index = 0;
         foreach($all_speakers as $key => $speaker): ?>
-        <div id="speaker-profile-<?php echo $key; ?>" class="threecol<?php if((($index + 1) % 4) == 0) : ?> last<?php endif ; ?>">
+        <div id="speaker-profile-<?php echo $key; ?>" class="twocol<?php if((($index + 1) % 6) == 0) : ?> last<?php endif ; ?>">
           <div>
-            <img style="display: block; width: 10em; height: 10em;" src="<?php echo $speaker['photo_uri']; ?>" />
+            <img style="display: block; width: 7.1875em; height: 7.1875em; max-width: 100%;" src="<?php echo $speaker['photo_uri']; ?>" />
             <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
           </div>
         </div>
