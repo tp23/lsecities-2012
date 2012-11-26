@@ -91,6 +91,8 @@ function person_page() {
     'title',
     'email_address',
     'photo',
+    'special_2012ec_blurb',
+    'special_2012ec_affiliation',
     'photo_legacy',
     'profile_text',
     'organization',
