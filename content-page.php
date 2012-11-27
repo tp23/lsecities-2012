@@ -23,7 +23,7 @@ $main_area_class = $wide_layout ? 'ninecol' : 'sixcol';
 <?php if($wide_layout == false) : ?>
 <aside class="threecol">
   <?php
-    echo get_post_meta(get_the_ID(), "aside", true);
+    echo honor_ssl_for_attachments(get_post_meta(get_the_ID(), "aside", true));
   ?>
 </aside>
 <?php endif; ?>
