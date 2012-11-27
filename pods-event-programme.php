@@ -41,7 +41,64 @@
   $page_title = !empty($for_conference) ? "Conference programme" : "Event programme";
   
   if($TRACE_ENABLED) { error_log($TRACE_PREFIX . 'sessions: ' . var_export($subsessions, true)); }
+
+function generate_session_people_blurb($pod, $blurb_field, $special_fields_prefix, $session_people) {
+  if(!isset($pod)) {
+    error_log('No pod objet provided');
+    return;
+  }
+  if(!isset($blurb_field)) {
+    error_log('No blurb field name provided');
+    return;
+  }
+  if(count($session_people) == 0) {
+    error_log('No people list provided');
+    return;
+  }
   
+  $session_people_blurb = '';
+
+  /* If we have event-specific author info, use this */
+  if($special_fields_prefix) {
+    foreach($session_people as $this_person) {
+      $blurb = '';
+      $session_people_blurb .= $this_person['name'] . ' ' . $this_person['family_name'];
+      $blurb = $this_person[$special_fields_prefix . '_blurb'];
+      
+      /* if no event-specific blurb is available for person, fetch
+       * generic person role and affiliation information from their
+       * record */
+      if(!$blurb) { 
+        $this_person_role = $this_person['role'];
+        $this_person_affiliation = $this_person['organization'];
+        var_trace($this_person_role, 'this_person_role');
+        var_trace($this_person_affiliation, 'this_person_affiliation');
+        if($this_person_role and $this_person_affiliation) {
+          $blurb = $this_person_role . ', ' . $this_person_affiliation;
+        } elseif($this_person_affiliation) {
+          $blurb = $this_person_affiliation;
+        }
+      }
+      
+      /* if any blurb is available, add it to the session people blurb */
+      if($blurb) {
+        $session_people_blurb .= '; ' . $blurb;
+      }
+      
+      /* add separator semicolon */
+      $session_people_blurb .= '; ';
+    }
+    
+    /* remove trailing comma */
+    $session_people_blurb = preg_replace('/, $/', '', $session_people_blurb);
+    var_trace($session_people_blurb, 'session_people_blurb');
+  } elseif($pod->get_field($blurb_field)) { /* otherwise, if per-session blurb is available, use this */
+    $session_people_blurb = strip_tags($pod->get_field($blurb_field), $ALLOWED_TAGS_IN_BLURBS);
+  }
+  
+  return $session_people_blurb;
+}
+
 function process_session($session_slug) {
   global $TRACE_ENABLED;
   global $special_fields_prefix;
@@ -65,49 +122,14 @@ function process_session($session_slug) {
   $session_type = $pod->get_field('session_type.slug');
   if($session_type != 'session') { $session_type = "session $session_type"; }
   $session_speakers = $pod->get_field('speakers');
-  
-  /* If we have event-specific author info, use this */
-  if($special_fields_prefix) {
-    foreach($session_speakers as $this_speaker) {
-      $blurb = '';
-      $session_speakers_blurb .= $this_speaker['name'] . ' ' . $this_speaker['family_name'];
-      $blurb = $this_speaker[$special_fields_prefix . '_blurb'];
-      
-      /* if no event-specific blurb is available for speaker, fetch
-       * generic speaker role and affiliation information from their
-       * record */
-      if(!$blurb) { 
-        $this_speaker_role = $this_speaker['role'];
-        $this_speaker_affiliation = $this_speaker['organization'];
-        var_trace($this_speaker_role, 'this_speaker_role');
-        var_trace($this_speaker_affiliation, 'this_speaker_affiliation');
-        if($this_speaker_role and $this_speaker_affiliation) {
-          $blurb = $this_speaker_role . ', ' . $this_speaker_affiliation;
-        } elseif($this_speaker_affiliation) {
-          $blurb = $this_speaker_affiliation;
-        }
-      }
-      
-      /* if any blurb is available, add it to the session speakers blurb */
-      if($blurb) {
-        $session_speakers_blurb .= '; ' . $blurb;
-      }
-      
-      /* add separator comma */
-      $session_speakers_blurb .= '; ';
-    }
-    
-    /* remove trailing comma */
-    $session_speakers_blurb = preg_replace('/, $/', '', $session_speakers_blurb);
-    var_trace($session_speakers_blurb, 'session_speakers_blurb');
-  } elseif($pod->get_field('speakers_blurb')) { /* otherwise, if per-session blurb is available, use this */
-    $session_speakers_blurb = strip_tags($pod->get_field('speakers_blurb'), $ALLOWED_TAGS_IN_BLURBS);
-  }
+  $session_speakers_blurb = generate_session_people_blurb($pod, 'speakers_blurb', $special_fields_prefix, $session_speakers);
   
   $session_chairs = $pod->get_field('chairs');
-  $session_chairs_blurb = strip_tags($pod->get_field('chairs_blurb'), $ALLOWED_TAGS_IN_BLURBS);
+  $session_chairs_blurb = generate_session_people_blurb($pod, 'chairs_blurb', $special_fields_prefix, $session_chairs);
+  
   $session_respondents = $pod->get_field('respondents');
-  $session_respondents_blurb = strip_tags($pod->get_field('respondents_blurb'), $ALLOWED_TAGS_IN_BLURBS);
+  $session_respondents_blurb = generate_session_people_blurb($pod, 'respondents_blurb', $special_fields_prefix, $session_respondents);
+  
   $session_youtube_video = $pod->get_field('media_items.youtube_uri');
   $session_slides = $pod->get_field('media_items.slides_uri');
   $subsessions = $pod->get_field('sessions.slug');
