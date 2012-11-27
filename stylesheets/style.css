@@ -389,7 +389,7 @@ body.ec2012 .lc-event-programme .sessiontype-presentation header { border-top: n
 body.ec2012 .lc-event-programme .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
 body.ec2012 .lc-event-speaker-list .hc-details { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; }
 body.ec2012 .lc-event-speaker-list .hc-details a, body.ec2012 .lc-event-speaker-list .hc-details a:visited, body.ec2012 .lc-event-speaker-list .hc-details a:active { color: #e93616; }
-body.ec2012 #un-button { background-color: #eee111 !important; opacity: 0.85 !important; }
+body.ec2012 #un-button { background-color: #eee111 !important; color: black !important; opacity: 0.85 !important; }
 
 .flexslider { position: relative; box-shadow: none; margin: 0; min-width: 60em; /* Direction Nav */ /* Control Nav */ }
 .flexslider .flex-direction-nav { list-style-type: none; }
