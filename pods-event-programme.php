@@ -132,7 +132,7 @@ function process_session($session_slug) {
   
   $session_youtube_video = $pod->get_field('media_items.youtube_uri');
   $session_slides = $pod->get_field('media_items.slides_uri');
-  $subsessions = $pod->get_field('sessions.slug');
+  $subsessions = $pod->get_field('sessions.slug', 'sequence ASC');
   if($subsessions and count($subsessions) == 1) { $subsessions = array(0 => $subsessions); }
   if($TRACE_ENABLED) { error_log($TRACE_PREFIX . 'session count: ' . count($subsessions)); }
   if($TRACE_ENABLED) { error_log($TRACE_PREFIX . 'sessions: ' . var_export($subsessions, true)); }
