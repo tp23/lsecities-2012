@@ -79,6 +79,8 @@ function process_session($session_slug) {
       if(!$blurb) { 
         $this_speaker_role = $this_speaker['role'];
         $this_speaker_affiliation = $this_speaker['organization'];
+        var_trace($this_speaker_role, 'this_speaker_role');
+        var_trace($this_speaker_affiliation, 'this_speaker_affiliation');
         if($this_speaker_role and $this_speaker_affiliation) {
           $blurb = $this_speaker_role . ', ' . $this_speaker_affiliation;
         } elseif($this_speaker_affiliation) {
@@ -88,11 +90,11 @@ function process_session($session_slug) {
       
       /* if any blurb is available, add it to the session speakers blurb */
       if($blurb) {
-        $session_speakers_blurb .= ', ' . $blurb;
+        $session_speakers_blurb .= '; ' . $blurb;
       }
       
       /* add separator comma */
-      $session_speakers_blurb .= ', ';
+      $session_speakers_blurb .= '; ';
     }
     
     /* remove trailing comma */
