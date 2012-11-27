@@ -61,28 +61,28 @@ function generate_session_people_blurb($pod, $blurb_field, $special_fields_prefi
   /* If we have event-specific author info, use this */
   if($special_fields_prefix) {
     foreach($session_people as $this_person) {
-      $blurb = '';
+      $affiliation = '';
       $session_people_blurb .= '<strong>' . $this_person['name'] . ' ' . $this_person['family_name'] . '</strong>';
-      $blurb = $this_person[$special_fields_prefix . '_blurb'];
+      $affiliation = $this_person[$special_fields_prefix . '_affiliation'];
       
       /* if no event-specific blurb is available for person, fetch
        * generic person role and affiliation information from their
        * record */
-      if(!$blurb) { 
+      if(!$affiliation) { 
         $this_person_role = $this_person['role'];
         $this_person_affiliation = $this_person['organization'];
         var_trace($this_person_role, 'this_person_role');
         var_trace($this_person_affiliation, 'this_person_affiliation');
         if($this_person_role and $this_person_affiliation) {
-          $blurb = $this_person_role . ', ' . $this_person_affiliation;
+          $affiliation = $this_person_role . ', ' . $this_person_affiliation;
         } elseif($this_person_affiliation) {
-          $blurb = $this_person_affiliation;
+          $affiliation = $this_person_affiliation;
         }
       }
       
       /* if any blurb is available, add it to the session people blurb */
-      if($blurb) {
-        $session_people_blurb .= ', ' . $blurb;
+      if($affiliation) {
+        $session_people_blurb .= ', ' . $affiliation;
       }
       
       /* add separator semicolon */
