@@ -44,7 +44,7 @@
   
 function process_session($session_slug) {
   global $TRACE_ENABLED;
-  global $session_speakers_blurb;
+  global $special_fields_prefix;
   $ALLOWED_TAGS_IN_BLURBS = '<strong><em>';
   
   $pod = new Pod('event_session', $session_slug);
