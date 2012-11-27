@@ -21,6 +21,20 @@
   $subsessions = $pod->get_field('sessions.slug');
   if(count($subsessions) == 1) { $subsessions = array(0 => $subsessions); }
   
+  /**
+   * If we use special fields from the speakers objects to generate
+   * speaker blurb and affiliation information for the programme.
+   * The following field will be set and contain the prefix for the
+   * fields to use in the people pod.
+   * e.g. if the special_ec2012 prefix is provided, we expect to
+   * fetch speaker blurb and affiliation from the following fields
+   * in the people pod:
+   * - special_ec2012_blurb
+   * - special_ec2012_affiliation
+  */
+  $special_fields_prefix = $pod->get_field('special_author_fields');
+  var_trace($special_fields_prefix, 'special_fields_prefix');
+  
   $for_conference = $pod->get_field('for_conference.slug');
   $for_event = $pod->get_field('for_event.slug');
   
@@ -30,6 +44,7 @@
   
 function process_session($session_slug) {
   global $TRACE_ENABLED;
+  global $session_speakers_blurb;
   $ALLOWED_TAGS_IN_BLURBS = '<strong><em>';
   
   $pod = new Pod('event_session', $session_slug);
@@ -49,7 +64,32 @@ function process_session($session_slug) {
   $session_type = $pod->get_field('session_type.slug');
   if($session_type != 'session') { $session_type = "session $session_type"; }
   $session_speakers = $pod->get_field('speakers');
-  $session_speakers_blurb = strip_tags($pod->get_field('speakers_blurb'), $ALLOWED_TAGS_IN_BLURBS);
+  
+  /* If we have event-specific author info, use this */
+  if($special_fields_prefix) {
+    foreach($session_speakers as $this_speaker) {
+      $session_speakers_blurb .= $this_speaker['name'] . ' ' . $this_speaker['family_name'];
+      $blurb = $this_speaker[$special_fields_prefix . '_blurb'];
+      if(!$blurb) { /* if no event-specific blurb is available for speaker, fetch generic speaker blurb */
+        $blurb = $this_speaker['profile_text'];
+      }
+      
+      /* if any blurb is available, add it to the session speakers blurb */
+      if($blurb) {
+        $session_speakers_blurb .= ', ' . $blurb;
+      }
+      
+      /* add separator comma */
+      $session_speakers_blurb .= ', ';
+    }
+    
+    /* remove trailing comma */
+    $session_speakers_blurb = preg_replace('/, $/', '', $session_speakers_blurb);
+    var_trace($session_speakers_blurb, 'session_speakers_blurb');
+  } elseif($pod->get_field('speakers_blurb')) { /* otherwise, if per-session blurb is available, use this */
+    $session_speakers_blurb = strip_tags($pod->get_field('speakers_blurb'), $ALLOWED_TAGS_IN_BLURBS);
+  } /* otherwise, use speaker's default blurb and affiliation from speaker record (code here to be added if we need this functionality) */
+  
   $session_chairs = $pod->get_field('chairs');
   $session_chairs_blurb = strip_tags($pod->get_field('chairs_blurb'), $ALLOWED_TAGS_IN_BLURBS);
   $session_respondents = $pod->get_field('respondents');
