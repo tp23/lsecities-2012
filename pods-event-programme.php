@@ -62,7 +62,7 @@ function generate_session_people_blurb($pod, $blurb_field, $special_fields_prefi
   if($special_fields_prefix) {
     foreach($session_people as $this_person) {
       $blurb = '';
-      $session_people_blurb .= $this_person['name'] . ' ' . $this_person['family_name'];
+      $session_people_blurb .= '<strong>' . $this_person['name'] . ' ' . $this_person['family_name'] . '</strong>';
       $blurb = $this_person[$special_fields_prefix . '_blurb'];
       
       /* if no event-specific blurb is available for person, fetch
@@ -82,15 +82,15 @@ function generate_session_people_blurb($pod, $blurb_field, $special_fields_prefi
       
       /* if any blurb is available, add it to the session people blurb */
       if($blurb) {
-        $session_people_blurb .= '; ' . $blurb;
+        $session_people_blurb .= ', ' . $blurb;
       }
       
       /* add separator semicolon */
       $session_people_blurb .= '; ';
     }
     
-    /* remove trailing comma */
-    $session_people_blurb = preg_replace('/, $/', '', $session_people_blurb);
+    /* remove trailing semicolon */
+    $session_people_blurb = preg_replace('/; $/', '', $session_people_blurb);
     var_trace($session_people_blurb, 'session_people_blurb');
   } elseif($pod->get_field($blurb_field)) { /* otherwise, if per-session blurb is available, use this */
     $session_people_blurb = strip_tags($pod->get_field($blurb_field), $ALLOWED_TAGS_IN_BLURBS);
