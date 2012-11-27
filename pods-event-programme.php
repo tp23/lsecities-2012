@@ -45,6 +45,7 @@
 function process_session($session_slug) {
   global $TRACE_ENABLED;
   global $special_fields_prefix;
+  var_trace($special_fields_prefix, 'special_fields_prefix');
   $ALLOWED_TAGS_IN_BLURBS = '<strong><em>';
   
   $pod = new Pod('event_session', $session_slug);
