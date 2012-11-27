@@ -69,10 +69,21 @@ function process_session($session_slug) {
   /* If we have event-specific author info, use this */
   if($special_fields_prefix) {
     foreach($session_speakers as $this_speaker) {
+      $blurb = '';
       $session_speakers_blurb .= $this_speaker['name'] . ' ' . $this_speaker['family_name'];
       $blurb = $this_speaker[$special_fields_prefix . '_blurb'];
-      if(!$blurb) { /* if no event-specific blurb is available for speaker, fetch generic speaker blurb */
-        $blurb = $this_speaker['profile_text'];
+      
+      /* if no event-specific blurb is available for speaker, fetch
+       * generic speaker role and affiliation information from their
+       * record */
+      if(!$blurb) { 
+        $this_speaker_role = $this_speaker['role'];
+        $this_speaker_affiliation = $this_speaker['organization'];
+        if($this_speaker_role and $this_speaker_affiliation) {
+          $blurb = $this_speaker_role . ', ' . $this_speaker_affiliation;
+        } elseif($this_speaker_affiliation) {
+          $blurb = $this_speaker_affiliation;
+        }
       }
       
       /* if any blurb is available, add it to the session speakers blurb */
@@ -89,7 +100,7 @@ function process_session($session_slug) {
     var_trace($session_speakers_blurb, 'session_speakers_blurb');
   } elseif($pod->get_field('speakers_blurb')) { /* otherwise, if per-session blurb is available, use this */
     $session_speakers_blurb = strip_tags($pod->get_field('speakers_blurb'), $ALLOWED_TAGS_IN_BLURBS);
-  } /* otherwise, use speaker's default blurb and affiliation from speaker record (code here to be added if we need this functionality) */
+  }
   
   $session_chairs = $pod->get_field('chairs');
   $session_chairs_blurb = strip_tags($pod->get_field('chairs_blurb'), $ALLOWED_TAGS_IN_BLURBS);
