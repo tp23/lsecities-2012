@@ -362,6 +362,7 @@ body.ec2012 #container { max-width: 960px; margin-left: auto; margin-right: auto
 body.ec2012 header.entry-header { display: none; }
 body.ec2012 header.entry-header h1 { color: #eee111; }
 body.ec2012 #ec2012title { font-family: theovandregular; letter-spacing: 2px; font-size: 3em; margin-bottom: 0.5em; }
+body.ec2012 #ec2012title a, body.ec2012 #ec2012title a:active, body.ec2012 #ec2012title a:hover, body.ec2012 #ec2012title a:visited { color: white; }
 body.ec2012 #level1nav, body.ec2012 #level2nav { font-family: theovandregular; letter-spacing: 1px; }
 body.ec2012 #level2nav { background-color: transparent; }
 body.ec2012 #level2nav ul { float: left; }
