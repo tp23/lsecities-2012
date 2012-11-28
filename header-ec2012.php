@@ -163,7 +163,7 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 
 	<div class='container' id='container'> <!-- ## grid -->
 		<header id='header'>
-      <h1 id="ec2012title" class='row'>Electric City</h1>
+      <h1 id="ec2012title" class='row'><a href="/">Electric City</a></h1>
 			<div class='row' id='mainmenus'>
 				<nav class='twelvecol section-ancestor-<?php echo $toplevel_ancestor ; ?>' id='level2nav'>
 					<ul>
