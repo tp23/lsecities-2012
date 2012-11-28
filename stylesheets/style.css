@@ -486,6 +486,11 @@ right: -21px; */ }
 .lc-event .event-info { font-size: 0.9em; margin-top: 1em; }
 .lc-event #speaker-profiles .people-list .person h1 { font-size: 1.125em; font-weight: bold; text-transform: inherit; border-bottom: 1px solid #eee; margin-bottom: 0.444444444em; }
 
+#contentarea > section .lc-event-programme.sessiontype-day > header { border-top: none; }
+#contentarea > section .lc-event-programme.sessiontype-day > header > h1 { color: inherit; background-color: inherit; font-size: 1.5em; padding-left: 0; }
+.lc-event-programme.sessiontype-session > header, .lc-event-programme.sessiontype-session .session > header { border-top: none; }
+.lc-event-programme.sessiontype-session > header > h1, .lc-event-programme.sessiontype-session .session > header > h1 { background-color: inherit; color: inherit; padding-left: 0; }
+
 .lc-newspaper-article header.heading-image img { max-width: 100%; width: 100%; }
 .lc-newspaper-article .has-pullquote::before { content: attr(data-pullquote); font-weight: bold; opacity: 0.8; float: right; width: 50%; margin: 0.5em -30% 0 0; padding-left: 1.5em; padding-bottom: 0.5em; font-style: italic; position: relative; font-size: 1.5em; line-height: 1.25em; }
 .lc-newspaper-article .has-pullquote::before::before { content: '"'; color: #ff0000; }
