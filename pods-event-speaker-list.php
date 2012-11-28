@@ -32,7 +32,7 @@ foreach($subsessions as $session) {
 foreach ($all_speakers as $key => $row) {
     $family_name[$key]  = $row['family_name'];
 }
-array_multisort($family_name, SORT_DESC, $all_speakers);
+array_multisort($family_name, SORT_ASC, $all_speakers);
 
 var_trace($all_speakers, 'all_speakers');
 
