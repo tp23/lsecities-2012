@@ -134,7 +134,12 @@ function process_session($session_slug) {
             <?php endforeach; ?>
           </ul>
         </div>
-        <?php $index++; 
+        <?php 
+        if((($index + 1) % 6) == 0) : ?>
+          <div>&nbsp;</div>
+        <?php
+        endif; // ((($index + 1) % 6) == 0)
+        $index++; 
         endforeach; // ($all_speakers as $speaker) ?>
         <script>
           jQuery(function(){
