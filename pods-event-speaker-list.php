@@ -119,13 +119,13 @@ function process_session($session_slug) {
         <?php
         $index = 0;
         foreach($all_speakers as $key => $speaker): ?>
-        <div id="speaker-profile-<?php echo $key; ?>" class="twocol<?php if((($index + 1) % 6) == 0) : ?> last<?php endif ; ?>">
+        <div class="speaker-profile" id="speaker-profile-<?php echo $key; ?>" class="twocol<?php if((($index + 1) % 6) == 0) : ?> last<?php endif ; ?>">
           <div>
             <img style="display: block; width: 7.1875em; height: 7.1875em; max-width: 100%;" src="<?php echo $speaker['photo_uri']; ?>" />
             <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
           </div>
         </div>
-        <div style="display:none;" id="speaker-card-<?php echo $key; ?>">
+        <div style="display:none;" class="speaker-card" id="speaker-card-<?php echo $key; ?>">
           <h1><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></h1>
           <p><?php echo $speaker['blurb']; ?></p>
           <ul>
