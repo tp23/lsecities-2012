@@ -139,6 +139,9 @@ function process_session($session_slug) {
         if((($index + 1) % 6) == 0) : ?>
           <div>&nbsp;</div>
         <?php
+        elseif((($index + 1) % 3) == 0) : ?>
+          <div style="display: none;">&nbsp;</div>
+        <?php
         endif; // ((($index + 1) % 6) == 0)
         $index++; 
         endforeach; // ($all_speakers as $speaker) ?>
