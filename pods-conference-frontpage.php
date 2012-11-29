@@ -48,7 +48,7 @@ while($organizations_pod->fetchRecord()) {
 	array_push($partners, array(
 		'id' => $organizations_pod->get_field('slug'),
 		'name' => $organizations_pod->get_field('name'),
-		'logo_uri' => wp_get_attachment_url($organizations_pod->get_field('logo.ID')),
+		'logo_uri' => ($GLOBALS['site-ec2012'] == true) ? wp_get_attachment_url($organizations_pod->get_field('logo_white_raster.ID')) : wp_get_attachment_url($organizations_pod->get_field('logo.ID')), // MONKEYPATCH! -- refactor properly after EC2012
 		'web_uri' => $organizations_pod->get_field('web_uri')
 	));
 }
