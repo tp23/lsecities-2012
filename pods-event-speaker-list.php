@@ -148,10 +148,10 @@ function process_session($session_slug) {
         <script>
           jQuery(function(){
         <?php
-        foreach($all_speakers as $key => $speaker): ?>
+        /* foreach($all_speakers as $key => $speaker): ?>
           jQuery('#speaker-profile-<?php echo $key; ?> > div').hovercard({detailsHTML:jQuery('#speaker-card-<?php echo $key; ?>').html()});
         <?php
-        endforeach; // ($all_speakers as $speaker)?>
+        endforeach; */ // ($all_speakers as $speaker)?>
           });
         </script>
       </div>
