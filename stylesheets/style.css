@@ -362,7 +362,7 @@ body.ec2012 #container { max-width: 960px; margin-left: auto; margin-right: auto
 body.ec2012 header.entry-header { display: none; }
 body.ec2012 header.entry-header h1 { color: #eee111; }
 body.ec2012 #header { position: relative; }
-body.ec2012 #header .twitter-hashtag { position: absolute; top: 30%; line-height: 1em; right: 0; background-color: #eee111; padding: 0.2em 0.5em; border-radius: 0.2em; }
+body.ec2012 #header .twitter-hashtag { position: absolute; top: 30%; line-height: 1em; right: 0; background-color: #eee111; padding: 0.2em 0.5em; border-radius: 0.2em; font-weight: bold; }
 body.ec2012 #header .twitter-hashtag a, body.ec2012 #header .twitter-hashtag a:active, body.ec2012 #header .twitter-hashtag a:visited { color: black; }
 body.ec2012 #ec2012title { font-family: theovandregular; letter-spacing: 2px; font-size: 3em; margin-bottom: 0.5em; }
 body.ec2012 #ec2012title a, body.ec2012 #ec2012title a:active, body.ec2012 #ec2012title a:hover, body.ec2012 #ec2012title a:visited { color: white; }
