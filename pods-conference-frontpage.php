@@ -48,7 +48,7 @@ while($organizations_pod->fetchRecord()) {
   var_trace($GLOBALS['site-ec2012'], "GLOBALS['site-ec2012']");
   
   // MONKEYPATCH_BEGIN
-  if($GLOBALS['site-ec2012'] == true) {
+  if($_GET["siteid"] == 'ec2012') {
     $logo_uri = wp_get_attachment_url($organizations_pod->get_field('logo_white_raster.ID'));
   } else {
     $logo_uri = wp_get_attachment_url($organizations_pod->get_field('logo.ID'));
