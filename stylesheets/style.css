@@ -388,8 +388,7 @@ body.ec2012 footer#footer a:hover { color: #8f870a; }
 body.ec2012 #navigationarea { display: none; }
 body.ec2012 .lc-event-programme .sessiontype-presentation header { border-top: none; }
 body.ec2012 .lc-event-programme .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
-body.ec2012 .lc-event-speaker-list .hc-details { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; }
-body.ec2012 .lc-event-speaker-list .hc-details a, body.ec2012 .lc-event-speaker-list .hc-details a:visited, body.ec2012 .lc-event-speaker-list .hc-details a:active { color: #e93616; }
+body.ec2012 .lc-event-speaker-list .speaker-card { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; background-color: #424242; color: white; }
 body.ec2012 #un-button { display: none; }
 
 .flexslider { position: relative; box-shadow: none; margin: 0; min-width: 60em; /* Direction Nav */ /* Control Nav */ }
@@ -542,10 +541,13 @@ nav#projectsmenu h1 { font-size: 1.2em; font-weight: bold; margin-bottom: 0.5em;
 .lc-media-archive-search .queryarea h3 { font-weight: bold; margin-bottom: 0.5em; }
 .lc-media-archive-search #query { border: none; background-color: #fcfcfc; color: #999; line-height: 2em; padding: 0.5em 1em; font-style: italics; }
 
+.lc-event-speaker-list .clearline { clear: both; }
+.lc-event-speaker-list .clearline.halfway { display: none; }
 .lc-event-speaker-list .speaker-profile { position: relative; }
 .lc-event-speaker-list .speaker-profile img { display: block; max-width: 100%; width: 100%; }
-.lc-event-speaker-list .hc-details, .lc-event-speaker-list .speaker-card { border: none; -moz-box-shadow: 3px 3px 2px #888888; -webkit-box-shadow: 3px 3px 2px #888888; -o-box-shadow: 3px 3px 2px #888888; box-shadow: 3px 3px 2px #888888; -moz-border-radius: inherit; -webkit-border-radius: inherit; -o-border-radius: inherit; -ms-border-radius: inherit; -khtml-border-radius: inherit; border-radius: inherit; background-color: #fff; color: #000; font-family: inherit; font-size: inherit; left: 0; top: 100%; line-height: inherit; padding: 0.5em; position: absolute; z-index: 100; text-align: left; opacity: 0.95; width: 300%; }
-.lc-event-speaker-list .hc-details h1, .lc-event-speaker-list .speaker-card h1 { font-weight: bold; }
+.lc-event-speaker-list .speaker-profile:hover > div > strong { color: transparent; -moz-transition: color 1s ease; -webkit-transition: color 1s ease; -o-transition: color 1s ease; transition: color 1s ease; }
+.lc-event-speaker-list .speaker-card { display: none; border: none; -moz-box-shadow: 3px 3px 2px #888888; -webkit-box-shadow: 3px 3px 2px #888888; -o-box-shadow: 3px 3px 2px #888888; box-shadow: 3px 3px 2px #888888; -moz-border-radius: inherit; -webkit-border-radius: inherit; -o-border-radius: inherit; -ms-border-radius: inherit; -khtml-border-radius: inherit; border-radius: inherit; background-color: #fff; color: #000; font-size: 0.85em; left: 0; top: 100%; line-height: inherit; padding: 0.5em; position: absolute; z-index: 100; text-align: left; opacity: 0.95; width: 200%; }
+.lc-event-speaker-list .speaker-card h1 { font-weight: bold; font-size: 1.8em; }
 .lc-event-speaker-list .speaker-profile.last .speaker-card { left: inherit; right: 0; }
 
 /*/mediaquery*/

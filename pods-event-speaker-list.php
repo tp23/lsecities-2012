@@ -137,10 +137,10 @@ function process_session($session_slug) {
         </div>
         <?php 
         if((($index + 1) % 6) == 0) : ?>
-          <div>&nbsp;</div>
+          <div class="clearline">&nbsp;</div>
         <?php
         elseif((($index + 1) % 3) == 0) : ?>
-          <div style="display: none;">&nbsp;</div>
+          <div class="clearline halfway">&nbsp;</div>
         <?php
         endif; // ((($index + 1) % 6) == 0)
         $index++; 
