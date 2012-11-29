@@ -493,6 +493,7 @@ right: -21px; */ }
 .lc-event-programme .entry-content section.sessiontype-day > header > h1 { font-size: 1.5em; color: inherit; background-color: inherit; padding-left: 0; }
 .lc-event-programme .entry-content section.sessiontype-session .session > header > h1 { background-color: inherit; color: inherit; padding-left: 0; }
 .lc-event-programme .entry-content section.sessiontype-session .session .session > header { border-top: none; }
+.lc-event-programme .entry-content section.sessiontype-session .sessiontype-session > header { border-top: none; border-bottom: 1px solid #eee111; }
 
 .lc-newspaper-article header.heading-image img { max-width: 100%; width: 100%; }
 .lc-newspaper-article .has-pullquote::before { content: attr(data-pullquote); font-weight: bold; opacity: 0.8; float: right; width: 50%; margin: 0.5em -30% 0 0; padding-left: 1.5em; padding-bottom: 0.5em; font-style: italic; position: relative; font-size: 1.5em; line-height: 1.25em; }
