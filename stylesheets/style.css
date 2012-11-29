@@ -274,17 +274,17 @@ ol.article-references li:target { background-color: #ffeeee; }
 .extra-content > section > header > h1, .extra-content > aside > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
 .extra-content.multi-section > section { clear: none; }
 
-#contentarea section, #contentarea section > section { margin-top: 2em; }
-#contentarea section > header, #contentarea section > section > header { border-top: 1px solid red; }
-#contentarea section > header > h1, #contentarea section > section > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
-#contentarea section > header > h1, #contentarea section > section > header > h1 { margin-bottom: 0; }
-#contentarea .list-wrap section, #contentarea .list-wrap section > section { margin-top: 0; }
-#contentarea section { clear: both; }
-#contentarea section > h1 { font-weight: bold; font-size: 1.2em; }
-#contentarea .top-content { margin-bottom: 1em; }
-#contentarea .top-content > header { margin-bottom: 1em; }
-#contentarea .top-content article header { margin-bottom: 1em; }
-#contentarea .top-content article header h1.entry-title { font-family: museo-sans, PT Sans, sans-serif; font-weight: 900; color: #22273b; }
+.entry-content section, .entry-content section > section { margin-top: 2em; }
+.entry-content section > header, .entry-content section > section > header { border-top: 1px solid red; }
+.entry-content section > header > h1, .entry-content section > section > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
+.entry-content section > header > h1, .entry-content section > section > header > h1 { margin-bottom: 0; }
+.entry-content .list-wrap section, .entry-content .list-wrap section > section { margin-top: 0; }
+.entry-content section { clear: both; }
+.entry-content section > h1 { font-weight: bold; font-size: 1.2em; }
+.entry-content .top-content { margin-bottom: 1em; }
+.entry-content .top-content > header { margin-bottom: 1em; }
+.entry-content .top-content article header { margin-bottom: 1em; }
+.entry-content .top-content article header h1.entry-title { font-family: museo-sans, PT Sans, sans-serif; font-weight: 900; color: #22273b; }
 
 #keyfacts, #navigationarea { font-size: 0.9em; }
 #keyfacts h1, #navigationarea h1 { font-size: 1em; font-weight: bold; }
@@ -382,13 +382,14 @@ body.ec2012 [role='main'], body.ec2012 #main { overflow: visible; }
 body.ec2012 #contentarea .top-content article header h1 { color: #eee111; }
 body.ec2012 #contentarea.ninecol { width: 100%; }
 body.ec2012 #contentarea > h1 { display: none; }
-body.ec2012 #contentarea section > header, body.ec2012 .extra-content > section > header, body.ec2012 .extra-content > aside > header { border-top: 1px solid #eee111; }
-body.ec2012 #contentarea section > header > h1, body.ec2012 .extra-content > section > header > h1, body.ec2012 .extra-content > aside > header > h1 { color: black; background-color: #eee111; }
+body.ec2012 .entry-content section > header, body.ec2012 .extra-content > section > header, body.ec2012 .extra-content > aside > header { border-top: 1px solid #eee111; }
+body.ec2012 .entry-content section > header > h1, body.ec2012 .extra-content > section > header > h1, body.ec2012 .extra-content > aside > header > h1 { color: black; background-color: #eee111; }
 body.ec2012 a, body.ec2012 a:focus, body.ec2012 a:active { color: #eee111; }
 body.ec2012 a:hover { color: #8f870a; }
 body.ec2012 footer#footer a, body.ec2012 footer#footer a:visited, body.ec2012 footer#footer a:active { color: #eee111; }
 body.ec2012 footer#footer a:hover { color: #8f870a; }
 body.ec2012 #navigationarea { display: none; }
+body.ec2012 .lc-event-programme .sessiontype-session .sessiontype-session > header { border-top: none; border-bottom: 1px solid #eee111; }
 body.ec2012 .lc-event-programme .sessiontype-presentation header { border-top: none; }
 body.ec2012 .lc-event-programme .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
 body.ec2012 .lc-event-speaker-list .speaker-card { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; background-color: #424242; color: white; }
@@ -488,10 +489,10 @@ right: -21px; */ }
 .lc-event .event-info { font-size: 0.9em; margin-top: 1em; }
 .lc-event #speaker-profiles .people-list .person h1 { font-size: 1.125em; font-weight: bold; text-transform: inherit; border-bottom: 1px solid #eee; margin-bottom: 0.444444444em; }
 
-.lc-event-programme #contentarea section.sessiontype-day > header { border-top: none; }
-.lc-event-programme #contentarea section.sessiontype-day > header > h1 { font-size: 1.5em; color: inherit; background-color: inherit; padding-left: 0; }
-.lc-event-programme #contentarea section.sessiontype-session .session > header > h1 { background-color: inherit; color: inherit; padding-left: 0; }
-.lc-event-programme #contentarea section.sessiontype-session .session .session > header { border-top: none; }
+.lc-event-programme .entry-content section.sessiontype-day > header { border-top: none; }
+.lc-event-programme .entry-content section.sessiontype-day > header > h1 { font-size: 1.5em; color: inherit; background-color: inherit; padding-left: 0; }
+.lc-event-programme .entry-content section.sessiontype-session .session > header > h1 { background-color: inherit; color: inherit; padding-left: 0; }
+.lc-event-programme .entry-content section.sessiontype-session .session .session > header { border-top: none; }
 
 .lc-newspaper-article header.heading-image img { max-width: 100%; width: 100%; }
 .lc-newspaper-article .has-pullquote::before { content: attr(data-pullquote); font-weight: bold; opacity: 0.8; float: right; width: 50%; margin: 0.5em -30% 0 0; padding-left: 1.5em; padding-bottom: 0.5em; font-style: italic; position: relative; font-size: 1.5em; line-height: 1.25em; }
