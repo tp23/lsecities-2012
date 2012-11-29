@@ -22,6 +22,18 @@ $for_event = $pod->get_field('for_event.slug');
 
 var_trace(var_export($subsessions, true), 'sessions');
 
+/**
+ * If we use special fields from the speakers objects to generate
+ * speaker blurb and affiliation information for the programme.
+ * The following field will be set and contain the prefix for the
+ * fields to use in the people pod.
+ * e.g. if the special_ec2012 prefix is provided, we expect to
+ * fetch speaker blurb and affiliation from the following fields
+ * in the people pod:
+ * - special_ec2012_blurb
+ * - special_ec2012_affiliation
+*/
+$special_fields_prefix = $pod->get_field('special_author_fields');
 $all_speakers = array();
 
 foreach($subsessions as $session) {
@@ -36,21 +48,12 @@ array_multisort($family_name, SORT_ASC, $all_speakers);
 
 var_trace($all_speakers, 'all_speakers');
 
-/**
- * If we use special fields from the speakers objects to generate
- * speaker blurb and affiliation information for the programme.
- * The following field will be set and contain the prefix for the
- * fields to use in the people pod.
- * e.g. if the special_ec2012 prefix is provided, we expect to
- * fetch speaker blurb and affiliation from the following fields
- * in the people pod:
- * - special_ec2012_blurb
- * - special_ec2012_affiliation
-*/
-$special_fields_prefix = $pod->get_field('special_author_fields');
+
   
 function process_session($session_slug) {
-  global $TRACE_ENABLED, $all_speakers, $special_fields_prefix;
+  global $TRACE_ENABLED;
+  global $all_speakers;
+  global $special_fields_prefix;
   $ALLOWED_TAGS_IN_BLURBS = '<strong><em>';
   var_trace($special_fields_prefix, 'special_fields_prefix');
   
