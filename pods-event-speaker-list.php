@@ -85,7 +85,7 @@ function process_session($session_slug) {
   foreach($session_speakers as $session_speaker) {
     $this_speaker = new Pod('authors', $session_speaker['slug']);
     var_trace(var_export($session_speaker, true), 'speaker');
-    $speaker_blurb_and_affiliation = generate_speaker_card_data($session_speaker['slug'], $special_fields_prefix);
+    $speaker_blurb_and_affiliation = generate_speaker_card_data($special_fields_prefix, $session_speaker['slug']);
     
     $all_speakers[$session_speaker['slug']]['name'] = $session_speaker['name'];
     $all_speakers[$session_speaker['slug']]['family_name'] = $session_speaker['family_name'];
