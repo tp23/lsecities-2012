@@ -389,9 +389,9 @@ body.ec2012 a:hover { color: #8f870a; }
 body.ec2012 footer#footer a, body.ec2012 footer#footer a:visited, body.ec2012 footer#footer a:active { color: #eee111; }
 body.ec2012 footer#footer a:hover { color: #8f870a; }
 body.ec2012 #navigationarea { display: none; }
-body.ec2012 .lc-event-programme .sessiontype-session .sessiontype-session > header, body.ec2012 .lc-event-programme .sessiontype-session .sessiontype-panel > header, body.ec2012 .lc-event-programme .sessiontype-session .sessiontype-discussion > header { border-top: none; border-bottom: 1px solid #eee111; }
-body.ec2012 .lc-event-programme .sessiontype-presentation header { border-top: none; }
-body.ec2012 .lc-event-programme .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
+body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-session > header, body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-panel > header, body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-discussion > header { border-top: none; border-bottom: 1px solid #eee111; }
+body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header { border-top: none; }
+body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
 body.ec2012 .lc-event-speaker-list .speaker-card { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; background-color: #424242; color: white; }
 body.ec2012 #un-button { display: none; }
 
