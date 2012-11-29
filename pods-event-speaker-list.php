@@ -52,6 +52,7 @@ $special_fields_prefix = $pod->get_field('special_author_fields');
 function process_session($session_slug) {
   global $TRACE_ENABLED, $all_speakers, $special_fields_prefix;
   $ALLOWED_TAGS_IN_BLURBS = '<strong><em>';
+  var_trace($special_fields_prefix, 'special_fields_prefix');
   
   $pod = new Pod('event_session', $session_slug);
   
