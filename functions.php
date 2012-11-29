@@ -313,13 +313,13 @@ function generate_session_people_blurb($pod, $blurb_field, $special_fields_prefi
        * record */
       if(!$affiliation) { 
         $this_person_role = $this_person['role'];
-        $this_person_affiliation = $this_person['organization'];
+        $this_person_organization = $this_person['organization'];
         var_trace($this_person_role, 'this_person_role');
-        var_trace($this_person_affiliation, 'this_person_affiliation');
-        if($this_person_role and $this_person_affiliation) {
-          $affiliation = $this_person_role . ', ' . $this_person_affiliation;
-        } elseif($this_person_affiliation) {
-          $affiliation = $this_person_affiliation;
+        var_trace($this_person_organization, 'this_person_organization');
+        if($this_person_role and $this_person_organization) {
+          $affiliation = $this_person_role . ', ' . $this_person_organization;
+        } elseif($this_person_organization) {
+          $affiliation = $this_person_organization;
         }
       }
       
@@ -342,6 +342,29 @@ function generate_session_people_blurb($pod, $blurb_field, $special_fields_prefi
   return $session_people_blurb;
 }
 
+function generate_speaker_card_data($special_fields_prefix, $person_slug) {
+  $pod = new Pod('authors', $person_slug);
+  
+  if($special_fields_prefix) {
+    $affiliation = $pod->get_field($special_fields_prefix . '_affiliation');
+    $blurb = $pod->get_field($special_fields_prefix . '_blurb');
+  } else {
+    $role = $pod->get_field('role');
+    $organization = $pod->get_field('organization');
+    
+    if($role and $organization) {
+      $affiliation = $role . ', ' . $organization;
+    } elseif($organization) {
+      $affiliation = $organization;
+    }
+    $blurb = $pod->get_field('profile_text');
+  }
+  
+  return array(
+    'blurb' => $blurb,
+    'affiliation' => $affiliation
+  );
+}
 
 /**
  * Loop shortcode

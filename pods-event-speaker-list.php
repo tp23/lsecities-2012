@@ -36,9 +36,21 @@ array_multisort($family_name, SORT_ASC, $all_speakers);
 
 var_trace($all_speakers, 'all_speakers');
 
+/**
+ * If we use special fields from the speakers objects to generate
+ * speaker blurb and affiliation information for the programme.
+ * The following field will be set and contain the prefix for the
+ * fields to use in the people pod.
+ * e.g. if the special_ec2012 prefix is provided, we expect to
+ * fetch speaker blurb and affiliation from the following fields
+ * in the people pod:
+ * - special_ec2012_blurb
+ * - special_ec2012_affiliation
+*/
+$special_fields_prefix = $pod->get_field('special_author_fields');
   
 function process_session($session_slug) {
-  global $TRACE_ENABLED, $all_speakers;
+  global $TRACE_ENABLED, $all_speakers, $special_fields_prefix;
   $ALLOWED_TAGS_IN_BLURBS = '<strong><em>';
   
   $pod = new Pod('event_session', $session_slug);
@@ -73,22 +85,17 @@ function process_session($session_slug) {
   foreach($session_speakers as $session_speaker) {
     $this_speaker = new Pod('authors', $session_speaker['slug']);
     var_trace(var_export($session_speaker, true), 'speaker');
+    $speaker_blurb_and_affiliation = generate_speaker_card_data($session_speaker['slug'], $special_fields_prefix);
+    
     $all_speakers[$session_speaker['slug']]['name'] = $session_speaker['name'];
     $all_speakers[$session_speaker['slug']]['family_name'] = $session_speaker['family_name'];
-    if($session_speaker['special_blurb_2012ec']) {
-      $all_speakers[$session_speaker['slug']]['blurb'] = $session_speaker['special_blurb_2012ec'];
-    } elseif($session_speaker['profile_text']) {
-      $all_speakers[$session_speaker['slug']]['blurb'] = $session_speaker['profile_text'];
-    } else {
-      $all_speakers[$session_speaker['slug']]['blurb'] = '';
-    }
+    $all_speakers[$session_speaker['slug']]['blurb'] = $speaker_blurb_and_affiliation['blurb'];
     if($this_speaker->get_field('photo')) {
       $all_speakers[$session_speaker['slug']]['photo_uri'] = wp_get_attachment_url($this_speaker->get_field('photo.ID'));
     } elseif($session_speaker['photo_legacy']) {
       $all_speakers[$session_speaker['slug']]['photo_uri'] = 'http://v0.urban-age.net' . $session_speaker['photo_legacy'];
     }
-    $all_speakers[$session_speaker['slug']]['role'] = $session_speaker['role'];
-    $all_speakers[$session_speaker['slug']]['organization'] = $session_speaker['organization'];
+    $all_speakers[$session_speaker['slug']]['affiliation'] = $speaker_blurb_and_affiliation['affiliation'];
     $all_speakers[$session_speaker['slug']]['speaker_in'][] = array($session_id, $session_title);
   }
 
@@ -127,7 +134,8 @@ function process_session($session_slug) {
           </div>
           <div style="display:none;" class="speaker-card" id="speaker-card-<?php echo $key; ?>">
             <h1><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></h1>
-            <p><?php echo $speaker['blurb']; ?></p>
+            <?php if($speaker['affiliation']): ?><p><em><?php echo $speaker['affiliation']; ?></em></p><?php endif; ?>
+            <?php if($speaker['blurb']): ?><p><?php echo $speaker['blurb']; ?></p><?php endif; ?>
             <ul>
               <?php foreach($speaker['speaker_in'] as $speaker_session): ?>
               <li><a href="/programme/#<?php echo $speaker_session[0]; ?>"><?php echo $speaker_session[1]; ?></a></li>
