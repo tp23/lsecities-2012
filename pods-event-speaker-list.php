@@ -125,15 +125,15 @@ function process_session($session_slug) {
             <img style="display: block; width: 7.1875em; height: 7.1875em; max-width: 100%;" src="<?php echo $speaker['photo_uri']; ?>" />
             <strong><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></strong>
           </div>
-        </div>
-        <div style="display:none;" class="speaker-card" id="speaker-card-<?php echo $key; ?>">
-          <h1><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></h1>
-          <p><?php echo $speaker['blurb']; ?></p>
-          <ul>
-            <?php foreach($speaker['speaker_in'] as $speaker_session): ?>
-            <li><a href="/programme/#<?php echo $speaker_session[0]; ?>"><?php echo $speaker_session[1]; ?></a></li>
-            <?php endforeach; ?>
-          </ul>
+          <div style="display:none;" class="speaker-card" id="speaker-card-<?php echo $key; ?>">
+            <h1><?php echo $speaker['name'] . ' ' . $speaker['family_name']; ?></h1>
+            <p><?php echo $speaker['blurb']; ?></p>
+            <ul>
+              <?php foreach($speaker['speaker_in'] as $speaker_session): ?>
+              <li><a href="/programme/#<?php echo $speaker_session[0]; ?>"><?php echo $speaker_session[1]; ?></a></li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
         </div>
         <?php 
         if((($index + 1) % 6) == 0) : ?>

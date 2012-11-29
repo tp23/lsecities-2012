@@ -120,6 +120,15 @@
             }
           } catch(error) {}
           
+          $('.speaker-profile').hover(
+            function () {
+                $(this).children('.speaker-card').fadeIn();
+            },
+            function () {
+                $(this).children('.speaker-card').fadeOut();
+            }
+          );
+          
           $('.flexslider').flexslider(({
             animation: "slide",
             slideshow: false,
