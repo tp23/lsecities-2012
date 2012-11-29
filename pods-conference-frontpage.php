@@ -45,10 +45,19 @@ $organizations_pod = new Pod('organization');
 $organizations_pod->findRecords(array('where' => 'slug IN ' . $slug_list));
 
 while($organizations_pod->fetchRecord()) {
+  
+  // MONKEYPATCH_BEGIN
+  if($GLOBALS['site-ec2012'] == true) {
+    $logo_uri = wp_get_attachment_url($organizations_pod->get_field('logo_white_raster.ID'));
+  } else {
+    $logo_uri = wp_get_attachment_url($organizations_pod->get_field('logo.ID'));
+  }
+  // MONKEYPATCH_END
+  
 	array_push($partners, array(
 		'id' => $organizations_pod->get_field('slug'),
 		'name' => $organizations_pod->get_field('name'),
-		'logo_uri' => ($GLOBALS['site-ec2012'] == true) ? wp_get_attachment_url($organizations_pod->get_field('logo_white_raster.ID')) : wp_get_attachment_url($organizations_pod->get_field('logo.ID')), // MONKEYPATCH! -- refactor properly after EC2012
+		'logo_uri' => $logo_uri,
 		'web_uri' => $organizations_pod->get_field('web_uri')
 	));
 }
