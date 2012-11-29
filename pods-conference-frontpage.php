@@ -45,6 +45,7 @@ $organizations_pod = new Pod('organization');
 $organizations_pod->findRecords(array('where' => 'slug IN ' . $slug_list));
 
 while($organizations_pod->fetchRecord()) {
+  var_trace($GLOBALS['site-ec2012'], "GLOBALS['site-ec2012']");
   
   // MONKEYPATCH_BEGIN
   if($GLOBALS['site-ec2012'] == true) {
