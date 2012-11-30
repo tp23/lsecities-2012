@@ -584,7 +584,11 @@ body.ec2012 #un-button { display: none; }
 
 /*/mediaquery*/
 /*/mediaquery*/
-@media only screen and (max-width: 768px) { #footer #organizer-logos img { max-width: 12em; } }
+@media only screen and (max-width: 768px) { #footer #organizer-logos img { max-width: 12em; }
+  #cccwr { display: none; } }
+/*/mediaquery*/
+@media only screen and (max-width: 480px) { .row .onecol, .row .twocol, .row .threecol, .row .fourcol, .row .fivecol, .row .sixcol, .row .sevencol, .row .eightcol, .row .ninecol, .row .tencol, .row .elevencol, .row .twelvecol { padding-left: 0; padding-right: 0; }
+  .container { padding-left: 10px; padding-right: 10px; } }
 /*/mediaquery*/
 @media print { * { background: transparent !important; color: black !important; text-shadow: none !important; filter: none !important; -ms-filter: none !important; }
   a, a:visited { color: #444 !important; text-decoration: underline; }
