@@ -569,7 +569,7 @@ body.ec2012 #un-button { display: none; }
   h2, h3 { page-break-after: avoid; } }
 @media only screen and (min-width: 480px) { body.ec2012 .lc-event-speaker-list .speaker-profile { width: 30.75%; } }
 /*/mediaquery*/
-@media only screen and (min-width: 768px) { body.ec2012 .lc-event-speaker-list .speaker-profile { width: inherit; } }
+@media only screen and (min-width: 768px) { body.ec2012 .lc-event-speaker-list .speaker-profile { width: 13.45%; } }
 /*/mediaquery*/
 @media print { * { background: transparent !important; color: black !important; text-shadow: none !important; filter: none !important; -ms-filter: none !important; }
   a, a:visited { color: #444 !important; text-decoration: underline; }
