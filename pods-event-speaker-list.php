@@ -149,7 +149,7 @@ function process_session($session_slug) {
         </div>
         <?php 
         if((($index + 1) % 6) == 0) : ?>
-          <div class="clearline">&nbsp;</div>
+          <span class="clearline">&nbsp;</span>
         <?php
         elseif((($index + 1) % 3) == 0) : ?>
           <span class="clearline halfway">&nbsp;</span>
