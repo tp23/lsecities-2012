@@ -37,36 +37,26 @@ $conference_partners_slugs = (array) $pod->get_field('partners.slug');
 // MONKEYPATCH_BEGIN: sort by slug
 asort($conference_partners_slugs);
 // MONKEYPATCH_END
-$slug_list = '(';
-foreach($conference_partners_slugs as $slug) {
-	$slug_list .=  "'$slug',";
-}
-$slug_list = substr($slug_list, 0, -1);
-$slug_list .= ')';
 
-$organizations_pod = new Pod('organization');
-$organizations_pod->findRecords(array('where' => 'slug IN ' . $slug_list));
-
-while($organizations_pod->fetchRecord()) {
+foreach($conference_partners_slugs as $conference_partners_slug) {
   var_trace($GLOBALS['site-ec2012'], "GLOBALS['site-ec2012']");
+  $organization_pod = new Pod('organization', $conference_partners_slug);
   
   // MONKEYPATCH_BEGIN
   if($_GET["siteid"] == 'ec2012') {
-    $logo_uri = wp_get_attachment_url($organizations_pod->get_field('logo_white_raster.ID'));
+    $logo_uri = wp_get_attachment_url($organization_pod->get_field('logo_white_raster.ID'));
   } else {
-    $logo_uri = wp_get_attachment_url($organizations_pod->get_field('logo.ID'));
+    $logo_uri = wp_get_attachment_url($organization_pod->get_field('logo.ID'));
   }
   // MONKEYPATCH_END
   
 	array_push($partners, array(
-		'id' => $organizations_pod->get_field('slug'),
-		'name' => $organizations_pod->get_field('name'),
+		'id' => $organization_pod->get_field('slug'),
+		'name' => $organization_pod->get_field('name'),
 		'logo_uri' => $logo_uri,
-		'web_uri' => $organizations_pod->get_field('web_uri')
+		'web_uri' => $organization_pod->get_field('web_uri')
 	));
 }
-var_trace($slug_list, 'slug_list');
-var_trace($organizations_pod, 'organizations_pod');
 var_trace($partners, 'partners');
 
 $conference_publication_blurb = $pod->get_field('conference_newspaper.blurb');
