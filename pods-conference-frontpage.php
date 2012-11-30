@@ -34,6 +34,9 @@ if(!$slider) {
 /* process list of partners */
 $partners = array();
 $conference_partners_slugs = (array) $pod->get_field('partners.slug');
+// MONKEYPATCH_BEGIN: sort by slug
+asort($conference_partners_slugs);
+// MONKEYPATCH_END
 $slug_list = '(';
 foreach($conference_partners_slugs as $slug) {
 	$slug_list .=  "'$slug',";
