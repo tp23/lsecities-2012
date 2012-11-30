@@ -48,7 +48,23 @@ array_multisort($family_name, SORT_ASC, $all_speakers);
 
 var_trace($all_speakers, 'all_speakers');
 
-
+function add_speaker_to_stash($special_fields_prefix, $session_speaker) {
+  global $all_speakers;
+  $this_speaker = new Pod('authors', $session_speaker['slug']);
+  var_trace(var_export($session_speaker, true), 'speaker');
+  $speaker_blurb_and_affiliation = generate_speaker_card_data($special_fields_prefix, $session_speaker['slug']);
+  
+  $all_speakers[$session_speaker['slug']]['name'] = $session_speaker['name'];
+  $all_speakers[$session_speaker['slug']]['family_name'] = $session_speaker['family_name'];
+  $all_speakers[$session_speaker['slug']]['blurb'] = $speaker_blurb_and_affiliation['blurb'];
+  if($this_speaker->get_field('photo')) {
+    $all_speakers[$session_speaker['slug']]['photo_uri'] = wp_get_attachment_url($this_speaker->get_field('photo.ID'));
+  } elseif($session_speaker['photo_legacy']) {
+    $all_speakers[$session_speaker['slug']]['photo_uri'] = 'http://v0.urban-age.net' . $session_speaker['photo_legacy'];
+  }
+  $all_speakers[$session_speaker['slug']]['affiliation'] = $speaker_blurb_and_affiliation['affiliation'];
+  $all_speakers[$session_speaker['slug']]['speaker_in'][] = array($session_id, $session_title);
+}
   
 function process_session($session_slug) {
   global $TRACE_ENABLED;
@@ -87,20 +103,10 @@ function process_session($session_slug) {
   var_trace(var_export($subsessions, true), 'sessions');
   
   foreach($session_speakers as $session_speaker) {
-    $this_speaker = new Pod('authors', $session_speaker['slug']);
-    var_trace(var_export($session_speaker, true), 'speaker');
-    $speaker_blurb_and_affiliation = generate_speaker_card_data($special_fields_prefix, $session_speaker['slug']);
-    
-    $all_speakers[$session_speaker['slug']]['name'] = $session_speaker['name'];
-    $all_speakers[$session_speaker['slug']]['family_name'] = $session_speaker['family_name'];
-    $all_speakers[$session_speaker['slug']]['blurb'] = $speaker_blurb_and_affiliation['blurb'];
-    if($this_speaker->get_field('photo')) {
-      $all_speakers[$session_speaker['slug']]['photo_uri'] = wp_get_attachment_url($this_speaker->get_field('photo.ID'));
-    } elseif($session_speaker['photo_legacy']) {
-      $all_speakers[$session_speaker['slug']]['photo_uri'] = 'http://v0.urban-age.net' . $session_speaker['photo_legacy'];
-    }
-    $all_speakers[$session_speaker['slug']]['affiliation'] = $speaker_blurb_and_affiliation['affiliation'];
-    $all_speakers[$session_speaker['slug']]['speaker_in'][] = array($session_id, $session_title);
+    add_speaker_to_stash($special_fields_prefix, $session_speaker);
+  }
+  foreach($session_chairs as $session_chair) {
+    add_speaker_to_stash($special_fields_prefix, $session_chair);
   }
 
   if($subsessions) {
