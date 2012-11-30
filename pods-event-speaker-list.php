@@ -48,7 +48,7 @@ array_multisort($family_name, SORT_ASC, $all_speakers);
 
 var_trace($all_speakers, 'all_speakers');
 
-function add_speaker_to_stash($special_fields_prefix, $session_speaker) {
+function add_speaker_to_stash($special_fields_prefix, $session_speaker, $session_id, $session_title) {
   global $all_speakers;
   $this_speaker = new Pod('authors', $session_speaker['slug']);
   var_trace(var_export($session_speaker, true), 'speaker');
@@ -103,10 +103,10 @@ function process_session($session_slug) {
   var_trace(var_export($subsessions, true), 'sessions');
   
   foreach($session_speakers as $session_speaker) {
-    add_speaker_to_stash($special_fields_prefix, $session_speaker);
+    add_speaker_to_stash($special_fields_prefix, $session_speaker, $session_id, $session_title);
   }
   foreach($session_chairs as $session_chair) {
-    add_speaker_to_stash($special_fields_prefix, $session_chair);
+    add_speaker_to_stash($special_fields_prefix, $session_chair, $session_id, $session_title);
   }
 
   if($subsessions) {
