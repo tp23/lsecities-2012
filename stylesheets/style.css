@@ -463,7 +463,8 @@ right: -21px; */ }
 .lc-event-speaker-list .speaker-card p { line-height: 1.2em; }
 .lc-event-speaker-list .speaker-profile.last .speaker-card { left: inherit; right: 0; }
 
-@media only screen and (min-width: 480px) and (max-width: 768px) { .lc-event-speaker-list .speaker-profile { width: 30.75%; float: left; padding-left: 0; padding-right: 0; margin-right: 3.8%; min-height: 1px; }
+@media only screen and (min-width: 480px) and (max-width: 768px) { .lc-event-speaker-list { max-width: 480px; padding-left: 0; padding-right: 0; }
+  .lc-event-speaker-list .speaker-profile { width: 30.75%; float: left; padding-left: 0; padding-right: 0; margin-right: 3.8%; min-height: 1px; }
   .lc-event-speaker-list .speaker-profile:nth-of-type(3n) { margin-right: 0; }
   .lc-event-speaker-list .speaker-profile:nth-of-type(3n) .speaker-card { left: inherit; right: 0; }
   .lc-event-speaker-list .clearline, .lc-event-speaker-list .clearline.halfway { display: block; clear: both; } }
