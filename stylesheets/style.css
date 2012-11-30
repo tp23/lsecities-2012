@@ -349,45 +349,6 @@ blockquote::before { color: #999999; content: "“"; display: block; font-size: 
 .watchvideo.onyoutube { background: url("//lsecities.net/wp-content/themes/lsecities-2012/images/icons/mal/icon_youtubedarkblue_20x20.png") no-repeat scroll 0 0 transparent; padding-left: 28px; padding-bottom: 8px; -moz-transition: opacity 0.4s ease 0s; -webkit-transition: opacity 0.4s ease 0s; -o-transition: opacity 0.4s ease 0s; transition: opacity 0.4s ease 0s; }
 .watchvideo.onyoutube:hover { opacity: 0.6; }
 
-body.ec2012 { background-color: black; color: white; font-family: "Open Sans", proxima-nova, "Helvetica Neue", Helvetica, sans-serif; }
-body.ec2012 .reset-layout { clear: both; overflow: hidden; }
-body.ec2012 #container { max-width: 960px; margin-left: auto; margin-right: auto; }
-body.ec2012 header.entry-header { display: none; }
-body.ec2012 header.entry-header h1 { color: #eee111; }
-body.ec2012 #header { position: relative; }
-body.ec2012 #header .twitter-hashtag { position: absolute; top: 30%; line-height: 1em; right: 0; background-color: #eee111; padding: 0.2em 0.5em; border-radius: 0.2em; font-weight: bold; }
-body.ec2012 #header .twitter-hashtag a, body.ec2012 #header .twitter-hashtag a:active, body.ec2012 #header .twitter-hashtag a:visited { color: black; }
-body.ec2012 #ec2012title { font-family: theovandregular; letter-spacing: 2px; font-size: 3em; margin-bottom: 0.5em; }
-body.ec2012 #ec2012title a, body.ec2012 #ec2012title a:active, body.ec2012 #ec2012title a:hover, body.ec2012 #ec2012title a:visited { color: white; }
-body.ec2012 #level1nav, body.ec2012 #level2nav { font-family: theovandregular; letter-spacing: 1px; }
-body.ec2012 #level2nav { background-color: transparent; }
-body.ec2012 #level2nav ul { float: left; }
-body.ec2012 #level2nav ul li a:hover { background-color: inherit; color: #eee111; color: #8f870a; }
-body.ec2012 #level2nav ul li.current, body.ec2012 #level2nav ul li.current_page_item, body.ec2012 #level2nav ul li.current_page_ancestor, body.ec2012 #level2nav ul li.current_page_parent { background-color: inherit; }
-body.ec2012 #level2nav ul li.current a, body.ec2012 #level2nav ul li.current_page_item a, body.ec2012 #level2nav ul li.current_page_ancestor a, body.ec2012 #level2nav ul li.current_page_parent a { background-color: inherit; color: #eee111; }
-body.ec2012 #level2nav ul li.current a:hover, body.ec2012 #level2nav ul li.current_page_item a:hover, body.ec2012 #level2nav ul li.current_page_ancestor a:hover, body.ec2012 #level2nav ul li.current_page_parent a:hover { background-color: inherit; color: #eee111; color: #8f870a; }
-body.ec2012 #level2nav ul li.current:hover a, body.ec2012 #level2nav ul li.current_page_item:hover a, body.ec2012 #level2nav ul li.current_page_ancestor:hover a, body.ec2012 #level2nav ul li.current_page_parent:hover a { background-color: inherit; color: #8f870a; }
-body.ec2012 #level2nav ul li:first-child a { padding-left: 0; }
-body.ec2012 #mainmenus { margin-bottom: 1em; }
-body.ec2012 [role='main'] { padding-bottom: 10em; }
-body.ec2012 [role='main'] > article.ninecol { width: 100%; }
-body.ec2012 [role='main'], body.ec2012 #main { overflow: visible; }
-body.ec2012 #contentarea .top-content article header h1 { color: #eee111; }
-body.ec2012 #contentarea.ninecol { width: 100%; }
-body.ec2012 #contentarea > h1 { display: none; }
-body.ec2012 .entry-content section > header, body.ec2012 .extra-content > section > header, body.ec2012 .extra-content > aside > header { border-top: 1px solid #eee111; }
-body.ec2012 .entry-content section > header > h1, body.ec2012 .extra-content > section > header > h1, body.ec2012 .extra-content > aside > header > h1 { color: black; background-color: #eee111; }
-body.ec2012 a, body.ec2012 a:focus, body.ec2012 a:active { color: #eee111; }
-body.ec2012 a:hover { color: #8f870a; }
-body.ec2012 footer#footer a, body.ec2012 footer#footer a:visited, body.ec2012 footer#footer a:active { color: #eee111; }
-body.ec2012 footer#footer a:hover { color: #8f870a; }
-body.ec2012 #navigationarea { display: none; }
-body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-session > header, body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-panel > header, body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-discussion > header { border-top: none; border-bottom: 1px solid #eee111; }
-body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header { border-top: none; }
-body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
-body.ec2012 .lc-event-speaker-list .speaker-card { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; background-color: #424242; color: white; }
-body.ec2012 #un-button { display: none; }
-
 .flexslider { position: relative; box-shadow: none; margin: 0; min-width: 60em; /* Direction Nav */ /* Control Nav */ }
 .flexslider .flex-direction-nav { list-style-type: none; }
 .flexslider .flex-direction-nav li a { width: 33px; height: 64px; text-indent: -9999px; border: 0; margin: -13px 0 0; display: block; /* background: url(theme/bg_direction_nav.png) no-repeat 0 0; */ position: absolute; top: 45%; /* top: 50%; */ opacity: 0.9; }
@@ -552,7 +513,63 @@ nav#projectsmenu h1 { font-size: 1.2em; font-weight: bold; margin-bottom: 0.5em;
 .lc-media-archive-search .queryarea h3 { font-weight: bold; margin-bottom: 0.5em; }
 .lc-media-archive-search #query { border: none; background-color: #fcfcfc; color: #999; line-height: 2em; padding: 0.5em 1em; font-style: italics; }
 
+body.ec2012 { background-color: black; color: white; font-family: "Open Sans", proxima-nova, "Helvetica Neue", Helvetica, sans-serif; }
+body.ec2012 .reset-layout { clear: both; overflow: hidden; }
+body.ec2012 #container { max-width: 960px; margin-left: auto; margin-right: auto; }
+body.ec2012 header.entry-header { display: none; }
+body.ec2012 header.entry-header h1 { color: #eee111; }
+body.ec2012 header h1, body.ec2012 header h2 { color: #eee111; font-weight: bold; font-size: 2em; }
+body.ec2012 #header { position: relative; }
+body.ec2012 #header .twitter-hashtag { position: absolute; top: 30%; line-height: 1em; right: 0; background-color: #eee111; padding: 0.2em 0.5em; border-radius: 0.2em; font-weight: bold; }
+body.ec2012 #header .twitter-hashtag a, body.ec2012 #header .twitter-hashtag a:active, body.ec2012 #header .twitter-hashtag a:visited { color: black; }
+body.ec2012 #ec2012title { font-family: theovandregular; letter-spacing: 2px; font-size: 3em; margin-bottom: 0.5em; }
+body.ec2012 #ec2012title a, body.ec2012 #ec2012title a:active, body.ec2012 #ec2012title a:hover, body.ec2012 #ec2012title a:visited { color: white; }
+body.ec2012 #level1nav, body.ec2012 #level2nav { font-family: theovandregular; letter-spacing: 1px; }
+body.ec2012 #level2nav { background-color: transparent; }
+body.ec2012 #level2nav ul { float: left; }
+body.ec2012 #level2nav ul li a:hover { background-color: inherit; color: #eee111; color: #8f870a; }
+body.ec2012 #level2nav ul li.current, body.ec2012 #level2nav ul li.current_page_item, body.ec2012 #level2nav ul li.current_page_ancestor, body.ec2012 #level2nav ul li.current_page_parent { background-color: inherit; }
+body.ec2012 #level2nav ul li.current a, body.ec2012 #level2nav ul li.current_page_item a, body.ec2012 #level2nav ul li.current_page_ancestor a, body.ec2012 #level2nav ul li.current_page_parent a { background-color: inherit; color: #eee111; }
+body.ec2012 #level2nav ul li.current a:hover, body.ec2012 #level2nav ul li.current_page_item a:hover, body.ec2012 #level2nav ul li.current_page_ancestor a:hover, body.ec2012 #level2nav ul li.current_page_parent a:hover { background-color: inherit; color: #eee111; color: #8f870a; }
+body.ec2012 #level2nav ul li.current:hover a, body.ec2012 #level2nav ul li.current_page_item:hover a, body.ec2012 #level2nav ul li.current_page_ancestor:hover a, body.ec2012 #level2nav ul li.current_page_parent:hover a { background-color: inherit; color: #8f870a; }
+body.ec2012 #level2nav ul li:first-child a { padding-left: 0; }
+body.ec2012 #mainmenus { margin-bottom: 1em; }
+body.ec2012 [role='main'] { padding-bottom: 10em; }
+body.ec2012 [role='main'] > article.ninecol { width: 100%; }
+body.ec2012 [role='main'], body.ec2012 #main { overflow: visible; }
+body.ec2012 #contentarea .top-content article header h1 { color: #eee111; }
+body.ec2012 #contentarea.ninecol { width: 100%; }
+body.ec2012 #contentarea > h1 { display: none; }
+body.ec2012 .entry-content section > header, body.ec2012 .extra-content > section > header, body.ec2012 .extra-content > aside > header { border-top: 1px solid #eee111; }
+body.ec2012 .entry-content section > header > h1, body.ec2012 .extra-content > section > header > h1, body.ec2012 .extra-content > aside > header > h1 { color: black; background-color: #eee111; }
+body.ec2012 a, body.ec2012 a:focus, body.ec2012 a:active { color: #eee111; }
+body.ec2012 a:hover { color: #8f870a; }
+body.ec2012 footer#footer a, body.ec2012 footer#footer a:visited, body.ec2012 footer#footer a:active { color: #eee111; }
+body.ec2012 footer#footer a:hover { color: #8f870a; }
+body.ec2012 #navigationarea { display: none; }
+body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-session > header, body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-panel > header, body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-discussion > header { border-top: none; border-bottom: 1px solid #eee111; }
+body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header { border-top: none; }
+body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
+body.ec2012 .lc-event-speaker-list .speaker-card { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; background-color: #424242; color: white; }
+body.ec2012 #un-button { display: none; }
+
 /*/mediaquery*/
+/*/mediaquery*/
+@media print { * { background: transparent !important; color: black !important; text-shadow: none !important; filter: none !important; -ms-filter: none !important; }
+  a, a:visited { color: #444 !important; text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; } }
+@media only screen and (min-width: 480px) { body.ec2012 .lc-event-speaker-list .speaker-profile { width: 30.75%; } }
+/*/mediaquery*/
+@media only screen and (min-width: 768px) { body.ec2012 .lc-event-speaker-list .speaker-profile { width: inherit; } }
 /*/mediaquery*/
 @media print { * { background: transparent !important; color: black !important; text-shadow: none !important; filter: none !important; -ms-filter: none !important; }
   a, a:visited { color: #444 !important; text-decoration: underline; }
