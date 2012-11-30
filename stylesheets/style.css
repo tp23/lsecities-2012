@@ -349,7 +349,7 @@ blockquote::before { color: #999999; content: "“"; display: block; font-size: 
 .watchvideo.onyoutube { background: url("//lsecities.net/wp-content/themes/lsecities-2012/images/icons/mal/icon_youtubedarkblue_20x20.png") no-repeat scroll 0 0 transparent; padding-left: 28px; padding-bottom: 8px; -moz-transition: opacity 0.4s ease 0s; -webkit-transition: opacity 0.4s ease 0s; -o-transition: opacity 0.4s ease 0s; transition: opacity 0.4s ease 0s; }
 .watchvideo.onyoutube:hover { opacity: 0.6; }
 
-body.ec2012 { background-color: black; color: white; font-family: 'Open Sans' !important; }
+body.ec2012 { background-color: black; color: white; font-family: "Open Sans", proxima-nova, "Helvetica Neue", Helvetica, sans-serif; }
 body.ec2012 .reset-layout { clear: both; overflow: hidden; }
 body.ec2012 #container { max-width: 960px; margin-left: auto; margin-right: auto; }
 body.ec2012 header.entry-header { display: none; }
@@ -518,7 +518,7 @@ right: -21px; */ }
 .lc-conference-frontpage header.heading-image .mainheadings h1 { text-transform: uppercase; }
 .lc-conference-frontpage #keyfacts #conference-partners ul li { display: list-item; }
 .lc-conference-frontpage #keyfacts #conference-partners ul li:after { content: ''; }
-.lc-conference-frontpage #keyfacts #conference-partners ul li img { padding: 0.5em 0; max-width: 100%; display: block; margin-left: auto; margin-right: auto; }
+.lc-conference-frontpage #keyfacts #conference-partners ul li img { padding: 0.5em 0; max-width: 100%; max-height: 5em; display: block; margin-left: auto; margin-right: auto; }
 
 .lc-publication #keyfacts p { margin-bottom: 0.2em; margin-top: 0.5em; }
 .lc-publication #keyfacts .cover-thumbnail { padding: 0 4em; }
