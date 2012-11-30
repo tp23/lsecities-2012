@@ -250,7 +250,9 @@ table { border-bottom: 1px solid #fff; }
 
 label { display: block; }
 
+header.heading-image { margin-bottom: 1em; }
 header.heading-image .flexslider .flex-direction-nav li a { top: 352 -64/2 px; }
+header.heading-image img { width: 100%; max-width: 100%; height: auto; }
 
 header.entry-header { margin-bottom: 1.5em; }
 header.entry-header h1 { font-family: museo-sans, PT Sans, sans-serif; font-weight: 900; color: #22273b; }
@@ -263,12 +265,12 @@ ol.article-references li:target { background-color: #ffeeee; }
 
 .extra-content { margin-top: 3em; padding-top: 1em; font-size: 0.875em; clear: both; }
 .extra-content > section, .extra-content > aside { margin-top: 2em; }
-.extra-content > section > header, .extra-content > aside > header { border-top: 1px solid red; }
+.extra-content > section > header, .extra-content > aside > header { border-top: 1px solid red; line-height: 1em; }
 .extra-content > section > header > h1, .extra-content > aside > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
 .extra-content.multi-section > section { clear: none; }
 
 .entry-content section, .entry-content section > section { margin-top: 2em; }
-.entry-content section > header, .entry-content section > section > header { border-top: 1px solid red; }
+.entry-content section > header, .entry-content section > section > header { border-top: 1px solid red; line-height: 1em; }
 .entry-content section > header > h1, .entry-content section > section > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
 .entry-content section > header > h1, .entry-content section > section > header > h1 { margin-bottom: 0; }
 .entry-content .list-wrap section, .entry-content .list-wrap section > section { margin-top: 0; }
@@ -448,6 +450,7 @@ right: -21px; */ }
 .lc-event-programme .entry-content section.sessiontype-session .session > header > h1 { background-color: inherit; color: inherit; padding-left: 0; }
 .lc-event-programme .entry-content section.sessiontype-session .session .session > header { border-top: none; }
 .lc-event-programme .entry-content section.sessiontype-session .sessiontype-session > header, .lc-event-programme .entry-content section.sessiontype-session .sessiontype-panel > header, .lc-event-programme .entry-content section.sessiontype-session .sessiontype-discussion > header { border-top: none; border-bottom: 1px solid red; }
+.lc-event-programme .entry-content .sessiontype-presentation { margin-left: 2em; }
 .lc-event-programme .session-chairs dt, .lc-event-programme .session-chairs dd { display: inline; }
 .lc-event-programme ul.mediaitems { display: inline; }
 .lc-event-programme ul.mediaitems > li { display: inline; margin-right: 1em; }
@@ -522,7 +525,7 @@ right: -21px; */ }
 
 .lc-research-project #linked-galleries > div { margin-bottom: 1em; }
 .lc-research-project section { margin-top: 2em; }
-.lc-research-project section > header { border-top: 1px solid red; }
+.lc-research-project section > header { border-top: 1px solid red; line-height: 1em; }
 .lc-research-project section > header > h1 { color: #fff; background-color: red; display: inline-block; padding: 0 0.5em; margin-bottom: 1em; font-size: 1.125em; line-height: 1.3em; font-weight: bold; }
 .lc-research-project section > header > h1 { margin-bottom: 0; }
 
