@@ -133,7 +133,7 @@ $pod = new Pod('slider', $pod_slug);
 $news_categories = news_categories($pod->get_field('news_category'));
 $jquery_options = $pod->get_field('jquery_options');
 
-$slides = $pod->get_field('slides');
+$slides = $pod->get_field('slides', 'displayorder ASC');
 $linked_events = $pod->get_field('linked_events', 'date_start DESC');
 var_trace($linked_events, 'linked_events');
 ?><?php get_header(); ?>
