@@ -260,10 +260,11 @@ if($TRACE_ENABLED) {
    h1#headerTitle {
    <?php if($theme_skin == 'ec2012'): ?>
     background-color: #eee111;
+    color: #000000;
    <?php else: ?>
     background-color: #de1f00;
+    color: #ffffff;
 	<?php endif; ?>
-    color: #fff;
     font-size: 1.5em;
     display: inline-block;
     text-transform: uppercase;
