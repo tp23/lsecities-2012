@@ -91,8 +91,6 @@ function person_page() {
     'title',
     'email_address',
     'photo',
-    'special_2012ec_blurb',
-    'special_2012ec_affiliation',
     'photo_legacy',
     'profile_text',
     'organization',
@@ -105,7 +103,9 @@ function person_page() {
     'display_until',
     'extended_blurb',
     'groups',
-    'research_projects');
+    'research_projects',
+    'special_2012ec_blurb',
+    'special_2012ec_affiliation');
   $object->ui = array(
     'title'   => 'Person',
     'sort'    => 't.family_name ASC',
@@ -234,8 +234,8 @@ function slide_page() {
   $object = new Pod('slide');
   $object->ui = array(
     'title'   => 'Slide',
-    'sort' => 'order',
-    'reorder' => 'order',
+    'sort' => 'displayorder',
+    'reorder' => 'displayorder',
     'reorder_columns' => array(
       'name' => 'Title',
       'slide_layout'      => 'Layout',
