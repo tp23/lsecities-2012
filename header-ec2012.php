@@ -16,6 +16,7 @@ $toplevel_ancestor = array_pop($ancestors);
 
 $http_req_headers = getallheaders();
 
+var_trace($getallheaders["X-Site-Id"], 'X-Page-Id');
 // if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
 if($getallheaders["X-Site-Id"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
