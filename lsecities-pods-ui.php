@@ -223,4 +223,28 @@ function research_project_page() {
 
 add_action('admin_menu','pods_ui_research_projects');
 
+/* slides pod */
+function pods_ui_slide() {
+  $icon = '';
+  add_object_page('Slides', 'Slides', 'read', 'slide', '', $icon);
+  add_submenu_page('slide', 'Slides', 'Slides', 'read', 'slide', 'slide_page');
+}
+
+function slide_page() {
+  $object = new Pod('slide');
+  $object->ui = array(
+    'title'   => 'Slide',
+    'sort' => 'order',
+    'reorder' => 'order',
+    'reorder_columns' => array(
+      'name' => 'Title',
+      'slide_layout'      => 'Layout',
+      'tiles'  => 'Tiles'
+    ),
+  );
+  pods_ui_manage($object);
+}
+
+add_action('admin_menu','pods_ui_slide');
+
 ?>
