@@ -21,6 +21,9 @@ switch($newsletter_title_meta) {
     break;
 }
 
+// read post meta theme_skin to check if we need to apply custom styles
+$theme_skin = strtolower(get_post_meta(get_the_ID(), 'theme_skin', true));
+
 if($TRACE_ENABLED) {
   error_log('post_permalink: ' . get_permalink($id));
   error_log('our_permalink: ' . $our_permalink);
@@ -51,7 +54,11 @@ if($TRACE_ENABLED) {
    }
    a, a:active, a:visited, a:hover {
     text-decoration: none;
-    color: #de1f00;
+	<?php if($theme_skin == 'ec2012'): ?>
+	color: #eee111;
+	<?php else: ?>
+    	color: #de1f00;
+	<?php endif; ?>
    }
    a:hover {
     color: #777;
@@ -82,6 +89,12 @@ if($TRACE_ENABLED) {
 			#templateContainer{
 				/*@editable*/ border: 1px solid #DDDDDD;
 			}
+
+			<?php if($theme_skin == 'ec2012'): ?>
+			#templateContainer tr {
+				background-color: #000000;
+			}
+			<?php endif; ?>
 
 			/**
 			* @tab Page
@@ -245,7 +258,11 @@ if($TRACE_ENABLED) {
 			}
 
    h1#headerTitle {
+   <?php if($theme_skin == 'ec2012'): ?>
+    background-color: #eee111;
+   <?php else: ?>
     background-color: #de1f00;
+	<?php endif; ?>
     color: #fff;
     font-size: 1.5em;
     display: inline-block;
@@ -280,7 +297,11 @@ if($TRACE_ENABLED) {
 			* @theme main
 			*/
 			.bodyContent div{
+			<?php if($theme_skin == 'ec2012'): ?>
+				color: #ffffff;
+			<?php else: ?>
 				/*@editable*/ color:#505050;
+			<?php endif; ?>
 				/*@editable*/ font-family:Arial;
 				/*@editable*/ font-size:14px;
 				/*@editable*/ line-height:150%;
@@ -293,7 +314,11 @@ if($TRACE_ENABLED) {
 			* @tip Set the styling for your email's main content links. Choose a color that helps them stand out from your text.
 			*/
 			.bodyContent div a:link, .bodyContent div a:visited, /* Yahoo! Mail Override */ .bodyContent div a .yshortcuts /* Yahoo! Mail Override */{
+			<?php if($theme_skin == 'ec2012'): ?>
+				color: #eee111;
+			<?php else: ?>
 				/*@editable*/ color:#336699;
+			<?php endif; ?>
 				/*@editable*/ font-weight:normal;
 				/*@editable*/ text-decoration:underline;
 			}
@@ -363,7 +388,11 @@ if($TRACE_ENABLED) {
 			* @tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
 			*/
 			.footerContent div a:link, .footerContent div a:visited, /* Yahoo! Mail Override */ .footerContent div a .yshortcuts /* Yahoo! Mail Override */{
+			<?php if($theme_skin == 'ec2012'): ?>
+				color: #eee111;
+			<?php else: ?>
 				/*@editable*/ color:#336699;
+			<?php endif; ?>
 				/*@editable*/ font-weight:normal;
 				/*@editable*/ text-decoration:underline;
 			}
@@ -408,9 +437,13 @@ if($TRACE_ENABLED) {
 			* @theme footer
 			*/
 			#utility{
+			<?php if($theme_skin == 'ec2012'): ?>
+				background-color: #000000;
+			<?php else: ?>
 				/*@editable*/ background-color:#FFFFFF;
 				/*@editable*/ border:0;
 			}
+			<?php endif; ?>
 
 			/**
 			* @tab Footer
