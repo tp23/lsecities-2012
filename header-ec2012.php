@@ -20,8 +20,9 @@ var_trace($http_req_headers["X-Site-Id"], 'X-Site-Id');
 if($http_req_headers["X-Site-Id"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
   $_GLOBALS['lsecities']['microsite_id'] = 'ec2012';
-} elseif($_GET["siteid"] == 'cc') { // we are being called via the Cities and the crisis microsite
+} elseif($http_req_headers["X-Site-Id"] == 'cc') { // we are being called via the Cities and the crisis microsite
   $body_class_extra = 'site-cc';
+  $_GLOBALS['lsecities']['microsite_id'] = 'cc';
 }
 
 // If we are on the root frontpage ('/', page ID 393), set ancestor to nil
@@ -40,7 +41,7 @@ $level2nav = wp_list_pages('child_of=' . $toplevel_ancestor . '&depth=1&sort_col
 $GLOBALS['urban_age_section'] = ($toplevel_ancestor == 94) ? true : false;
 $logo_element_id = $GLOBALS['urban_age_section'] ? 'ualogo' : 'logo';
 
-if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities and the crisis
+if($_GLOBALS['lsecities']['microsite_id'] == 'cc') { // Labs -> Cities and the crisis
   // If we are navigating the Cities and the crisis minisite via reverse proxy, display appropriate menu
   $level1nav = '<li><a href="/" title="Home">Cities and the Crisis</a></li>';
   $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2481);
