@@ -53,7 +53,7 @@ if($_GLOBALS['lsecities']['microsite_id'] == 'cc') { // Labs -> Cities and the c
   $level1nav = '';
   $class_for_current_page = $post->ID == 2701 ? ' current_page_item' : '';
   if(!is_user_logged_in()) {
-    $only_include_top_pages_ids = '&include=2701,2714,2716';
+    $only_include_top_pages_ids = '&include=2714,2716';
   }
   var_trace($only_include_top_pages_ids, 'only_include_top_pages_ids', true);
   $level2nav = '<li class="page-item page-item-2701' . $class_for_current_page . '"><a href="/">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=2701' . $only_include_top_pages_ids);
