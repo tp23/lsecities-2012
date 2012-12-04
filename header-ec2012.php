@@ -56,9 +56,8 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/ua\/conferences\/2012-london\/site/', '', $level2nav);
   var_trace($level2nav, 'header_level2nav');
-  /*
   $level2nav = '<li class="page-item page-item-2701 current_page_item"><a href="/">Home</a></li><li class="page_item page-item-2714"><a href="/programme/">Programme</a></li>
-<li class="page_item page-item-2716"><a href="/speakers/">Speakers</a></li>';*/
+<li class="page_item page-item-2716"><a href="/speakers/">Speakers</a></li>';
   // $appcache_manifest = '/appcache-manifests/ec2012.appcache';
   $GLOBALS['site-ec2012'] = true;
 } else {
