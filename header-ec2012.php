@@ -17,10 +17,10 @@ $toplevel_ancestor = array_pop($ancestors);
 $http_req_headers = getallheaders();
 var_trace($http_req_headers["X-Site-Id"], 'X-Site-Id');
 
-if($http_req_headers["X-Site-Id"] == 'ec2012') { // we are being called via the ec2012 microsite
+if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
   $_GLOBALS['lsecities']['microsite_id'] = 'ec2012';
-} elseif($http_req_headers["X-Site-Id"] == 'cc') { // we are being called via the Cities and the crisis microsite
+} elseif($_GET["siteid"] == 'cc') { // we are being called via the Cities and the crisis microsite
   $body_class_extra = 'site-cc';
   $_GLOBALS['lsecities']['microsite_id'] = 'cc';
 }
