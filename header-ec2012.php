@@ -16,7 +16,7 @@ $toplevel_ancestor = array_pop($ancestors);
 
 $http_req_headers = getallheaders();
 var_trace($http_req_headers["X-Site-Id"], 'X-Site-Id');
-//if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
+
 if($http_req_headers["X-Site-Id"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
   $_GLOBALS['lsecities']['microsite_id'] = 'ec2012';
@@ -52,7 +52,8 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
   $level1nav = '';
   $class_for_current_page = $post->ID == 2701 ? ' current_page_item' : '';
   $only_include_top_pages_ids = is_user_logged_in() ? '' : '&include=2701,2714,2716';
-  $level2nav = '<li class="page-item page-item-2701' . $class_for_current_page . '"><a href="/">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . '2701' . $only_include_top_pages_ids);
+  error_log('only_include_top_pages_ids: ' . $only_include_top_pages_ids);
+  $level2nav = '<li class="page-item page-item-2701' . $class_for_current_page . '"><a href="/">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=2701' . $only_include_top_pages_ids);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/ua\/conferences\/2012-london\/site/', '', $level2nav);
   var_trace($level2nav, 'header_level2nav');
