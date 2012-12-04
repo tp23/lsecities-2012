@@ -21,6 +21,7 @@ var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 
 $live_streaming_video_embedcode = $pod->get_field('live_streaming_video_embedcode');
 $live_twitter_querystring = $pod->get_field('live_twitter_querystring');
+$live_storify_stories = do_shortcode($pod->get_field('live_storify_stories'));
 
 ?>
 
@@ -36,11 +37,20 @@ $live_twitter_querystring = $pod->get_field('live_twitter_querystring');
           <div class='twelvecol last' id='contentarea'>
             <div class='top-content clearfix'>
               <article class="wireframe">
-              <div class='wireframe eightcol livestream-box'>
-                <?php
-                if($live_streaming_video_embedcode) {
-                  echo $live_streaming_video_embedcode;
-                } ?>
+              <div class='wireframe eightcol'>
+                <div class='livestream-box'>
+                  <?php
+                  if($live_streaming_video_embedcode) {
+                    echo $live_streaming_video_embedcode;
+                  } ?>
+                </div>
+                <div class='storify-box'>
+                  <?php
+                  if($live_storify_stories) {
+                    echo $live_storify_stories;
+                  }
+                  ?>
+                </div>
               </div>
               <aside class='wireframe fourcol last tweetfeed-box'>
                 <?php
