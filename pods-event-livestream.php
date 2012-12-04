@@ -50,7 +50,7 @@ foreach($live_storify_stories_uris as $story_uri) {
                 </div>
                 <div class='storify-box'>
                   <?php
-                  if($live_storify_stories) {
+                  if(false and $live_storify_stories) {
                     echo $live_storify_stories;
                   }
                   ?>
