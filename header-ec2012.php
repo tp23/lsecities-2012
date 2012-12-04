@@ -52,7 +52,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
   $level1nav = '';
   $class_for_current_page = $post->ID == 2701 ? ' current_page_item' : '';
   $only_include_top_pages_ids = is_user_logged_in() ? '' : '&include=2701,2714,2716';
-  error_log('only_include_top_pages_ids: ' . $only_include_top_pages_ids);
+  var_trace($only_include_top_pages_ids, 'only_include_top_pages_ids', true);
   $level2nav = '<li class="page-item page-item-2701' . $class_for_current_page . '"><a href="/">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=2701' . $only_include_top_pages_ids);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/ua\/conferences\/2012-london\/site/', '', $level2nav);
