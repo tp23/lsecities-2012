@@ -25,7 +25,8 @@ $live_twitter_querystring = $pod->get_field('live_twitter_querystring');
 $live_storify_stories_uris = explode("\n", $pod->get_field('live_storify_stories'));
 
 foreach($live_storify_stories_uris as $story_uri) {
-  $live_storify_stories .= $WP_Storify->get_html($story_uri);
+  $story = $WP_Storify->get_story($story_uri);
+  $live_storify_stories .= $story->noscript_html;
 }
 ?>
 
@@ -50,7 +51,7 @@ foreach($live_storify_stories_uris as $story_uri) {
                 </div>
                 <div class='storify-box'>
                   <?php
-                  if(false and $live_storify_stories) {
+                  if($live_storify_stories) {
                     echo $live_storify_stories;
                   }
                   ?>
