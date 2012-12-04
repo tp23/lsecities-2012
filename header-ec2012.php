@@ -15,11 +15,11 @@ global $pods_toplevel_ancestor;
 $toplevel_ancestor = array_pop($ancestors);
 
 $http_req_headers = getallheaders();
-
 var_trace($http_req_headers["X-Site-Id"], 'X-Site-Id');
-if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
-//if($getallheaders["X-Site-Id"] == 'ec2012') { // we are being called via the ec2012 microsite
+//if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
+if($http_req_headers["X-Site-Id"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
+  $_GLOBALS['lsecities']['microsite_id'] = 'ec2012';
 } elseif($_GET["siteid"] == 'cc') { // we are being called via the Cities and the crisis microsite
   $body_class_extra = 'site-cc';
 }
@@ -47,7 +47,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/cities-and-the-crisis/', '', $level2nav);
   $GLOBALS['site-cc'] = true;
-} elseif($post->ID == 2701 or in_array(2701, $post->ancestors)) { // Electric City conference minisite
+} elseif($_GLOBALS['lsecities']['microsite_id'] == 'ec2012') { // Electric City conference minisite
   // If we are navigating the EC2012 minisite via reverse proxy, display appropriate menu
   $level1nav = '';
   $class_for_current_page = $post->ID == 2701 ? ' current_page_item' : '';
