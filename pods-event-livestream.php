@@ -22,11 +22,12 @@ var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 $live_streaming_video_embedcode = $pod->get_field('live_streaming_video_embedcode');
 $live_twitter_querystring = $pod->get_field('live_twitter_querystring');
 
-$live_storify_stories_uris = explode("\n", $pod->get_field('live_storify_stories'));
+$live_storify_stories_uris = preg_replace('/^https?:\/\//', '', explode("\n", $pod->get_field('live_storify_stories')));
 
 foreach($live_storify_stories_uris as $story_uri) {
-  $story = $WP_Storify->get_story($story_uri);
-  $live_storify_stories .= $story->noscript_html;
+  $live_storify_stories .= '<script src="//' . $story_uri . '.js?template=slideshow"></script>
+  <noscript>[<a href="//' . $story_uri . '" target="_blank">View the story on Storify</a>]</noscript>
+  ';
 }
 ?>
 
