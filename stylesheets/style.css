@@ -546,8 +546,10 @@ nav#projectsmenu h1 { font-size: 1.2em; font-weight: bold; margin-bottom: 0.5em;
 .lc-media-archive-search #query { border: none; background-color: #fcfcfc; color: #999; line-height: 2em; padding: 0.5em 1em; font-style: italics; }
 
 body.ec2012 { background-color: black; color: white; font-family: "Open Sans", proxima-nova, "Helvetica Neue", Helvetica, sans-serif; }
+body.ec2012 #mailing-list-subscription { display: none; }
 body.ec2012 .reset-layout { clear: both; overflow: hidden; }
 body.ec2012 #container { max-width: 960px; margin-left: auto; margin-right: auto; }
+body.ec2012.page-id-393 #container { max-width: inherit; }
 body.ec2012 header.entry-header { display: none; }
 body.ec2012 header.entry-header h1 { color: #eee111; }
 body.ec2012 header h1, body.ec2012 header h2 { color: #eee111; font-weight: bold; font-size: 2em; }
@@ -557,6 +559,11 @@ body.ec2012 #header .twitter-hashtag a, body.ec2012 #header .twitter-hashtag a:a
 body.ec2012 #ec2012title { font-family: theovandregular; letter-spacing: 2px; font-size: 3em; margin-bottom: 0.5em; }
 body.ec2012 #ec2012title a, body.ec2012 #ec2012title a:active, body.ec2012 #ec2012title a:hover, body.ec2012 #ec2012title a:visited { color: white; }
 body.ec2012 #level1nav, body.ec2012 #level2nav { font-family: theovandregular; letter-spacing: 1px; }
+body.ec2012 #level1nav ul li:hover { background-color: transparent; }
+body.ec2012 #level1nav ul li:hover a, body.ec2012 #level1nav ul li:hover a:active, body.ec2012 #level1nav ul li:hover a:visited { color: white; }
+body.ec2012 #level1nav ul li:hover a:hover { color: #eee111; }
+body.ec2012 #level1nav ul li a, body.ec2012 #level1nav ul li a:active, body.ec2012 #level1nav ul li a:visited { color: white; }
+body.ec2012 #level1nav ul li a:hover { color: #eee111; }
 body.ec2012 #level2nav { background-color: transparent; }
 body.ec2012 #level2nav ul { float: left; }
 body.ec2012 #level2nav ul li a:hover { background-color: inherit; color: #eee111; color: #8f870a; }
@@ -582,6 +589,12 @@ body.ec2012 #navigationarea { display: none; }
 body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-session > header, body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-panel > header, body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-discussion > header { border-top: none; border-bottom: 1px solid #eee111; }
 body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header { border-top: none; }
 body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
+body.ec2012 .lc-newspaper-article { position: relative; }
+body.ec2012 .lc-newspaper-article #navigationarea { position: absolute; top: 0; right: 0; z-index: 3; }
+body.ec2012 .lc-newspaper-article #navigationarea img.show, body.ec2012 .lc-newspaper-article #navigationarea img.hide { position: absolute; z-index: 4; right: 0; display: none; }
+body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc { position: absolute; right: 15px; background: #EEE111; padding: 1em; width: 300px; top: -22px; z-index: 3; }
+body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc h1, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc li, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a:hover, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a:active, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a:visited { color: black; }
+body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc h1 { font-weight: bold; }
 body.ec2012 .lc-event-speaker-list .speaker-card { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; background-color: #424242; color: white; }
 body.ec2012 #un-button { display: none; }
 
@@ -619,3 +632,4 @@ body.ec2012 #un-button { display: none; }
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; } }
+
