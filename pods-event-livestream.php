@@ -21,8 +21,12 @@ var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 
 $live_streaming_video_embedcode = $pod->get_field('live_streaming_video_embedcode');
 $live_twitter_querystring = $pod->get_field('live_twitter_querystring');
-$live_storify_stories = do_shortcode($pod->get_field('live_storify_stories'));
 
+$live_storify_stories_uris = explode("\n", $pod->get_field('live_storify_stories'));
+
+foreach($live_storify_stories_uris as $story_uri) {
+  $live_storify_stories .= $WP_Storify->get_html($story_uri);
+}
 ?>
 
 <?php get_header(); ?>
