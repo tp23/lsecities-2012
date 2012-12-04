@@ -54,6 +54,8 @@ if($_GLOBALS['lsecities']['microsite_id'] == 'cc') { // Labs -> Cities and the c
   $class_for_current_page = $post->ID == 2701 ? ' current_page_item' : '';
   if(!is_user_logged_in()) {
     $only_include_top_pages_ids = '&include=2714,2716';
+  } else {
+    $only_include_top_pages_ids = '&child_of=2701';
   }
   $level2nav = '<li class="page-item page-item-2701' . $class_for_current_page . '"><a href="/">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=' . $only_include_top_pages_ids);
   // And strip prefix
