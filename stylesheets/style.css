@@ -511,6 +511,7 @@ right: -21px; */ }
 .lc-conference-frontpage #keyfacts #conference-partners ul li img { padding: 0.5em 0; max-width: 100%; max-height: 5em; display: block; margin-left: auto; margin-right: auto; }
 
 .lc-conference-live-page .livestream-box > * { margin-left: auto; margin-right: auto; }
+.lc-conference-live-page .storify-box { margin-top: 6em; }
 
 .lc-publication #keyfacts p { margin-bottom: 0.2em; margin-top: 0.5em; }
 .lc-publication #keyfacts .cover-thumbnail { padding: 0 4em; }
