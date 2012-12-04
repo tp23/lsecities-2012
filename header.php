@@ -10,7 +10,7 @@
 $http_req_headers = getallheaders();
 var_trace($http_req_headers["X-Site-Id"], 'X-Site-Id');
 
-if($http_req_headers["X-Site-Id"] == 'ec2012') {
+if($_GET["siteid"] == 'ec2012') {
   get_header('ec2012');
 } else {
   get_header('default');
