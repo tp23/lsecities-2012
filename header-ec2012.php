@@ -55,11 +55,11 @@ if($_GLOBALS['lsecities']['microsite_id'] == 'cc') { // Labs -> Cities and the c
   if(!is_user_logged_in()) {
     $only_include_top_pages_ids = '&include=2714,2716';
   }
-  echo ('<!-- only_include_top_pages_ids: ' . $only_include_top_pages_ids . ' -->');
   $level2nav = '<li class="page-item page-item-2701' . $class_for_current_page . '"><a href="/">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=' . $only_include_top_pages_ids);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/ua\/conferences\/2012-london\/site/', '', $level2nav);
   var_trace($level2nav, 'header_level2nav', true);
+  echo ('<!-- level2nav: ' . $level2nav . ' -->');
   $level2nav = '<li class="page-item page-item-2701 current_page_item"><a href="/">Home</a></li><li class="page_item page-item-2714"><a href="/programme/">Programme</a></li>
 <li class="page_item page-item-2716"><a href="/speakers/">Speakers</a></li>';
   // $appcache_manifest = '/appcache-manifests/ec2012.appcache';
