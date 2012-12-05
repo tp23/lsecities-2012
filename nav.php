@@ -113,9 +113,12 @@ if($nav_generated == false) {
     //]]>
   </script>
 </div>
-<?php else: // (!$GLOBALS['site-ec2012'])
+<?php else: // (!$GLOBALS['site-ec2012']) ?>
+<div class="wireframe threecol last" id="navigationarea">
+<?php
 if($GLOBALS['pods_toplevel_ancestor'] == 309) {
   get_template_part('nav', 'article');
   $nav_generated = true;
-}
-endif; // (!$GLOBALS['site-ec2012']) ?>
+} ?>
+</div>
+<?php endif; // (!$GLOBALS['site-ec2012']) ?>
