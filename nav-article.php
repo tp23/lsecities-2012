@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
     }
     foreach($sections as $section) : ?>
       <?php if($section['title']) { ?><h2><?php echo $section['title']; ?></h2><?php }
-      foreach($publication_pod->get_field('articles') as $article) :
+      foreach($publication_pod->get_field('articles', 'sequence ASC') as $article) :
         if(preg_match("/^" . $section['id'] . "/", $article['sequence'])) : ?>
           <?php var_trace(var_export($article, true), 'article-pod-object', $TRACE_ENABLED); ?>
           <li>
