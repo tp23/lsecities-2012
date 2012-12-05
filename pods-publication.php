@@ -69,7 +69,7 @@ $publishing_date = $pod->get_field('publishing_date');
 $articles_pods = new Pod('article');
 $search_params = array();
 $search_params['where'] = 'in_publication.id = ' .$pod->get_field('id');
-$search_params['orderby'] = 'sequence';
+$search_params['orderby'] = 't.sequence ASC';
 $search_params['limit'] = -1;
 $articles_pods->findRecords($search_params);
 
