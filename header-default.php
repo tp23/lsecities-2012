@@ -15,7 +15,7 @@ global $pods_toplevel_ancestor;
 $toplevel_ancestor = array_pop($ancestors);
 
 // frontpage takeover - remove after ec2012 conference
-if(is_user_logged_in() and $post->ID == 393) {
+if($post->ID == 393) {
   $_GET["siteid"] = 'ec2012';
 }
 // frontpage takeover - remove after ec2012 conference
