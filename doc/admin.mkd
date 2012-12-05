@@ -1,0 +1,27 @@
+Managing the LSE Cities WordPress site
+======================================
+
+Enabling uploads of larger files
+--------------------------------
+
+We normally keep file size limit for WordPress Media Library items
+down to around 20MB to allow accidental uploads of unnecessarily large
+files.
+
+In order to temporarily raise the limit, a new limit can be configured
+from the WordPress Network admin section under
+Settings -> Network Settings, section Upload settings (at the bottom of
+the page).
+
+Enabling uploads of specific file types
+---------------------------------------
+
+Any file type that is allowed into WordPress Media Library needs to
+be explicitly whitelisted - WordPress will otherwise refuse the upload
+for security reasons.
+
+The list of allowed file types can be configured from the WordPress
+Network admin section under Settings -> Network Settings, section
+Upload settings (at the bottom of the page).
+
+
