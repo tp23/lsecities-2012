@@ -547,6 +547,7 @@ nav#projectsmenu h1 { font-size: 1.2em; font-weight: bold; margin-bottom: 0.5em;
 
 body.ec2012 { background-color: black; color: white; font-family: "Open Sans", proxima-nova, "Helvetica Neue", Helvetica, sans-serif; }
 body.ec2012 #mailing-list-subscription { display: none; }
+body.ec2012 h1, body.ec2012 h2, body.ec2012 h3 { font-weight: bold; margin-bottom: 0.5em; }
 body.ec2012 .reset-layout { clear: both; overflow: hidden; }
 body.ec2012 #container { max-width: 960px; margin-left: auto; margin-right: auto; }
 body.ec2012.page-id-393 #container { max-width: inherit; }
