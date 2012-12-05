@@ -214,7 +214,7 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
                     <div class="article">
                       <?php if($publication_category == 'research-data' and $articles_pods->get_field('heading_image')): ?>
                       <a href="<?php echo PODS_BASEURI_ARTICLES . '/' . $articles_pods->get_field('slug'); ?>">
-                      <img class='heading-image' src='<?php echo $articles_pods->get_field('heading_image'); ?>' />
+                      <img class='heading-image' src='<?php echo wp_get_attachment_url($articles_pods->get_field('heading_image.ID')); ?>' />
                       </a>
                       <?php endif; ?>
                       <h1>
