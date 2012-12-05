@@ -494,6 +494,8 @@ right: -21px; */ }
 .lc-newspaper-article header.heading-image img { max-width: 100%; width: 100%; }
 .lc-newspaper-article .has-pullquote::before { content: attr(data-pullquote); font-weight: bold; opacity: 0.8; float: right; width: 50%; margin: 0.5em -30% 0 0; padding-left: 1.5em; padding-bottom: 0.5em; font-style: italic; position: relative; font-size: 1.5em; line-height: 1.25em; }
 .lc-newspaper-article .has-pullquote::before::before { content: '"'; color: #ff0000; }
+.lc-newspaper-article article .article section { margin-bottom: 2em; overflow: hidden; }
+.lc-newspaper-article article .article .thumbnail-graphics { float: left; width: 50%; margin-right: 1em; }
 .lc-newspaper-article article .article .entry-content, .lc-newspaper-article article .article .extra-content { /* // TODO: re-enable once all the article photos have been double checked img { float: right; margin-left: 1.5em; margin-right: -50%; max-width: 150%; position: relative; width: 150%; }
 */ }
 
@@ -598,8 +600,6 @@ body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header 
 body.ec2012 .lc-newspaper-article { position: relative; }
 body.ec2012 .lc-newspaper-article header.heading-image { display: none; }
 body.ec2012 .lc-newspaper-article header.entry-header { display: block; }
-body.ec2012 .lc-newspaper-article article section { margin-bottom: 2em; overflow: hidden; }
-body.ec2012 .lc-newspaper-article article .thumbnail-graphics { float: left; width: 50%; margin-right: 1em; }
 body.ec2012 .lc-newspaper-article #navigationarea { position: absolute; top: 0; right: 0; z-index: 3; display: inherit; }
 body.ec2012 .lc-newspaper-article #navigationarea img.show, body.ec2012 .lc-newspaper-article #navigationarea img.hide { position: absolute; z-index: 4; right: 0; display: none; }
 body.ec2012 .lc-newspaper-article #navigationarea img.show { display: inline; }
