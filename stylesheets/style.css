@@ -594,10 +594,10 @@ body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header 
 body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
 body.ec2012 .lc-newspaper-article { position: relative; }
 body.ec2012 .lc-newspaper-article header.entry-header { display: block; }
-body.ec2012 .lc-newspaper-article #navigationarea { position: absolute; top: 0; right: 0; z-index: 3; }
+body.ec2012 .lc-newspaper-article #navigationarea { position: absolute; top: 0; right: 0; z-index: 3; display: inherit; }
 body.ec2012 .lc-newspaper-article #navigationarea img.show, body.ec2012 .lc-newspaper-article #navigationarea img.hide { position: absolute; z-index: 4; right: 0; display: none; }
 body.ec2012 .lc-newspaper-article #navigationarea img.show { display: inline; }
-body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc { position: absolute; right: 15px; background: #EEE111; padding: 1em; width: 300px; top: -22px; z-index: 3; }
+body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc { display: none; position: absolute; right: 15px; background: #EEE111; padding: 1em; width: 300px; top: -22px; z-index: 3; }
 body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc h1, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc li, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a:hover, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a:active, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a:visited { color: black; }
 body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc h1 { font-weight: bold; }
 body.ec2012 .lc-event-speaker-list .speaker-card { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; background-color: #424242; color: white; }
