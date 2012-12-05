@@ -580,7 +580,7 @@ body.ec2012 #contentarea .top-content article header h1 { color: #eee111; }
 body.ec2012 #contentarea.ninecol { width: 100%; }
 body.ec2012 #contentarea > h1 { display: none; }
 body.ec2012 .entry-content h1, body.ec2012 .entry-content h2, body.ec2012 .entry-content h3 { font-weight: bold; margin-bottom: 0.5em; }
-body.ec2012 .entry-content ul { margin-bottom: 0.5em; }
+body.ec2012 .entry-content ul { margin-bottom: 1em; }
 body.ec2012 .entry-content section > header, body.ec2012 .extra-content > section > header, body.ec2012 .extra-content > aside > header { border-top: 1px solid #eee111; }
 body.ec2012 .entry-content section > header > h1, body.ec2012 .extra-content > section > header > h1, body.ec2012 .extra-content > aside > header > h1 { color: black; background-color: #eee111; }
 body.ec2012 a, body.ec2012 a:focus, body.ec2012 a:active { color: #eee111; }
