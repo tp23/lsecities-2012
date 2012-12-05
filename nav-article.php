@@ -11,10 +11,10 @@ $publication_pod = $GLOBALS['publication_pod'];
 <script>
 jQuery(document).ready(function($) {
   jQuery('#navigationarea .show').click(function () {
-    jQuery('#publication-side-toc').fadeIn(); jQuery('.show').fadeOut(); jQuery('hide').fadeIn();
+    jQuery('#publication-side-toc').fadeIn(); jQuery('.show').fadeOut(); jQuery('.hide').fadeIn();
   });
   jQuery('#navigationarea .hide').click(function () {
-    jQuery('#publication-side-toc').fadeOut(); jQuery('.show').fadeIn(); jQuery('hide').fadeOut();
+    jQuery('#publication-side-toc').fadeOut(); jQuery('.show').fadeIn(); jQuery('.hide').fadeOut();
   });
 });
 </script>
