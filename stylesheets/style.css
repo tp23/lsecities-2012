@@ -595,6 +595,7 @@ body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype
 body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header { border-top: none; }
 body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
 body.ec2012 .lc-newspaper-article { position: relative; }
+body.ec2012 .lc-newspaper-article header.heading-image { display: none; }
 body.ec2012 .lc-newspaper-article header.entry-header { display: block; }
 body.ec2012 .lc-newspaper-article #navigationarea { position: absolute; top: 0; right: 0; z-index: 3; display: inherit; }
 body.ec2012 .lc-newspaper-article #navigationarea img.show, body.ec2012 .lc-newspaper-article #navigationarea img.hide { position: absolute; z-index: 4; right: 0; display: none; }
