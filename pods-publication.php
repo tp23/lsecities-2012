@@ -19,6 +19,8 @@ $pod_issuu_uri = $pod->get_field('issuu_uri');
 $pod_cover = wp_get_attachment_url($pod->get_field('snapshot.ID'));
 $pod_abstract = do_shortcode($pod->get_field('abstract'));
 
+$publication_category = $pod->get_field('category.slug');
+
 // get tiles for heading slider
 $heading_slides = array();
 var_trace($pod->get_field('heading_slides.slug'), $TRACE_PREFIX . '--heading_slides.slug', $TRACE_ENABLED);
@@ -183,7 +185,7 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
             <?php endif; ?>
           <?php endif; ?>
           <?php if($articles_pods->getTotalRows()) : ?>
-          <section class="row" id="tableofcontents">
+          <section class="row publication-category-<?php echo $publication_category; ?>" id="tableofcontents">
             <header><h1>Articles</h1></header>
             <div class="eightcol">
               <?php if($articles_pods->getTotalRows()) : ?>
@@ -210,6 +212,11 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
                     var_trace('article Pod object: ' . var_export($articles_pods, true), $TRACE_PREFIX, $TRACE_ENABLED);
                     ?>
                     <div class="article">
+                      <?php if($publication_category == 'research-data' and $articles_pods->get_field('heading_image')): ?>
+                      <a href="<?php echo PODS_BASEURI_ARTICLES . '/' . $articles_pods->get_field('slug'); ?>">
+                      <img class='heading-image' src='<?php echo $articles_pods->get_field('heading_image'); ?>' />
+                      </a>
+                      <?php endif; ?>
                       <h1>
                         <a href="<?php echo PODS_BASEURI_ARTICLES . '/' . $articles_pods->get_field('slug'); ?>"><?php echo $article_title; ?></a>
                       </h1>
