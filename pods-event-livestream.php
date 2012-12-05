@@ -20,6 +20,7 @@ $pod = new Pod('conference', $pod_slug);
 var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 
 $live_streaming_video_embedcode = $pod->get_field('live_streaming_video_embedcode');
+$live_streaming_notice = $pod->get_field('live_streaming_notice');
 $live_twitter_querystring = $pod->get_field('live_twitter_querystring');
 
 $live_storify_stories_uris = preg_replace('/^https?:\/\//', '', explode("\n", $pod->get_field('live_storify_stories')));
@@ -48,6 +49,12 @@ foreach($live_storify_stories_uris as $story_uri) {
                   <?php
                   if($live_streaming_video_embedcode) {
                     echo $live_streaming_video_embedcode;
+                  } ?>
+                </div>
+                <div class='livestream-notice'>
+                  <?php
+                  if($live_streaming_notice) {
+                    echo $live_streaming_notice;
                   } ?>
                 </div>
                 <div class='storify-box'>
