@@ -547,7 +547,6 @@ nav#projectsmenu h1 { font-size: 1.2em; font-weight: bold; margin-bottom: 0.5em;
 
 body.ec2012 { background-color: black; color: white; font-family: "Open Sans", proxima-nova, "Helvetica Neue", Helvetica, sans-serif; }
 body.ec2012 #mailing-list-subscription { display: none; }
-body.ec2012 h1, body.ec2012 h2, body.ec2012 h3 { font-weight: bold; margin-bottom: 0.5em; }
 body.ec2012 .reset-layout { clear: both; overflow: hidden; }
 body.ec2012 #container { max-width: 960px; margin-left: auto; margin-right: auto; }
 body.ec2012.page-id-393 #container { max-width: inherit; }
@@ -580,6 +579,8 @@ body.ec2012 [role='main'], body.ec2012 #main { overflow: visible; }
 body.ec2012 #contentarea .top-content article header h1 { color: #eee111; }
 body.ec2012 #contentarea.ninecol { width: 100%; }
 body.ec2012 #contentarea > h1 { display: none; }
+body.ec2012 .entry-content h1, body.ec2012 .entry-content h2, body.ec2012 .entry-content h3 { font-weight: bold; margin-bottom: 0.5em; }
+body.ec2012 .entry-content ul { margin-bottom: 0.5em; }
 body.ec2012 .entry-content section > header, body.ec2012 .extra-content > section > header, body.ec2012 .extra-content > aside > header { border-top: 1px solid #eee111; }
 body.ec2012 .entry-content section > header > h1, body.ec2012 .extra-content > section > header > h1, body.ec2012 .extra-content > aside > header > h1 { color: black; background-color: #eee111; }
 body.ec2012 a, body.ec2012 a:focus, body.ec2012 a:active { color: #eee111; }
@@ -633,4 +634,3 @@ body.ec2012 #un-button { display: none; }
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; } }
-
