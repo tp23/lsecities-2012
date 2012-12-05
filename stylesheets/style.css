@@ -590,7 +590,8 @@ body.ec2012 footer#footer a, body.ec2012 footer#footer a:visited, body.ec2012 fo
 body.ec2012 footer#footer a:hover { color: #8f870a; }
 body.ec2012 #navigationarea { display: none; }
 body.ec2012 .lc-publication #share-on-social-media { display: none; }
-body.ec2012 .lc-publication #tableofcontents.publication-category-research-data .articles > section .article > h1 { font-size: 2em; }
+body.ec2012 .lc-publication #tableofcontents.publication-category-research-data .articles > section .article { margin-bottom: 4em !important; }
+body.ec2012 .lc-publication #tableofcontents.publication-category-research-data .articles > section .article > h1 { font-size: 2em; font-weight: bold; }
 body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-session > header, body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-panel > header, body.ec2012 .lc-event-programme .entry-content .sessiontype-session .sessiontype-discussion > header { border-top: none; border-bottom: 1px solid #eee111; }
 body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header { border-top: none; }
 body.ec2012 .lc-event-programme .entry-content .sessiontype-presentation header h1 { color: #eee111; background-color: inherit; padding-left: 0; }
@@ -602,6 +603,7 @@ body.ec2012 .lc-newspaper-article #navigationarea img.show, body.ec2012 .lc-news
 body.ec2012 .lc-newspaper-article #navigationarea img.show { display: inline; }
 body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc { display: none; position: absolute; right: 15px; background: #EEE111; padding: 1em; width: 300px; top: -22px; z-index: 3; }
 body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc h1, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc li, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a:hover, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a:active, body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc a:visited { color: black; }
+body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc ul li { margin-bottom: 1em; }
 body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc h1 { font-weight: bold; }
 body.ec2012 .lc-event-speaker-list .speaker-card { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; background-color: #424242; color: white; }
 body.ec2012 #un-button { display: none; }
