@@ -607,6 +607,7 @@ body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc ul li
 body.ec2012 .lc-newspaper-article #navigationarea nav#publication-side-toc h1 { font-weight: bold; }
 body.ec2012 .lc-event-speaker-list .speaker-card { -moz-box-shadow: none; -webkit-box-shadow: none; -o-box-shadow: none; box-shadow: none; background-color: #424242; color: white; }
 body.ec2012 #un-button { display: none; }
+body.ec2012 .tweetfeed-box .timeline-footer { display: none; }
 
 /*/mediaquery*/
 /*/mediaquery*/
