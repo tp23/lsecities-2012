@@ -85,7 +85,16 @@ function do_https_shortcode($content) {
   return $content;
 }
 
-
+/** 
+ * enable uploads of file types we need
+ */
+add_filter('upload_mimes', 'custom_upload_mimes');
+function custom_upload_mimes ( $existing_mimes=array() ) {
+    // add your extension to the mimes array as below
+    $existing_mimes['zip'] = 'application/zip';
+    $existing_mimes['svg'] = 'image/svg+xml';
+    return $existing_mimes;
+}
 
 function check_parent_conference($post_id) {
   global $post;
