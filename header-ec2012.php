@@ -57,7 +57,9 @@ if($_GLOBALS['lsecities']['microsite_id'] == 'cc') { // Labs -> Cities and the c
   } else {
     $only_include_top_pages_ids = '&child_of=2701';
   }
-  $level2nav = '<li class="page-item page-item-2701' . $class_for_current_page . '"><a href="/">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=' . $only_include_top_pages_ids);
+  $level2nav = '<li class="page-item page-item-2701' . $class_for_current_page . '">' .
+    // '<a href="/">Home</a></li>' . 
+    wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=' . $only_include_top_pages_ids);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/ua\/conferences\/2012-london\/site/', '', $level2nav);
   var_trace($level2nav, 'header_level2nav', true);
