@@ -74,7 +74,7 @@ foreach($live_storify_stories_uris as $story_uri) {
                 <script>
                   jQuery(document).ready(function($){
                     jQuery('iframe.twitter-timeline').load(function() {
-                      jQuery('iframe.twitter-timeline').contents().find('.timeline-footer').remove();
+                      jQuery('iframe.twitter-timeline').contents().find('.timeline-footer').delay(5000).remove();
                     });
                   });
                 </script>
