@@ -71,13 +71,6 @@ foreach($live_storify_stories_uris as $story_uri) {
                <a class="twitter-timeline" data-dnt=true href="https://twitter.com/search?q=<?php echo urlencode($live_twitter_querystring); ?>" data-widget-id="275652040124932096">Tweets about "<?php echo $live_twitter_querystring; ?>"</a>
                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                 <?php endif; //($live_streaming_video_embedcode) ?>
-                <script>
-                  jQuery(document).ready(function($){
-                    jQuery('iframe.twitter-timeline').load(function() {
-                      jQuery('iframe.twitter-timeline').contents().find('.timeline-footer').delay(5000).remove();
-                    });
-                  });
-                </script>
               </aside><!-- .tweetfeed-box -->
               </article><!-- .wireframe -->
             </div><!-- .top-content -->
