@@ -73,7 +73,9 @@ foreach($live_storify_stories_uris as $story_uri) {
                 <?php endif; //($live_streaming_video_embedcode) ?>
                 <script>
                   jQuery(document).ready(function($){
-                    jQuery('iframe.twitter-timeline').contents().find('.timeline-footer').css({ display: 'none' });
+                    jQUery('iframe.twitter-timeline').load(function() {
+                      jQuery('iframe.twitter-timeline').contents().find('.timeline-footer').remove();
+                    });
                   });
                 </script>
               </aside><!-- .tweetfeed-box -->
