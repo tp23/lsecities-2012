@@ -14,12 +14,6 @@ array_unshift($ancestors, $post->ID);
 global $pods_toplevel_ancestor;
 $toplevel_ancestor = array_pop($ancestors);
 
-// frontpage takeover - remove after ec2012 conference
-if($post->ID == 393) {
-  $_GET["siteid"] = 'ec2012';
-}
-// frontpage takeover - remove after ec2012 conference
-
 if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
 } elseif($_GET["siteid"] == 'cc') { // we are being called via the Cities and the crisis microsite
