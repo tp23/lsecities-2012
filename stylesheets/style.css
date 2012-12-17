@@ -554,6 +554,7 @@ body.ec2012 { background-color: black; color: white; font-family: "Open Sans", p
 body.ec2012 #mailing-list-subscription { display: none; }
 body.ec2012 .reset-layout { clear: both; overflow: hidden; }
 body.ec2012 #container { max-width: 960px; margin-left: auto; margin-right: auto; }
+body.ec2012 #container > header ul li a { padding-right: 0; }
 body.ec2012.page-id-393 #container { max-width: inherit; }
 body.ec2012 header.entry-header { display: none; }
 body.ec2012 header.entry-header h1 { color: #eee111; }
@@ -650,4 +651,3 @@ body.ec2012 #un-button { display: none; }
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; } }
-
