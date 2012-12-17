@@ -554,7 +554,6 @@ body.ec2012 { background-color: black; color: white; font-family: "Open Sans", p
 body.ec2012 #mailing-list-subscription { display: none; }
 body.ec2012 .reset-layout { clear: both; overflow: hidden; }
 body.ec2012 #container { max-width: 960px; margin-left: auto; margin-right: auto; }
-body.ec2012 #container > header ul li a { padding-right: 0; }
 body.ec2012.page-id-393 #container { max-width: inherit; }
 body.ec2012 header.entry-header { display: none; }
 body.ec2012 header.entry-header h1 { color: #eee111; }
@@ -577,7 +576,7 @@ body.ec2012 #level2nav ul li.current, body.ec2012 #level2nav ul li.current_page_
 body.ec2012 #level2nav ul li.current a, body.ec2012 #level2nav ul li.current_page_item a, body.ec2012 #level2nav ul li.current_page_ancestor a, body.ec2012 #level2nav ul li.current_page_parent a { background-color: inherit; color: #eee111; }
 body.ec2012 #level2nav ul li.current a:hover, body.ec2012 #level2nav ul li.current_page_item a:hover, body.ec2012 #level2nav ul li.current_page_ancestor a:hover, body.ec2012 #level2nav ul li.current_page_parent a:hover { background-color: inherit; color: #eee111; color: #8f870a; }
 body.ec2012 #level2nav ul li.current:hover a, body.ec2012 #level2nav ul li.current_page_item:hover a, body.ec2012 #level2nav ul li.current_page_ancestor:hover a, body.ec2012 #level2nav ul li.current_page_parent:hover a { background-color: inherit; color: #8f870a; }
-body.ec2012 #level2nav ul li:first-child a { padding-left: 0; }
+body.ec2012 #level2nav ul li a { padding-left: 0; padding-right: 1em; }
 body.ec2012 #mainmenus { margin-bottom: 1em; }
 body.ec2012 [role='main'] { padding-bottom: 10em; }
 body.ec2012 [role='main'] > article.ninecol { width: 100%; }
