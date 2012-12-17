@@ -53,7 +53,7 @@ if($_GLOBALS['lsecities']['microsite_id'] == 'cc') { // Labs -> Cities and the c
   $level1nav = '';
   $class_for_current_page = $post->ID == 2701 ? ' current_page_item' : '';
   if(!is_user_logged_in()) {
-    $only_include_top_pages_ids = '&include=2714,2716,3151,2949,3160,3102,3098';
+    $only_include_top_pages_ids = '&include=2714,2716,3288,3290,3294,2949,3160,3102,3098';
   } else {
     $only_include_top_pages_ids = '&child_of=2701';
   }
