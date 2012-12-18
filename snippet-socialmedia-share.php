@@ -11,7 +11,7 @@ $current_page_uri = preg_replace('/\?siteid=.*$/', '', get_current_page_URI());
       </a>
     </span>
     <span>
-      <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode($current_page_uri); ?>&text=<?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); ?>">
+      <a href="https://twitter.com/intent/tweet?url=<?php echo urlencode($current_page_uri); ?>&text=<?php wp_title( '|', true, 'right' ); ?>">
         <img alt="Share on Twitter" src="<?php bloginfo('stylesheet_directory') ?>/images/icons/mal/icon_twitter-v1darkblue_24x24.png" />
       </a>
     </span>
