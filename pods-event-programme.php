@@ -53,7 +53,7 @@ function process_session($session_slug) {
   $session_id = $pod->get_field('slug');
   $session_title = $pod->get_field('name');
   $session_subtitle = $pod->get_field('sub_title');
-  $session_blurb = $pog->get_field('extra_session_blurb');
+  $session_blurb = $pod->get_field('extra_session_blurb');
   $show_times = $pod->get_field('show_times');
   $session_start = new DateTime($pod->get_field('start'));
   $session_start = $session_start->format('H:i');
