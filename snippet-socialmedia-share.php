@@ -16,7 +16,7 @@ $current_page_uri = preg_replace('/\?siteid=.*$/', '', get_current_page_URI());
       </a>
     </span>
     <span>
-      <a href="https://plusone.google.com/_/+1/confirm?hl=en&url=<?php echo urlencode($current_page_uri); ?>">
+      <a href="https://plus.google.com/share?url=<?php echo urlencode($current_page_uri); ?>">
         <img alt="Share on Google+" src="<?php bloginfo('stylesheet_directory') ?>/images/icons/mal/icon_googleplusdarkblue_24x24.png" />
       </a>
     </span>
