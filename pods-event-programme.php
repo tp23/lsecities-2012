@@ -53,6 +53,7 @@ function process_session($session_slug) {
   $session_id = $pod->get_field('slug');
   $session_title = $pod->get_field('name');
   $session_subtitle = $pod->get_field('sub_title');
+  $session_blurb = $pog->get_field('extra_session_blurb');
   $show_times = $pod->get_field('show_times');
   $session_start = new DateTime($pod->get_field('start'));
   $session_start = $session_start->format('H:i');
@@ -82,6 +83,7 @@ function process_session($session_slug) {
   echo "<section id='$session_id' class='$session_type'>";
   if($session_title and !$hide_title) { echo '<header><h1>' . $session_times . $session_title . '</h1></header>'; }
   if($session_subtitle and !$hide_title) { echo "<h3>$session_subtitle</h3>"; }
+  if($session_blurb) { echo "<p>$session_blurb</p>"; }
   if($session_chairs) {
     $caption = count($session_chairs) > 1 ? "Chairs" : "Chair";
     echo "<dl class='session-chairs'><dt>$caption: </dt><dd>$session_chairs_blurb</dd></dl>";
