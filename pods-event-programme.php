@@ -52,7 +52,7 @@ function process_session($session_slug) {
   
   $session_id = $pod->get_field('slug');
   $session_title = $pod->get_field('name');
-  $session_subtitle = $pod->get_field('session_subtitle');
+  $session_subtitle = $pod->get_field('sub_title');
   $show_times = $pod->get_field('show_times');
   $session_start = new DateTime($pod->get_field('start'));
   $session_start = $session_start->format('H:i');
