@@ -45,7 +45,7 @@ for($year = 2005; $year <= $current_year; $year++) {
     'orderby' => 'date_start DESC',
     'limit' => -1
   ));
-  var_trace('events records found: ' . $events_pod->getTotalRows(), $TRACE_PREFIX, $TRACE_ENABLED);
+  var_trace($events_pod->getTotalRows(), $TRACE_PREFIX . "event records found for year $year", $TRACE_ENABLED);
   while($events_pod->fetchRecord()) {
     // if event is past, add it to array
     if($events_pod->get_field['date_start'] < $datetime_now) {
