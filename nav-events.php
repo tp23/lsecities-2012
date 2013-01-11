@@ -45,24 +45,19 @@ for($year = 2005; $year <= $current_year; $year++) {
     'orderby' => 'date_start DESC',
     'limit' => -1
   ));
-  var_trace($events_pod->getTotalRows(), $TRACE_PREFIX . "event records found for year $year", $TRACE_ENABLED);
+  var_trace($events_pod->getTotalRows(), $TRACE_PREFIX . " - event records found for year $year", $TRACE_ENABLED);
   while($events_pod->fetchRecord()) {
     // if event is past, add it to array
     if($events_pod->get_field['date_start'] < $datetime_now) {
       if($pod_slug == $events_pod->get_field('slug')) {
-	$active_year = $year;
+        $active_year = $year;
       }
-      array_push($events[$year], Array(
-	'slug' => $events_pod->get_field('slug'),
-	'name' => $events_pod->get_field('name'),
-	'date' => date('j F', strtotime($events_pod->get_field('date_start')))
-      ));
+      $events[$year][] = Array(
+        'slug' => $events_pod->get_field('slug'),
+        'name' => $events_pod->get_field('name'),
+        'date' => date('j F', strtotime($events_pod->get_field('date_start')))
+      );
     }
-  }
-  
-  // if there are no events for this year, remove year's array altogether from full list
-  if(!count($events[$year])) {
-    $events = array_pop($events);
   }
 }
 
