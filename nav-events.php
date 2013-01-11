@@ -39,7 +39,6 @@ $current_year = date("Y");
 $active_year = $current_year; // used to set initial active section for jQuery UI accordion
 
 for($year = 2005; $year <= $current_year; $year++) {
-  $events[$year] = Array();
   $events_pod->findRecords(array(
     'where' => 'YEAR(t.date_start) = ' . $year . ' AND t.date_start < NOW() AND t.hide IS NOT TRUE',
     'orderby' => 'date_start DESC',
