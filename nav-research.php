@@ -25,9 +25,9 @@ var_trace(var_export($past_projects, true), $TRACE_PREFIX . ' - completed projec
     <div id="current-projects">
       <?php if(!$IN_CONTENT_AREA): ?><h1>Current research</h1><?php endif; ?>
       <dl>
-      <?php foreach($current_projects as $strand_name => $strand_projects): ?>
-        <dt><?php echo $strand_name; ?></dt>
-        <?php foreach($strand_projects as $strand_project): ?>
+      <?php foreach($current_projects as $strand): ?>
+        <dt><?php echo $strand['name']; ?></dt>
+        <?php foreach($strand['projects'] as $strand_project): ?>
         <dd><a href="<?php echo $BASE_URI . '/' . $strand_project['slug']; ?>"><?php echo $strand_project['name']; ?></a></dd>
         <?php endforeach; ?>
       <?php endforeach; ?>
@@ -41,8 +41,8 @@ var_trace(var_export($past_projects, true), $TRACE_PREFIX . ' - completed projec
       <?php if(!$IN_CONTENT_AREA): ?><h1>Completed research</h1><?php endif; ?>
       <dl>
       <?php foreach($past_projects as $strand_name => $strand_projects): ?>
-        <dt><?php echo $strand_name; ?></dt>
-        <?php foreach($strand_projects as $strand_project): ?>
+        <dt><?php echo $strand['name']; ?></dt>
+        <?php foreach($strand['projects'] as $strand_project): ?>
         <dd><a href="<?php echo $BASE_URI . '/' . $strand_project['slug']; ?>"><?php echo $strand_project['name']; ?></a></dd>
         <?php endforeach; ?>
       <?php endforeach; ?>

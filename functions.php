@@ -303,14 +303,17 @@ function compose_project_list_by_strand($project_status) {
   // where NNN is e.g. 010, 020, etc. for the first, second, etc. strand respectively
   $research_strands_pod = new Pod('research_stream', array('orderby' => 'slug'));
   
-  $projects = array();
+  $projects_by_strand = array();
   
   while($research_strands_pod->fetchRecord()) {
-    $projects[$research_strands_pod->get_field('name')] = array();
+    $projects_by_strand[$research_strands_pod->get_field('slug')] = array(
+      'name' => $research_strands_pod->get_field('name'),
+      'projects' => array()
+    );
   }
   
   while($projects_pod->fetchRecord()) {
-    $projects[$projects_pod->get_field('research_strand.name')][] = array(
+    $projects_by_strand[$projects_pod->get_field('research_strand.slug')]['projects'][] = array(
       'slug' => $projects_pod->get_field('slug'),
       'name' => $projects_pod->get_field('name'),
       'strand' => $projects_pod->get_field('research_strand.name'),
@@ -318,14 +321,14 @@ function compose_project_list_by_strand($project_status) {
     );
   }
   
-  foreach($projects as $key => $value) {
-    if(sizeof($projects[$key]) == 0) {
+  foreach($projects_by_strand as $key => $value) {
+    if(sizeof($projects_by_strand[$key]['projects']) == 0) {
       error_log('removing empty research strand "' . $key . '" from ' . $project_status . ' projects list');
-      unset($projects[$key]);
+      unset($projects_by_strand[$key]);
     }
   }
 
-  return $projects;
+  return $projects_by_strand;
 }
 
 function news_categories($pod_news_categories) {
