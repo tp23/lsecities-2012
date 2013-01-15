@@ -15,7 +15,9 @@ var_trace(var_export($pod, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
 
 $current_projects = compose_project_list_by_strand('active');
+var_trace(var_export($active_projects, true), $TRACE_PREFIX . ' - active projects (by strand): ', $TRACE_ENABLED);
 $past_projects = compose_project_list_by_strand('completed');
+var_trace(var_export($completed_projects, true), $TRACE_PREFIX . ' - completed projects (by strand): ', $TRACE_ENABLED);
 
 ?>
   <?php if(($IN_CONTENT_AREA and !$HIDE_CURRENT_PROJECTS) or (!$IN_CONTENT_AREA and $HIDE_CURRENT_PROJECTS)): ?>

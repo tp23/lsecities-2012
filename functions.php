@@ -324,8 +324,6 @@ function compose_project_list_by_strand($project_status) {
     }
   }
 
-  var_trace($project_status . ' projects (by strand): ' . var_export($projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
-
   return $projects;
 }
 
