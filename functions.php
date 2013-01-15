@@ -317,6 +317,12 @@ function compose_project_list_by_strand($project_status) {
       'strand_slug' => $projects_pod->get_field('research_strand.slug')
     );
   }
+  
+  foreach($projects as $key => $value) {
+    if(sizeof($projects[$key]) == 0) {
+      unset($projects[$key]);
+    }
+  }
 
   var_trace($project_status . ' projects (by strand): ' . var_export($projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
