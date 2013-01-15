@@ -328,6 +328,7 @@ function compose_project_list_by_strand($project_status) {
     }
   }
 
+  ksort($projects_by_strand);
   return $projects_by_strand;
 }
 
