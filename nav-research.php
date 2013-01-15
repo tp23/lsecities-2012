@@ -13,53 +13,55 @@ var_trace('HIDE_PAST_PROJECTS: '. $HIDE_PAST_PROJECTS, $TRACE_PREFIX, $TRACE_ENA
 var_trace('post ID: ' . $current_post_id, $TRACE_PREFIX, $TRACE_ENABLED);
 var_trace(var_export($pod, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
-$projects_pod = new Pod('research_project');
 
-$current_projects_list = array();
-$projects_pod->findRecords(array(
-  'where' => 'status.name = "active"'
-));
-$current_projects = array();
-while($projects_pod->fetchRecord()) {
-  array_push($current_projects_list, array(
-    'slug' => $projects_pod->get_field('slug'),
-    'name' => $projects_pod->get_field('name'),
-    'strand' => $projects_pod->get_field('research_strand.name')
+
+function compose_project_list_by_strand($project_status) {
+  // only accept known project statuses
+  $known_project_status = new Pod('project_status', $project_status);
+  if(!$known_project_status->getTotalRows) {
+    error_log('unknown project status requested');
+    return;
+  }
+
+  // retrieve all projects with requested status
+  // TODO: do we want to sort projects by start date?
+  // some have an arbitrary start day so this might not work in practice
+  $projects_pod = new Pod('research_project');
+  $projects_pod->findRecords(array(
+    'where' => 'status.name = "' . $project_status . '"'
   ));
-  $current_projects[$projects_pod->get_field('research_strand.name')] = array();
+
+  // prepare research strands array
+  // we want to display strands in a specific order, using strands' slugs for sorting (NNN-strand-slug)
+  // where NNN is e.g. 010, 020, etc. for the first, second, etc. strand respectively
+  $research_strands_pod = new Pod('research_strands', array('orderby' => 'slug'));
+  
+  $projects_list = array();
+  $projects = array();
+  
+  foreach($research_strands_pod->fetchRecord as $research_strand) {
+    $projects[$research_strands_pod->get_field('name')] = array();
+  }
+  
+  while($projects_pod->fetchRecord()) {
+    $projects[$projects_pod->get_field('research_strand.name')][] = array(
+      'slug' => $projects_pod->get_field('slug'),
+      'name' => $projects_pod->get_field('name'),
+      'strand' => $projects_pod->get_field('research_strand.name'),
+      'strand_slug' => $projects_pod->get_field('research_strand.slug')
+    );
+  }
+
+  var_trace('projects: ' . var_export($projects_list, true), $TRACE_PREFIX, $TRACE_ENABLED);
+
+  var_trace($project_status . ' projects (by strand): ' . var_export($projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
+
+  return $projects;
 }
 
-var_trace('projects: ' . var_export($current_projects_list, true), $TRACE_PREFIX, $TRACE_ENABLED);
+$current_projects = compose_project_list_by_strand('active');
+$past_projects = compose_project_list_by_strand('completed');
 
-foreach($current_projects_list as $project) {
-  $key = $project['strand'];
-  array_push($current_projects[$key], $project);
-}
-
-var_trace('projects (by strand): ' . var_export($current_projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
-
-$past_projects_list = array();
-$projects_pod->findRecords(array(
-  'where' => 'status.name = "completed"'
-));
-$past_projects = array();
-while($projects_pod->fetchRecord()) {
-  array_push($past_projects_list, array(
-    'slug' => $projects_pod->get_field('slug'),
-    'name' => $projects_pod->get_field('name'),
-    'strand' => $projects_pod->get_field('research_strand.name')
-  ));
-  $past_projects[$projects_pod->get_field('research_strand.name')] = array();
-}
-
-var_trace('projects: ' . var_export($current_projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
-
-foreach($past_projects_list as $project) {
-  $key = $project['strand'];
-  array_push($past_projects[$key], $project);
-}
-
-var_trace('past projects (by strand): ' . var_export($projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
 ?>
   <?php if(($IN_CONTENT_AREA and !$HIDE_CURRENT_PROJECTS) or (!$IN_CONTENT_AREA and $HIDE_CURRENT_PROJECTS)): ?>
   <nav id="projectsmenu">
