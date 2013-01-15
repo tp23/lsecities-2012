@@ -301,7 +301,7 @@ function compose_project_list_by_strand($project_status) {
   // prepare research strands array
   // we want to display strands in a specific order, using strands' slugs for sorting (NNN-strand-slug)
   // where NNN is e.g. 010, 020, etc. for the first, second, etc. strand respectively
-  $research_strands_pod = new Pod('research_strands', array('orderby' => 'slug'));
+  $research_strands_pod = new Pod('research_stream', array('orderby' => 'slug'));
   
   $projects_list = array();
   $projects = array();
