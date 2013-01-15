@@ -303,10 +303,9 @@ function compose_project_list_by_strand($project_status) {
   // where NNN is e.g. 010, 020, etc. for the first, second, etc. strand respectively
   $research_strands_pod = new Pod('research_stream', array('orderby' => 'slug'));
   
-  $projects_list = array();
   $projects = array();
   
-  foreach($research_strands_pod->fetchRecord as $research_strand) {
+  while($research_strands_pod->fetchRecord()) {
     $projects[$research_strands_pod->get_field('name')] = array();
   }
   
@@ -318,8 +317,6 @@ function compose_project_list_by_strand($project_status) {
       'strand_slug' => $projects_pod->get_field('research_strand.slug')
     );
   }
-
-  var_trace('projects: ' . var_export($projects_list, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
   var_trace($project_status . ' projects (by strand): ' . var_export($projects, true), $TRACE_PREFIX, $TRACE_ENABLED);
 
