@@ -285,7 +285,7 @@ function galleria_prepare_multi($pod, $extra_classes, $gallery_field='galleries'
 function compose_project_list_by_strand($project_status) {
   // only accept known project statuses
   $known_project_status = new Pod('project_status', $project_status);
-  if(!$known_project_status->getTotalRows) {
+  if(!$known_project_status->getTotalRows()) {
     error_log('unknown project status requested');
     return;
   }
