@@ -320,6 +320,7 @@ function compose_project_list_by_strand($project_status) {
   
   foreach($projects as $key => $value) {
     if(sizeof($projects[$key]) == 0) {
+      error_log('removing empty research strand "' . $key . '" from ' . $project_status . ' projects list');
       unset($projects[$key]);
     }
   }
