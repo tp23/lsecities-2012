@@ -79,8 +79,8 @@ function process_session($session_slug) {
   // get link to PDF of slides: try pick field of file type first
   $session_slides = wp_get_attachment_url($pod->get_field('media_items.slides_pdf.ID'));
   // if no file is linked, try the plain text field for an URI
-  if(!$session_slides) {
-    $session_slides = $pod->get_field('media_items.slides_uri');
+  if(!$session_slides and $pod->get_field('media_items.slides_uri')) {
+    $session_slides = 'http://downloads0.cloud.lsecities.net/' . $pod->get_field('media_items.slides_uri');
   }
   
   $subsessions = $pod->get_field('sessions.slug', 'sequence ASC');
