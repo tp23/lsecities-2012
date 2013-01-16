@@ -75,7 +75,14 @@ function process_session($session_slug) {
   $session_respondents_blurb = generate_session_people_blurb($pod, 'respondents_blurb', $special_fields_prefix, $session_respondents);
   
   $session_youtube_video = $pod->get_field('media_items.youtube_uri');
-  $session_slides = $pod->get_field('media_items.slides_uri');
+  
+  // get link to PDF of slides: try pick field of file type first
+  $session_slides = wp_get_attachment_url($pod->get_field('media_items.slides_pdf.ID'));
+  // if no file is linked, try the plain text field for an URI
+  if(!session_slides) {
+    $session_slides = $pod->get_field('media_items.slides_uri');
+  }
+  
   $subsessions = $pod->get_field('sessions.slug', 'sequence ASC');
   if($subsessions and count($subsessions) == 1) { $subsessions = array(0 => $subsessions); }
   if($TRACE_ENABLED) { error_log($TRACE_PREFIX . 'session count: ' . count($subsessions)); }
