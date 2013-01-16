@@ -94,7 +94,7 @@ function generate_person_profile($slug, $extra_title, $mode = MODE_FULL_LIST) {
   
   $qualifications_list = array_map(function($string) { return trim($string); }, explode("\n", $pod->get_field('qualifications')));
   $profile_photo_uri = wp_get_attachment_url($pod->get_field('photo.ID'));
-  $email_address = preg_replace('/\@/', ' [AT] ', $pod->get_field('email_address'));
+  $email_address = $pod->get_field('email_address');
   
   if(!$profile_photo_uri and $pod->get_field('photo_legacy')) {
     $profile_photo_uri = $LEGACY_PHOTO_URI_PREFIX . $pod->get_field('photo_legacy');
