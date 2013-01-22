@@ -25,6 +25,8 @@ $lists = array(
 );
   
 function generate_list($list_id, $mode = MODE_FULL_LIST) {
+  // Some lists of people need segmentation into sub-lists:
+  // for each sub-list, generate the corresponding section
   if($list_id == 'lsecities-staff') {
     $output .= generate_section('lsecities-staff-mgmt', 'Executive', $mode);
     $output .= generate_section('lsecities-staff', 'Centre staff', $mode);
@@ -38,8 +40,11 @@ function generate_list($list_id, $mode = MODE_FULL_LIST) {
   } elseif($list_id == 'lsecities-governing-board') {
     $output .= generate_section('lsecities-governing-board-chair', 'Chair', $mode);
     $output .= generate_section('lsecities-governing-board', 'Board members', $mode);
-  } elseif($list_id == 'lsecities-associates') {
-    $output .= generate_section('lsecities-associates', false, $mode);
+  } 
+  // If no special segmenting of profiles is needed, just generate
+  // one single list
+  else {
+    $output .= generate_section($list_id, false, $mode);
   }
   
   return $output;
