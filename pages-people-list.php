@@ -39,7 +39,7 @@ function generate_list($list_id, $mode = MODE_FULL_LIST) {
     $output .= generate_section('lsecities-governing-board-chair', 'Chair', $mode);
     $output .= generate_section('lsecities-governing-board', 'Board members', $mode);
   } elseif($list_id == 'lsecities-associates') {
-    $output .= generate_section('lsecities-associates', 'Associates', $mode);
+    $output .= generate_section('lsecities-associates', false, $mode);
   }
   
   return $output;
@@ -51,7 +51,9 @@ function generate_section($section_slug, $section_heading = false, $mode = MODE_
   global $people_in_output_full, $people_in_output_summary;
   var_trace(var_export($people, true), $TRACE_PREFIX . ' - group_members', $TRACE_ENABLED);
   $output = "<section class='people-list $section_slug'>";
-  $output .= "<h1>$section_heading</h1>";
+  if($section_heading) {
+    $output .= "<h1>$section_heading</h1>";
+  }
   $output .= "<ul>";
   foreach($people as $person) {
     $display_after = new DateTime($person['display_after'] . 'T00:00:00.0');
