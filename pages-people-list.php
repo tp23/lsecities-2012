@@ -36,6 +36,8 @@ function generate_list($list_id, $mode = MODE_FULL_LIST) {
   } elseif($list_id == 'lsecities-governing-board') {
     $output .= generate_section('lsecities-governing-board-chair', 'Chair', $mode);
     $output .= generate_section('lsecities-governing-board', 'Board members', $mode);
+  } elseif($list_id == 'lsecities-associates') {
+    $output .= generate_section('lsecities-associates', 'Associates', $mode);
   }
   
   return $output;
@@ -45,7 +47,7 @@ function generate_section($section_slug, $section_heading = false, $mode = MODE_
   $pod = new Pod('people_group', $section_slug);
   $people = (array)$pod->get_field('members', 'family_name ASC');
   global $people_in_output_full, $people_in_output_summary;
-  var_trace('group_members: ' . var_export($people, true), $TRACE_PREFIX, true);
+  var_trace(var_export($people, true), $TRACE_PREFIX . ' - group_members');
   $output = "<section class='people-list $section_slug'>";
   $output .= "<h1>$section_heading</h1>";
   $output .= "<ul>";
