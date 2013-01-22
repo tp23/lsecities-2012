@@ -51,7 +51,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/ua\/conferences\/2012-london\/site/', '', $level2nav);
   $GLOBALS['site-ec2012'] = true;
 } else {
-  if(is_user_logged_in()) {
+  if(is_user_logged_in() or $_GET['preview'] == 1) {
     $include_pages = '617,306,309,311,94,629,3338';
   } else {
     $include_pages = '617,306,309,311,94,629';
