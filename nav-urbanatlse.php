@@ -3,7 +3,7 @@ $TRACE_ENABLED = is_user_logged_in();
 $TRACE_PREFIX = 'nav-urbanatlse';
 $current_post_id = $post->ID;
 
-$GALLERY_POD_SLUG = '';
+$GALLERY_POD_SLUG = 'urban-at-lse-gallery';
 
 $pod = new Pod('gallery', $GALLERY_POD_SLUG);
 
