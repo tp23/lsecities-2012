@@ -9,6 +9,8 @@ $pod = new Pod('gallery', $GALLERY_POD_SLUG);
 
 $gallery = galleria_prepare($pod, false, '');
 
+var_trace(var_export($gallery, true), 'gallery');
+
 if(count($gallery['slides'])) : ?>
 <div>
   <?php include('inc/components/galleria.inc.php'); ?>
