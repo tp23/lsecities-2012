@@ -106,6 +106,14 @@
             }
           } catch(error) { }
           
+          // enable Galleria for right-hand-side navbar slideshows
+          try {
+            if(jQuery('#navigationarea .lc-galleria').length > 0) {
+              jQuery('#navigationarea .lc-galleria').galleria({responsive: true, height: 0.75, lightbox: true, _toggleInfo: false, preload: 'all', debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>});
+              jQuery('#navigationarea .lc-galleria.fullbleed .galleria-thumbnails-container').hide();
+            }
+          } catch(error) { }
+          
           // enable Galleria for research pages photo slider
           try {
             if(jQuery('.lc-research-project .lc-galleria, .lc-publication .lc-galleria').length > 0) {
