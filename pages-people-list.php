@@ -12,6 +12,8 @@ define('MODE_FULL_LIST', 'full_list');
 define('MODE_SUMMARY',  'summary');
 $people_list = get_post_meta($post->ID, 'people_list', true);
 
+var_trace($people_list, 'people_list post meta');
+
 // save here all the people whose profile has already been added to output
 $people_in_output_full = array();
 $people_in_output_summary = array();
@@ -72,8 +74,8 @@ function generate_section($section_slug, $section_heading = false, $mode = MODE_
       }
     }
   }
-  var_trace('people_in_output_full: ' . var_export($people_in_output_full, true), $TRACE_PREFIX, true);
-  var_trace('people_in_output_summary: ' . var_export($people_in_output_summary, true), $TRACE_PREFIX, true);
+  var_trace(var_export($people_in_output_full, true), $TRACE_PREFIX . ' - people_in_output_full');
+  var_trace(var_export($people_in_output_summary, true), $TRACE_PREFIX . ' - people_in_output_summary');
   $output .= " </ul>";
   $output .= "</section>";
   return $output;
