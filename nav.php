@@ -87,7 +87,7 @@ if($current_post_id == 421 or in_array(421, get_post_ancestors($current_post_id)
 }
 
 // /urban-at-lse/
-if($current_post_id == 3344 or in_array(3344, get_post_ancestors($current_post_id))) {
+if($current_post_id == 3338 or in_array(3338, get_post_ancestors($current_post_id))) {
   get_template_part('nav', 'urbanatlse');
   $nav_generated = true;
 }
