@@ -7,7 +7,7 @@ $GALLERY_POD_SLUG = 'urban-at-lse-gallery';
 
 $pod = new Pod('gallery', $GALLERY_POD_SLUG);
 
-$gallery = galleria_prepare($pod, false, '');
+$gallery = galleria_prepare($pod, 'fullbleed wireframe wait', '');
 
 var_trace(var_export($gallery, true), 'gallery');
 
