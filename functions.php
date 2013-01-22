@@ -228,7 +228,8 @@ function galleria_prepare($pod, $extra_classes='', $gallery_field='gallery') {
   if($gallery_field != '') {
     $gallery_field .= '.';
   }
-    
+  
+  var_trace($gallery_field, 'gallery field');
   
   $gallery = array(
     'slug' => $pod->get_field($gallery_field . 'slug'),
