@@ -7,7 +7,7 @@ $GALLERY_POD_SLUG = '';
 
 $pod = new Pod('gallery', $GALLERY_POD_SLUG);
 
-$gallery = galleria_prepare($pod, false, 'this');
+$gallery = galleria_prepare($pod, false, '');
 
 if(count($gallery['slides'])) : ?>
 <div>
