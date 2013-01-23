@@ -218,7 +218,7 @@ function push_media_attribution($attachment_ID) {
   ));
 }
 
-function galleria_prepare($pod, $extra_classes='', $gallery_field='gallery') {
+function galleria_prepare($pod, $extra_classes = '', $gallery_field = 'gallery', $random_slide_order = false) {
   define(GALLERY_MAX_SLIDES_COUNT, 12);
 
   // if $gallery_field is provided AND it is empty, look up the
@@ -251,6 +251,12 @@ function galleria_prepare($pod, $extra_classes='', $gallery_field='gallery') {
       }
     }
   }
+  
+  // shuffle order of slides randomly if requested by caller
+  if($random_slide_order) {
+    shuffle($gallery['slides']);
+  }
+  
   var_trace($gallery, 'gallery');
   
   return $gallery;
