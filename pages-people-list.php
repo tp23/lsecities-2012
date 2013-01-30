@@ -22,7 +22,7 @@ var_trace($people_list, 'people_list post meta', $TRACE_ENABLED);
 $people_in_output_full = array();
 $people_in_output_summary = array();
 
-$lists = array(
+lc_data('lists', array(
   'lsecities-staff' =>
     array(
       array('slug' => 'lsecities-staff-mgmt', 'label' => 'Executive'),
@@ -44,9 +44,12 @@ $lists = array(
       array('slug' => 'lsecities-governing-board-chair', 'label' => 'Chair'),
       array('slug' => 'lsecities-governing-board', 'label' => 'Board members')
     )
+  )
 );
   
 function generate_list($list_id, $mode = MODE_FULL_LIST) {
+  $lists = lc_data('people_lists');
+  var_trace(var_export($lists), 'people_lists global');
   // Some lists of people need segmentation into sub-lists:
   // for each sub-list, generate the corresponding section
   if(count($lists[$list_id])) {
