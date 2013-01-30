@@ -66,7 +66,7 @@ function generate_section($section_slug, $section_heading = false, $mode = MODE_
   $pod = new Pod('people_group', $section_slug);
   $people = (array)$pod->get_field('members', 'family_name ASC');
   global $people_in_output_full, $people_in_output_summary;
-  var_trace(var_export($people, true), $TRACE_PREFIX . ' - group_members', $TRACE_ENABLED);
+  var_trace(var_export($people, true), $TRACE_PREFIX . ' - group_members');
   $output = "<section class='people-list $section_slug'>";
   if($section_heading) {
     $output .= "<h1>$section_heading</h1>";
@@ -76,9 +76,9 @@ function generate_section($section_slug, $section_heading = false, $mode = MODE_
     $display_after = new DateTime($person['display_after'] . 'T00:00:00.0');
     $display_until = new DateTime($person['display_until'] . 'T23:59:59.0');
     $datetime_now = new DateTime('now');
-    var_trace('display_after: ' . var_export($display_after, true), $TRACE_PREFIX, $TRACE_ENABLED);
-    var_trace('display_until: ' . var_export($display_until, true), $TRACE_PREFIX, $TRACE_ENABLED);
-    var_trace('datetime_now: ' . var_export($datetime_now, true), $TRACE_PREFIX, $TRACE_ENABLED);
+    var_trace(var_export($display_after, true), 'display_after');
+    var_trace(var_export($display_until, true), 'display_until');
+    var_trace(var_export($datetime_now, true), 'datetime_now');
     if($display_after <= $datetime_now and $datetime_now <= $display_until) {
       if($mode == MODE_FULL_LIST) {
         if(!in_array($person['slug'], $people_in_output_full)) {
@@ -93,8 +93,8 @@ function generate_section($section_slug, $section_heading = false, $mode = MODE_
       }
     }
   }
-  var_trace(var_export($people_in_output_full, true), $TRACE_PREFIX . ' - people_in_output_full', $TRACE_ENABLED);
-  var_trace(var_export($people_in_output_summary, true), $TRACE_PREFIX . ' - people_in_output_summary', $TRACE_ENABLED);
+  var_trace(var_export($people_in_output_full, true), $TRACE_PREFIX . ' - people_in_output_full');
+  var_trace(var_export($people_in_output_summary, true), $TRACE_PREFIX . ' - people_in_output_summary');
   $output .= " </ul>";
   $output .= "</section>";
   return $output;
