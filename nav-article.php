@@ -2,7 +2,7 @@
 $TRACE_ENABLED = is_user_logged_in();
 $TRACE_PREFIX = 'nav.php -- ';
 $current_post_id = $post->ID;
-$publication_pod = $GLOBALS['publication_pod'];
+$publication_pod = lc_data('publication_pod');
 ?>
 <?php 
 $http_req_headers = apache_request_headers();
