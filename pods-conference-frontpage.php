@@ -170,7 +170,7 @@ $gallery = array(
               </section><!-- #research-summary -->
               <?php endif; ?>
               <aside id="photoarea" class="eightcol">
-                <?php include('inc/components/galleria.inc.php'); ?>
+                <?php include('includes/components/galleria.inc.php'); ?>
               </aside>
               <aside id="publicationsarea" class="fourcol last">
                 <?php if($conference_publication_cover and $conference_publication_blurb): ?>

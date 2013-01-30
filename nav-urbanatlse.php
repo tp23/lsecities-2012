@@ -13,6 +13,6 @@ var_trace(var_export($gallery, true), 'gallery');
 
 if(count($gallery['slides'])) : ?>
 <div>
-  <?php include('inc/components/galleria.inc.php'); ?>
+  <?php include('includes/components/galleria.inc.php'); ?>
 </div>
 <?php endif; ?>

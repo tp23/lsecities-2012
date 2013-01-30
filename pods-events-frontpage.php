@@ -15,7 +15,7 @@ $TRACE_ENABLED = is_user_logged_in();
 $TRACE_PREFIX = 'pods-events-frontpage';
 global $pods_toplevel_ancestor, $pod_slug;
 $pods_toplevel_ancestor = 311;
-include_once('inc/pods/event/pods-event.php');
+include_once('includes/pods/event/pods-event.php');
 
 global $this_pod;
 $this_pod = new LC\PodObject($pod, 'Events');
@@ -205,7 +205,7 @@ $this_pod = new LC\PodObject($pod, 'Events');
               </section><!-- #speaker-profiles -->
               <?php endif; ?>
             </div><!-- .extra-content -->
-<?php include_once('inc/snippets/page-meta.php'); ?>
+<?php include_once('includes/snippets/page-meta.php'); ?>
           </div>
 
           <?php get_template_part('nav'); ?>

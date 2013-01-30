@@ -236,7 +236,7 @@ var_trace($linked_events, 'linked_events');
         component_news($pod->get_field('news_category'), '', $linked_events);
       ?>
       </div><!-- .extra-content -->
-<?php include_once('inc/snippets/page-meta.php'); ?>
+<?php include_once('includes/snippets/page-meta.php'); ?>
     </div><!-- #core.row -->
     </div>        
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>

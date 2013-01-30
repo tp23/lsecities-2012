@@ -132,7 +132,7 @@ $gallery = galleria_prepare($pod);
                       <?php echo $article_summary; ?>
                     <?php endif; ?>
                     </div>
-                    <?php include('inc/components/galleria.inc.php'); ?>
+                    <?php include('includes/components/galleria.inc.php'); ?>
                     <?php if($article_extra_content): ?>
                     <div class="extra-content"><?php echo $article_extra_content; ?></div>
                     <?php endif; ?>
