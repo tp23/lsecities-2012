@@ -44,7 +44,7 @@ lc_data('people_lists', array(
   
 function generate_list($list_id, $mode = MODE_FULL_LIST) {
   $lists = lc_data('people_lists');
-  var_trace(var_export($lists, true), 'people_lists global');
+
   // Some lists of people need segmentation into sub-lists:
   // for each sub-list, generate the corresponding section
   if(count($lists[$list_id])) {
@@ -52,22 +52,7 @@ function generate_list($list_id, $mode = MODE_FULL_LIST) {
       return generate_section($section['slug'], $section['label'], $mode);
     }, $lists[$list_id]));
   }
-/*
-  if($list_id == 'lsecities-staff') {
-    $output .= generate_section('lsecities-staff-mgmt', 'Executive', $mode);
-    $output .= generate_section('lsecities-staff', 'Centre staff', $mode);
-  } elseif($list_id == 'lsecities-advisory-board') {
-    $output .= generate_section('lsecities-advisory-board-chair', 'Chair', $mode);
-    $output .= generate_section('lsecities-advisory-board', 'Advisors', $mode);
-  } elseif($list_id == 'lsecities-executive-group') {
-    $output .= generate_section('lsecities-executive-group-director', 'Director', $mode);
-    $output .= generate_section('lsecities-executive-group-executive-director', 'Executive director', $mode);
-    $output .= generate_section('lsecities-executive-group-academic-director', 'Academic director', $mode);
-  } elseif($list_id == 'lsecities-governing-board') {
-    $output .= generate_section('lsecities-governing-board-chair', 'Chair', $mode);
-    $output .= generate_section('lsecities-governing-board', 'Board members', $mode);
-  } 
-*/
+
   // If no special segmenting of profiles is needed, just generate
   // one single list
   else {
