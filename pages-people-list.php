@@ -22,30 +22,25 @@ var_trace($people_list, 'people_list post meta', $TRACE_ENABLED);
 $people_in_output_full = array();
 $people_in_output_summary = array();
 
-lc_data('lists', array(
-  'lsecities-staff' =>
-    array(
-      array('slug' => 'lsecities-staff-mgmt', 'label' => 'Executive'),
-      array('slug' => 'lsecities-staff', 'label' => 'Centre staff')
-    ),
-  'lsecities-advisory-board' =>
-    array(
-      array('slug' => 'lsecities-advisory-board-chair', 'label' => 'Chair'),
-      array('slug' => 'lsecities-advisory-board', 'label' => 'Advisors')
-    ),
-  'lsecities-executive-group' =>
-    array(
-      array('slug' => 'lsecities-executive-group-director', 'label' => 'Director'),
-      array('slug' => 'lsecities-executive-group-executive-director', 'label' => 'Executive director'),
-      array('slug' => 'lsecities-executive-group-academic-director', 'label' => 'Academic director')
-    ),
-  'lsecities-governing-board' =>
-    array(
-      array('slug' => 'lsecities-governing-board-chair', 'label' => 'Chair'),
-      array('slug' => 'lsecities-governing-board', 'label' => 'Board members')
-    )
+lc_data('people_lists', array(
+  'lsecities-staff' => array(
+    array('slug' => 'lsecities-staff-mgmt', 'label' => 'Executive'),
+    array('slug' => 'lsecities-staff', 'label' => 'Centre staff')
+  ),
+  'lsecities-advisory-board' => array(
+    array('slug' => 'lsecities-advisory-board-chair', 'label' => 'Chair'),
+    array('slug' => 'lsecities-advisory-board', 'label' => 'Advisors')
+  ),
+  'lsecities-executive-group' => array(
+    array('slug' => 'lsecities-executive-group-director', 'label' => 'Director'),
+    array('slug' => 'lsecities-executive-group-executive-director', 'label' => 'Executive director'),
+    array('slug' => 'lsecities-executive-group-academic-director', 'label' => 'Academic director')
+  ),
+  'lsecities-governing-board' => array(
+    array('slug' => 'lsecities-governing-board-chair', 'label' => 'Chair'),
+    array('slug' => 'lsecities-governing-board', 'label' => 'Board members')
   )
-);
+));
   
 function generate_list($list_id, $mode = MODE_FULL_LIST) {
   $lists = lc_data('people_lists');
