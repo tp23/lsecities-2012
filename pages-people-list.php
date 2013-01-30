@@ -48,9 +48,9 @@ function generate_list($list_id, $mode = MODE_FULL_LIST) {
   // Some lists of people need segmentation into sub-lists:
   // for each sub-list, generate the corresponding section
   if(count($lists[$list_id])) {
-    $output = implode(array_map(function($section) use ($mode) {
+    $output = implode(array_map(function($section, $mode) {
       return generate_section($section['slug'], $section['label'], $mode);
-    }, $lists[$list_id]));
+    }, $lists[$list_id], $mode));
   }
 
   // If no special segmenting of profiles is needed, just generate
