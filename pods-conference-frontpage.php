@@ -39,7 +39,6 @@ asort($conference_partners_slugs);
 // MONKEYPATCH_END
 
 foreach($conference_partners_slugs as $conference_partners_slug) {
-  var_trace($GLOBALS['site-ec2012'], "GLOBALS['site-ec2012']");
   $organization_pod = new Pod('organization', $conference_partners_slug);
   
   // MONKEYPATCH_BEGIN
