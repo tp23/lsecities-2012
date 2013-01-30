@@ -19,10 +19,10 @@ var_trace($http_req_headers["X-Site-Id"], 'X-Site-Id');
 
 if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
-  $_GLOBALS['lsecities']['microsite_id'] = 'ec2012';
+  lc_data('microsite_id', 'ec2012');
 } elseif($_GET["siteid"] == 'cc') { // we are being called via the Cities and the crisis microsite
   $body_class_extra = 'site-cc';
-  $_GLOBALS['lsecities']['microsite_id'] = 'cc';
+  lc_data('microsite_id', 'cc');
 }
 
 // If we are on the root frontpage ('/', page ID 393), set ancestor to nil
@@ -38,17 +38,17 @@ var_trace($toplevel_ancestor, 'toplevel_ancestor');
 $level2nav = wp_list_pages('child_of=' . $toplevel_ancestor . '&depth=1&sort_column=menu_order&title_li=&echo=0');
 
 // check if we are in the Urban Age section
-$GLOBALS['urban_age_section'] = ($toplevel_ancestor == 94) ? true : false;
-$logo_element_id = $GLOBALS['urban_age_section'] ? 'ualogo' : 'logo';
+lc_data('urban_age_section', ($toplevel_ancestor == 94) ? true : false);
+$logo_element_id = lc_data('urban_age_section') ? 'ualogo' : 'logo';
 
-if($_GLOBALS['lsecities']['microsite_id'] == 'cc') { // Labs -> Cities and the crisis
+if(lc_data('microsite_id') == 'cc') { // Labs -> Cities and the crisis
   // If we are navigating the Cities and the crisis minisite via reverse proxy, display appropriate menu
   $level1nav = '<li><a href="/" title="Home">Cities and the Crisis</a></li>';
   $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2481);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/cities-and-the-crisis/', '', $level2nav);
-  $GLOBALS['site-cc'] = true;
-} elseif($_GLOBALS['lsecities']['microsite_id'] == 'ec2012') { // Electric City conference minisite
+  lc_data('site-cc', true);
+} elseif(lc_data('microsite_id') == 'ec2012') { // Electric City conference minisite
   // If we are navigating the EC2012 minisite via reverse proxy, display appropriate menu
   $level1nav = '';
   $class_for_current_page = $post->ID == 2701 ? ' current_page_item' : '';
@@ -67,7 +67,7 @@ if($_GLOBALS['lsecities']['microsite_id'] == 'cc') { // Labs -> Cities and the c
   $level2nav = '<li class="page-item page-item-2701 current_page_item"><a href="/">Home</a></li><li class="page_item page-item-2714"><a href="/programme/">Programme</a></li>
 <li class="page_item page-item-2716"><a href="/speakers/">Speakers</a></li>'; */
   // $appcache_manifest = '/appcache-manifests/ec2012.appcache';
-  $GLOBALS['site-ec2012'] = true;
+  lc_data('site-ec2012', true);
 } else {
   $level1nav = '<li><a href="/" title="Home">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032,2476');
 }
