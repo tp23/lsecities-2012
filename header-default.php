@@ -33,8 +33,8 @@ var_trace($toplevel_ancestor, 'toplevel_ancestor');
 $level2nav = wp_list_pages('child_of=' . $toplevel_ancestor . '&depth=1&sort_column=menu_order&title_li=&echo=0');
 
 // check if we are in the Urban Age section
-$GLOBALS['urban_age_section'] = ($toplevel_ancestor == 94) ? true : false;
-$logo_element_id = $GLOBALS['urban_age_section'] ? 'ualogo' : 'logo';
+lc_data('urban_age_section', ($toplevel_ancestor == 94) ? true : false);
+$logo_element_id = lc_data('urban_age_section') ? 'ualogo' : 'logo';
 
 if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities and the crisis
   // If we are navigating the Cities and the crisis minisite via reverse proxy, display appropriate menu
@@ -42,14 +42,14 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
   $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2481);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/cities-and-the-crisis/', '', $level2nav);
-  $GLOBALS['site-cc'] = true;
+  lc_data('site-cc', true);
 } elseif($post->ID == 2701 or in_array(2701, $post->ancestors)) { // Electric City conference minisite
   // If we are navigating the EC2012 minisite via reverse proxy, display appropriate menu
   $level1nav = '';
   $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2701);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/ua\/conferences\/2012-london\/site/', '', $level2nav);
-  $GLOBALS['site-ec2012'] = true;
+  lc_data('site-ec2012', true);
 } else {
   if(is_user_logged_in() or $_GET['preview'] == 1) {
     $include_pages = '617,306,309,311,94,629,3338';
@@ -169,7 +169,7 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
           <?php endif; // ($_GET["siteid"] == 'ec2012') ?>
 				</a>
         <?php
-          if($GLOBALS['urban_age_section']): 
+          if(lc_data('urban_age_section')): 
             if($_GET["siteid"] == 'ec2012'): ?>
               <a href="/ua/">
                 <div class='threecol' id='ualogo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logos/logo_urbanage_nostrapline_white.png" alt="Urban Age logo"></div>
@@ -180,11 +180,11 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
               </a>
         <?php
           endif; // ($_GET["siteid"] == 'ec2012') ?>
-        <?php elseif($GLOBALS['site-cc']): ?>
+        <?php elseif(lc_data('site-cc')): ?>
 					<div class='threecol' id='heif5logo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_heif5_col.png" alt="HEIF5 Knowledge Exchange"></div>
 				<?php else: ?>
         <span class='threecol'>&nbsp;</span>
-        <?php endif; // ($GLOBALS['urban_age_section']) ?>
+        <?php endif; // (lc_data('urban_age_section')) ?>
 				<div class='sixcol last' id='toolbox'>
 					<div id="searchbox" class="clearfix">
 						<form method="get" id="search-box" action="http://www.google.com/search">

@@ -52,7 +52,7 @@ function var_trace($var, $prefix = 'pods', $enabled = TRACE_ENABLED, $destinatio
 }
 
 // global scope variables
-$META_media_attr = array();
+lc_data('META_media_attr', array());
 
 // define assets to load
 $json_assets =
@@ -206,17 +206,17 @@ function save_media_library_item_custom_form_fields($post, $attachment) {
 add_filter('attachment_fields_to_save','save_media_library_item_custom_form_fields', 8, 2);
 
 function push_media_attribution($attachment_ID) {
-  global $META_media_attr;
+  $media_attributions = lc_data('META_media_attr');
   $attachment_metadata = wp_get_attachment_metadata($attachment_ID);
   var_trace($attachment_metadata, $TRACE_PREFIX . ': attachment_metadata', $TRACE_ENABLED);
   $attribution_uri = get_post_meta($attachment_ID, '_attribution_uri', true);
   $attribution_name = get_post_meta($attachment_ID, '_attribution_name', true);
-  // array_push($GLOBALS['META_media_attributions'], array(
-  array_push($META_media_attr, array(
+  array_push($media_attributions, array(
     'title' => get_the_title($attachment_ID),
     'attribution_uri' => $attribution_uri,
     'author' => $attribution_name,
   ));
+  lc_data('META_media_attr', $media_attributions);
 }
 
 function galleria_prepare($pod, $extra_classes = '', $gallery_field = 'gallery', $random_slide_order = false) {

@@ -70,7 +70,7 @@ if($pod_slug) {
   $is_conference = true;
 }
 
-$META_last_modified = $pod->get_field('modified');
+lc_data('META_last_modified', $pod->get_field('modified'));
 
 var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 
