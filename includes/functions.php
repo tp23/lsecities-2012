@@ -491,7 +491,7 @@ function custom_query_shortcode($atts) {
 add_shortcode("loop", "custom_query_shortcode");
 
 /* components */
-define(COMPONENTS_ROOT, 'includes/components');
+define(COMPONENTS_ROOT, 'components');
 
 /**
  * News component
