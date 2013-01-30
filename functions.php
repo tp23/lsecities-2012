@@ -50,8 +50,32 @@ function var_trace($var, $prefix = 'pods', $enabled = TRACE_ENABLED, $destinatio
     }
   }
 }
+
 // global scope variables
 $META_media_attr = array();
+
+// main global array and getter/setter function
+$LSECITIES_CONFIGURATION_DATA = array();
+
+/**
+ * get or set items from global configuration variable
+ * 
+ * 
+ * If called with the $key parameter only works as getter,
+ * if called with both $key and $value parameters works as setter
+ * 
+ * @param string $key The item's key
+ * @param mixed $value The item's new value
+ * @return mixed The value of the item requested (getter) or updated/set
+ *         (setter)
+ */
+function lc_data($key, $value = false) {
+  global $LSECITIES_CONFIGURATION_DATA;
+  if($value) {
+    $LSECITIES_CONFIGURATION_DATA[$key] = $value;
+  }
+  return $LSECITIES_CONFIGURATION_DATA[$key];
+}
 
 // define assets to load
 $json_assets =
