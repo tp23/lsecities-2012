@@ -3,7 +3,26 @@
 // Exit if accessed directly
 if ( !defined('ABSPATH')) exit;
 
-// main global array
+/**
+ * Theme configuration variables
+ * 
+ * Please avoid scattering configuration data across local or global
+ * variables in PHP files - use the One True Global Variable below
+ * through the getter/setter function lc_data.
+ * Please avoid global variables altogether when possible, and surely
+ * avoid more than one global variable (use the One True Global Variable
+ * for any globals needed).
+ * 
+ * This setup is an improved version of the 'Working with the variable'
+ * example here: http://betterwp.net/8-using-global-variables-in-wordpress/
+ */
+
+/**
+ * The One True Global Variable
+ * 
+ * Please don't access this directly - use the getter/setter function
+ * lc_data() instead.
+ */
 $LSECITIES_CONFIGURATION_DATA = array();
 
 /**
