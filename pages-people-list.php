@@ -1,4 +1,8 @@
 <?php
+
+// Exit if accessed directly
+if ( !defined('ABSPATH')) exit;
+
 /**
  * Template Name: People list
  * Description: The template used for lists of people (staff, advisors, etc.)
