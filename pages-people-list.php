@@ -49,6 +49,12 @@ $lists = array(
 function generate_list($list_id, $mode = MODE_FULL_LIST) {
   // Some lists of people need segmentation into sub-lists:
   // for each sub-list, generate the corresponding section
+  if(count($lists[$list_id])) {
+    $output = implode(array_map(function($section) use ($mode) {
+      return generate_section($section['slug'], $section['label'], $mode);
+    }, $lists[$list_id]));
+  }
+/*
   if($list_id == 'lsecities-staff') {
     $output .= generate_section('lsecities-staff-mgmt', 'Executive', $mode);
     $output .= generate_section('lsecities-staff', 'Centre staff', $mode);
@@ -63,6 +69,7 @@ function generate_list($list_id, $mode = MODE_FULL_LIST) {
     $output .= generate_section('lsecities-governing-board-chair', 'Chair', $mode);
     $output .= generate_section('lsecities-governing-board', 'Board members', $mode);
   } 
+*/
   // If no special segmenting of profiles is needed, just generate
   // one single list
   else {
