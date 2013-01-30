@@ -44,7 +44,7 @@ lc_data('people_lists', array(
   
 function generate_list($list_id, $mode = MODE_FULL_LIST) {
   $lists = lc_data('people_lists');
-  var_trace(var_export($lists), 'people_lists global');
+  var_trace(var_export($lists, true), 'people_lists global');
   // Some lists of people need segmentation into sub-lists:
   // for each sub-list, generate the corresponding section
   if(count($lists[$list_id])) {
