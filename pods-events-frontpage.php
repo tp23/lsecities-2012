@@ -14,7 +14,8 @@
 $TRACE_ENABLED = is_user_logged_in();
 $TRACE_PREFIX = 'pods-events-frontpage';
 global $pods_toplevel_ancestor, $pod_slug;
-$pods_toplevel_ancestor = 311;
+lc_data('pods_toplevel_ancestor', 311);
+
 include_once('includes/pods/event/pods-event.php');
 
 global $this_pod;
