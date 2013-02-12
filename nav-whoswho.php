@@ -6,7 +6,7 @@ $people_list = get_post_meta($post->ID, 'people_list', true);
 if($people_list):
 ?>
 <?php if(is_user_logged_in()) : ?>
-<dl>
+<dl class="in-page-navigation">
   <dt><?php echo get_the_title($post->ID); ?></dt>
   <dd>
 <?php endif; ?>
