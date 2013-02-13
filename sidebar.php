@@ -13,7 +13,7 @@
 ?>
 <?php if(is_user_logged_in() and is_single($post->ID)): ?>
 	<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-		<div id="secondary" class="widget-area" role="complementary">
+		<div id="secondary" class="widget-area threecol last" role="complementary">
 			<?php dynamic_sidebar( 'sidebar-1' ); ?>
 		</div><!-- #secondary -->
 	<?php endif; ?>
