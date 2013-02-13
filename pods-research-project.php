@@ -19,7 +19,7 @@ function object_date($date) {
   }
   
   $date_array = date_parse($date);
-  var_trace(var_export($date_array), 'date_array');
+  var_trace(var_export($date_array, true), 'date_array');
   $date_string = sprintf("%4d%", $date_array['year']);
   if($date_array['month']) {
     $date_string .= "-" . sprintf("%02d", $date_array['month']);
