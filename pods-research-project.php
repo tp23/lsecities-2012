@@ -28,7 +28,7 @@ function object_date($date) {
       $date_string .= "-" . sprintf("%02d", $date_array['day']);
     }
   }
-  
+  var_trace($date_string, 'date_string');
   return $date_string;
 }
 
