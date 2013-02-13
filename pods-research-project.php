@@ -35,7 +35,8 @@ function date_string($date) {
     'day' => $match[5]
   );
   
-  var_trace(var_export($date_array, true), 'datetime');
+  var_trace(var_export($date_array, true), 'date_arraytime');
+  
   $date_string = sprintf("%4d", $date_array['year']);
   if($date_array['month']) {
     $date_string .= "-" . sprintf("%02d", $date_array['month']);
