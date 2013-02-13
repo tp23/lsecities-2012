@@ -11,7 +11,7 @@
  * @since LSE Cities 2012 1.4
  */
 ?>
-<?php if(is_singular()): ?>
+<?php if(is_user_logged_in() and is_singular()): ?>
 	<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
 		<div id="secondary" class="widget-area" role="complementary">
 			<?php dynamic_sidebar( 'sidebar-1' ); ?>
