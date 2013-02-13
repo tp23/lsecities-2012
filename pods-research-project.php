@@ -13,65 +13,6 @@ global $IN_CONTENT_AREA, $HIDE_CURRENT_PROJECTS, $HIDE_PAST_PROJECTS;
 $TRACE_PREFIX = 'pods-research-projects';
 $pods_toplevel_ancestor = 306;
 
-/**
- * Parse date and return it as a YYYY-MM-DD string, or YYYY-MM, or YYYY
- * month/day given as single digit are padded with zero to make
- * dates sortable with array_multisort
- * 
- * @param $date The date
- * @param $format Output format (can be 'ISO' for YYYY-MM-DD or 'jFY'
- *   for DD Month YYYY; if day or day and month are missing, only output
- *   what is provided
- */
-function date_string($date, $format = 'ISO') {
-  if(!$date) {
-    return false;
-  }
-  
-  $match = array();
-  
-  if(!preg_match('/(\d{4})(\-(\d{1,2})(\-(\d{1,2}))?)?/', $date, $match)) {
-    return false;
-  }
-  
-  $date_array = array(
-    'year' => $match[1],
-    'month' => $match[3],
-    'day' => $match[5]
-  );
-  
-  var_trace(var_export($date_array, true), 'date_arraytime');
-  
-
-  $date_string = sprintf("%4d", $date_array['year']);
-  if($date_array['month']) {
-    $date_string .= "-" . sprintf("%02d", $date_array['month']);
-    
-    if($date_array['day']) {
-      $date_string .= "-" . sprintf("%02d", $date_array['day']);
-    }
-  }
-  
-  // now that we have the date in ISO format, apply any further
-  // formatting as requested, or return ISO date if no other
-  // format has been requested
-  
-  // j F Y (DD Month YYYY) format
-  if($format === 'jFY') {
-    if(!$date_array['day'] and !$date_array['month']) {
-      $format = 'Y';
-    } elseif(!$date_array['day']) {
-      $format = 'F Y';
-    } else {
-      $format = 'j F Y';
-    }
-    $date_string = date($format, strtotime($date_string));
-  }
-  
-  var_trace($date_string, 'date_string');
-  return $date_string;
-}
-
 $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
 if($pod_slug) {
   $pod_from_page = true;
