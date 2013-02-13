@@ -30,9 +30,9 @@ function date_string($date) {
   }
   
   $date_array = array(
-    'year' => $match[0],
-    'month' => $match[2],
-    'day' => $match[4]
+    'year' => $match[1],
+    'month' => $match[3],
+    'day' => $match[5]
   );
   
   var_trace(var_export($date_array, true), 'datetime');
