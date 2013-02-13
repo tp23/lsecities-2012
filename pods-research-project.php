@@ -13,13 +13,29 @@ global $IN_CONTENT_AREA, $HIDE_CURRENT_PROJECTS, $HIDE_PAST_PROJECTS;
 $TRACE_PREFIX = 'pods-research-projects';
 $pods_toplevel_ancestor = 306;
 
-function object_date($date) {
+/**
+ * Parse date and return it as a YYYY-MM-DD string, or YYYY-MM, or YYYY
+ * month/day given as single digit are padded with zero to make
+ * dates sortable with array_multisort
+ */
+function date_string($date) {
   if(!$date) {
     return false;
   }
   
-  $date_array = date_parse($date);
-  var_trace(var_export($date_array, true), 'date_array');
+  $match = array();
+  
+  if(!preg_match('(\d{4})(-(%d{1,2})(-(%d{1,2}))?)?', $match)) {
+    return false;
+  }
+  
+  $date_array = array(
+    'year' => $match[0],
+    'month' => $match[2],
+    'day' => $match[4]
+  );
+  
+  var_trace(var_export($date_array, true), 'datetime');
   $date_string = sprintf("%4d", $date_array['year']);
   if($date_array['month']) {
     $date_string .= "-" . sprintf("%02d", $date_array['month']);
@@ -180,7 +196,7 @@ foreach($research_output_pod_slugs as $research_output_pod_slug) {
   $research_outputs[$research_output_pod->get_field('category.slug')][] = array(
     'title' => $research_output_pod->get_field('name'),
     'citation' => $research_output_pod->get_field('citation'),
-    'date' => object_date($research_output_pod->get_field('date')),
+    'date' => date_string($research_output_pod->get_field('date')),
     'uri' => $research_output_pod->get_field('uri')
   );
 }
@@ -196,7 +212,7 @@ foreach($research_output_publications_pod_slugs as $tmp_slug) {
   $research_outputs[$research_output_publication_pod->get_field('category.slug')][] = array(
     'title' => $research_output_publication_pod->get_field('name'),
     'citation' => $research_output_publication_pod->get_field('name'),
-    'date' => object_date($research_output_publication_pod->get_field('publishing_date')),
+    'date' => date_string($research_output_publication_pod->get_field('publishing_date')),
     'uri' => get_permalink($research_output_publication_pod->get_field('publication_web_page.ID'))
   );
 }
