@@ -13,6 +13,24 @@ global $IN_CONTENT_AREA, $HIDE_CURRENT_PROJECTS, $HIDE_PAST_PROJECTS;
 $TRACE_PREFIX = 'pods-research-projects';
 $pods_toplevel_ancestor = 306;
 
+function object_date($date) {
+  if(!$date) {
+    return false;
+  }
+  
+  $date_array = date_parse($date);
+  $date_string = sprintf("%4d%", $date_array['year']);
+  if($date_array['month']) {
+    $date_string .= "-" . sprintf("%02d", $date_array['month']);
+    
+    if($date_array['day']) {
+      $date_string .= "-" . sprintf("%02d", $date_array['day']);
+    }
+  }
+  
+  return $date_string;
+}
+
 $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
 if($pod_slug) {
   $pod_from_page = true;
@@ -157,11 +175,11 @@ foreach($research_output_pod_slugs as $research_output_pod_slug) {
   $research_output_pod = new Pod('research_output', $research_output_pod_slug);
   
   var_trace(var_export($research_output_pod->get_field('category'), true), 'output category');
-  
+
   $research_outputs[$research_output_pod->get_field('category.slug')][] = array(
     'title' => $research_output_pod->get_field('name'),
     'citation' => $research_output_pod->get_field('citation'),
-    'date' => $research_output_pod->get_field('date'),
+    'date' => object_date($research_output_pod->get_field('date')),
     'uri' => $research_output_pod->get_field('uri')
   );
 }
@@ -177,7 +195,7 @@ foreach($research_output_publications_pod_slugs as $tmp_slug) {
   $research_outputs[$research_output_publication_pod->get_field('category.slug')][] = array(
     'title' => $research_output_publication_pod->get_field('name'),
     'citation' => $research_output_publication_pod->get_field('name'),
-    'date' => $research_output_publication_pod->get_field('publishing_date'),
+    'date' => object_date($research_output_publication_pod->get_field('publishing_date')),
     'uri' => get_permalink($research_output_publication_pod->get_field('publication_web_page.ID'))
   );
 }
