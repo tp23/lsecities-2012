@@ -414,12 +414,13 @@ $news_categories = news_categories($pod->get_field('news_category'));
           <?php if($featured_post['ID']): ?>
             <dt>Highlights</dt>
             <dd>
-              <a href="<?php echo $featured_post['permalink']; ?>" title="">
+              <a style="position: relative;" href="<?php echo $featured_post['permalink']; ?>" title=""> <?php // TODO: move CSS to its proper spot :) ?>
                 <?php if($featured_post['thumbnail_url']): ?>
                 <img src="<?php echo $featured_post['thumbnail_url']; ?>" />
-                <?php else: ?>
-                <?php echo $featured_post['title']; ?>
                 <?php endif; // ($featured_post['thumbnail_url']) ?>
+                <?php if($featured_post['title']): ?>
+                <h1 style="position: absolute; bottom: -1em; color: white; background: rgba(0,0,0,0.6); width: 100%; padding: 0.3em;"><?php echo $featured_post['title']; ?></h1>  <?php // TODO: move CSS to its proper spot :) ?>
+                <?php endif; // ($featured_post['title']) ?>
               </a>
             </dd>
           <?php endif; // ($featured_post['ID'])?>
