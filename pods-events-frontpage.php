@@ -220,7 +220,7 @@ jQuery(function($) {
 });
 jQuery(function() {
 
-  $('.lc-event').AddToCal({
+  jQuery('.lc-event').AddToCal({
     /* ical and vcal require an ics or vcs file to be served. 
      * Since we don't have a server for this demo, these features are disabled.
      * As a result the 30boxes, iCal and vCalendar menu links will not appear
