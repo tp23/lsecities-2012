@@ -218,6 +218,56 @@ jQuery(function($) {
     defaultVideoWidth: '100%'
   });
 });
+jQuery(function() {
+
+  $('.lc-event').AddToCal({
+    /* ical and vcal require an ics or vcs file to be served. 
+     * Since we don't have a server for this demo, these features are disabled.
+     * As a result the 30boxes, iCal and vCalendar menu links will not appear
+     */
+    icalEnabled:false,
+    vcalEnabled:false,
+      
+    /* getEventDetails is the most critical function to provide. 
+     * It is called when a user selects a calendar to add an event to.
+     * The element parameter is the jQuery object for the event invoked. 
+     * You must return an object packed with the relevant event details.
+     * How you determine the event attributes will depend on your page.
+     * The example below illustrates how to handle two formats of event markup. 
+     */
+    getEventDetails: function( element ) {
+      var 
+        dtstart_element = element.find('.dtstart'), start,
+        dtend_element = element.find('.dtend'), end,
+        title_element = element.find('.summary'), title,
+        details_element = element.find('.description'), details;
+      
+      // in this demo, we attempt to get hCalendar attributes or otherwise just dummy the values
+      start = dtstart_element.length ? dtstart_element.attr('title') : new Date();
+      if(dtend_element.length) {
+        end = dtend_element.attr('title');
+      } else {
+        end = new Date();
+        end.setTime(end.getTime() + 60 * 60 * 1000);
+      }
+      title = title_element.length ? title_element.html() : element.attr('id');
+      details = details_element.length ? details_element.html() : element.html();
+      
+      // return the required event structure
+      return { 
+        webcalurl: null,
+        icalurl: null,
+        vcalurl: null, 
+        start: start, 
+        end: end, 
+        title: title, 
+        details: details, 
+        location: null, 
+        url: null
+        };
+      },
+  });
+});
 </script>
 </div><!-- #contentarea -->
 </div>
