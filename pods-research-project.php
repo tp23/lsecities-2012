@@ -419,7 +419,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
                 <img src="<?php echo $featured_post['thumbnail_url']; ?>" />
                 <?php endif; // ($featured_post['thumbnail_url']) ?>
                 <?php if($featured_post['title']): ?>
-                <h1 style="position: absolute; bottom: -1em; color: white; background: rgba(0,0,0,0.6); width: 100%; padding: 0.3em;"><?php echo $featured_post['title']; ?></h1>  <?php // TODO: move CSS to its proper spot :) ?>
+                <h1 style="box-sizing: border-box; position: absolute; bottom: -1em; color: white; background: rgba(0,0,0,0.6); width: 100%; padding: 0.3em;"><?php echo $featured_post['title']; ?></h1>  <?php // TODO: move CSS to its proper spot :) ?>
                 <?php endif; // ($featured_post['title']) ?>
               </a>
             </dd>
