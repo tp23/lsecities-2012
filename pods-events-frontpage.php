@@ -79,7 +79,7 @@ $this_pod = new LC\PodObject($pod, 'Events');
                     
                     <?php if($event_date_string): ?>
                       <dt>When</dt>
-                      <dd class="date"><?php echo $event_date_string; ?></dd>
+                      <dd class="date addtocal"><?php echo $event_date_string; ?></dd>
                     <?php endif; ?>
               
                     <?php if($event_location): ?>
@@ -220,7 +220,7 @@ jQuery(function($) {
 });
 jQuery(function() {
 
-  jQuery('.lc-event').AddToCal({
+  jQuery('.addtocal').AddToCal({
     /* ical and vcal require an ics or vcs file to be served. 
      * Since we don't have a server for this demo, these features are disabled.
      * As a result the 30boxes, iCal and vCalendar menu links will not appear
@@ -237,10 +237,10 @@ jQuery(function() {
      */
     getEventDetails: function( element ) {
       var 
-        dtstart_element = element.find('.dtstart'), start,
-        dtend_element = element.find('.dtend'), end,
-        title_element = element.find('.summary'), title,
-        details_element = element.find('.description'), details;
+        dtstart_element = jQuery('.lc-event').find('.dtstart'), start,
+        dtend_element = jQuery('.lc-event').find('.dtend'), end,
+        title_element = jQuery('.lc-event').find('.summary'), title,
+        details_element = jQuery('.lc-event').find('.description'), details;
       
       // in this demo, we attempt to get hCalendar attributes or otherwise just dummy the values
       start = dtstart_element.length ? dtstart_element.attr('title') : new Date();
