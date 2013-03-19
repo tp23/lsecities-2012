@@ -148,10 +148,7 @@
           }));
           $('.runon li:nth-child(odd)').addClass('alternate');
           $('.accordion').accordion({autoHeight: false, active: $(this).find('.active')});
-          if($('input:radio[name=group[8245]]').length) {
-            $('input:radio[name=group[8245]]')[0].checked = true;
-          };
-          
+
           // track clicks to binary files hosted in WordPress.
           // based on http://www.wduffy.co.uk/blog/tracking-google-goals-with-no-url-using-jquery/.
           // uses regex jQuery filter (http://james.padolsey.com/javascript/regex-selector-for-jquery/).
