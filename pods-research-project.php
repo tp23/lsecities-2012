@@ -419,7 +419,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
                 <img src="<?php echo $featured_post['thumbnail_url']; ?>" />
                 <?php else: ?>
                 <?php echo $featured_post['title']; ?>
-                <?php endif; // ?>
+                <?php endif; // ($featured_post['thumbnail_url']) ?>
               </a>
             </dd>
           <?php endif; // ($featured_post['ID'])?>
