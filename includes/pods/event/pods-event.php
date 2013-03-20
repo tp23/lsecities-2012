@@ -62,8 +62,8 @@ function orgs_list($organizations) {
 $pod_slug = pods_url_variable(3);
 
 $pod = new Pod('event', $pod_slug);
-var_trace(gettype($pod), 'event pod is of type');
-if(is_array($pod)) {
+var_trace($pod->total_rows, 'total_rows');
+if(!$pod->total_rows($pod)) {
   redirect_to_404();
 }
 
