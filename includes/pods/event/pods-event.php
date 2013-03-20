@@ -61,13 +61,9 @@ function orgs_list($organizations) {
 // check if we are getting called via Pods (pods_url_variable is set)
 $pod_slug = pods_url_variable(3);
 
-if($pod_slug) {
-  $pod = new Pod('event', $pod_slug);
-  $is_conference = false;
-} else {
-  $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
-  $pod = new Pod('conference', $pod_slug);
-  $is_conference = true;
+$pod = new Pod('event', $pod_slug);
+if(!$pod->getTotalRows()) {
+  redirect_to_404();
 }
 
 lc_data('META_last_modified', $pod->get_field('modified'));
@@ -106,12 +102,10 @@ if(!$slider) {
   $featured_image_uri = get_the_post_thumbnail(get_the_ID(), array(960,367));
 }
 
-// if this is an event, grab the image URI from the Pod
-if(!$is_conference) {
-  $attachment_ID = $pod->get_field('heading_image.ID');
-  $featured_image_uri = wp_get_attachment_url($attachment_ID);
-  push_media_attribution($attachment_ID);
-}
+// grab the image URI from the Pod
+$attachment_ID = $pod->get_field('heading_image.ID');
+$featured_image_uri = wp_get_attachment_url($attachment_ID);
+push_media_attribution($attachment_ID);
 
 $event_date_start = new DateTime($pod->get_field('date_start'));
 $event_date_end = new DateTime($pod->get_field('date_end'));

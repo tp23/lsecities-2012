@@ -9,10 +9,10 @@
  *
  */
 if(!defined('redirect_to_404')) {
-  function return_404() {
+  function redirect_to_404() {
     status_header(404);
     nocache_headers();
-    include( get_404_template() );
+    include(get_404_template());
     exit;
   }
 } 
