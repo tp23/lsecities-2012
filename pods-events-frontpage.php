@@ -62,12 +62,10 @@ $obj = pods_prepare_event(pods_url_variable(3));
                           echo $obj['chairs_output']['output'];
                           echo $obj['moderators_output']['output'];
                     ?>
-
                     <?php if($obj['event_date_string']): ?>
                       <dt>When</dt>
                       <dd class="date addtocal"><?php echo $obj['event_date_string']; ?></dd>
                     <?php endif; ?>
-
                     <?php if($obj['event_location']): ?>
                       <dt>Where</dt>
                       <dd class="h-card vcard"><span class="p-location location"><?php echo $obj['event_location']; ?></span></dd>
@@ -146,7 +144,6 @@ $obj = pods_prepare_event(pods_url_variable(3));
                 </dl>
               </section>
               <?php endif; ?>
-
 
               <?php if($obj['people_with_blurb']): ?>
               <section id='speaker-profiles' class='clearfix'>

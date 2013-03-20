@@ -78,14 +78,16 @@ function pods_prepare_event($pod_slug) {
 
   var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 
+  $obj['title'] = $pod->get_field('name');
+  
   $event_speakers = $pod->get_field('speakers', 'family_name ASC');
   $event_respondents = $pod->get_field('respondents', 'family_name ASC');
   $event_chairs = $pod->get_field('chairs', 'family_name ASC');
   $event_moderators = $pod->get_field('moderators', 'family_name ASC');
-  $event_all_the_people = array_merge((array)$event_speakers, (array)$event_respondents, (array)$event_chairs, (array)$event_moderators);
+  $obj['event_all_the_people'] = array_merge((array)$event_speakers, (array)$event_respondents, (array)$event_chairs, (array)$event_moderators);
   var_trace($event_all_the_people, $TRACE_PREFIX, $TRACE_ENABLED);
-  $event_hashtag = ltrim($pod->get_field('hashtag'), '#');
-  $event_story_id = $pod->get_field('storify_id');
+  $obj['event_hashtag'] = ltrim($pod->get_field('hashtag'), '#');
+  $obj['event_story_id'] = $pod->get_field('storify_id');
 
   $obj['speakers_output'] = people_list($event_speakers, "Speaker", "Speakers");
   $obj['respondents_output'] = people_list($event_respondents, "Respondent", "Respondents");
