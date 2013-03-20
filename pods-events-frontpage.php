@@ -62,12 +62,12 @@ $obj = pods_prepare_event(pods_url_variable(3));
                           echo $obj['chairs_output']['output'];
                           echo $obj['moderators_output']['output'];
                     ?>
-                    
+
                     <?php if($obj['event_date_string']): ?>
                       <dt>When</dt>
                       <dd class="date addtocal"><?php echo $obj['event_date_string']; ?></dd>
                     <?php endif; ?>
-              
+
                     <?php if($obj['event_location']): ?>
                       <dt>Where</dt>
                       <dd class="h-card vcard"><span class="p-location location"><?php echo $obj['event_location']; ?></span></dd>
@@ -80,9 +80,9 @@ $obj = pods_prepare_event(pods_url_variable(3));
                       <?php endif; ?>
                       <?php if($obj['freakin_site_map']): ?>
                       <dd><a href="<?php echo $obj['freakin_site_map']; ?>">Site map</a> (PDF)</dd>
-                      <?php endif; ?>  
+                      <?php endif; ?>
                     <?php endif; ?>
-                    
+
                     <?php if(!$obj['is_future_event'] and $obj['event_story_id']): ?>
                       <dt>Twitter archive</dt>
                       <dd><a href="https://storify.com/<?php echo $obj['event_story_id']; ?>">Read on Storify</a></dd>
@@ -97,7 +97,7 @@ $obj = pods_prepare_event(pods_url_variable(3));
             </div><!-- .top-content -->
 
             <div class='extra-content twelvecol'>
-              
+
               <?php if($event_media): ?>
               <section class="event-materials clearfix">
                 <header>
@@ -141,13 +141,13 @@ $obj = pods_prepare_event(pods_url_variable(3));
                       <p><a class="link pdf" href="<?php echo $event_media_item['presentation_uri']; ?>">Download</a> (PDF).</p>
                     </dd>
                   </div>
-                  <?php endif; ?> 
+                  <?php endif; ?>
                 <?php endforeach; ?>
                 </dl>
               </section>
-              <?php endif; ?> 
-            
-              
+              <?php endif; ?>
+
+
               <?php if($obj['people_with_blurb']): ?>
               <section id='speaker-profiles' class='clearfix'>
                 <header>
@@ -198,27 +198,27 @@ jQuery(function($) {
   });
 
   $('.addtocal').AddToCal({
-    /* ical and vcal require an ics or vcs file to be served. 
+    /* ical and vcal require an ics or vcs file to be served.
      * Since we don't have a server for this demo, these features are disabled.
      * As a result the 30boxes, iCal and vCalendar menu links will not appear
      */
     icalEnabled:false,
     vcalEnabled:false,
-      
-    /* getEventDetails is the most critical function to provide. 
+
+    /* getEventDetails is the most critical function to provide.
      * It is called when a user selects a calendar to add an event to.
-     * The element parameter is the jQuery object for the event invoked. 
+     * The element parameter is the jQuery object for the event invoked.
      * You must return an object packed with the relevant event details.
      * How you determine the event attributes will depend on your page.
-     * The example below illustrates how to handle two formats of event markup. 
+     * The example below illustrates how to handle two formats of event markup.
      */
     getEventDetails: function( element ) {
-      var 
+      var
         dtstart_element = $('.lc-event').find('.dtstart'), start,
         dtend_element = $('.lc-event').find('.dtend'), end,
         title_element = $('.lc-event').find('.summary'), title,
         details_element = $('.lc-event').find('.description'), details;
-      
+
       // in this demo, we attempt to get hCalendar attributes or otherwise just dummy the values
       start = dtstart_element.length ? dtstart_element.attr('title') : new Date();
       if(dtend_element.length) {
@@ -229,17 +229,17 @@ jQuery(function($) {
       }
       title = title_element.length ? title_element.html() : element.attr('id');
       details = details_element.length ? details_element.html() : element.html();
-      
+
       // return the required event structure
-      return { 
+      return {
         webcalurl: null,
         icalurl: null,
-        vcalurl: null, 
-        start: start, 
-        end: end, 
-        title: title, 
-        details: details, 
-        location: null, 
+        vcalurl: null,
+        start: start,
+        end: end,
+        title: title,
+        details: details,
+        location: null,
         url: null
         };
       },
