@@ -247,21 +247,22 @@ $news_categories = news_categories($pod->get_field('news_category'));
             <div class="abstract"><?php echo $pod_summary; ?></div>
             <?php endif; ?>
             
-            <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events) or count($research_photo_galleries)): ?>
+            <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events) or count($research_photo_galleries)): 
+              $tab_index = 1; ?>
             <!--[if gt IE 8]><!--> <script>jQuery(function() { jQuery("article").organicTabs(); });</script> <!--<![endif]-->
             <ul class="nav organictabs row">
               <li class="threecol"><a class="current" href="#project-info">Profile</a></li>
-              <?php if(count($events)): ?>
-              <li class="threecol"><a href="#events_area">Events</a></li>
+              <?php if(count($events)): $tab_index++; ?>
+              <li class="threecol<?php if(($tab_index % 3) === 0) { echo ' last'; }?>"><a href="#events_area">Events</a></li>
               <?php endif; // (count($events))?>
-              <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($research_events)): ?>
-              <li class="threecol"><a href="#news_area">News</a></li>
+              <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($research_events)): $tab_index++;?>
+              <li class="threecol<?php if(($tab_index % 3) === 0) { echo ' last'; }?>"><a href="#news_area">News</a></li>
               <?php endif; ?>
-              <?php if($project_has_research_outputs): ?>
-              <li class="threecol"><a href="#linked-publications">Publications</a></li>
+              <?php if($project_has_research_outputs): $tab_index++;?>
+              <li class="threecol<?php if(($tab_index % 3) === 0) { echo ' last'; }?>"><a href="#linked-publications">Publications</a></li>
               <?php endif; ?>
-              <?php if(count($research_photo_galleries)): ?>
-              <li class="threecol last"><a href="#linked-galleries">Galleries</a></li>
+              <?php if(count($research_photo_galleries)): $tab_index++;?>
+              <li class="threecol<?php if(($tab_index % 3) === 0) { echo ' last'; }?>"><a href="#linked-galleries">Galleries</a></li>
               <?php endif; ?>
             </ul>
             <?php endif; ?>
