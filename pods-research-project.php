@@ -145,7 +145,8 @@ if($featured_post['ID']) {
 }
 
 $research_output_categories = array('book', 'journal-article', 'book-chapter', 'research-report', 'conference-newspaper', 'conference-proceedings', 'conference-report', 'report', 'blog-post', 'interview', 'magazine-article');
-$research_event_categories = array('conference', 'presentation', 'public-lecture', 'workshop', 'lse-cities-event');
+$research_event_categories = array('conference', 'presentation', 'public-lecture', 'workshop');
+$event_calendar_categories = array('lse-cities-event');
 
 $research_output_publications_pod_slugs = (array)$pod->get_field('research_outputs_publications.slug');
 var_trace(var_export($research_output_publications_pod_slugs, true), 'research_output_publications_pod_slugs');
@@ -250,7 +251,10 @@ $news_categories = news_categories($pod->get_field('news_category'));
             <!--[if gt IE 8]><!--> <script>jQuery(function() { jQuery("article").organicTabs(); });</script> <!--<![endif]-->
             <ul class="nav organictabs row">
               <li class="threecol"><a class="current" href="#project-info">Profile</a></li>
-              <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events) or count($research_events)): ?>
+              <?php if(count($events)): ?>
+              <li class="threecol"><a href="#news_area">News</a></li>
+              <?php endif; // (count($events))?>
+              <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($research_events)): ?>
               <li class="threecol"><a href="#news_area">News</a></li>
               <?php endif; ?>
               <?php if($project_has_research_outputs): ?>
@@ -267,7 +271,25 @@ $news_categories = news_categories($pod->get_field('news_category'));
               <?php echo $pod->get_field('blurb'); ?>
             </section>
             <?php
-              if($project_has_research_events or (is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events)):
+              if(count($events)):
+            ?>
+            <section id="events_area" class="hide">
+              <header><h1>Events</h1></header>
+              <ul>
+              <?php
+              foreach($events as $event): ?>
+              <li>
+                <?php if($event['uri']): ?><a href="<?php echo $event['uri']; ?>"><?php endif; ?>
+                <?php echo date_string($event['date'], 'jFY') . ' | ';
+                      echo $event['citation'] ? $event['citation'] : $event['title']; ?>
+                <?php if($event['uri']): ?></a><?php endif; ?>
+              </li>
+              <?php endforeach; // ($events as $event) ?>
+              </ul>
+            </section>
+            <?php endif; // (count($events)) ?>
+            <?php
+              if($project_has_research_events or (is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0)):
               // latest news in categories defined for this research project
               $more_news = new WP_Query('posts_per_page=10' . news_categories($pod->get_field('news_category'))); ?>
               <section id="news_area" class="hide">
@@ -298,20 +320,6 @@ $news_categories = news_categories($pod->get_field('news_category'));
                 <?php endforeach; // ($research_events as $event) ?>
                 </ul>
                 <?php endif; // (count($research_events)) ?>
-                <?php if(count($events)): ?>
-                <header><h1>Events</h1></header>
-                <ul>
-                <?php
-                foreach($events as $event): ?>
-                <li>
-                  <?php if($event['uri']): ?><a href="<?php echo $event['uri']; ?>"><?php endif; ?>
-                  <?php echo date_string($event['date'], 'jFY') . ' | ';
-                        echo $event['citation'] ? $event['citation'] : $event['title']; ?>
-                  <?php if($event['uri']): ?></a><?php endif; ?>
-                </li>
-                <?php endforeach; // ($events as $event) ?>
-                </ul>
-                <?php endif; // (count($events)) ?>
               </section> <!-- #news_area -->
             <?php
              endif; // ($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0 or count($events))
