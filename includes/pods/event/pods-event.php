@@ -61,9 +61,10 @@ function orgs_list($organizations) {
 // check if we are getting called via Pods (pods_url_variable is set)
 $pod_slug = pods_url_variable(3);
 
-$pod = new Pod('event', $pod_slug);
-var_trace($pod->total_rows, 'total_rows');
-if(!$pod->total_rows($pod)) {
+$pod = new Pod('event');
+$pod->findRecords(array('where' => 't.slug = ' . $pod_slug));
+var_trace($pod->getTotalRows(), 'total_rows');
+if(!$pod->getTotalRows()) {
   redirect_to_404();
 }
 
