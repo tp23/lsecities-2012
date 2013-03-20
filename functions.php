@@ -9,6 +9,18 @@ if ( !defined('ABSPATH')) exit;
  *
  * load the theme function files
  */
-require ( get_stylesheet_directory() . '/includes/theme_configuration.php' );
-require ( get_stylesheet_directory() . '/includes/hooks.php' );
-require ( get_stylesheet_directory() . '/includes/functions.php' );
+
+/**
+ * Wrapper to require
+ * Just require theme function files
+ * 
+ * @param string $file The function file to be required
+ */
+function require_fragment($file) {
+  require(get_stulesheet_directory() . $file);
+}
+
+require_fragment('/includes/theme_configuration.php' );
+require_fragment('/includes/hooks.php' );
+require_fragment('/includes/functions.php' );
+require_fragment('/includes/utility_functions.php' );
