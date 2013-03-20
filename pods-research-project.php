@@ -253,16 +253,16 @@ $news_categories = news_categories($pod->get_field('news_category'));
             <ul class="nav organictabs row">
               <li class="threecol"><a class="current" href="#project-info">Profile</a></li>
               <?php if(count($events)): $tab_index++; ?>
-              <li class="threecol<?php if(($tab_index % 3) === 0) { echo ' last'; }?>"><a href="#events_area">Events</a></li>
+              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#events_area">Events</a></li>
               <?php endif; // (count($events))?>
               <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($research_events)): $tab_index++;?>
-              <li class="threecol<?php if(($tab_index % 3) === 0) { echo ' last'; }?>"><a href="#news_area">News</a></li>
+              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#news_area">News</a></li>
               <?php endif; ?>
               <?php if($project_has_research_outputs): $tab_index++;?>
-              <li class="threecol<?php if(($tab_index % 3) === 0) { echo ' last'; }?>"><a href="#linked-publications">Publications</a></li>
+              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#linked-publications">Publications</a></li>
               <?php endif; ?>
               <?php if(count($research_photo_galleries)): $tab_index++;?>
-              <li class="threecol<?php if(($tab_index % 3) === 0) { echo ' last'; }?>"><a href="#linked-galleries">Galleries</a></li>
+              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#linked-galleries">Galleries</a></li>
               <?php endif; ?>
             </ul>
             <?php endif; ?>
