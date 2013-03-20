@@ -252,7 +252,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
             <ul class="nav organictabs row">
               <li class="threecol"><a class="current" href="#project-info">Profile</a></li>
               <?php if(count($events)): ?>
-              <li class="threecol"><a href="#news_area">News</a></li>
+              <li class="threecol"><a href="#events_area">Events</a></li>
               <?php endif; // (count($events))?>
               <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($research_events)): ?>
               <li class="threecol"><a href="#news_area">News</a></li>
