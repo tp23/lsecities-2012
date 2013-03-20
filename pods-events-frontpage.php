@@ -16,10 +16,7 @@ $TRACE_PREFIX = 'pods-events-frontpage';
 global $pods_toplevel_ancestor, $pod_slug;
 lc_data('pods_toplevel_ancestor', 311);
 
-include_once('includes/pods/event/pods-event.php');
-
-global $this_pod;
-$this_pod = new LC\PodObject($pod, 'Events');
+$obj = pods_prepare_event(pods_url_variable(3));
 ?>
 
 <?php get_header(); ?>
@@ -29,87 +26,71 @@ $this_pod = new LC\PodObject($pod, 'Events');
 <?php if ( have_posts() ) : the_post(); endif; ?>
 
 <div id="post-<?php the_ID(); ?>" <?php post_class('lc-article lc-event h-event vevent'); ?>>
-
-<?php var_trace($speakers_output, $TRACE_PREFIX, $TRACE_ENABLED);
-      var_trace($respondents_output, $TRACE_PREFIX, $TRACE_ENABLED);
-      var_trace($chairs_output, $TRACE_PREFIX, $TRACE_ENABLED);
-      var_trace($moderators_output, $TRACE_PREFIX, $TRACE_ENABLED);
-?>
-
           <div class='ninecol' id='contentarea'>
             <div class='top-content'>
-              <?php if($featured_image_uri) : ?>
+              <?php if($obj['featured_image_uri']) : ?>
               <header class='heading-image'>
                 <div class='photospread wireframe'>
                   <?php if(false): ?>
-                  <a href="https://www.youtube.com/watch?v=<?php echo $event_media[0]['youtube_uri'] ?>"><img src="<?php echo get_stylesheet_directory_uri() . '/stylesheets/mediaelement/bigplay.png'; ?>" style="background: url('<?php echo $featured_image_uri; ?>'); center center black" alt="event photo" /></a>
+                  <a href="https://www.youtube.com/watch?v=<?php echo $obj['event_media'][0]['youtube_uri'] ?>"><img src="<?php echo get_stylesheet_directory_uri() . '/stylesheets/mediaelement/bigplay.png'; ?>" style="background: url('<?php echo $obj['featured_image_uri']; ?>'); center center black" alt="event photo" /></a>
                   <?php else: ?>
-                  <img src="<?php echo $featured_image_uri; ?>" alt="event photo" />
+                  <img src="<?php echo $obj['featured_image_uri']; ?>" alt="event photo" />
                   <?php endif; ?>
                 </div>
               </header>
               <?php endif; ?>
               <article class='wireframe eightcol'>
                 <header>
-                  <h1 class="hentry-title p-name summary"><?php echo $pod->get_field('name'); ?></h1>
-                  <p class="event-info"><?php echo $event_info; ?></p>
+                  <h1 class="hentry-title p-name summary"><?php echo $obj['title']; ?></h1>
+                  <p class="event-info"><?php echo $obj['event_info']; ?></p>
                 </header>
-                <?php if($is_future_event): ?>
-                  <?php if($event_blurb): ?>
-                  <div class="blurb description"><?php echo $event_blurb; ?></div>
-                  <?php endif; ?>
+                <?php if(false === $obj['is_future_event'] and $obj['event_blurb_after_event']): ?>
+                  <div class="blurb after-event"><?php echo $obj['event_blurb_after_event']; ?></div>
                 <?php else: ?>
-                  <?php if($event_blurb_after_event): ?>
-                  <div class="blurb after-event"><?php echo $event_blurb_after_event; ?></div>
-                  <?php elseif($event_blurb): ?>
-                  <div class="blurb"><?php echo $event_blurb; ?></div>
+                  <?php if($obj['event_blurb']): ?>
+                  <div class="blurb description"><?php echo $obj['event_blurb']; ?></div>
                   <?php endif; ?>
                 <?php endif; // $is_future_event ?>
-                <?php if($event_contact_info and $is_future_event): ?>
-                  <aside class="booking-and-access"><?php echo $event_contact_info; ?></aside>
+                <?php if($obj['event_contact_info'] and $obj['is_future_event']): ?>
+                  <aside class="booking-and-access"><?php echo $obj['event_contact_info']; ?></aside>
                 <?php endif; ?>
               </article>
               <aside class='wireframe fourcol last' id='keyfacts'>
                 <dl>
-                    <?php echo $speakers_output['output'];
-                          echo $respondents_output['output'];
-                          echo $chairs_output['output'];
-                          echo $moderators_output['output'];
+                    <?php echo $obj['speakers_output']['output'];
+                          echo $obj['respondents_output']['output'];
+                          echo $obj['chairs_output']['output'];
+                          echo $obj['moderators_output']['output'];
                     ?>
                     
-                    <?php if($event_date_string): ?>
+                    <?php if($obj['event_date_string']): ?>
                       <dt>When</dt>
-                      <dd class="date addtocal"><?php echo $event_date_string; ?></dd>
+                      <dd class="date addtocal"><?php echo $obj['event_date_string']; ?></dd>
                     <?php endif; ?>
               
-                    <?php if($event_location): ?>
+                    <?php if($obj['event_location']): ?>
                       <dt>Where</dt>
-                      <dd class="h-card vcard"><span class="p-location location"><?php echo $event_location; ?></span></dd>
+                      <dd class="h-card vcard"><span class="p-location location"><?php echo $obj['event_location']; ?></span></dd>
                     <?php endif; ?>
-<!--
-                    <?php if(false and $event_contact_info and $is_future_event): ?>
-                      <dt>Access &amp; booking</dt>
-                      <dd><?php echo $event_contact_info; ?></dd>
-                    <?php endif; ?>
--->
-                    <?php if($poster_pdf || $freakin_site_map) : ?>
+
+                    <?php if($obj['poster_pdf'] || $obj['freakin_site_map']) : ?>
                       <dt>Downloads</dt>
-                      <?php if($poster_pdf): ?>
-                      <dd><a href="<?php echo $poster_pdf; ?>">Event poster</a> (PDF)</dd>
+                      <?php if($obj['poster_pdf']): ?>
+                      <dd><a href="<?php echo $obj['poster_pdf']; ?>">Event poster</a> (PDF)</dd>
                       <?php endif; ?>
-                      <?php if($freakin_site_map): ?>
-                      <dd><a href="<?php echo $freakin_site_map; ?>">Site map</a> (PDF)</dd>
+                      <?php if($obj['freakin_site_map']): ?>
+                      <dd><a href="<?php echo $obj['freakin_site_map']; ?>">Site map</a> (PDF)</dd>
                       <?php endif; ?>  
                     <?php endif; ?>
                     
-                    <?php if(!$is_future_event and $event_story_id): ?>
+                    <?php if(!$obj['is_future_event'] and $obj['event_story_id']): ?>
                       <dt>Twitter archive</dt>
-                      <dd><a href="https://storify.com/<?php echo $event_story_id; ?>">Read on Storify</a></dd>
+                      <dd><a href="https://storify.com/<?php echo $obj['event_story_id']; ?>">Read on Storify</a></dd>
                     <?php endif; ?>
                 </dl>
-                <?php if(($is_future_event and $event_hashtag) or (!$event_story_id and $event_hashtag)): ?>
+                <?php if(($obj['is_future_event'] and $obj['event_hashtag']) or (!$obj['event_story_id'] and $obj['event_hashtag'])): ?>
                 <div class='twitterbox'>
-                  <a href="https://twitter.com/#!/search/<?php echo $event_hashtag; ?>">#<?php echo $event_hashtag; ?></a>
+                  <a href="https://twitter.com/#!/search/<?php echo $obj['event_hashtag']; ?>">#<?php echo $obj['event_hashtag']; ?></a>
                 </div>
                 <?php endif; ?>
               </aside><!-- #keyfacts -->
@@ -123,7 +104,7 @@ $this_pod = new LC\PodObject($pod, 'Events');
                   <h1>Event materials</h1>
                 </header>
                 <dl>
-                <?php foreach($event_media as $event_media_item): ?>
+                <?php foreach($obj['event_media'] as $event_media_item): ?>
                   <?php if($event_media_item['youtube_uri']): ?>
                   <div class="fourcol">
                     <dt>Video</dt>
@@ -167,16 +148,14 @@ $this_pod = new LC\PodObject($pod, 'Events');
               <?php endif; ?> 
             
               
-              <?php if($people_with_blurb): ?>
-              <?php var_trace($event_all_the_people, $TRACE_PREFIX, $TRACE_ENABLED); ?>
+              <?php if($obj['people_with_blurb']): ?>
               <section id='speaker-profiles' class='clearfix'>
                 <header>
                   <h1>Profiles</h1>
                 </header>
                 <ul class='people-list'>
                 <?php $index = 0;
-                      foreach($event_all_the_people as $key => $event_speaker):
-                        echo "<!-- event_speaker : " . var_export($event_speaker, true) . "-->";
+                      foreach($obj['event_all_the_people'] as $key => $event_speaker):
                         if($event_speaker['profile_text']):
                 ?>
                 <?php if($index % 3 == 0 || $index == 0): ?>
@@ -217,10 +196,8 @@ jQuery(function($) {
     audiowidth: '100%',
     defaultVideoWidth: '100%'
   });
-});
-jQuery(function() {
 
-  jQuery('.addtocal').AddToCal({
+  $('.addtocal').AddToCal({
     /* ical and vcal require an ics or vcs file to be served. 
      * Since we don't have a server for this demo, these features are disabled.
      * As a result the 30boxes, iCal and vCalendar menu links will not appear
@@ -237,10 +214,10 @@ jQuery(function() {
      */
     getEventDetails: function( element ) {
       var 
-        dtstart_element = jQuery('.lc-event').find('.dtstart'), start,
-        dtend_element = jQuery('.lc-event').find('.dtend'), end,
-        title_element = jQuery('.lc-event').find('.summary'), title,
-        details_element = jQuery('.lc-event').find('.description'), details;
+        dtstart_element = $('.lc-event').find('.dtstart'), start,
+        dtend_element = $('.lc-event').find('.dtend'), end,
+        title_element = $('.lc-event').find('.summary'), title,
+        details_element = $('.lc-event').find('.description'), details;
       
       // in this demo, we attempt to get hCalendar attributes or otherwise just dummy the values
       start = dtstart_element.length ? dtstart_element.attr('title') : new Date();
