@@ -68,6 +68,8 @@ if(!$pod->getTotalRows()) {
   redirect_to_404();
 }
 
+$pod->fetchRecord();
+
 lc_data('META_last_modified', $pod->get_field('modified'));
 
 var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
