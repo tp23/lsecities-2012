@@ -17,7 +17,7 @@ if ( !defined('ABSPATH')) exit;
  * @param string $file The function file to be required
  */
 function require_fragment($file) {
-  require(get_stulesheet_directory() . $file);
+  require(get_stylesheet_directory() . $file);
 }
 
 require_fragment('/includes/theme_configuration.php' );
