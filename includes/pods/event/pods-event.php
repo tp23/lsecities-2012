@@ -62,7 +62,7 @@ function orgs_list($organizations) {
 $pod_slug = pods_url_variable(3);
 
 $pod = new Pod('event');
-$pod->findRecords(array('where' => 't.slug = ' . $pod_slug));
+$pod->findRecords(array('where' => "t.slug = '" . $pod_slug . "'"));
 var_trace($pod->getTotalRows(), 'total_rows');
 if(!$pod->getTotalRows()) {
   redirect_to_404();
