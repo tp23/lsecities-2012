@@ -30,7 +30,7 @@ END:VCALENDAR";
 
 //set correct content-type-header
 header('Content-type: text/calendar; charset=utf-8');
-header('Content-Disposition: inline; filename=calendar.ics');
+header('Content-Disposition: inline; filename=lsecities_event_'.$obj['slug'].'.ics');
 echo $ical;
 exit;
 ?>
