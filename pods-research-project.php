@@ -260,30 +260,30 @@ $news_categories = news_categories($pod->get_field('news_category'));
             </script>
             <!--<![endif]-->
             <ul class="nav organictabs row">
-              <li class="threecol"><a class="current" href="#project-info">Profile</a></li>
+              <li class="threecol"><a class="current" href="#t-project-info">Profile</a></li>
               <?php if(count($events)): $tab_index++; ?>
-              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#events_area">Events</a></li>
+              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#t-events">Events</a></li>
               <?php endif; // (count($events))?>
               <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($research_events)): $tab_index++;?>
-              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#news_area">News</a></li>
+              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#t-news">News</a></li>
               <?php endif; ?>
               <?php if($project_has_research_outputs): $tab_index++;?>
-              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#linked-publications">Publications</a></li>
+              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#t-publications">Publications</a></li>
               <?php endif; ?>
               <?php if(count($research_photo_galleries)): $tab_index++;?>
-              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#linked-galleries">Galleries</a></li>
+              <li class="threecol<?php if(($tab_index % 4) === 0) { echo ' last'; }?>"><a href="#t-galleries">Galleries</a></li>
               <?php endif; ?>
             </ul>
             <?php endif; ?>
           </header>
           <div class='entry-content article-text list-wrap'>
-            <section id="project-info">
+            <section id="t-project-info">
               <?php echo $pod->get_field('blurb'); ?>
             </section>
             <?php
               if(count($events)):
             ?>
-            <section id="events_area" class="hide">
+            <section id="t-events" class="hide">
               <header><h1>Events</h1></header>
               <?php if($obj['events_blurb']): ?>
               <div><?php echo $obj['events_blurb']; ?></div>
@@ -305,7 +305,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
               if($project_has_research_events or (is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0)):
               // latest news in categories defined for this research project
               $more_news = new WP_Query('posts_per_page=10' . news_categories($pod->get_field('news_category'))); ?>
-              <section id="news_area" class="hide">
+              <section id="t-news" class="hide">
                 <?php if(is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0): ?>
                 <header><h1>Project news</h1></header>
                 <ul>
@@ -338,7 +338,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
              endif; // ($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0 or count($events))
             // publications
             if($project_has_research_outputs): ?>
-            <section id="linked-publications" class="hide">
+            <section id="t-publications" class="hide">
               <header><h1>Publications</h1></header>
               <dl>
                 <?php
@@ -383,7 +383,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
             if(count($research_photo_galleries)): 
               var_trace($research_photo_galleries, 'research_photo_galleries');
               ?>
-            <section id="linked-galleries" class="hide later">
+            <section id="t-galleries" class="hide later">
               <header><h1>Photo essays</h1></header>
               <?php
               foreach($research_photo_galleries as $key => $gallery): ?>
