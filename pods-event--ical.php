@@ -24,7 +24,7 @@ DTSTAMP:" . gmdate('Ymd').'T'. gmdate('His') . "Z
 DTSTART:".$obj['dtstart']."
 DTEND:".$obj['dtend']."
 SUMMARY:".$obj['title']."
-URI:".$_SERVER['SERVER_NAME'].PODS_BASEURI_EVENTS."/".$obj['slug']."
+URI:".$obj['event_page_uri']."
 END:VEVENT
 END:VCALENDAR";
 
