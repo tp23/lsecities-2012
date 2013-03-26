@@ -248,7 +248,16 @@ $news_categories = news_categories($pod->get_field('news_category'));
             
             <?php if((is_array($pod->get_field('news_category')) and count($pod->get_field('news_category')) > 0) or count($events) or count($research_photo_galleries)): 
               $tab_index = 1; ?>
-            <!--[if gt IE 8]><!--> <script>jQuery(function() { jQuery("article").organicTabs(); });</script> <!--<![endif]-->
+            <!--[if gt IE 8]><!-->
+            <script>jQuery(function($) {
+              $("article").organicTabs(); });
+              var url = $.url();
+              var tab_id = url.attr('fragment');
+              if(tab_id) {
+                $("article").organicTabs("changeTo", tab_id);
+              }
+            </script>
+            <!--<![endif]-->
             <ul class="nav organictabs row">
               <li class="threecol"><a class="current" href="#project-info">Profile</a></li>
               <?php if(count($events)): $tab_index++; ?>
