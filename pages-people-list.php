@@ -116,13 +116,22 @@ function generate_person_profile($slug, $extra_title, $mode = MODE_FULL_LIST) {
   }
   
   $qualifications_list = array_map(function($string) { return trim($string); }, explode("\n", $pod->get_field('qualifications')));
-  $profile_photo_uri = wp_get_attachment_url($pod->get_field('photo.ID'));
-  $profile_photo_attribution = get_post_meta($pod->get_field('photo.ID'), '_attribution_name', true);
-  $email_address = $pod->get_field('email_address');
   
+  // get photo and related attribution, push attribution to attribution list
+  if($photo_id = $pod->get_field('photo.ID')) {
+    // $photo_id = $pod->get_field('photo.ID');
+    $profile_photo_uri = wp_get_attachment_url($photo_id);
+    $profile_photo_attribution = get_post_meta($photo_id);
+    push_media_attribution($photo_id);
+  }
+
+  // if no media library photo is associated to this person,
+  // and legacy photo URI is set, use this  
   if(!$profile_photo_uri and $pod->get_field('photo_legacy')) {
     $profile_photo_uri = $LEGACY_PHOTO_URI_PREFIX . $pod->get_field('photo_legacy');
   }
+
+  $email_address = $pod->get_field('email_address');
   $blurb = $pod->get_field('staff_pages_blurb');
   $organization = '<span class=\'org\'>' . $pod->get_field('organization') . '</span>';
   $role = '<span class=\'role\'>' . $pod->get_field('role') . '</span>';
