@@ -64,7 +64,7 @@ $obj = pods_prepare_event(pods_url_variable(3));
                     ?>
                     <?php if($obj['event_date_string']): ?>
                       <dt>When</dt>
-                      <dd class="date"><?php echo $obj['event_date_string']; ?> <span class="calendar-link">[<a href="ical">add to calendar</a>]</span></dd>
+                      <dd class="date"><?php echo $obj['event_date_string']; ?> <span class="calendar-link">[<a href="<?php echo $obj['slug']; ?>/ical">add to calendar</a>]</span></dd>
                     <?php endif; ?>
                     <?php if($obj['event_location']): ?>
                       <dt>Where</dt>
