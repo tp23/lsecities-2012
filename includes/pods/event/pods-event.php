@@ -77,7 +77,8 @@ function pods_prepare_event($pod_slug) {
   lc_data('META_last_modified', $pod->get_field('modified'));
 
   var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
-
+  
+  $obj['slug'] = $pod_slug;
   $obj['title'] = $pod->get_field('name');
   
   $event_speakers = $pod->get_field('speakers', 'family_name ASC');
@@ -117,6 +118,9 @@ function pods_prepare_event($pod_slug) {
   $event_date_end = new DateTime($pod->get_field('date_end'));
   $event_dtstart = $event_date_start->format(DATE_ISO8601);
   $event_dtend = $event_date_end->format(DATE_ISO8601);
+
+  $obj['event_dtstart'] = $event_date_start->format('Ymd').'T'.$event_date_start->format('His').'Z';
+  $obj['event_dtend'] = $event_date_end->format('Ymd').'T'.$event_date_end->format('His').'Z';
   // $event_date_string = $pod->get_field('date_freeform');
   $obj['event_date_string'] = $event_date_start->format("l j F Y | ");
   $obj['event_date_string'] .= '<time class="dt-start dtstart" itemprop="startDate" datetime="' . $event_dtstart . '">' . $event_date_start->format("H:i") . '</time>';
