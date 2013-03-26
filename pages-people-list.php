@@ -121,7 +121,7 @@ function generate_person_profile($slug, $extra_title, $mode = MODE_FULL_LIST) {
   if($photo_id = $pod->get_field('photo.ID')) {
     // $photo_id = $pod->get_field('photo.ID');
     $profile_photo_uri = wp_get_attachment_url($photo_id);
-    $profile_photo_attribution = get_post_meta($photo_id);
+    $profile_photo_attribution = get_post_meta($photo_id, '_attribution_name', true);
     push_media_attribution($photo_id);
   }
 
