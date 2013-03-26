@@ -103,7 +103,7 @@ function pods_prepare_event($pod_slug) {
   $obj['event_contact_info'] = do_shortcode($pod->get_field('contact_info'));
 
   $obj['event_media'] = $pod->get_field('media_attachments');
-
+  
   $obj['slider'] = $pod->get_field('slider');
   if(!$obj['slider']) {
     $obj['featured_image_uri'] = get_the_post_thumbnail(get_the_ID(), array(960,367));
@@ -156,5 +156,14 @@ function pods_prepare_event($pod_slug) {
   $poster_pdf = $pod->get_field('poster_pdf');
   $obj['poster_pdf'] = wp_get_attachment_url($poster_pdf[0]['ID']);
   
+  $obj['event_page_uri'] = $_SERVER['SERVER_NAME'].PODS_BASEURI_EVENTS."/".$obj['slug'];
+  
+    // AddToCalendar URIs
+  $obj['addtocal_uri_google'] = 'http://www.google.com/calendar/event?action=TEMPLATE&text='.
+    $obj['title'].'$&dates='.
+    $obj['event_dtstart'].'/'.
+    $obj['event_dtend'].'&details=&location=&trp=false&sprop='.
+    urlencode($obj['event_page_uri']).'&sprop=name:';
+    
   return $obj;
 }
