@@ -117,7 +117,7 @@ function generate_person_profile($slug, $extra_title, $mode = MODE_FULL_LIST) {
   
   $qualifications_list = array_map(function($string) { return trim($string); }, explode("\n", $pod->get_field('qualifications')));
   $profile_photo_uri = wp_get_attachment_url($pod->get_field('photo.ID'));
-  $profile_photo_attribution = get_post_meta('_attribution_name');
+  $profile_photo_attribution = get_post_meta($pod->get_field('photo.ID'), '_attribution_name');
   $email_address = $pod->get_field('email_address');
   
   if(!$profile_photo_uri and $pod->get_field('photo_legacy')) {
