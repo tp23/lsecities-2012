@@ -250,12 +250,13 @@ $news_categories = news_categories($pod->get_field('news_category'));
               $tab_index = 1; ?>
             <!--[if gt IE 8]><!-->
             <script>jQuery(function($) {
-              $("article").organicTabs(); });
-              var url = $.url();
-              var tab_id = url.attr('fragment');
-              if(tab_id) {
-                $("article").organicTabs("changeTo", tab_id);
-              }
+              $("article").organicTabs(); 
+                var url = $.url();
+                var tab_id = url.attr('fragment');
+                if(tab_id) {
+                  $("article").organicTabs("changeTo", tab_id);
+                }
+              });
             </script>
             <!--<![endif]-->
             <ul class="nav organictabs row">
