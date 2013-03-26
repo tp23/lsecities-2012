@@ -160,10 +160,12 @@ function pods_prepare_event($pod_slug) {
   
     // AddToCalendar URIs
   $obj['addtocal_uri_google'] = 'http://www.google.com/calendar/event?action=TEMPLATE&text='.
-    $obj['title'].'&dates='.
-    $obj['event_dtstart'].'/'.
-    $obj['event_dtend'].'&details=&location=&trp=false&sprop='.
-    urlencode($obj['event_page_uri']).'&sprop=name:';
+    $obj['title']
+    .'&dates='.$obj['event_dtstart'].'/'.$obj['event_dtend']
+    .'&details=&'
+    .'location='.$obj['event_location']
+    .'&trp=false&'
+    .'sprop='.urlencode($obj['event_page_uri']).'&sprop=name:';
     
   return $obj;
 }
