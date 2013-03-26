@@ -27,3 +27,4 @@ require_fragment('/includes/utility_functions.php' );
 
 // Pods function files go below
 require_fragment('/includes/pods/event/pods-event.php' );
+require_fragment('/includes/pods/research-project/pods-research-project.php' );

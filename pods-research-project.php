@@ -30,8 +30,7 @@ if(!$pod_from_page) {
 var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 $pod = new Pod('research_project', $pod_slug);
 
-global $this_pod;
-$this_pod = new LC\PodObject($pod, 'Research');
+$obj = pods_prepare_research_project($pod_slug);
 
 $pod_title = $pod->get_field('name');
 $pod_tagline = $pod->get_field('tagline');
@@ -276,6 +275,9 @@ $news_categories = news_categories($pod->get_field('news_category'));
             ?>
             <section id="events_area" class="hide">
               <header><h1>Events</h1></header>
+              <?php if($obj['events_blurb']): ?>
+              <div><?php echo $obj['events_blurb']; ?></div>
+              <?php endif; // ($obj['events_blurb']) ?>
               <ul>
               <?php
               foreach($events as $event): ?>
