@@ -24,8 +24,11 @@ DTSTAMP:" . gmdate('Ymd').'T'. gmdate('His') . "Z
 DTSTART:".$obj['dtstart']."
 DTEND:".$obj['dtend']."
 SUMMARY:".$obj['title']."
-URI:".$obj['event_page_uri']."
-END:VEVENT
+URI:".$obj['event_page_uri']."\n";
+if($obj['event_location']) {
+  $ical .= "LOCATION:".$obj['event_location']."\n";
+}
+$ical .= "END:VEVENT
 END:VCALENDAR";
 
 //set correct content-type-header
