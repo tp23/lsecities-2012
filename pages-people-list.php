@@ -145,8 +145,10 @@ function generate_person_profile($slug, $extra_title, $mode = MODE_FULL_LIST) {
   if($mode == MODE_FULL_LIST) {
     $output = "<li class='person row vcard' id='p-$slug'>";
     $output .= "  <div class='fourcol profile-photo'>";
-    if($profile_photo_uri) {
-      $output .= "    <img class='photo' src='$profile_photo_uri' alt='$fullname - photo'<?php if($profile_photo_attribution) { ?>title='Photo credits: <?php echo $profile_photo_attribution; ?>'<?php } ?>/>";
+    if($profile_photo_uri and $profile_photo_attribution) {
+      $output .= "    <img class='photo' src='$profile_photo_uri' alt='$fullname - photo' title='Photo credits: $profile_photo_attribution'/>";
+    } elseif($profile_photo_uri) {
+      $output .= "    <img class='photo' src='$profile_photo_uri' alt='$fullname - photo'/>";
     } else {
       $output .= "&nbsp;";
     }
