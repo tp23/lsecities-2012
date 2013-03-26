@@ -138,7 +138,7 @@ ul li { line-height: 1.2em; margin-bottom: 0.6em; }
 
 body { background: inherit; }
 
-header h1.entry-title { font-size: 2em; /* margin-bottom: 1.2em; */ font-family: museo-sans, PT Sans, sans-serif; }
+header h1.entry-title { font-size: 2em; /* margin-bottom: 1.2em; */ font-family: 'Open Sans', PT Sans, sans-serif; }
 
 .article-text img { max-width: 100%; width: auto; height: auto; }
 
@@ -255,7 +255,7 @@ header.heading-image .flexslider .flex-direction-nav li a { top: 352 -64/2 px; }
 header.heading-image img { width: 100%; max-width: 100%; height: auto; }
 
 header.entry-header { margin-bottom: 1.5em; }
-header.entry-header h1 { font-family: museo-sans, PT Sans, sans-serif; font-weight: 900; color: #22273b; }
+header.entry-header h1 { font-family: 'Open Sans', PT Sans, sans-serif; font-weight: 900; color: #22273b; }
 
 ol.article-references { list-style-position: inside; }
 ol.article-references li { margin-bottom: 0.25em; }
@@ -279,7 +279,7 @@ ol.article-references li:target { background-color: #ffeeee; }
 .entry-content .top-content { margin-bottom: 1em; }
 .entry-content .top-content > header { margin-bottom: 1em; }
 .entry-content .top-content article header { margin-bottom: 1em; }
-.entry-content .top-content article header h1.entry-title { font-family: museo-sans, PT Sans, sans-serif; font-weight: 900; color: #22273b; }
+.entry-content .top-content article header h1.entry-title { font-family: 'Open Sans', PT Sans, sans-serif; font-weight: 900; color: #22273b; }
 
 #keyfacts, #navigationarea { font-size: 0.9em; }
 #keyfacts h1, #navigationarea h1 { font-size: 1em; font-weight: bold; }
