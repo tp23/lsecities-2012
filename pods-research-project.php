@@ -435,7 +435,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
           <?php if($featured_post['ID']): ?>
             <dt>Highlights</dt>
             <dd class="highlights">
-              <a style="position: relative;" href="<?php echo $featured_post['permalink']; ?>" title="">
+              <a href="<?php echo $featured_post['permalink']; ?>" title="">
                 <?php if($featured_post['thumbnail_url']): ?>
                 <img src="<?php echo $featured_post['thumbnail_url']; ?>" />
                 <?php endif; // ($featured_post['thumbnail_url']) ?>
