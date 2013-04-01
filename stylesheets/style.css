@@ -125,6 +125,9 @@ textarea { resize: vertical; }
   h2, h3 { page-break-after: avoid; } }
 .chromeframe { margin: 0.2em 0; background: #ccc; color: #000; padding: 0.2em 0; }
 
+/* our own resets */
+menu, ol, ul, dl, dt, dd { margin: 0; padding: 0; }
+
 .row .row { min-width: inherit; }
 
 /* uservoice.com integration -- begin */
