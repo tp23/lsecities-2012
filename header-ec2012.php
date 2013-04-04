@@ -14,8 +14,10 @@ array_unshift($ancestors, $post->ID);
 global $pods_toplevel_ancestor;
 $toplevel_ancestor = array_pop($ancestors);
 
-// $http_req_headers = getallheaders();
-// var_trace($http_req_headers["X-Site-Id"], 'X-Site-Id');
+// co-branding: check the X-Site-Id HTTP header from frontend cache
+if($http_req_headers["X-Site-Id"] == 'ec2012') {
+  lc_data('x-site-id', 'ec2012');
+}
 
 if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
@@ -26,7 +28,7 @@ if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsit
 }
 
 // If we are on the root frontpage ('/', page ID 393), set ancestor to nil
-if($toplevel_ancestor == 393) { $toplevel_ancestor = ''; }
+if($toplevel_ancestor == 393) { $toplevel_ancestor = null; }
 
 // If we are processing a Pods page for the Article pod, manually set our current position
 if($pods_toplevel_ancestor) { $toplevel_ancestor = $pods_toplevel_ancestor; }
@@ -41,7 +43,7 @@ $level2nav = wp_list_pages('child_of=' . $toplevel_ancestor . '&depth=1&sort_col
 lc_data('urban_age_section', ($toplevel_ancestor == 94) ? true : false);
 $logo_element_id = lc_data('urban_age_section') ? 'ualogo' : 'logo';
 
-if(lc_data('microsite_id') == 'cc') { // Labs -> Cities and the crisis
+if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities and the crisis
   // If we are navigating the Cities and the crisis minisite via reverse proxy, display appropriate menu
   $level1nav = '<li><a href="/" title="Home">Cities and the Crisis</a></li>';
   $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2481);
@@ -69,7 +71,8 @@ if(lc_data('microsite_id') == 'cc') { // Labs -> Cities and the crisis
   // $appcache_manifest = '/appcache-manifests/ec2012.appcache';
   lc_data('site-ec2012', true);
 } else {
-  $level1nav = '<li><a href="/" title="Home">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&exclude=393,395,562,1074,2032,2476');
+  $include_pages = '617,306,309,311,94,629,3338';
+  $level1nav = '<li><a href="/" title="Home">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&include=' . $include_pages);
 }
 ?><!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->
@@ -105,7 +108,7 @@ if(lc_data('microsite_id') == 'cc') { // Labs -> Cities and the crisis
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <script type="text/javascript" src="https://use.typekit.com/ftd3lpp.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script> 
 <link href="https://cloud.webtype.com/css/9044dce3-7052-4e0e-9dbb-377978412ca7.css" rel="stylesheet" type="text/css" />
   wp_enqueue_style('font-open-sans', 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic,400italic,800italic');
 
@@ -119,7 +122,11 @@ if(lc_data('microsite_id') == 'cc') { // Labs -> Cities and the crisis
 <?php wp_enqueue_script('jquery-sticky', get_stylesheet_directory_uri() . '/javascripts/jquery.sticky.min.js', 'jquery', false, true); ?>
 <?php wp_enqueue_script('jquery-organictabs', get_stylesheet_directory_uri() . '/javascripts/jquery.organictabs.js', 'jquery', false, true); ?>
 <?php wp_enqueue_script('jquery-mediaelement', get_stylesheet_directory_uri() . '/javascripts/mediaelement-and-player.js', 'jquery', '2.9.2', false); ?>
-<?php wp_enqueue_script('cookie-control', plugins_url() . '/cookie-control/js/cookieControl-5.1.min.js', 'jquery', false, true); ?>
+<?php wp_enqueue_script('rfc3339date', get_stylesheet_directory_uri() . '/javascripts/rfc3339date.js', false, false, true); ?>
+<?php wp_enqueue_script('jquery-addtocal', get_stylesheet_directory_uri() . '/javascripts/jquery.addtocal.js', array('jquery', 'jquery-ui-core', 'jquery-ui-menu'), false, true); ?>
+<!-- <script async="async" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script> -->
+<?php wp_enqueue_script('jquery-url-parser', get_stylesheet_directory_uri() . '/javascripts/vendor/jquery-url-parser/purl.js', array('jquery'), false, true); ?>
+<?php wp_enqueue_script('cookie-control', get_stylesheet_directory_uri() . '/javascripts/civicuk.com/cookieControl-5.1.min.js', 'jquery', false, true); ?>
 <?php wp_enqueue_style('jquery-mediaelement', get_stylesheet_directory_uri() .'/stylesheets/mediaelement/mediaelementplayer.css'); ?>
 <?php wp_enqueue_style('font-theovandoegsburg', get_stylesheet_directory_uri() . '/stylesheets/fonts/theovand/stylesheet.css'); ?>
 <?php wp_enqueue_style('font-fontello', get_stylesheet_directory_uri() . '/stylesheets/fonts/fontello/stylesheet.css'); ?>
@@ -174,45 +181,14 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 
 	<div class='container' id='container'> <!-- ## grid -->
 		<header id='header'>
-      <h1 id="ec2012title" class='row'><a href="/">The Electric City</a></h1>
-      <span class="twitter-hashtag"><a href="https://twitter.com/search/realtime?q=%23UAelectric">#UAelectric</a></span>
-			<div class='row' id='mainmenus'>
-				<nav class='twelvecol section-ancestor-<?php echo $toplevel_ancestor ; ?>' id='level2nav'>
-					<ul>
-					<?php if($toplevel_ancestor and $level2nav): ?>
-						<?php echo $level2nav ; ?>
-					<?php else: ?>
-						<li>&nbsp;</li>
-					<?php endif; ?>
-					</ul>
-				</nav>
-			</div><!-- #mainmenus -->
-	</header><!-- #header -->
+    <?php
+      // include site-specific header fragment
+      if(lc_data('x-site-id') === 'ec2012') {
+        locate_template('templates/header/header_ec2012.php', true, true);
+      } else {
+        locate_template('templates/header/header-default.php', true, true);
+      }
+    ?>
+	  </header><!-- #header -->
 
 	<div id="main" class="row">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
