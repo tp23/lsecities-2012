@@ -89,7 +89,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
 	wp_title( '|', true, 'right' );
 
 	// Add the blog name.
-	bloginfo( 'name' );
+	// bloginfo( 'name' );
 
 	// Add the blog description for the home/front page.
 	$site_description = get_bloginfo( 'description', 'display' );
