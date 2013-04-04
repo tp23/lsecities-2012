@@ -582,7 +582,7 @@ body h1 { font-size: 2em; }
 body h1.mainheading { font-size: 3em; }
 body h2 { font-size: 1.5em; }
 body h2.mainheading { font-size: 2.5em; }
-body h3 { font-size: 1.2em; }
+body h3 { font-size: 1.125em; }
 body article .introblurb h2 { margin-top: 0.6em; margin-bottom: 0; }
 body article .introblurb p { font-size: 1.25em; line-height: 1.2em; }
 body .wp-caption { max-width: 100% !important; }
