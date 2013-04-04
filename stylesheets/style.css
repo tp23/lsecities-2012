@@ -574,7 +574,7 @@ ul li { line-height: 1.2em; margin-bottom: 0.6em; }
 
 body { background: inherit; }
 
-header h1.entry-title { font-size: 2em; /* margin-bottom: 1.2em; */ font-family: "Open Sans", "PT Sans", sans-serif; }
+header h1.entry-title { font-size: 2em; /* margin-bottom: 1.2em; */ font-family: "Open Sans", sans-serif; }
 
 .article-text img { max-width: 100%; width: auto; height: auto; }
 
@@ -619,7 +619,7 @@ body > #container > header #socialbuttons ul li a:hover { opacity: 0.6; }
 #level2nav ul { background-color: inherit; }
 #level2nav ul li { -webkit-transition: background-color 0.4s ease-out, color 0.1s ease; -webkit-transition-delay: 0s, 0.1s; -moz-transition: background-color 0.4s ease-out 0s, color 0.1s ease 0.1s; -o-transition: background-color 0.4s ease-out 0s, color 0.1s ease 0.1s; transition: background-color 0.4s ease-out 0s, color 0.1s ease 0.1s; }
 
-nav#level1nav, nav#level2nav { line-height: 1.2em; font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif; text-transform: uppercase; }
+nav#level1nav, nav#level2nav { line-height: 1.2em; font-family: museo-sans, "Open Sans", sans-serif; text-transform: uppercase; }
 nav#level1nav ul li, nav#level2nav ul li { line-height: 1.5em; margin-bottom: 0; }
 
 #level1nav { margin-top: 4em; }
@@ -691,7 +691,7 @@ header.heading-image .flexslider .flex-direction-nav li a { top: 352 -64/2 px; }
 header.heading-image img { width: 100%; max-width: 100%; height: auto; }
 
 header.entry-header { margin-bottom: 1.5em; }
-header.entry-header h1 { font-family: "Open Sans", "PT Sans", sans-serif; font-weight: 900; color: #22273b; }
+header.entry-header h1 { font-family: "Open Sans", sans-serif; font-weight: 900; color: #22273b; }
 
 ol.article-references { list-style-position: inside; }
 ol.article-references li { margin-bottom: 0.25em; }
@@ -715,7 +715,7 @@ ol.article-references li:target { background-color: #ffeeee; }
 .entry-content .top-content { margin-bottom: 1em; }
 .entry-content .top-content > header { margin-bottom: 1em; }
 .entry-content .top-content article header { margin-bottom: 1em; }
-.entry-content .top-content article header h1.entry-title { font-family: "Open Sans", "PT Sans", sans-serif; font-weight: 900; color: #22273b; }
+.entry-content .top-content article header h1.entry-title { font-family: "Open Sans", sans-serif; font-weight: 900; color: #22273b; }
 
 #keyfacts, #navigationarea { font-size: 0.9em; }
 #keyfacts h1, #navigationarea h1 { font-size: 1em; font-weight: bold; }
