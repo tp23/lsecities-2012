@@ -14,6 +14,11 @@ array_unshift($ancestors, $post->ID);
 global $pods_toplevel_ancestor;
 $toplevel_ancestor = array_pop($ancestors);
 
+// co-branding: check the X-Site-Id HTTP header from frontend cache
+if($http_req_headers["X-Site-Id"] == 'ec2012') {
+  lc_data('x-site-id', 'ec2012');
+}
+
 if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
   lc_data('microsite_id', 'ec2012');
@@ -118,7 +123,6 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
 <?php wp_enqueue_script('jquery-sticky', get_stylesheet_directory_uri() . '/javascripts/jquery.sticky.min.js', 'jquery', false, true); ?>
 <?php wp_enqueue_script('jquery-organictabs', get_stylesheet_directory_uri() . '/javascripts/jquery.organictabs.js', 'jquery', false, true); ?>
 <?php wp_enqueue_script('jquery-mediaelement', get_stylesheet_directory_uri() . '/javascripts/mediaelement-and-player.js', 'jquery', '2.9.2', false); ?>
-<?php wp_enqueue_script('jquery-hovercard', get_stylesheet_directory_uri() . '/javascripts/jquery.hovercard.min.js', 'jquery', false, true); ?>
 <?php wp_enqueue_script('rfc3339date', get_stylesheet_directory_uri() . '/javascripts/rfc3339date.js', false, false, true); ?>
 <?php wp_enqueue_script('jquery-addtocal', get_stylesheet_directory_uri() . '/javascripts/jquery.addtocal.js', array('jquery', 'jquery-ui-core', 'jquery-ui-menu'), false, true); ?>
 <!-- <script async="async" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script> -->
@@ -169,90 +173,14 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 
 	<div class='container' id='container'> <!-- ## grid -->
 		<header id='header'>
-			<div class='row'>
-				<a href="/">
-          <?php if($_GET["siteid"] == 'ec2012'): ?>
-					<div class='threecol' id='lclogo'>
-						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logos/logo_lsecities_full_white.png" alt="LSE Cities logo">
-					</div>
-          <?php else: ?>
-					<div class='threecol' id='lclogo'>
-						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_lsecities_fullred.png" alt="LSE Cities logo">
-					</div>
-          <?php endif; // ($_GET["siteid"] == 'ec2012') ?>
-				</a>
-        <?php
-          if(lc_data('urban_age_section')): 
-            if($_GET["siteid"] == 'ec2012'): ?>
-              <a href="/ua/">
-                <div class='threecol' id='ualogo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logos/logo_urbanage_nostrapline_white.png" alt="Urban Age logo"></div>
-              </a>
-            <?php else: ?>
-              <a href="/ua/">
-                <div class='threecol' id='ualogo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_urbanage_nostrapline.gif" alt="Urban Age logo"></div>
-              </a>
-        <?php
-          endif; // ($_GET["siteid"] == 'ec2012') ?>
-        <?php elseif(lc_data('site-cc')): ?>
-					<div class='threecol' id='heif5logo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_heif5_col.png" alt="HEIF5 Knowledge Exchange"></div>
-				<?php else: ?>
-        <span class='threecol'>&nbsp;</span>
-        <?php endif; // (lc_data('urban_age_section')) ?>
-				<div class='sixcol last' id='toolbox'>
-					<div id="searchbox" class="clearfix">
-						<form method="get" id="search-box" action="http://www.google.com/search">
-							<div class="hiddenFields">
-								<input type="hidden" value="lsecities.net" name="domains" />
-								<input type="hidden" value="lsecities.net" name="sitesearch" />
-								<div id="queryfield">
-									<input type="text" placeholder="Search LSE Cities" name="q" />
-									<button><span>&#xE4A2;</span></button>
-								</div>
-							</div>
-             </form>
-						<span id="socialbuttons">
-							<ul>
-								<li>
-									<a title="Follow us on Twitter" href="https://twitter.com/#!/LSECities">
-										<img src="<?php bloginfo('stylesheet_directory'); ?>/images/icons/mal/icon_twitter-v1lightblue_24x24.png" alt="Follow us on Twitter">
-									</a>
-								</li>
-								<li>
-									<a title="Follow us on Facebook" href="https://facebook.com/lsecities">
-										<img src="<?php bloginfo('stylesheet_directory'); ?>/images/icons/mal/icon_facebook-v2lightblue_24x24.png" alt="Follow us on Facebook">
-									</a>
-								</li>
-								<li>
-									<a title="Follow us on YouTube" href="https://youtube.com/urbanage">
-										<img src="<?php bloginfo('stylesheet_directory'); ?>/images/icons/mal/icon_youtubelightblue_24x24.png" alt="Follow us on YouTube">
-									</a>
-								</li>
-								<li>
-									<a title="News feed" href="http://lsecities.net/feed/">
-										<img src="<?php bloginfo('stylesheet_directory'); ?>/images/icons/mal/icon_rsslightblue_24x24.png" alt="News archive">
-									</a>
-								</li>
-							</ul>
-						</span>
-					</div>
-				</div><!-- #toolbox -->
-				<nav id='level1nav'>
-					<ul>
-					<?php echo $level1nav; ?>
-					</ul>
-				</nav><!-- #level1nav -->
-			</div><!-- row -->
-			<div class='row' id='mainmenus'>
-				<nav class='twelvecol section-ancestor-<?php echo $toplevel_ancestor ; ?>' id='level2nav'>
-					<ul>
-					<?php if($toplevel_ancestor and $level2nav): ?>
-						<?php echo $level2nav ; ?>
-					<?php else: ?>
-						<li>&nbsp;</li>
-					<?php endif; ?>
-					</ul>
-				</nav>
-			</div><!-- #mainmenus -->
-	</header><!-- #branding -->
+    <?php
+      // include site-specific header fragment
+      if(lc_data('x-site-id') === 'ec2012') {
+        locate_template('templates/header/header_ec2012.php', true, true);
+      } else {
+        locate_template('templates/header/header-default.php', true, true);
+      }
+    ?>
+	  </header><!-- #header -->
 
 	<div id="main" class="row">

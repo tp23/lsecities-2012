@@ -58,7 +58,7 @@ if(lc_data('microsite_id') == 'cc') { // Labs -> Cities and the crisis
     $only_include_top_pages_ids = '&child_of=2701';
   }
   $level2nav = '<li class="page-item page-item-2701' . $class_for_current_page . '">' .
-    '<a href="/">Home</a></li>' . 
+    '<a href="/">Home</a></li>' .
     wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=' . $only_include_top_pages_ids);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/ua\/conferences\/2012-london\/site/', '', $level2nav);
@@ -91,7 +91,7 @@ if(lc_data('microsite_id') == 'cc') { // Labs -> Cities and the crisis
 	wp_title( '|', true, 'right' );
 
 	// Add the blog name.
-	bloginfo( 'name' );
+	// bloginfo( 'name' );
 
 	// Add the blog description for the home/front page.
 	$site_description = get_bloginfo( 'description', 'display' );
@@ -107,8 +107,6 @@ if(lc_data('microsite_id') == 'cc') { // Labs -> Cities and the crisis
 <script type="text/javascript" src="https://use.typekit.com/ftd3lpp.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 <link href="https://cloud.webtype.com/css/9044dce3-7052-4e0e-9dbb-377978412ca7.css" rel="stylesheet" type="text/css" />
-<?php if(false): // redundant until we switch to PT Sans ?><link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic|PT+Serif:400,700,700italic,400italic|Sorts+Mill+Goudy:400,400italic&amp;subset=latin,latin-ext" media="screen" rel="stylesheet" type="text/css" /><?php endif; ?>
-<?php
   wp_enqueue_style('font-open-sans', 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic,400italic,800italic');
 
   wp_enqueue_style('jquery.flexslider', get_stylesheet_directory_uri() . '/stylesheets/flexslider/flexslider.css');
@@ -121,8 +119,6 @@ if(lc_data('microsite_id') == 'cc') { // Labs -> Cities and the crisis
 <?php wp_enqueue_script('jquery-sticky', get_stylesheet_directory_uri() . '/javascripts/jquery.sticky.min.js', 'jquery', false, true); ?>
 <?php wp_enqueue_script('jquery-organictabs', get_stylesheet_directory_uri() . '/javascripts/jquery.organictabs.js', 'jquery', false, true); ?>
 <?php wp_enqueue_script('jquery-mediaelement', get_stylesheet_directory_uri() . '/javascripts/mediaelement-and-player.js', 'jquery', '2.9.2', false); ?>
-<?php // wp_enqueue_script('jquery-hovercard', get_stylesheet_directory_uri() . '/javascripts/jquery.hovercard.min.js', 'jquery', false, true); ?>
-<!-- <script async="async" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script> -->
 <?php wp_enqueue_script('cookie-control', plugins_url() . '/cookie-control/js/cookieControl-5.1.min.js', 'jquery', false, true); ?>
 <?php wp_enqueue_style('jquery-mediaelement', get_stylesheet_directory_uri() .'/stylesheets/mediaelement/mediaelementplayer.css'); ?>
 <?php wp_enqueue_style('font-theovandoegsburg', get_stylesheet_directory_uri() . '/stylesheets/fonts/theovand/stylesheet.css'); ?>
@@ -191,6 +187,32 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 					</ul>
 				</nav>
 			</div><!-- #mainmenus -->
-	</header><!-- #branding -->
+	</header><!-- #header -->
 
 	<div id="main" class="row">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
