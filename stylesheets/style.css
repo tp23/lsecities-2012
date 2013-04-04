@@ -561,7 +561,7 @@ a, a:focus, a:active, a:hover { text-decoration: none; }
 nav a, nav a:active, nav a:visited { color: #990000; }
 nav a:hover { color: #555555; }
 
-p { margin-bottom: 1.5em; }
+p { margin-bottom: 1.5em; font-size: 0.9375em; line-height: 1.5em; }
 
 h1, h2, h3, h4, h5, h6 { font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif; text-transform: none; }
 
