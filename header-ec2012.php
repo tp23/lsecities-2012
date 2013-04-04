@@ -14,8 +14,8 @@ array_unshift($ancestors, $post->ID);
 global $pods_toplevel_ancestor;
 $toplevel_ancestor = array_pop($ancestors);
 
-$http_req_headers = getallheaders();
-var_trace($http_req_headers["X-Site-Id"], 'X-Site-Id');
+// $http_req_headers = getallheaders();
+// var_trace($http_req_headers["X-Site-Id"], 'X-Site-Id');
 
 if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';

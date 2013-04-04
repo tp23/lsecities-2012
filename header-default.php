@@ -16,12 +16,14 @@ $toplevel_ancestor = array_pop($ancestors);
 
 if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
+  lc_data('microsite_id', 'ec2012');
 } elseif($_GET["siteid"] == 'cc') { // we are being called via the Cities and the crisis microsite
   $body_class_extra = 'site-cc';
+  lc_data('microsite_id', 'cc');
 }
 
 // If we are on the root frontpage ('/', page ID 393), set ancestor to nil
-if($toplevel_ancestor == 393) { $toplevel_ancestor = ''; }
+if($toplevel_ancestor == 393) { $toplevel_ancestor = null; }
 
 // If we are processing a Pods page for the Article pod, manually set our current position
 if($pods_toplevel_ancestor) { $toplevel_ancestor = $pods_toplevel_ancestor; }
@@ -43,12 +45,25 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/cities-and-the-crisis/', '', $level2nav);
   lc_data('site-cc', true);
-} elseif($post->ID == 2701 or in_array(2701, $post->ancestors)) { // Electric City conference minisite
+} elseif(lc_data('microsite_id') == 'ec2012') { // Electric City conference minisite
   // If we are navigating the EC2012 minisite via reverse proxy, display appropriate menu
   $level1nav = '';
-  $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2701);
+  $class_for_current_page = $post->ID == 2701 ? ' current_page_item' : '';
+  if(!is_user_logged_in()) {
+    $only_include_top_pages_ids = '&include=2714,2716,3288,3290,3294,2949,3160,3102,3098';
+  } else {
+    $only_include_top_pages_ids = '&child_of=2701';
+  }
+  $level2nav = '<li class="page-item page-item-2701' . $class_for_current_page . '">' .
+    '<a href="/">Home</a></li>' . 
+    wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=' . $only_include_top_pages_ids);
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/ua\/conferences\/2012-london\/site/', '', $level2nav);
+  var_trace($level2nav, 'header_level2nav', true);
+  /*
+  $level2nav = '<li class="page-item page-item-2701 current_page_item"><a href="/">Home</a></li><li class="page_item page-item-2714"><a href="/programme/">Programme</a></li>
+<li class="page_item page-item-2716"><a href="/speakers/">Speakers</a></li>'; */
+  // $appcache_manifest = '/appcache-manifests/ec2012.appcache';
   lc_data('site-ec2012', true);
 } else {
   $include_pages = '617,306,309,311,94,629,3338';
@@ -58,7 +73,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" <?php language_attributes(); ?>> <![endif]-->
 <!--[if IE 8]> <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?><?php if($appcache_manifest): ?> manifest="<?php echo $appcache_manifest; ?>"<?php endif; ?>> <!--<![endif]-->
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
