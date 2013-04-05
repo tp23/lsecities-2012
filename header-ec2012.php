@@ -185,7 +185,7 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
     <?php
       // include site-specific header fragment
       if(lc_data('x-site-id') == 'ec2012') {
-        locate_template('templates/header/header_ec2012.php', true, true);
+        locate_template('templates/header/header-ec2012.php', true, true);
       } else {
         locate_template('templates/header/header-default.php', true, true);
       }
