@@ -15,6 +15,7 @@ global $pods_toplevel_ancestor;
 $toplevel_ancestor = array_pop($ancestors);
 
 // co-branding: check the X-Site-Id HTTP header from frontend cache
+$http_req_headers = getallheaders();
 if($http_req_headers["X-Site-Id"] == 'ec2012') {
   lc_data('x-site-id', 'ec2012');
 }
@@ -183,7 +184,7 @@ var usernoiseButton = {"text":"Feedback","style":"background-color: #ff0000; col
 		<header id='header'>
     <?php
       // include site-specific header fragment
-      if(lc_data('x-site-id') === 'ec2012') {
+      if(lc_data('x-site-id') == 'ec2012') {
         locate_template('templates/header/header_ec2012.php', true, true);
       } else {
         locate_template('templates/header/header-default.php', true, true);
