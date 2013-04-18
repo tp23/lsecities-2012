@@ -35,7 +35,7 @@
                       $more_news->the_post();
                       if ($more_news->current_post > 2) :
                 ?>
-                  <li><a href="<?php the_permalink(); ?>"><?php the_time('j M'); ?> | <?php the_title() ?></a></li>
+                  <li><a href="<?php the_permalink(); ?>"><?php the_time('j M Y'); ?> | <?php the_title() ?></a></li>
                 <?php endif;
                     endwhile;
                 ?>
