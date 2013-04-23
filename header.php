@@ -110,7 +110,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
 
 	?></title>
 
-<meta description=<?php echo lc_data('meta_description'); ?>">
+<meta description="<?php echo esc_html(lc_data('meta_description')); ?>">
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <script type="text/javascript" src="https://use.typekit.com/ftd3lpp.js"></script>
