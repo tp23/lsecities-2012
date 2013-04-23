@@ -10,7 +10,8 @@
 //$sections = new WP_Query(array('post_type' => 'page', 'orderby' => 'menu_order', 'post_parent'=>$post->ID));
 $sections = get_pages(array(
   'parent' => $post->ID,
-  'sort_column'  => 'menu_order'
+  'sort_column'  => 'menu_order',
+  'hierarchical' => 0
 ));
 
 var_trace(var_export($post->ID, true));
