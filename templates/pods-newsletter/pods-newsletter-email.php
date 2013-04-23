@@ -15,9 +15,6 @@ $sections = get_pages(array(
   'hierarchical' => 0
 ));
 
-var_trace(var_export($post->ID, true));
-var_trace(var_export($sections, true));
-
 foreach($sections as $section) {
   $featured_items = get_pages(array(
     'parent' => $section->ID,
@@ -26,7 +23,6 @@ foreach($sections as $section) {
     'meta_key' => 'toc_title',
     'hierarchical' => 0
   ));
-  var_trace(var_export($featured_items, true));
   include('header-section-email.php');
 }
 ?>
