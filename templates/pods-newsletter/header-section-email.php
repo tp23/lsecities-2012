@@ -3,7 +3,7 @@
     <tr>
       <td valign="top">
         <a href="" target="_blank">
-          <img width="360" style="width: 360px;" src="">
+          <?php echo get_the_post_thumbnail($section->ID, array(360,176)); ?>
         </a>
         <div mc:edit="tiwc300_content00">
           <h4 class="h4">
@@ -12,9 +12,11 @@
             </a>
           </h4>
           <ul>
+            <?php foreach($featured_items as $item): ?>
             <li>
-              <a href="" target="_blank"></a>
+              <a href="#<?php echo $item->ID; ?>" target="_blank"><?php echo get_the_title($item->ID); ?></a>
             </li>
+            <?php endforeach; ?>
           </ul>
         </div>
       </td>

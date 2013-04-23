@@ -7,13 +7,15 @@
  */
 ?><?php
 // Set up the objects needed
-$my_wp_query = new WP_Query();
-$all_wp_pages = $my_wp_query->query(array('post_type' => 'page'));
+$my_query = new WP_Query();
+$all_sections_query = $my_query->query(array('post_type' => 'page', 'orderby' => 'menu_order'));
 
 // Filter through all pages and find Portfolio's children
-$sections = get_page_children( $post->ID, $all_wp_pages );
+$sections = get_page_children( $post->ID, $all_sections_query );
 
 foreach($sections as $section) {
+  $featured_items_query = $my_query->query(array('post_type' => 'page', 'meta_key' => 'toc_title', 'orderby' => 'menu_order'));
+  $featured_items = get_page_children($section->ID, $featured_items_query);
   include('header-section-email.php');
 }
 ?>
