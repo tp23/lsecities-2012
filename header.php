@@ -71,6 +71,8 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
 <li class="page_item page-item-2716"><a href="/speakers/">Speakers</a></li>'; */
   // $appcache_manifest = '/appcache-manifests/ec2012.appcache';
   lc_data('site-ec2012', true);
+} elseif($post->ID == 1074 or in_array(1074, $post->ancestors)) { // if within Newsletter section, do not populate level2nav
+  $level2nav = '';
 } else {
   $include_pages = '617,306,309,311,94,629,3338';
   $level1nav = '<li><a href="/" title="Home">Home</a></li>' . wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&include=' . $include_pages);
