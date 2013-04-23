@@ -5,7 +5,7 @@
         <a href="" target="_blank">
           <?php echo get_the_post_thumbnail($section->ID, array(360,176)); ?>
         </a>
-        <div mc:edit="tiwc300_content00">
+        <div>
           <h4 class="h4">
             <a href="" target="_blank">
               <span><?php echo get_the_title($section->ID); ?></span>
