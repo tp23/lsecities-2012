@@ -7,18 +7,17 @@
  */
 ?><?php
 // Set up the objects needed
-$my_query = new WP_Query();
-$all_sections_query = $my_query->query(array('post_type' => 'page', 'orderby' => 'menu_order'));
+$all_sections_query = new WP_Query(array('post_type' => 'page', 'orderby' => 'menu_order'));
 
-// Filter through all pages and find Portfolio's children
+// Find sections
 $sections = get_page_children( $post->ID, $all_sections_query );
 
-var_trace(var_export($sections));
+var_trace(var_export($sections, true));
 
 foreach($sections as $section) {
-  $featured_items_query = $my_query->query(array('post_type' => 'page', 'meta_key' => 'toc_title', 'orderby' => 'menu_order'));
+  $featured_items_query = new WP_Query(array('post_type' => 'page', 'meta_key' => 'toc_title', 'orderby' => 'menu_order'));
   $featured_items = get_page_children($section->ID, $featured_items_query);
-  var_trace(var_export($featured_items));
+  var_trace(var_export($featured_items, true));
   include('header-section-email.php');
 }
 ?>
