@@ -8,9 +8,9 @@
 ?><?php
 /**
  * Dispatch to template based on whether the HTTP GET parameter
- * output is set to email or not
+ * 'channel' is set to 'email' or not
  */
-if($_GET['output'] === 'email') {
+if($_GET['channel'] === 'email') {
   locate_template('templates/pods-newsletter/pods-newsletter-email.php', true, true);
 } else {
   locate_template('templates/pods-newsletter/pods-newsletter-web.php', true, true);
