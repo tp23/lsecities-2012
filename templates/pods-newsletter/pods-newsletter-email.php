@@ -8,9 +8,8 @@
 ?><?php
 // Set up the objects needed
 //$sections = new WP_Query(array('post_type' => 'page', 'orderby' => 'menu_order', 'post_parent'=>$post->ID));
-$sections = wp_list_pages(array(
-  'echo' => false,
-  'child_of' => $post->ID,
+$sections = get_pages(array(
+  'parent' => $post->ID,
   'sort_column'  => 'menu_order'
 ));
 
