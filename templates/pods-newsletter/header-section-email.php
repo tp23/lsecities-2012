@@ -8,7 +8,7 @@
         <div mc:edit="tiwc300_content00">
           <h4 class="h4">
             <a href="" target="_blank">
-              <span><?php echo $section['post_title']; ?></span>
+              <span><?php echo get_the_title($section->ID); ?></span>
             </a>
           </h4>
           <ul>
