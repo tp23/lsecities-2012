@@ -113,8 +113,8 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities an
 <meta name="description" content="<?php echo esc_html(lc_data('meta_description')); ?>">
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<script type="text/javascript" src="https://use.typekit.com/ftd3lpp.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script> 
+<script async type="text/javascript" src="https://use.typekit.com/ftd3lpp.js"></script>
+<script async type="text/javascript">try{Typekit.load();}catch(e){}</script> 
 <link href="https://cloud.webtype.com/css/9044dce3-7052-4e0e-9dbb-377978412ca7.css" rel="stylesheet" type="text/css" />
 <?php 
   wp_enqueue_style('font-open-sans', 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,800,300italic,400italic,800italic');
