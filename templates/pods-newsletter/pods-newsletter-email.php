@@ -233,7 +233,7 @@
 				max-width:600px !important;
 			}
 
-   h1#headerTitle {
+   h1#headerTitle, h1.headerTitle {
    <?php if($theme_skin == 'ec2012'): ?>
     background-color: #eee111;
     color: #000000;
