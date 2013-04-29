@@ -1,8 +1,5 @@
                          
-  <table width="100%" cellspacing="0" cellpadding="20" border="0">
-    <tbody>
-      <tr>
-        <td valign="top">
+        <div>
           <a href="" target="_blank">
             <?php echo get_the_post_thumbnail($section->ID, array(600,294)); ?>
           </a>
@@ -20,7 +17,4 @@
               <?php endforeach; ?>
             </ul>
           </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </div>
