@@ -246,8 +246,12 @@
     text-transform: uppercase;
     padding: 0 20px;
    }
-   
-   h1#headerTitle.detached {
+
+   h1.headerTitle a {
+    color: #fff;
+   }
+  
+   h1#headerTitle.detached, h1.headerTitle.detached {
      background-color: transparent;
      color: #000;
      font-size: 1.5em;
