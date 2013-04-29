@@ -543,7 +543,7 @@ if($TRACE_ENABLED) {
                                             <td valign="top" class="bodyContent">
                                 
                                                 <!-- // Begin Module: Standard Content \\ -->
-                                                <table border="0" cellpadding="20" cellspacing="0" width="100%">
+                                                <table border="0" cellpadding="00" cellspacing="0" width="100%">
                                                     <tr>
                                                         <td valign="top">
                                                             <div mc:edit="std_content00">
