@@ -1,4 +1,4 @@
-<td width="360" valign="top" class="rightColumnContent">                          
+                         
   <table width="100%" cellspacing="0" cellpadding="20" border="0">
     <tbody>
       <tr>
@@ -24,4 +24,3 @@
       </tr>
     </tbody>
   </table>
-</td>
