@@ -4,7 +4,7 @@
       <tr>
         <td valign="top">
           <a href="" target="_blank">
-            <?php echo get_the_post_thumbnail($section->ID, array(360,176)); ?>
+            <?php echo get_the_post_thumbnail($section->ID, array(600,294)); ?>
           </a>
           <div>
             <h4 class="h4">
