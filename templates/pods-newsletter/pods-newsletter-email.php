@@ -247,7 +247,7 @@
     padding: 0 20px;
    }
 
-   .bodyContent h1.headerTitle a {
+   .bodyContent div h1.headerTitle a {
     color: #fff;
    }
   
