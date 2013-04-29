@@ -248,7 +248,8 @@
    }
 
    .bodyContent div h1.headerTitle a {
-    color: #fff;
+     color: #fff;
+     text-decoration: none;
    }
   
    h1#headerTitle.detached, h1.headerTitle.detached {
