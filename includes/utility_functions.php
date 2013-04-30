@@ -16,3 +16,14 @@ if(!defined('redirect_to_404')) {
     exit;
   }
 } 
+
+/**
+ * output requested class if this is the last item in a N-items row
+ *
+ * @param
+ */
+function class_if_last_item($class, $items_per_row, $current_item_index) {
+  if($current_item_index % $items_per_row != 0) {
+    return $class;
+  }
+}

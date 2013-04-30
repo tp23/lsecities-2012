@@ -17,6 +17,7 @@ global $pods_toplevel_ancestor, $pod_slug;
 lc_data('pods_toplevel_ancestor', 311);
 
 $obj = pods_prepare_event(pods_url_variable(3));
+$media_items_output_counter = 1;
 ?>
 
 <?php get_header(); ?>
@@ -118,7 +119,7 @@ $obj = pods_prepare_event(pods_url_variable(3));
                       <video width="100%" id="youtube-<?php echo $event_media_item['youtube_uri']; ?>" preload="none">
                         <source type="video/youtube" src="http://www.youtube.com/watch?v=<?php echo $event_media_item['youtube_uri']; ?>" />
                       </video>
-                      <?php endif; ?>
+                      <?php $media_items_output_counter++; endif; ?>
                     </dd>
                   </div>
                   <?php endif; ?>
@@ -130,15 +131,15 @@ $obj = pods_prepare_event(pods_url_variable(3));
                       <?php if(false) : ?><audio class='mediaelement' src='<?php echo $event_media_item['audio_uri']; ?>' preload='auto'></audio><?php endif; ?>
                     </dd>
                   </div>
-                  <?php endif; ?>
+                  <?php $media_items_output_counter++; endif; ?>
                   <?php if($event_media_item['slides_pdf'] or $event_media_item['slides_uri']): ?>
-                  <div class="fourcol last">
+                  <div class="fourcol<?php class_if_last_item('last', 3, $media_items_output_counter); ?>">
                     <dt>Presentation slides</dt>
                     <dd>
                       <p><a class="link pdf" href="<?php echo $event_media_item['slides_pdf'] ? wp_get_attachment_url($event_media_item['slides_pdf']['ID']) : $event_media_item['slides_uri']; ?>">Download</a> (PDF).</p>
                     </dd>
                   </div>
-                  <?php endif; ?>
+                  <?php $media_items_output_counter++; endif; ?>
                 <?php endforeach; ?>
                 </dl>
               </section>
