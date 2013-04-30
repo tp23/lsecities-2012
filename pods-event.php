@@ -17,6 +17,7 @@ global $pods_toplevel_ancestor, $pod_slug;
 lc_data('pods_toplevel_ancestor', 311);
 
 $obj = pods_prepare_event(pods_url_variable(3));
+var_trace(var_export($obj, true));
 ?>
 
 <?php get_header(); ?>
@@ -95,11 +96,7 @@ $obj = pods_prepare_event(pods_url_variable(3));
             </div><!-- .top-content -->
 
             <div class='extra-content twelvecol'>
-<<<<<<< HEAD
-              <?php if($obj['event_media]']): ?>
-=======
-              <?php if($obj['event_media']): ?>
->>>>>>> eec2217... typo
+              <?php if(is_array($obj['event_media']) and count($obj['event_media'])): ?>
               <section class="event-materials clearfix">
                 <header>
                   <h1>Event materials</h1>
