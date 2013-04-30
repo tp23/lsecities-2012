@@ -29,7 +29,38 @@ if($TRACE_ENABLED) {
   error_log('our_permalink: ' . $our_permalink);
 }
 
-?><?php
+?>
+<?php
+// Set up the objects needed
+$sections = get_pages(array(
+  'parent' => $post->ID,
+  'post_type' => 'page',
+  'sort_column'  => 'menu_order',
+  'hierarchical' => 0
+));
+
+foreach($sections as $section) {
+  $section['featured_items'] = get_pages(array(
+    'parent' => $section->ID,
+    'post_type' => 'page',
+    'sort_column'  => 'menu_order',
+    'meta_key' => 'toc_title',
+    'hierarchical' => 0
+  ));
+}
+?>
+<?php
 define('WP_USE_THEMES', false);
-locate_template('templates/newsletter/newsletter-email.php', true, true);
+
+/**
+ * Dispatch to template based on whether the HTTP GET parameter
+ * 'channel' is set to 'email' or not
+ * Also dispatch to email template if no 'email' channel is specified but
+ * page is not a quarterly newsletter (i.e. it doesn't have subsections)
+ */
+if($_GET['channel'] === 'email' or (is_array($sections) and count($sections) != 0)) {
+  locate_template('templates/newsletter/newsletter-email.php', true, true);
+} else {
+  locate_template('templates/newsletter/newsletter-web.php', true, true);
+}
 ?>

@@ -10,7 +10,7 @@
               </a>
             </h1>
             <ul>
-              <?php foreach($featured_items as $item): ?>
+              <?php foreach($section['featured_items'] as $item): ?>
               <li>
                 <a href="#<?php echo $item->ID; ?>" target="_blank"><?php echo get_the_title($item->ID); ?></a>
               </li>

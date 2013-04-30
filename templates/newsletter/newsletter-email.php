@@ -546,22 +546,7 @@
                         
 
 <?php
-// Set up the objects needed
-$sections = get_pages(array(
-  'parent' => $post->ID,
-  'post_type' => 'page',
-  'sort_column'  => 'menu_order',
-  'hierarchical' => 0
-));
-
 foreach($sections as $section) {
-  $featured_items = get_pages(array(
-    'parent' => $section->ID,
-    'post_type' => 'page',
-    'sort_column'  => 'menu_order',
-    'meta_key' => 'toc_title',
-    'hierarchical' => 0
-  ));
   include('header-section-email.php');
 }
 ?>

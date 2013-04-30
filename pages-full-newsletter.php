@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Full newsletter
+ * Template Name: Newsletter (extended)
  * Description: The template used for quarterly newsletters
  *
  * @package LSECities2012
