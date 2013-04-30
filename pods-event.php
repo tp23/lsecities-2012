@@ -95,8 +95,7 @@ $obj = pods_prepare_event(pods_url_variable(3));
             </div><!-- .top-content -->
 
             <div class='extra-content twelvecol'>
-
-              <?php if($event_media): ?>
+              <?php if($obj['event_media]']): ?>
               <section class="event-materials clearfix">
                 <header>
                   <h1>Event materials</h1>
