@@ -95,7 +95,11 @@ $obj = pods_prepare_event(pods_url_variable(3));
             </div><!-- .top-content -->
 
             <div class='extra-content twelvecol'>
+<<<<<<< HEAD
               <?php if($obj['event_media]']): ?>
+=======
+              <?php if($obj['event_media']): ?>
+>>>>>>> eec2217... typo
               <section class="event-materials clearfix">
                 <header>
                   <h1>Event materials</h1>
@@ -142,7 +146,9 @@ $obj = pods_prepare_event(pods_url_variable(3));
                 <?php endforeach; ?>
                 </dl>
               </section>
-              <?php endif; // ($obj['event_media]']) ?>
+              <?php endif; // ($obj['event_media']) ?>
+
+
               <?php if($obj['people_with_blurb']): ?>
               <section id='speaker-profiles' class='clearfix'>
                 <header>
