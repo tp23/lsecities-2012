@@ -58,7 +58,7 @@ set_query_var($newsletter_sections, $sections);
  * Also dispatch to email template if no 'email' channel is specified but
  * page is not a quarterly newsletter (i.e. it doesn't have subsections)
  */
-if($_GET['channel'] === 'email' or (is_array($sections) and count($sections) != 0)) {
+if($_GET['channel'] === 'email' or (is_array($sections) and count($sections) == 0)) {
   locate_template('templates/newsletter/newsletter-email.php', true, true);
 } else {
   locate_template('templates/newsletter/newsletter-web.php', true, true);
