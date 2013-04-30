@@ -134,7 +134,7 @@ $media_items_output_counter = 1;
                   <?php $media_items_output_counter++; endif; ?>
                   <?php if($event_media_item['slides_pdf'] or $event_media_item['slides_uri']): ?>
                   <div class="fourcol<?php echo ' ' . class_if_last_item('last', $media_items_output_counter, 3); ?>">
-                    <dt>Presentation slides</dt>
+                    <dt><?php echo $event_media_item['title']; ?></dt>
                     <dd>
                       <p><a class="link pdf" href="<?php echo $event_media_item['slides_pdf'] ? wp_get_attachment_url($event_media_item['slides_pdf']['ID']) : $event_media_item['slides_uri']; ?>">Download</a> (PDF).</p>
                     </dd>
