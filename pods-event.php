@@ -104,7 +104,7 @@ $media_items_output_counter = 1;
                 <dl>
                 <?php foreach($obj['event_media'] as $event_media_item): ?>
                   <?php if($event_media_item['youtube_uri']): ?>
-                  <div class="fourcol<?php echo ' ' . class_if_last_item('last', 3, $media_items_output_counter); ?>">
+                  <div class="fourcol<?php echo ' ' . class_if_last_item('last', $media_items_output_counter, 3); ?>">
                     <dt>Video</dt>
                     <dd>
                       <?php if(true) : ?>
@@ -124,7 +124,7 @@ $media_items_output_counter = 1;
                   </div>
                   <?php endif; ?>
                   <?php if($event_media_item['audio_uri']): ?>
-                  <div class="fourcol<?php echo ' ' . class_if_last_item('last', 3, $media_items_output_counter); ?>">
+                  <div class="fourcol<?php echo ' ' . class_if_last_item('last', $media_items_output_counter, 3); ?>">
                     <dt>Audio</dt>
                     <dd>
                       <p>Listen to <a class="link mp3" href="<?php echo $event_media_item['audio_uri']; ?>">podcast</a>.</p>
@@ -133,7 +133,7 @@ $media_items_output_counter = 1;
                   </div>
                   <?php $media_items_output_counter++; endif; ?>
                   <?php if($event_media_item['slides_pdf'] or $event_media_item['slides_uri']): ?>
-                  <div class="fourcol<?php echo ' ' . class_if_last_item('last', 3, $media_items_output_counter); ?>">
+                  <div class="fourcol<?php echo ' ' . class_if_last_item('last', $media_items_output_counter, 3); ?>">
                     <dt>Presentation slides</dt>
                     <dd>
                       <p><a class="link pdf" href="<?php echo $event_media_item['slides_pdf'] ? wp_get_attachment_url($event_media_item['slides_pdf']['ID']) : $event_media_item['slides_uri']; ?>">Download</a> (PDF).</p>
