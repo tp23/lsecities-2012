@@ -38,9 +38,10 @@ $sections = get_pages(array(
   'sort_column'  => 'menu_order',
   'hierarchical' => 0
 ));
+$section_featured_items = array();
 
 foreach($sections as $section) {
-  $section['featured_items'] = get_pages(array(
+  $section_featured_items[] = get_pages(array(
     'parent' => $section->ID,
     'post_type' => 'page',
     'sort_column'  => 'menu_order',
@@ -48,10 +49,14 @@ foreach($sections as $section) {
     'hierarchical' => 0
   ));
 }
+
+// create array containing section info and section's featured items for each section
+$newsletter_sections = array_map(null, $sections, $section_featured_items);
+
 ?>
 <?php
 define('WP_USE_THEMES', false);
-set_query_var($newsletter_sections, $sections);
+set_query_var($newsletter_sections, $newsletter_sections);
 /**
  * Dispatch to template based on whether the HTTP GET parameter
  * 'channel' is set to 'email' or not
