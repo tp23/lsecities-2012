@@ -132,11 +132,11 @@ var_trace(var_export($obj, true));
                     </dd>
                   </div>
                   <?php endif; ?>
-                  <?php if($event_media_item['presentation_uri']): ?>
+                  <?php if($event_media_item['slides_pdf'] or $event_media_item['presentation_uri']): ?>
                   <div class="fourcol last">
                     <dt>Presentation slides</dt>
                     <dd>
-                      <p><a class="link pdf" href="<?php echo $event_media_item['presentation_uri']; ?>">Download</a> (PDF).</p>
+                      <p><a class="link pdf" href="<?php echo $event_media_item['slides_pdf'] ? wp_get_attachment_url($event_media_item['slides_pdf']['ID']) : $event_media_item['presentation_uri']; ?>">Download</a> (PDF).</p>
                     </dd>
                   </div>
                   <?php endif; ?>
