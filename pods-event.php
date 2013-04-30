@@ -104,7 +104,7 @@ $media_items_output_counter = 1;
                 <dl>
                 <?php foreach($obj['event_media'] as $event_media_item): ?>
                   <?php if($event_media_item['youtube_uri']): ?>
-                  <div class="fourcol">
+                  <div class="fourcol<?php class_if_last_item('last', 3, $media_items_output_counter); ?>">
                     <dt>Video</dt>
                     <dd>
                       <?php if(true) : ?>
@@ -124,7 +124,7 @@ $media_items_output_counter = 1;
                   </div>
                   <?php endif; ?>
                   <?php if($event_media_item['audio_uri']): ?>
-                  <div class="fourcol">
+                  <div class="fourcol<?php class_if_last_item('last', 3, $media_items_output_counter); ?>">
                     <dt>Audio</dt>
                     <dd>
                       <p>Listen to <a class="link mp3" href="<?php echo $event_media_item['audio_uri']; ?>">podcast</a>.</p>
