@@ -250,6 +250,8 @@
    .extended-table-of-contents h1.headerTitle a {
      color: #fff;
      text-decoration: none;
+     font-weight: normal;
+     font-size: 0.85em;
    }
   
    h1#headerTitle.detached, h1.headerTitle.detached {
