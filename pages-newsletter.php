@@ -51,7 +51,7 @@ foreach($sections as $section) {
 ?>
 <?php
 define('WP_USE_THEMES', false);
-
+set_query_var($newsletter_sections, $sections);
 /**
  * Dispatch to template based on whether the HTTP GET parameter
  * 'channel' is set to 'email' or not

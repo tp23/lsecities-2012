@@ -546,7 +546,7 @@
                         
 
 <?php
-foreach($sections as $section) {
+foreach($newsletter_sections as $section) {
   include('header-section-email.php');
 }
 ?>
