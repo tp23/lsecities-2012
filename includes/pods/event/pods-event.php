@@ -106,6 +106,7 @@ function pods_prepare_event($pod_slug) {
   
   foreach($event_media_items as $item) {
     $item_pod = new Pod('media_item_v0', $item->id);
+    var_trace(var_dump($item_pod));
     $slides_pdf_id = $item_pod->get_field('slides_pdf.ID');
     if($slides_pdf_id) {
       $item['slides_uri'] = wp_get_attachment_url($slides_pdf_id);
