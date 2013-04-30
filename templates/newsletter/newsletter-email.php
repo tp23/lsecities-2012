@@ -247,7 +247,7 @@
     padding: 0 20px;
    }
 
-   .bodyContent div h1.headerTitle a {
+   .extended-table-of-contents h1.headerTitle a {
      color: #fff;
      text-decoration: none;
    }
@@ -546,11 +546,13 @@
                                         </tr>
                                         <tr>
                                           <td>
+                                            <div class="extended-table-of-contents">
 <?php
 foreach($newsletter_sections as $section) {
   include('header-section-email.php');
 }
 ?>
+                                            </div>
                                           </td>
                                         </tr>
                                     </table>
