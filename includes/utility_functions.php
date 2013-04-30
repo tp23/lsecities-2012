@@ -22,7 +22,7 @@ if(!defined('redirect_to_404')) {
  *
  * @param
  */
-function class_if_last_item($class, $items_per_row, $current_item_index) {
+function class_if_last_item($class, $current_item_index, $items_per_row) {
   if($current_item_index % $items_per_row == 0) {
     return $class;
   }
