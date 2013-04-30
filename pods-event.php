@@ -142,8 +142,7 @@ $obj = pods_prepare_event(pods_url_variable(3));
                 <?php endforeach; ?>
                 </dl>
               </section>
-              <?php endif; ?>
-
+              <?php endif; // ($obj['event_media]']) ?>
               <?php if($obj['people_with_blurb']): ?>
               <section id='speaker-profiles' class='clearfix'>
                 <header>
@@ -175,11 +174,11 @@ $obj = pods_prepare_event(pods_url_variable(3));
                   </div>
                 <?php endif;
                     $index++;
-                  endif;
-                endforeach; ?>
+                  endif; // ($event_speaker['profile_text'])
+                endforeach; // ($obj['event_all_the_people'] as $key => $event_speaker) ?>
                 </ul><!-- .people-list -->
               </section><!-- #speaker-profiles -->
-              <?php endif; ?>
+              <?php endif; // ($obj['people_with_blurb']) ?>
             </div><!-- .extra-content -->
 <?php include_once('includes/snippets/page-meta.php'); ?>
           </div>
