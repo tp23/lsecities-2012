@@ -17,7 +17,6 @@ global $pods_toplevel_ancestor, $pod_slug;
 lc_data('pods_toplevel_ancestor', 311);
 
 $obj = pods_prepare_event(pods_url_variable(3));
-var_trace(var_export($obj, true));
 ?>
 
 <?php get_header(); ?>
