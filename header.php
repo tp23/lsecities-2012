@@ -50,7 +50,7 @@ if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs
   $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . '2481');
   var_trace($level2nav, 'level2nav in Labs section');
   // And strip prefix
-  $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\//', '', $level2nav);
+  $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs/', '', $level2nav);
   lc_data('site-labs', true);
 } elseif(lc_data('x-site-id') === 'ec2012') { // Electric City conference minisite
   // If we are navigating the EC2012 minisite via reverse proxy, display appropriate menu
