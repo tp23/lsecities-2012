@@ -27,3 +27,15 @@ function class_if_last_item($class, $current_item_index, $items_per_row) {
     return $class;
   }
 }
+
+/**
+ * Hide lsecities.net page hierarchy in links if we are in labs subsite
+ * This is of course a bit simplistic as there might be links that need
+ * to be kept as they are, but for the current use cases this works fine.
+ * 
+ * @param string $string_blob The chunk of text on which to run the regexp
+ * @return string The input text with links stripped
+ */
+function hide_lsecities_page_hierarchy_in_labs_links($string_blob) {
+  return preg_replace('/https?:\/\/lsecities\.net\/labs/', '', $string_blob);
+}
