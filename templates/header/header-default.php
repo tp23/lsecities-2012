@@ -1,19 +1,24 @@
 			<div class='row'>
-				<a href="/">
+				
           <?php if($_GET["siteid"] == 'ec2012'): ?>
-					<div class='threecol' id='lclogo'>
-						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logos/logo_lsecities_full_white.png" alt="LSE Cities logo">
-					</div>
+          <a href="/">
+            <div class='threecol' id='lclogo'>
+              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/logos/logo_lsecities_full_white.png" alt="LSE Cities logo">
+            </div>
+          </a>
           <?php elseif(lc_data('site-labs')): ?>
-          <div class='sixcol' id='labs-logo'>
-            <img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_eumm.png" alt="European Metromonitor">
-          </div>
+          <a href="/eumm/">
+            <div class='sixcol' id='labs-logo'>
+              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_eumm.png" alt="European Metromonitor">
+            </div>
+          </a>
           <?php else: ?>
-					<div class='threecol' id='lclogo'>
-						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_lsecities_fullred.png" alt="LSE Cities logo">
-					</div>
+          <a href="/">
+            <div class='threecol' id='lclogo'>
+              <img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_lsecities_fullred.png" alt="LSE Cities logo">
+            </div>
+          </a>
           <?php endif; // ($_GET["siteid"] == 'ec2012') ?>
-				</a>
         <?php
           if(lc_data('urban_age_section')): 
             if($_GET["siteid"] == 'ec2012'): ?>
