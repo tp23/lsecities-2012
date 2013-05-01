@@ -20,7 +20,10 @@ if(!defined('redirect_to_404')) {
 /**
  * output requested class if this is the last item in a N-items row
  *
- * @param
+ * @param string $class The class string to add (can be multiple space-separated classes if needed, no leading or trailing spaces)
+ * @param int $current_item_index The index of the current item
+ * @param int $items_per_row How many items fit in a row
+ * @return string The requested class string if this is the last item in a row
  */
 function class_if_last_item($class, $current_item_index, $items_per_row) {
   if($current_item_index % $items_per_row == 0) {
