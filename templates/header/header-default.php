@@ -22,7 +22,7 @@
               </a>
         <?php
           endif; // ($_GET["siteid"] == 'ec2012') ?>
-        <?php elseif(lc_data('site-cc')): ?>
+        <?php elseif(lc_data('site-labs')): ?>
 					<div class='threecol' id='heif5logo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_heif5_col.png" alt="HEIF5 Knowledge Exchange"></div>
 				<?php else: ?>
         <span class='threecol'>&nbsp;</span>

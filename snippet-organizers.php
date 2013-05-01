@@ -19,7 +19,7 @@
     </a>
   </li>
   <?php endif; //MONKEYPATCH_END ?>
-  <?php if(lc_data('site-cc')): ?>
+  <?php if(lc_data('site-labs')): ?>
   <li>
     <img alt="HEIF5 Knowledge Exchange" src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_heif5_bw-negative.png" />
   </li>

@@ -23,9 +23,9 @@ if($http_req_headers["X-Site-Id"] == 'ec2012') {
 if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
   lc_data('microsite_id', 'ec2012');
-} elseif($_GET["siteid"] == 'cc') { // we are being called via the Cities and the crisis microsite
-  $body_class_extra = 'site-cc';
-  lc_data('microsite_id', 'cc');
+} elseif($_GET["siteid"] == 'labs') { // we are being called via the Cities and the crisis microsite
+  $body_class_extra = 'site-labs';
+  lc_data('microsite_id', 'labs');
 }
 
 // If we are on the root frontpage ('/', page ID 393), set ancestor to nil
@@ -44,13 +44,13 @@ $level2nav = wp_list_pages('child_of=' . $toplevel_ancestor . '&depth=1&sort_col
 lc_data('urban_age_section', ($toplevel_ancestor == 94) ? true : false);
 $logo_element_id = lc_data('urban_age_section') ? 'ualogo' : 'logo';
 
-if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs -> Cities and the crisis
-  // If we are navigating the Cities and the crisis minisite via reverse proxy, display appropriate menu
-  $level1nav = '<li><a href="/" title="Home">Cities and the Crisis</a></li>';
+if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs
+  // If we are navigating the Labs minisite via reverse proxy, display appropriate menu
+  $level1nav = '<li><a href="/eumm/" title="Home">European Metromonitor</a></li>';
   $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2481);
   // And strip prefix
-  $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/cities-and-the-crisis/', '', $level2nav);
-  lc_data('site-cc', true);
+  $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/', '', $level2nav);
+  lc_data('site-labs', true);
 } elseif(lc_data('x-site-id') === 'ec2012') { // Electric City conference minisite
   // If we are navigating the EC2012 minisite via reverse proxy, display appropriate menu
   $level1nav = '';
