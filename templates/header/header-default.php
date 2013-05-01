@@ -4,6 +4,10 @@
 					<div class='threecol' id='lclogo'>
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logos/logo_lsecities_full_white.png" alt="LSE Cities logo">
 					</div>
+          <?php elseif(lc_data('site-labs')): ?>
+          <div class='sixcol' id='labs-logo'>
+            <img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_eumm.png" alt="European Metromonitor">
+          </div>
           <?php else: ?>
 					<div class='threecol' id='lclogo'>
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_lsecities_fullred.png" alt="LSE Cities logo">
@@ -23,7 +27,6 @@
         <?php
           endif; // ($_GET["siteid"] == 'ec2012') ?>
         <?php elseif(lc_data('site-labs')): ?>
-					<div class='threecol' id='heif5logo'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_heif5_col.png" alt="HEIF5 Knowledge Exchange"></div>
 				<?php else: ?>
         <span class='threecol'>&nbsp;</span>
         <?php endif; // (lc_data('urban_age_section')) ?>
