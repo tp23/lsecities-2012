@@ -47,7 +47,7 @@ $logo_element_id = lc_data('urban_age_section') ? 'ualogo' : 'logo';
 if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs
   // If we are navigating the Labs minisite via reverse proxy, display appropriate menu
   $level1nav = '<li><a href="/eumm/" title="Home">European Metromonitor</a></li>';
-  $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . 2481);
+  $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . '2481');
   // And strip prefix
   $level2nav = preg_replace('/https?:\/\/lsecities\.net\/labs\/', '', $level2nav);
   lc_data('site-labs', true);
