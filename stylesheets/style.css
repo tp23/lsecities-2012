@@ -1044,7 +1044,8 @@ body.ec2012 #un-button { display: none; }
 
 body.site-labs.page-template-default .entry-content ul { list-style-type: disc; padding-left: 25px; }
 
-.site-labs .lc-slider-page .introbox#slidetile-european-metromonitor { background: url("http://lsecities.net/wp-content/themes/lsecities-2012/images/logos/logo_heif5_col_whitebackground.png") no-repeat bottom; background-size: 100% auto; background-color: rgba(0, 0, 0, 0.8); }
+.site-labs .lc-slider-page .introbox#slidetile-european-metromonitor { background: url("http://lsecities.net/wp-content/themes/lsecities-2012/images/logo_heif5_col.png") no-repeat bottom; background-size: 100% auto; background-color: transparent; }
+.site-labs .lc-slider-page .introbox#slidetile-european-metromonitor .inner-box { color: inherit; }
 
 /*/mediaquery*/
 /*/mediaquery*/
