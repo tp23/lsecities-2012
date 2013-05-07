@@ -1,29 +1,19 @@
 <?php
-/**
- * Template for LSE Cities newsletters (web channel)
- * 
- *
- * @package LSECities2012
- */
-get_header(); ?>
 
-	<div id="primary" class="site-content ninecol">
-		<div id="content" role="main">
+use MtHaml\Autoloader;
+use MtHaml\Environment;
 
-			<?php while ( have_posts() ) : the_post(); ?>
+require_once __DIR__ . '/../../vendor/lib/mthaml/lib/MtHaml/Autoloader.php';
 
-      <div class="extended-table-of-contents">
-<?php
-foreach($newsletter_sections as $section) {
-  include('header-section-email.php');
-}
-?>
-      </div>
+Autoloader::register();
 
-			<?php endwhile; // end of the loop. ?>
+$haml = new Environment('php', array('enable_escaper' => false));
 
-		</div><!-- #content -->
-	</div><!-- #primary -->
+$template_data = array( "title" => "LSE Cities Newsletter | Issue 14", "content" => "Paragraph");
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+$template = __DIR__ . '/example.php.haml';
+$compiled = $haml->compileString(file_get_contents($template), $template);
+
+echo "rendered template:\n";
+
+eval($compiled);
