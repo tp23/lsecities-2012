@@ -6,7 +6,7 @@
           <div>
             <h1 class="headerTitle">
               <a href="" target="_blank">
-                <span><?php $section['title']; ?></span>
+                <span><?php echo $section['title']; ?></span>
               </a>
             </h1>
             <ul>
