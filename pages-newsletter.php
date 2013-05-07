@@ -8,6 +8,7 @@
 $TRACE_ENABLED = is_user_logged_in();
 
 $our_permalink = preg_replace('/^https/', 'http', get_permalink($id));
+$POST_THUMBNAIL_SIZE = array(600,294);
 
 // read post meta newsletter_title_meta and check if we should hide title or add extra classes
 $newsletter_title_meta = strtolower(get_post_meta(get_the_ID(), 'newsletter_title_meta', true));
@@ -31,6 +32,9 @@ if($TRACE_ENABLED) {
 
 ?>
 <?php
+
+$newsletter_sections = array();
+
 // Set up the objects needed
 $sections = get_pages(array(
   'parent' => $post->ID,
@@ -38,25 +42,62 @@ $sections = get_pages(array(
   'sort_column'  => 'menu_order',
   'hierarchical' => 0
 ));
-$section_featured_items = array();
 
 foreach($sections as $section) {
-  $section_featured_items[] = get_pages(array(
+  $item_objects = get_pages(array(
     'parent' => $section->ID,
     'post_type' => 'page',
     'sort_column'  => 'menu_order',
-    'meta_key' => 'toc_title',
     'hierarchical' => 0
   ));
+  
+  $featured_items = array();
+  $items = array();
+  
+  foreach($item_objects as $item_object) {
+    $item_toc_title = get_post_meta($item_object->ID, 'toc_title', true);
+    $item =
+     array(
+      'ID' => $item_object->ID,
+      'title' => $item_object->post_title,
+      'content' => $item_object->post_content,
+      'thumbnail' => get_the_post_thumbnail($item_object->ID, $POST_THUMBNAIL_SIZE),
+      'layout' => strtolower(get_post_meta($item_object->ID, 'layout', true))
+    );
+    
+    // add the current items to the items list for this section
+    $items[] = $item;
+    
+    // if a toc_title has been set, this is a featured item: add it to the
+    // featured items list for this section
+    if($item_toc_title) {
+      $item['toc_title'] = $item_toc_title;
+      $featured_items[] = $item;
+    }
+  }
+
+  $newsletter_sections[] = array(
+    'ID' => $section->ID,
+    'title' => $section->post_title,
+    'thumbnail' => get_the_post_thumbnail($section->ID, $POST_THUMBNAIL_SIZE),
+    'featured_items' => $featured_items,
+    'items' => $items
+  );
 }
 
-// create array containing section info and section's featured items for each section
-$newsletter_sections = array_map(null, $sections, $section_featured_items);
+$newsletter = array(
+  'title' => 'Newsletter | ' . get_the_title(),
+  'teaser' => get_post_meta(get_the_ID(), "campaign_teaser_text", true),
+  'heading_link' => get_post_meta(get_the_ID(), "campaign_heading_link", true),
+  'heading_thumbnail' => get_the_post_thumbnail(),
+  'sections' => $newsletter_sections
+);
 
 ?>
 <?php
+var_trace(var_export($newsletter, true));
 define('WP_USE_THEMES', false);
-set_query_var('newsletter_sections', $newsletter_sections);
+set_query_var('newsletter', $newsletter);
 /**
  * Dispatch to template based on whether the HTTP GET parameter
  * 'channel' is set to 'email' or not

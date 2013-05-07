@@ -1,0 +1,46 @@
+-macro item_content(item)
+  -if item.thumbnail
+    .item-thumbnail
+      = item.thumbnail|raw
+  %h1
+    = item.title|raw
+  %div
+    = item.content|raw
+!!! 5
+%html
+  %head
+    %title
+      = title
+    %link{ :rel=>'stylesheet', :id=>'twentytwelve-style-css', :href=>'http://lsecities.net/wp-content/themes/lsecities-2012/style.css?ver=3.5.1', :type=>'text/css', :media=>'all'}
+  %body#newsletter-2013
+    .page-header
+      %h1
+        = title
+      - for section in sections
+        .toc-section
+          %div
+            %a{:href => "", :target => "_blank"}
+              = section.thumbnail|raw
+          %div
+            %h1.headerTitle
+              %a{:href => "", :target => "_blank"}
+                %span
+                  = section.title
+            %ul
+              - for item in section.featured_items
+                %li
+                  %a{ :href => "#item" ~ item.ID }
+                    = item.title
+    .page-body
+      - for section in sections
+        .newsletter-section
+          %h1.title-container
+            %span
+              = section.title
+          -for item in section.items
+            -if item.layout == 'wide'
+              .section-item.wide{ :id => 'item' ~ item.ID}
+                = _self.item_content(item)
+            -else
+              .section-item.narrow{ :id => 'item' ~ item.ID}
+                = _self.item_content(item)

@@ -550,7 +550,7 @@
                                           <td>
                                             <div class="extended-table-of-contents">
 <?php
-foreach($newsletter_sections as $section) {
+foreach($newsletter['sections'] as $section) {
   include('header-section-email.php');
 }
 ?>
