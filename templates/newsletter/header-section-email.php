@@ -12,7 +12,7 @@
             <ul>
               <?php foreach($section['featured_items'] as $item): ?>
               <li>
-                <a href="#<?php echo $item->ID; ?>" target="_blank"><?php echo $item['title']; ?></a>
+                <a href="#<?php echo $item->ID; ?>" target="_blank"><?php echo $item['toc_title']; ?></a>
               </li>
               <?php endforeach; ?>
             </ul>

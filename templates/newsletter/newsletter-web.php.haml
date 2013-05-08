@@ -45,7 +45,7 @@
               - for item in section.featured_items
                 %li
                   %a{ :href => "#item" ~ item.ID }
-                    = item.title
+                    = item.toc_title
     .page-body
       - for section in sections
         - if section.is_news_section
