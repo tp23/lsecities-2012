@@ -33,14 +33,9 @@ if($TRACE_ENABLED) {
 ?>
 <?php
 
-/**
- * Initialize empty array for newsletter sections
- */
 $newsletter_sections = array();
 
-/**
- * Set up the objects needed
- */
+// Set up the objects needed
 $sections = get_pages(array(
   'parent' => $post->ID,
   'post_type' => 'page',
@@ -49,49 +44,16 @@ $sections = get_pages(array(
 ));
 
 foreach($sections as $key => $section) {
-  /**
-   * If the news_category custom field is set, treat this section
-   * as a news list section, which will be populated with the
-   * news items belonging to the category set here.
-   */
-  $news_category = get_post_meta($section->ID, 'news_category', true);
-
-  if($news_category) {
-    /**
-     * Look up related news, to be used as section items
-     */
-    $item_objects = get_posts(array(
-      'category_name' => $news_category,
-      'post_type' => 'post',
-      'nopaging'  => true,
-      'posts_per_page' => -1
-    ));
-    var_trace(var_export($item_objects, true), 'news items in category ' . $news_category);
-  } else {
-    /**
-     * Look up children pages, to be used as section items
-     */
-    $item_objects = get_pages(array(
-      'parent' => $section->ID,
-      'post_type' => 'page',
-      'sort_column'  => 'menu_order',
-      'hierarchical' => 0
-    ));
-  }
+  $item_objects = get_pages(array(
+    'parent' => $section->ID,
+    'post_type' => 'page',
+    'sort_column'  => 'menu_order',
+    'hierarchical' => 0
+  ));
   
-  /**
-   * All the featured items for this category
-   */
   $featured_items = array();
-  
-  /**
-   * All the items (featured or not) for this category
-   */
   $items = array();
   
-  /**
-   * Add all the children pages to the list of items
-   */
   foreach($item_objects as $item_object) {
     $item_toc_title = get_post_meta($item_object->ID, 'toc_title', true);
     $item =
@@ -103,16 +65,11 @@ foreach($sections as $key => $section) {
       'layout' => strtolower(get_post_meta($item_object->ID, 'layout', true))
     );
     
-    /**
-     * Add the current items to the items list for this section
-     */
+    // add the current items to the items list for this section
     $items[] = $item;
     
-    /**
-     * If a toc_title has been set, this is a featured item: add it to
-     * the featured items list for this section with the title
-     * to use in the table of contents
-     */
+    // if a toc_title has been set, this is a featured item: add it to the
+    // featured items list for this section
     if($item_toc_title) {
       $item['toc_title'] = $item_toc_title;
       $featured_items[] = $item;
@@ -122,27 +79,13 @@ foreach($sections as $key => $section) {
   $newsletter_section = array(
     'ID' => $section->ID,
     'title' => $section->post_title,
-    'content' => $section->post_content,
     'thumbnail' => get_the_post_thumbnail($section->ID, $POST_THUMBNAIL_SIZE),
     'featured_items' => $featured_items,
-    'items' => $items,
-    'is_news_section' => $news_category ? true : false
+    'items' => $items
   );
-  
-  /**
-   * Set flag to enable displaying first four section in table of
-   * contents; this field is only used in the web channel template
-   * as the email channel template uses its own logic to display the
-   * first five sections as we want to display an image credits section
-   * there as well, if in use.
-   */
   if($key < 4) {
     $newsletter_section['show_in_toc'] = true;
   }
-  
-  /**
-   * Add just-processed section to list of sections
-   */
   $newsletter_sections[] = $newsletter_section;
 }
 
