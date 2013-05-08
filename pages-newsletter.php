@@ -62,7 +62,7 @@ foreach($sections as $key => $section) {
      */
     $item_objects = get_pages(array(
       'category_name' => $news_category,
-      'post_type' => 'page',
+      'post_type' => 'post',
       'nopaging'  => true,
       'posts_per_page' => -1,
       'hierarchical' => 0
