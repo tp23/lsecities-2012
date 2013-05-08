@@ -126,7 +126,7 @@ foreach($sections as $key => $section) {
     'thumbnail' => get_the_post_thumbnail($section->ID, $POST_THUMBNAIL_SIZE),
     'featured_items' => $featured_items,
     'items' => $items,
-    'is_news_section' => $news_category === false ? false : true
+    'is_news_section' => $news_category ? true : false
   );
   
   /**
