@@ -67,7 +67,7 @@ foreach($sections as $key => $section) {
       'posts_per_page' => -1,
       'hierarchical' => 0
     ));
-    var_trace(var_export($item_objects, true));
+    var_trace(var_export($item_objects, true), 'news items for newsletter');
   } else {
     /**
      * Look up children pages, to be used as section items
