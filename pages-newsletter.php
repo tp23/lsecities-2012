@@ -66,7 +66,7 @@ foreach($sections as $key => $section) {
       'nopaging'  => true,
       'posts_per_page' => -1
     ));
-    var_trace(var_export($item_objects, true), 'news items for newsletter');
+    var_trace(var_export($item_objects, true), 'news items in category ' . $news_category);
   } else {
     /**
      * Look up children pages, to be used as section items
