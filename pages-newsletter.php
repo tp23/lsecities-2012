@@ -61,10 +61,7 @@ foreach($sections as $key => $section) {
      * Look up related news, to be used as section items
      */
     $item_objects = get_pages(array(
-      'category_name' => $news_category,
-      'post_type' => 'post',
-      'nopaging'  => true,
-      'posts_per_page' => -1
+      'category_name' => $news_category
     ));
     var_trace(var_export($item_objects, true), 'news items in category ' . $news_category);
   } else {
