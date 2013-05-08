@@ -54,7 +54,7 @@ foreach($sections as $key => $section) {
    * as a news list section, which will be populated with the
    * news items belonging to the category set here.
    */
-  $news_category = get_post_meta($item_object->ID, 'news_category', true);
+  $news_category = get_post_meta($section->ID, 'news_category', true);
 
   if($news_category) {
     /**
