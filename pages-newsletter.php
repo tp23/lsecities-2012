@@ -79,6 +79,7 @@ foreach($sections as $key => $section) {
   $newsletter_section = array(
     'ID' => $section->ID,
     'title' => $section->post_title,
+    'content' => $section->post_content,
     'thumbnail' => get_the_post_thumbnail($section->ID, $POST_THUMBNAIL_SIZE),
     'featured_items' => $featured_items,
     'items' => $items

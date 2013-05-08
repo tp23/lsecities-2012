@@ -1,4 +1,4 @@
-- macro item_content(item)
+-macro item_content(item)
   -if item.thumbnail
     .item-thumbnail
       = item.thumbnail|raw
@@ -6,18 +6,6 @@
     = item.title|raw
   %div
     = item.content|raw
-- macro section_content(section)
-  %h1.title-container
-    %span
-      = section.title
-  = section.content
-  -for item in section.items
-    -if item.layout == 'wide'
-      %span.section-item.wide{ :id => 'item' ~ item.ID}
-        = _self.item_content(item)
-    -else
-      .section-item.narrow{ :id => 'item' ~ item.ID}
-        = _self.item_content(item)
 !!! 5
 %html
   %head
@@ -26,9 +14,6 @@
     %link{ :rel=>'stylesheet', :id=>'twentytwelve-style-css', :href=>'http://lsecities.net/wp-content/themes/lsecities-2012/style.css?ver=3.5.1', :type=>'text/css', :media=>'all'}
   %body#newsletter-2013
     .page-header
-      %span.logo
-        %a(href = 'http://lsecities.net/')
-          %img(src='http://lsecities.net/wp-content/themes/lsecities-2012/images/logo_lsecities_fullred.png' alt='LSE Cities')
       %h1
         = title
       - for section in sections if section.show_in_toc
@@ -48,9 +33,15 @@
                     = item.title
     .page-body
       - for section in sections
-        - if section.is_news_section
-          .newsletter-section.news-section
-            = _self.section_content(section)
-        - else
-          .newsletter-section
-            = _self.section_content(section)
+        .newsletter-section
+          %h1.title-container
+            %span
+              = section.title
+          = section.content
+          -for item in section.items
+            -if item.layout == 'wide'
+              .section-item.wide{ :id => 'item' ~ item.ID}
+                = _self.item_content(item)
+            -else
+              .section-item.narrow{ :id => 'item' ~ item.ID}
+                = _self.item_content(item)
