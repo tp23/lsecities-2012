@@ -16,7 +16,7 @@
     .page-header
       %h1
         = title
-      - for section in sections
+      - for section in sections if loop.index0 < 4
         .toc-section
           %div
             %a{:href => "", :target => "_blank"}

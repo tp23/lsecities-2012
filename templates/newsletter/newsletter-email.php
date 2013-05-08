@@ -550,7 +550,11 @@
                                           <td>
                                             <div class="extended-table-of-contents">
 <?php
-foreach($newsletter['sections'] as $section) {
+foreach($newsletter['sections'] as $key => $section) {
+  // only output the first four sections
+  // we typically use further sections only for metadata (e.g. image
+  // credits, etc.) so these shouldn't appear on the table of contents
+  if($key > 3) { break; }
   include('header-section-email.php');
 }
 ?>
