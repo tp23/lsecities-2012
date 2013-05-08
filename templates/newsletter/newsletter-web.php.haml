@@ -43,7 +43,7 @@
           = section.content
           -for item in section.items
             -if item.layout == 'wide'
-              .section-item.wide{ :id => 'item' ~ item.ID}
+              %span.section-item.wide{ :id => 'item' ~ item.ID}
                 = _self.item_content(item)
             -else
               .section-item.narrow{ :id => 'item' ~ item.ID}
