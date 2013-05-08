@@ -43,7 +43,7 @@ $sections = get_pages(array(
   'hierarchical' => 0
 ));
 
-foreach($sections as $section) {
+foreach($sections as $key => $section) {
   $item_objects = get_pages(array(
     'parent' => $section->ID,
     'post_type' => 'page',
@@ -76,13 +76,18 @@ foreach($sections as $section) {
     }
   }
 
-  $newsletter_sections[] = array(
+  $newsletter_section = array(
     'ID' => $section->ID,
     'title' => $section->post_title,
+    'content' => $section->post_content,
     'thumbnail' => get_the_post_thumbnail($section->ID, $POST_THUMBNAIL_SIZE),
     'featured_items' => $featured_items,
     'items' => $items
   );
+  if($key < 4) {
+    $newsletter_section['show_in_toc'] = true;
+  }
+  $newsletter_sections[] = $newsletter_section;
 }
 
 $newsletter = array(

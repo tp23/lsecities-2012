@@ -14,9 +14,12 @@
     %link{ :rel=>'stylesheet', :id=>'twentytwelve-style-css', :href=>'http://lsecities.net/wp-content/themes/lsecities-2012/style.css?ver=3.5.1', :type=>'text/css', :media=>'all'}
   %body#newsletter-2013
     .page-header
+      .logo
+        %a(href = 'http://lsecities.net/')
+          %img(src='http://lsecities.net/wp-content/themes/lsecities-2012/images/logo_lsecities_fullred.png' alt='LSE Cities')
       %h1
         = title
-      - for section in sections if loop.index0 < 4
+      - for section in sections if section.show_in_toc
         .toc-section
           %div
             %a{:href => "", :target => "_blank"}
@@ -37,6 +40,7 @@
           %h1.title-container
             %span
               = section.title
+          = section.content
           -for item in section.items
             -if item.layout == 'wide'
               .section-item.wide{ :id => 'item' ~ item.ID}
