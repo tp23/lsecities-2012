@@ -720,13 +720,14 @@ body#newsletter-2013 .logo { display: block; width: 250px; margin-top: 1em; }
 body#newsletter-2013 .page-header > h1 { font-size: 1.5em; text-transform: uppercase; margin: 1em 0 1.5em; color: red; font-weight: 900; }
 body#newsletter-2013 .toc-section { width: 48%; margin-right: 4%; float: left; }
 body#newsletter-2013 .toc-section:nth-of-type(even) { margin-right: 0; }
-body#newsletter-2013 .toc-section h1 { text-transform: uppercase; font-weight: 900; font-size: 1.2em; line-height: 0.8em; }
+body#newsletter-2013 .toc-section h1 { text-transform: uppercase; font-weight: 900; font-size: 1.2em; line-height: 0.8em; line-height: 0.6em; }
 body#newsletter-2013 .toc-section h1 span { color: white; background-color: red; padding: 0 0.2em; }
 body#newsletter-2013 img { max-width: 100%; width: 100%; height: auto; }
 body#newsletter-2013 .page-header, body#newsletter-2013 .page-body { clear: both; }
 body#newsletter-2013 .page-body .newsletter-section { clear: both; padding-top: 3em; }
-body#newsletter-2013 .page-body .newsletter-section > h1 { text-transform: uppercase; font-weight: 900; font-size: 1.2em; line-height: 0.8em; border-top: 1px solid red; line-height: 1.3em; }
+body#newsletter-2013 .page-body .newsletter-section > h1 { text-transform: uppercase; font-weight: 900; font-size: 1.2em; line-height: 0.8em; border-top: 1px solid red; line-height: 1.1em; }
 body#newsletter-2013 .page-body .newsletter-section > h1 span { color: white; background-color: red; padding: 0 0.2em; }
+body#newsletter-2013 .page-body .newsletter-section .section-item { .margin-bottom: 2em; }
 body#newsletter-2013 .page-body .newsletter-section .section-item.narrow { width: 48%; margin-right: 4%; float: left; }
 body#newsletter-2013 .page-body .newsletter-section .section-item.narrow:nth-of-type(even) { margin-right: 0; }
 body#newsletter-2013 .page-body .newsletter-section .section-item.wide { width: 100%; margin-left: 0; margin-bottom: 2em; display: block;               /* this would normally be a span,
