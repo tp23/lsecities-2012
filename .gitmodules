@@ -1,3 +1,6 @@
 [submodule "vendor/lib/mthaml"]
 	path = vendor/lib/mthaml
 	url = git://github.com/arnaud-lb/MtHaml.git
+[submodule "vendor/lib/twig"]
+	path = vendor/lib/twig
+	url = git://github.com/fabpot/Twig.git
