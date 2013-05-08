@@ -1,6 +1,6 @@
                          
         <div>
-          <a href="" target="_blank">
+          <a href="<?php echo $newsletter['permalink'] . '#section' . $section['ID']; ?>" target="_blank">
             <?php echo $section['thumbnail']; ?>
           </a>
           <div>
