@@ -9,6 +9,11 @@
                 <span><?php echo $section['title']; ?></span>
               </a>
             </h1>
+            <?php if($section['content']): ?>
+            <div>
+              <?php echo $section['content']; ?>
+            </div>
+            <?php endif; // ($section['content']) ?>
             <ul>
               <?php foreach($section['featured_items'] as $item): ?>
               <li>
