@@ -5,7 +5,7 @@
           </a>
           <div>
             <h1 class="headerTitle">
-              <a href="" target="_blank">
+              <a href="<?php echo $newsletter['permalink'] . '#section' . $section['ID']; ?>" target="_blank">
                 <span><?php echo $section['title']; ?></span>
               </a>
             </h1>

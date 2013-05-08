@@ -49,8 +49,8 @@
     .page-body
       - for section in sections
         - if section.is_news_section
-          .newsletter-section.news-section
+          .newsletter-section.news-section{ :id => 'section' ~ section.ID}
             = _self.section_content(section)
         - else
-          .newsletter-section
+          .newsletter-section{ :id => 'section' ~ section.ID}
             = _self.section_content(section)
