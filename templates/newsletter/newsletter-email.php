@@ -551,10 +551,14 @@
                                             <div class="extended-table-of-contents">
 <?php
 foreach($newsletter['sections'] as $key => $section) {
-  // only output the first four sections
-  // we typically use further sections only for metadata (e.g. image
-  // credits, etc.) so these shouldn't appear on the table of contents
-  if($key > 3) { break; }
+  /**
+   * only output the first five sections
+   * we typically use the first four sections for content, a fifth
+   * section for image credits if needed) and further sections would
+   * be for metadata only, so these should not appear in the table of
+   * contents in the email channel
+   */
+  if($key > 4) { break; }
   include('header-section-email.php');
 }
 ?>
