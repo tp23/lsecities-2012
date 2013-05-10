@@ -208,7 +208,6 @@ add_filter('attachment_fields_to_save','save_media_library_item_custom_form_fiel
 function push_media_attribution($attachment_ID) {
   $media_attributions = lc_data('META_media_attr');
   $attachment_metadata = wp_get_attachment_metadata($attachment_ID);
-  var_trace($attachment_metadata, $TRACE_PREFIX . ': attachment_metadata', $TRACE_ENABLED);
   $attribution_uri = get_post_meta($attachment_ID, '_attribution_uri', true);
   $attribution_name = get_post_meta($attachment_ID, '_attribution_name', true);
   array_push($media_attributions, array(
@@ -218,7 +217,6 @@ function push_media_attribution($attachment_ID) {
     'attribution_string' => format_media_attribution($attachment_ID)
   ));
   lc_data('META_media_attr', $media_attributions);
-  var_trace($media_attributions, 'media_attributions_array');
 }
 
 function format_media_attribution($media_item_id) {
@@ -227,9 +225,7 @@ function format_media_attribution($media_item_id) {
      */
     $image_attribution = '';
     $image_attribution_name = get_post_meta($media_item_id, '_attribution_name', true);
-    var_trace($image_attribution_name, 'image attribution name');
     $image_attribution_uri = get_post_meta($media_item_id, '_attribution_uri', true);
-    var_trace($image_attribution_uri, 'image attribution uri');
     if($image_attribution_name and $image_attribution_uri) {
       $image_attribution = 'Photo credits: ' . $image_attribution_name . ' - ' . $image_attribution_uri;
     } elseif($image_attribution_name or $image_attribution_uri) {
