@@ -105,7 +105,9 @@ function compose_slide($column_spans, $tiles) {
        * Add image attribution metadata if present in media item
        */
       $image_attribution_name = get_post_meta($post->ID, '_attribution_name', true);
+      var_trace($image_attribution_name, 'image attribution name');
       $image_attribution_uri = get_post_meta($post->ID, '_attribution_uri', true);
+      var_trace($image_attribution_uri, 'image attribution uri');
       if($image_attribution_name and $image_attribution_uri) {
         $image_attribution = 'Photo credits: ' . $image_attribution_name . ' - ' . $image_attribution_uri;
       } elseif($image_attribution_name or $image_attribution_uri) {
