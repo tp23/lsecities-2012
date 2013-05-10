@@ -217,6 +217,7 @@ function push_media_attribution($attachment_ID) {
     'author' => $attribution_name,
   ));
   lc_data('META_media_attr', $media_attributions);
+  var_trace($media_attributions, 'media_attributions_array');
 }
 
 function galleria_prepare($pod, $extra_classes = '', $gallery_field = 'gallery', $random_slide_order = false) {
