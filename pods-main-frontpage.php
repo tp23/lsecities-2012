@@ -101,6 +101,18 @@ function compose_slide($column_spans, $tiles) {
         $target_uri = null;
       }
       
+      /**
+       * Add image attribution metadata if present in media item
+       */
+      $image_attribution_name = get_post_meta($post->ID, '_attribution_name', true);
+      $image_attribution_uri = get_post_meta($post->ID, '_attribution_uri', true);
+      if($image_attribution_name and $image_attribution_uri) {
+        $image_attribution = 'Photo credits: ' . $image_attribution_name . ' - ' . $image_attribution_uri;
+      } elseif($image_attribution_name or $image_attribution_uri) {
+        // if either meta field is provided, just join both as only one will be output
+        $image_attribution = 'Photo credits: ' . $image_attribution_name . $image_attribution_uri;
+      }
+      
       array_push($slide_column['tiles'],
         array(
           'id' => $tile->get_field('slug'),
@@ -113,6 +125,7 @@ function compose_slide($column_spans, $tiles) {
           'posts_category' => $tile->get_field('posts_category.term_id'),
           'target_uri' => $target_uri,
           'image' => wp_get_attachment_url($tile->get_field('image.ID')),
+          'image_attribution' => $image_attribution,
           'target_event' => array(
             'month' => $target_event_month,
             'day' => $target_event_day
@@ -186,7 +199,7 @@ var_trace($linked_events, 'linked_events');
                             <?php if($tile['target_uri']): ?><a href="<?php echo $tile['target_uri']; ?>"><?php endif; ?>
                             <?php if($tile['image']): ?>
                               <div class="crop">
-                                  <img src="<?php echo $tile['image']; ?>" alt="" />
+                                  <img src="<?php echo $tile['image']; ?>"<?php if($tile['image_attribution']): ?> title="<?php echo $tile['image_attribution']; ?>"<?php endif; ?> />
                               </div>
                             <?php endif; ?>
                             <?php if($tile['plain_content']): ?>
