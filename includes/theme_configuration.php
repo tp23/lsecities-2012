@@ -39,7 +39,7 @@ $LSECITIES_CONFIGURATION_DATA = array();
  */
 function lc_data($key, $value = false) {
   global $LSECITIES_CONFIGURATION_DATA;
-  if($value) {
+  if($value !== false) {
     $LSECITIES_CONFIGURATION_DATA[$key] = $value;
   }
   return $LSECITIES_CONFIGURATION_DATA[$key];
