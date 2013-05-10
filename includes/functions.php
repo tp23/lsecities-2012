@@ -215,9 +215,29 @@ function push_media_attribution($attachment_ID) {
     'title' => get_the_title($attachment_ID),
     'attribution_uri' => $attribution_uri,
     'author' => $attribution_name,
+    'attribution_string' => format_media_attribution($attachment_ID)
   ));
   lc_data('META_media_attr', $media_attributions);
   var_trace($media_attributions, 'media_attributions_array');
+}
+
+function format_media_attribution($media_item_id) {
+    /**
+     * Add image attribution metadata if present in media item
+     */
+    $image_attribution = '';
+    $image_attribution_name = get_post_meta($media_item_id, '_attribution_name', true);
+    var_trace($image_attribution_name, 'image attribution name');
+    $image_attribution_uri = get_post_meta($media_item_id, '_attribution_uri', true);
+    var_trace($image_attribution_uri, 'image attribution uri');
+    if($image_attribution_name and $image_attribution_uri) {
+      $image_attribution = 'Photo credits: ' . $image_attribution_name . ' - ' . $image_attribution_uri;
+    } elseif($image_attribution_name or $image_attribution_uri) {
+      // if either meta field is provided, just join both as only one will be output
+      $image_attribution = 'Photo credits: ' . $image_attribution_name . $image_attribution_uri;
+    }
+    
+    return $image_attribution;
 }
 
 function galleria_prepare($pod, $extra_classes = '', $gallery_field = 'gallery', $random_slide_order = false) {
