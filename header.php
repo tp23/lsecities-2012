@@ -46,11 +46,11 @@ $logo_element_id = lc_data('urban_age_section') ? 'ualogo' : 'logo';
 
 if($post->ID == 2481 or in_array(2481, $post->ancestors)) { // Labs
   // If we are navigating the Labs minisite via reverse proxy, display appropriate menu
-  $level1nav = '<li><a href="/eumm/" title="Home">European Metromonitor</a></li>';
+  $level1nav = '<li><a href="/labs/eumm/" title="Home">European Metromonitor</a></li>';
   $level2nav = wp_list_pages('echo=0&depth=1&sort_column=menu_order&title_li=&child_of=' . '2481');
   var_trace($level2nav, 'level2nav in Labs section');
   // And strip prefix
-  $level2nav = hide_lsecities_page_hierarchy_in_labs_links($level2nav);
+  // $level2nav = hide_lsecities_page_hierarchy_in_labs_links($level2nav);
   lc_data('site-labs', true);
 } elseif(lc_data('x-site-id') === 'ec2012') { // Electric City conference minisite
   // If we are navigating the EC2012 minisite via reverse proxy, display appropriate menu
