@@ -23,7 +23,7 @@ if($http_req_headers["X-Site-Id"] == 'ec2012') {
 if($_GET["siteid"] == 'ec2012') { // we are being called via the ec2012 microsite
   $body_class_extra = 'ec2012';
   lc_data('microsite_id', 'ec2012');
-} elseif($_GET["siteid"] == 'labs') { // we are being called via the Cities and the crisis microsite
+} elseif($_GET["siteid"] == 'labs' or $post->ID == 2481 or in_array(2481, $post->ancestors)) { // we are being called via the Cities and the crisis microsite
   $body_class_extra = 'site-labs';
   lc_data('microsite_id', 'labs');
 }
