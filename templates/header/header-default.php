@@ -7,7 +7,7 @@
             </div>
           </a>
           <?php elseif(lc_data('site-labs')): ?>
-          <a href="/eumm/">
+          <a href="/labs/eumm/">
             <div class='sixcol' id='labs-logo'>
               <img src="<?php bloginfo('stylesheet_directory'); ?>/images/logo_eumm.png" alt="European Metromonitor">
             </div>
