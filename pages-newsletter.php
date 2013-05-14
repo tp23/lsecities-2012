@@ -122,12 +122,24 @@ foreach($sections as $key => $section) {
   $newsletter_section = array(
     'ID' => $section->ID,
     'title' => $section->post_title,
-    'content' => $section->post_content,
     'thumbnail' => get_the_post_thumbnail($section->ID, $POST_THUMBNAIL_SIZE),
     'featured_items' => $featured_items,
     'items' => $items,
     'is_news_section' => $news_category ? true : false
   );
+  
+  /** 
+   * Do not even bother including any content from the post object's
+   * content field in the data structure unless this is the fifth (or
+   * successive) section, in which case editors are supposed to
+   * actually be using the section page's content box rather than
+   * subpages for content.
+   * This avoids lazy shortcuts which miss completely the point
+   * of having structured data in a CMS :)
+   */
+  if($key > 3) {
+    $newsletter_section['content'] = $section->post_content;
+  }
   
   /**
    * Set flag to enable displaying first four section in table of
