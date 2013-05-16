@@ -10,7 +10,7 @@
   %h1.title-container
     %span
       = section.title
-  = section.content
+  = section.content|raw
   -for item in section.items
     -if item.layout == 'wide'
       %span.section-item.wide{ :id => 'item' ~ item.ID}
