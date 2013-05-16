@@ -7,7 +7,15 @@
  */
 $TRACE_ENABLED = is_user_logged_in();
 
+/**
+ * Replace https with http, if source for email campaign is accessed via an https link
+ */
 $our_permalink = preg_replace('/^https/', 'http', get_permalink($id));
+/**
+ * And remove any GET parameters such as channel=email
+ */
+$our_permalink = preg_replace('/\?.*$/', '', $our_permalink);
+
 $POST_THUMBNAIL_SIZE = array(600,294);
 
 // read post meta newsletter_title_meta and check if we should hide title or add extra classes
