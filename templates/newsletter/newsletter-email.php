@@ -467,7 +467,7 @@
 											<td valign="top" width="190">
                                             	<div mc:edit="std_preheader_links">
 													<p>
-                                                	Is this email not displaying correctly?<br /><a href="<?php echo $our_permalink; ?>" target="_blank">View it in your browser</a>.
+                                                	Is this email not displaying correctly?<br /><a href="<?php echo $newsletter['our_permalink']; ?>" target="_blank">View it in your browser</a>.
                                                 	</p>
                                                 </div>
                                             </td>

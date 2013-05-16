@@ -169,6 +169,7 @@ foreach($sections as $key => $section) {
 $newsletter = array(
   'title' => get_the_title(),
   'permalink' => get_permalink($post->ID),
+  'our_permalink' => $our_permalink,
   'teaser' => get_post_meta(get_the_ID(), "campaign_teaser_text", true),
   'heading_link' => get_post_meta(get_the_ID(), "campaign_heading_link", true),
   'heading_thumbnail' => get_the_post_thumbnail(),
