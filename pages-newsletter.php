@@ -106,7 +106,7 @@ foreach($sections as $key => $section) {
      array(
       'ID' => $item_object->ID,
       'title' => $item_object->post_title,
-      'content' => $item_object->post_content,
+      'content' => wpautop($item_object->post_content, false),
       'thumbnail' => get_the_post_thumbnail($item_object->ID, $POST_THUMBNAIL_SIZE),
       'layout' => strtolower(get_post_meta($item_object->ID, 'layout', true))
     );
