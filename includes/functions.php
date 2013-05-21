@@ -97,6 +97,13 @@ function custom_upload_mimes ( $existing_mimes=array() ) {
     return $existing_mimes;
 }
 
+function admin_add_assets() {
+  wp_enqueue_style('admin.jquery.ddslick', get_stylesheet_directory_uri() . '/stylesheets/admin/jquery.ddslick.css');
+  wp_enqueue_script('admin.jquery.ddslick', get_stylesheet_directory_uri() . '/javascripts/vendor/jquery.ddslick.js', 'jquery', false, false);
+}
+
+add_action('admin_init', 'admin_add_assets');
+
 function check_parent_conference($post_id) {
   global $post;
   $current_post_id = $post->ID;
