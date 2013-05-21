@@ -6,6 +6,16 @@
 
 (function ($) {
 
+    $.fn.ddslick = function (method) {
+        if (methods[method]) {
+            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+        } else if (typeof method === 'object' || !method) {
+            return methods.init.apply(this, arguments);
+        } else {
+            $.error('Method ' + method + ' does not exists.');
+        }
+    };
+
     var methods = {},
 
     //Set defauls for the control
@@ -22,7 +32,7 @@
         showSelectedHTML: true,
         clickOffToClose: true,
 		embedCSS: true,
-        onSelected: function () { return; }
+        onSelected: function () { }
     },
 
     ddSelectHtml = '<div class="dd-select"><input class="dd-selected-value" type="hidden" /><a class="dd-selected"></a><span class="dd-pointer dd-pointer-down"></span></div>',
@@ -46,24 +56,14 @@
                 '.dd-image-right { float:right; margin-right:15px; margin-left:5px;}' +
                 '.dd-container{ position:relative;}. .dd-selected-text { font-weight:bold}.</style>';
 
-    $.fn.ddslick = function (method) {
-        if (methods[method]) {
-            return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        } else if (typeof method === 'object' || !method) {
-            return methods.init.apply(this, arguments);
-        } else {
-            $.error('Method ' + method + ' does not exists.');
-        }
-    };
-    
     //Public methods 
-    methods.init = function (optz) {
+    methods.init = function (opts) {
         //Preserve the original defaults by passing an empty object as the target
         //The object is used to get global flags like embedCSS.
-        var opts = $.extend({}, defaults, optz);
+        var options = $.extend({}, defaults, opts);
         
         //CSS styles are only added once.
-	    if ($('#css-ddslick').length <= 0 && opts.embedCSS) {
+	    if ($('#css-ddslick').length <= 0 && options.embedCSS) {
 	        $(ddslickCSS).appendTo('head');
 	    }
 
@@ -71,7 +71,7 @@
         return this.each(function () {
             //Preserve the original defaults by passing an empty object as the target 
             //The object is used to save drop-down's corresponding settings and data.
-            var options = $.extend({}, defaults, opts);
+            var options = $.extend({}, defaults, options);
             
             var obj = $(this),
                 data = obj.data('ddslick');
@@ -93,12 +93,10 @@
                 });
 
                 //Update Plugin data merging both HTML select data and JSON data for the dropdown
-                if (options.keepJSONItemsOnTop) {
+                if (options.keepJSONItemsOnTop)
                     $.merge(options.data, ddSelect);
-                } else {
-                    options.data = $.merge(ddSelect, options.data);
-                }
-                
+                else options.data = $.merge(ddSelect, options.data);
+
                 //Replace HTML select with empty placeholder, keep the original
                 var original = obj, placeholder = $('<div id="' + obj.attr('id') + '"></div>');
                 obj.replaceWith(placeholder);
@@ -108,7 +106,7 @@
                 obj.addClass('dd-container').append(ddSelectHtml).append(ddOptionsHtml);
 
                 // Inherit name attribute from original element
-                obj.find("input.dd-selected-value").attr("name", $(original).attr("name")).removeClass('dd-selected-value').addClass($(original).attr("class")).addClass('dd-selected-value');
+                obj.find("input.dd-selected-value").attr("name", $(original).attr("name"))
 
                 //Get newly created ddOptions and ddSelect to manipulate
                 var ddSelect = obj.find('.dd-select'),
@@ -120,17 +118,16 @@
                 obj.css({ width: options.width });
 
                 //Set height
-                if (options.height !== null) {
+                if (options.height != null)
                     ddOptions.css({ height: options.height, overflow: 'auto' });
-                }
 
                 //Add ddOptions to the container. Replace with template engine later.
                 $.each(options.data, function (index, item) {
-                    if (item.selected) { options.defaultSelectedIndex = index; }
+                    if (item.selected) options.defaultSelectedIndex = index;
                     ddOptions.append('<li>' +
                         '<a class="dd-option">' +
                             (item.value ? ' <input class="dd-option-value" type="hidden" value="' + item.value + '" />' : '') +
-                            (item.imageSrc ? ' <img class="dd-option-image' + (options.imagePosition === "right" ? ' dd-image-right' : '') + '" src="' + item.imageSrc + '" />' : '') +
+                            (item.imageSrc ? ' <img class="dd-option-image' + (options.imagePosition == "right" ? ' dd-image-right' : '') + '" src="' + item.imageSrc + '" />' : '') +
                             (item.text ? ' <label class="dd-option-text">' + item.text + '</label>' : '') +
                             (item.description ? ' <small class="dd-option-description dd-desc">' + item.description + '</small>' : '') +
                         '</a>' +
@@ -144,16 +141,15 @@
                     selectedIndex: -1,
                     selectedItem: null,
                     selectedData: null
-                };
-                
+                }
                 obj.data('ddslick', pluginData);
 
                 //Check if needs to show the select text, otherwise show selected or default selection
-                if (options.selectText.length > 0 && options.defaultSelectedIndex === null) {
+                if (options.selectText.length > 0 && options.defaultSelectedIndex == null) {
                     obj.find('.dd-selected').html(options.selectText);
                 }
                 else {
-                    var index = (options.defaultSelectedIndex !== null && options.defaultSelectedIndex >= 0 && options.defaultSelectedIndex < options.data.length)
+                    var index = (options.defaultSelectedIndex != null && options.defaultSelectedIndex >= 0 && options.defaultSelectedIndex < options.data.length)
                                 ? options.defaultSelectedIndex
                                 : 0;
                     selectIndex(obj, index);
