@@ -160,7 +160,12 @@ var_trace($linked_events, 'linked_events');
                 <?php
                   $current_slide_pod = new Pod('slide', $current_slide['slug']);
                   $slide_layout = $current_slide_pod->get_field('slide_layout.slug');
-                  $tiles = $current_slide_pod->get_field('tiles', 'displayorder ASC');
+                  // $tiles = $current_slide_pod->get_field('tiles', 'displayorder ASC');
+                  $tiles = array();
+                  foreach(array(0, 1, 2, 3, 4, 5, 6, 7) as $tile_counter) {
+                    $this_tile_slug = $current_slide_pod->get_field('tile_' . sprintf('%02i', $tile_counter) . '.slug');
+                    array_push($tiles, array('slug' => $this_tile_slug));
+                  }
                   
                   var_trace('tiles: ' . var_export($tiles, true), $TRACE_PREFIX, $TRACE_ENABLED);
                   var_trace('slide_layout: ' . var_export($slide_layout, true), $TRACE_PREFIX, $TRACE_ENABLED);
