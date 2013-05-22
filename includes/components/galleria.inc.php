@@ -9,7 +9,7 @@
   <script type="text/javascript">
     jQuery(document).ready(function() {
       Galleria.loadTheme(LC_GALLERIA_BASE_PATH . '/galleria/themes/classic/galleria.classic.min.js');
-      Galleria.run('#l#<?php echo $gallery_id; ?>', {
+      Galleria.run('#<?php echo $gallery_id; ?>', {
         wait: jQuery(this).hasClass('wait') ? true : false,
         carousel: true,
         height: 0.6,
