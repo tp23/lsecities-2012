@@ -8,7 +8,7 @@
   <div class="<?php echo $gallery_class; ?>" id="<?php echo $gallery_id; ?>"></div>
   <script type="text/javascript">
     jQuery(document).ready(function() {
-      Galleria.loadTheme(<?php echo LC_GALLERIA_BASE_PATH . '/galleria/themes/classic/galleria.classic.min.js'; ?>);
+      Galleria.loadTheme('<?php echo LC_GALLERIA_BASE_PATH . '/galleria/themes/classic/galleria.classic.min.js'; ?>');
       Galleria.run('#<?php echo $gallery_id; ?>', {
         wait: jQuery(this).hasClass('wait') ? true : false,
         carousel: true,
