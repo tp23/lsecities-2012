@@ -23,7 +23,7 @@ $upcoming_events = Array();
 $events_pod->findRecords(array(
   'where' => 't.date_end > NOW() AND t.hide IS NOT TRUE',
   'orderby' => 't.date_start ASC',
-  'limit' => 5
+  'limit' => -1
 ));
 while($events_pod->fetchRecord()) {
   array_push($upcoming_events, array(
