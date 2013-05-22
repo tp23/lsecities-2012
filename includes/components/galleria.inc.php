@@ -1,4 +1,5 @@
 <?php
+  define(LC_GALLERIA_BASE_PATH, '//' . $_SERVER['SERVER_NAME'] . '/wp-content/plugins/lsecities-wp-galleria');
   $gallery_id = 'lc-galleria-'. $gallery['slug'];
   $gallery_class = $gallery['picasa_gallery_id'] ? 'lc-galleria-picasa' : 'lc-galleria';
   $gallery_class .= $gallery['extra_classes'] ? ' ' . $gallery['extra_classes'] : ''; 
@@ -7,7 +8,8 @@
   <div class="<?php echo $gallery_class; ?>" id="<?php echo $gallery_id; ?>"></div>
   <script type="text/javascript">
     jQuery(document).ready(function() {
-      jQuery('#<?php echo $gallery_id; ?>').galleria({
+      Galleria.loadTheme(LC_GALLERIA_BASE_PATH . '/galleria/themes/classic/galleria.classic.min.js');
+      Galleria.run('#l#<?php echo $gallery_id; ?>', {
         wait: jQuery(this).hasClass('wait') ? true : false,
         carousel: true,
         height: 0.6,
