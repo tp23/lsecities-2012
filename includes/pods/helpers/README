@@ -1,0 +1,10 @@
+This folder contains Pods 1.x helper code.
+
+This code is not actually used directly by Pods 1.x as this version only supports
+helpers managed directly through the Pods web admin interface.
+
+However, we are keeping in this folder a copy of the helpers in use.
+
+When upgrading to Pods 2.x, this code should be useful for action hooks, which
+replace v1.x helpers and can be integrated directly in the theme and managed
+via git.
