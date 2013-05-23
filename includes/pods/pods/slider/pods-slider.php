@@ -23,8 +23,9 @@ function pods_prepare_slider($pod_slug) {
   $obj['slides'] = array();
   
   $slides = $pod->get_field('slides', 'displayorder ASC');
+  var_trace(var_export($slides, true), 'SLIDES');
   foreach($slides as $slide) {
-    $obj['slides'][] = compose_slide($slide->get_field('slug'));
+    $obj['slides'][] = compose_slide($slide['slug']);
   }
   
   $obj['linked_events'] = $pod->get_field('linked_events', 'date_start DESC');
