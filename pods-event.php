@@ -13,7 +13,6 @@
  */
 $TRACE_ENABLED = is_user_logged_in();
 $TRACE_PREFIX = 'pods-events-frontpage';
-global $pods_toplevel_ancestor, $pod_slug;
 lc_data('pods_toplevel_ancestor', 311);
 
 $obj = pods_prepare_event(pods_url_variable(3));

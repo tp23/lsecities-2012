@@ -11,7 +11,7 @@ $TRACE_ENABLED = is_user_logged_in();
 var_trace('header.php starting for post with ID' . $post->ID);
 $ancestors = get_ancestors($post->ID, 'page');
 array_unshift($ancestors, $post->ID);
-global $pods_toplevel_ancestor;
+$pods_toplevel_ancestor = lc_data('pods_toplevel_ancestor');
 $toplevel_ancestor = array_pop($ancestors);
 
 // co-branding: check the X-Site-Id HTTP header from frontend cache
