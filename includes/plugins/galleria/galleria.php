@@ -1,11 +1,8 @@
 <?php
-/*
-Plugin Name: WordPress LC Galleria
-Plugin URI: http://atastypixel.com/blog/wordpress/plugins/galleria-for-wordpress
-Description: A plugin wrapper around the Galleria javascript gallery
-Version: 1.0
-Author: Michael Tyson
-Author URI: http://atastypixel.com/blog
+/**
+ * Galleria for LSE Cities
+ * 
+ * Shortcode and base configuration for galleria.io integration with LSE Cities' WordPress theme.
 */
 
 define(LC_GALLERIA_BASE_PATH, lc_data('theme_base_path') . '/javascripts/vendor/galleria.io/src');
@@ -19,7 +16,7 @@ function galleria_shortcode($args) {
   jQuery(document).ready(function() {
     Galleria.loadTheme('<?php echo LC_GALLERIA_BASE_PATH . '/themes/classic/galleria.classic.js'; ?>');
     Galleria.run('#galleria_<?php echo $gallery_uniqid; ?>', {
-      wait: false,
+      wait: true,
       debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>,
       <?php if($args['picasa_album']) : ?>
       picasa: 'useralbum:<?php echo $args['picasa_album'] ; ?>',
