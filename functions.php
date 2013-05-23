@@ -28,7 +28,7 @@ require_fragment('/includes/utility_functions.php' );
 // Plugin files go here
 require_fragment('/includes/plugins/galleria/galleria.php' );
 
-// Pages templates data init go here
+// Pages templates - data init functions
 require_fragment('/includes/pages/newsletter/pages-newsletter.php' );
 
 // Pods function files go below
