@@ -16,7 +16,12 @@ $TRACE_PREFIX = 'pods-main-frontpage';
 lc_data('TILES_PER_COLUMN', 2);
 
 $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
-pods_prepare_slider($pod_slug);
+$obj = pods_prepare_slider($pod_slug);
+
+$news_categories = $obj['news_categories'];
+$jquery_options = $obj['jquery_options'];
+$slides = $obj['slides'];
+$linked_events = $obj['linked_events'];
 
 ?><?php get_header(); ?>
 
@@ -122,7 +127,7 @@ pods_prepare_slider($pod_slug);
       </div>      
       <div class="extra-content<?php if(count($linked_events) > 0): ?> multi-section<?php endif; ?>">
       <?php
-        component_news($pod->get_field('news_category'), '', $linked_events);
+        component_news($news_categories, '', $linked_events);
       ?>
       </div><!-- .extra-content -->
 <?php include_once('includes/snippets/page-meta.php'); ?>
