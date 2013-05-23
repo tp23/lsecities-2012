@@ -35,7 +35,7 @@ $linked_events = $obj['linked_events'];
     <div class='row' id='core'>
       <div class='twelvecol' id="contentarea">
 <div class="flexslider">
-  <?php var_trace(var_export($slides, true), $TRACE_PREFIX, $TRACE_ENABLED); ?>
+  <?php var_trace(var_export($slides, true), 'SLIDES'); ?>
               <ul class="slides">
                 <?php foreach($slides as $slide_content): ?>
                 <li>
