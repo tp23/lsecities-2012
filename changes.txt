@@ -55,7 +55,7 @@ lsecities-pods-ui (1.4) stable; urgency=low
   * [feature] added UI for research projects (closes: #5)
     
  -- andrea rota <a.rota@lse.ac.uk>  Sun, 21 Oct 2012 16:30:00 +0100
- 
+
 lsecities-2012 (1.3) stable; urgency=low
   
   release 1.3 "houblon"
