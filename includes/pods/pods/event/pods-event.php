@@ -102,15 +102,17 @@ function pods_prepare_event($pod_slug) {
   var_trace($obj['event_blurb_after_event'], $TRACE_PREFIX . 'blurb_after_event', $TRACE_ENABLED);
   $obj['event_contact_info'] = do_shortcode($pod->get_field('contact_info'));
 
-  $event_media_items = $pod->get_field('media_attachments') || array();
+  $event_media_items = $pod->get_field('media_attachments');
   
-  foreach($event_media_items as $item) {
-    $item_pod = new Pod('media_item_v0', $item['id']);
-    $slides_pdf_id = $item_pod->get_field('slides_pdf.ID');
-    if($slides_pdf_id) {
-      $item['slides_uri'] = wp_get_attachment_url($slides_pdf_id);
+  if(is_array($event_media_items)) {
+    foreach($event_media_items as $item) {
+      $item_pod = new Pod('media_item_v0', $item['id']);
+      $slides_pdf_id = $item_pod->get_field('slides_pdf.ID');
+      if($slides_pdf_id) {
+        $item['slides_uri'] = wp_get_attachment_url($slides_pdf_id);
+      }
+      $obj['event_media'][] = $item;
     }
-    $obj['event_media'][] = $item;
   }
   
   $obj['slider'] = $pod->get_field('slider');

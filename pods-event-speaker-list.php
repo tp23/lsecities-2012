@@ -90,10 +90,13 @@ function process_session($session_slug) {
   $session_type = $pod->get_field('session_type.slug');
   if($session_type != 'session') { $session_type = "session $session_type"; }
   $session_speakers = $pod->get_field('speakers');
+  if(!is_array($session_speakers)) { $session_speakers = array(); }
   $session_speakers_blurb = strip_tags($pod->get_field('speakers_blurb'), $ALLOWED_TAGS_IN_BLURBS);
   $session_chairs = $pod->get_field('chairs');
+  if(!is_array($session_chairs)) { $session_chairs = array(); }
   $session_chairs_blurb = strip_tags($pod->get_field('chairs_blurb'), $ALLOWED_TAGS_IN_BLURBS);
   $session_respondents = $pod->get_field('respondents');
+  if(!is_array($session_respondents)) { $session_respondents = array(); }
   $session_respondents_blurb = strip_tags($pod->get_field('respondents_blurb'), $ALLOWED_TAGS_IN_BLURBS);
 
   $subsessions = $pod->get_field('sessions.slug');
