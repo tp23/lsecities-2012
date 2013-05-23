@@ -19,7 +19,7 @@ function galleria_shortcode($args) {
   jQuery(document).ready(function() {
     Galleria.loadTheme('<?php echo LC_GALLERIA_BASE_PATH . '/themes/classic/galleria.classic.js'; ?>');
     Galleria.run('#galleria_<?php echo $gallery_uniqid; ?>', {
-      wait: true,
+      wait: false,
       debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>,
       <?php if($args['picasa_album']) : ?>
       picasa: 'useralbum:<?php echo $args['picasa_album'] ; ?>',
