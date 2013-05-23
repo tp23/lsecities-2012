@@ -1,12 +1,7 @@
 <?php
-/*
-Plugin Name: LSE Cities Pods UI
-Plugin URI: http://lsecities.net/labs/
-Description: Customized Pods UI LSE Cities Pods
-Version: 1.3b0
-Author: Andrea Rota
-Author URI: http://lsecities.net/
-*/
+/**
+ * Pods UI functions for the LSE Cities theme
+ */
 
 /**
  * Hide WP Page editor box when we are editing a WP Page with a Pods
@@ -15,7 +10,7 @@ Author URI: http://lsecities.net/
 function hide_editor_box_when_editing_pods_pages($hook) {
     if($hook != 'post.php')
         return;
-    wp_enqueue_script('hide_editor_box', plugins_url('/lsecities-pods-ui.js', __FILE__));
+    wp_enqueue_script('hide_editor_box', lc_data('theme_base_path') . '/lsecities-pods-ui.js');
 }
 add_action('admin_enqueue_scripts', 'hide_editor_box_when_editing_pods_pages');
 

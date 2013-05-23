@@ -13,7 +13,7 @@ if ( !defined('ABSPATH')) exit;
 /**
  * Wrapper to require
  * Just require theme function files
- * 
+ *
  * @param string $file The function file to be required
  */
 function require_fragment($file) {
