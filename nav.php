@@ -57,7 +57,7 @@ if($current_post_id == 309 or in_array(309, get_post_ancestors($current_post_id)
 }
 
 if(lc_data('pods_toplevel_ancestor') == 309) {
-  get_template_part('nav', 'article');
+  get_template_part('templates/nav/nav', 'article');
   $nav_generated = true;
 }
 
