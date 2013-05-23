@@ -453,7 +453,7 @@ function generate_session_people_blurb($pod, $blurb_field, $special_fields_prefi
     error_log('No blurb field name provided');
     return;
   }
-  if(count($session_people) == 0) {
+  if(!is_array($session_people) or count($session_people) === 0) {
     error_log('No people list provided');
     return;
   }
