@@ -1,3 +1,10 @@
+/**
+ * When on a Page edit screen with a Pods template selected for the
+ * page, hide main content entry textarea to avoid confusing users.
+ * As the page's own content is not used on any of our Pods templates,
+ * accidentally inserting content there might lead editors to worry
+ * about this content not appearing on the rendered pages.
+ */
 jQuery(document).ready(function($) {
   var editorElement = '#postdivrich';
   var podsPrefix = /^pods-/;
