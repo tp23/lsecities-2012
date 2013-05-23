@@ -37,8 +37,8 @@ function pages_prepare_people_list($people_list_slug) {
   ));
   
   $people_list = array(
-    'full' => generate_list($people_list, $people_in_output_full, 'full_list'),
-    'summary' => generate_list($people_list, $people_in_output_summary, 'summary')
+    'full_list' => people_list_generate_list($people_list, $people_in_output_full, 'full_list'),
+    'summary' => people_list_generate_list($people_list, $people_in_output_summary, 'summary')
   );
 
   return $people_list;
