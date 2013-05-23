@@ -6,11 +6,11 @@ function pods_prepare_slider($pod_slug) {
     redirect_to_404();
   }
 
-  $pod->fetchRecord();
+  // $pod->fetchRecord();
 
   // for menus etc.
   global $this_pod;
-  $this_pod = new LC\PodObject($pod, 'Research');
+  $this_pod = new LC\PodObject($pod, 'Frontpage');
 
   // prepare array for return data structure
   $obj = array();
