@@ -47,7 +47,7 @@ function pages_prepare_newsletter($id) {
    * Set up the objects needed
    */
   $sections = get_pages(array(
-    'parent' => $post->ID,
+    'parent' => $id,
     'post_type' => 'page',
     'sort_column'  => 'menu_order',
     'hierarchical' => 0

@@ -1,4 +1,8 @@
 <?php
+
+// Exit if accessed directly
+if ( !defined('ABSPATH')) exit;
+
 function pods_prepare_slider($pod_slug) {  
   /**
    * Initialize constants

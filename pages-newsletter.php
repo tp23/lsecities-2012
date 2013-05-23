@@ -11,7 +11,7 @@ define('WP_USE_THEMES', false);
 /**
  * Initialize data
  */
-$newsletter = pages_prepare_newsletter(get_the_ID());
+$newsletter = pages_prepare_newsletter($post->ID);
 
 var_trace(var_export($newsletter, true));
 
