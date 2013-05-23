@@ -4,3 +4,6 @@
 [submodule "vendor/lib/twig"]
 	path = vendor/lib/twig
 	url = git://github.com/fabpot/Twig.git
+[submodule "javascripts/vendor/galleria.io"]
+	path = javascripts/vendor/galleria.io
+	url = git://github.com/aino/galleria.git
