@@ -74,7 +74,7 @@ if($current_post_id == 489 or in_array(1890, get_post_ancestors($current_post_id
 }
 
 // /ua/conferences/
-if($nav_show_conferences or check_parent_conference(191) or check_parent_conference(229) or check_parent_conference(250) or check_parent_conference(268) or check_parent_conference(211) or check_parent_conference(284) or check_parent_conference(286) or check_parent_conference(106) or check_parent_conference(381) or check_parent_conference(391) or check_parent_conference(577) or check_parent_conference(1388)) {
+if(lc_data('nav_show_conferences') or check_parent_conference(191) or check_parent_conference(229) or check_parent_conference(250) or check_parent_conference(268) or check_parent_conference(211) or check_parent_conference(284) or check_parent_conference(286) or check_parent_conference(106) or check_parent_conference(381) or check_parent_conference(391) or check_parent_conference(577) or check_parent_conference(1388)) {
   get_template_part('nav', 'conferences');
   $nav_generated = true;
 }
@@ -123,7 +123,7 @@ if($nav_generated == false) {
 <div class="wireframe threecol last" id="navigationarea">
 <?php
 if(lc_data('pods_toplevel_ancestor') == 309) {
-  get_template_part('nav', 'article');
+  get_template_part('templates/nav/nav', 'article');
   $nav_generated = true;
 } ?>
 </div>
