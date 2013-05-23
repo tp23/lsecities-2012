@@ -25,6 +25,9 @@ require_fragment('/includes/hooks.php' );
 require_fragment('/includes/functions.php' );
 require_fragment('/includes/utility_functions.php' );
 
+// Plugin files go here
+require_fragment('/includes/plugins/galleria/galleria.php' );
+
 // Pods function files go below
 require_fragment('/includes/pods/event/pods-event.php' );
 require_fragment('/includes/pods/research-project/pods-research-project.php' );
