@@ -99,6 +99,8 @@ function compose_slide($slide_slug) {
     default:
       break;
   }
+  
+  return $slide_content;
 }
 
 function compose_slide_content($column_spans, $tiles) {
