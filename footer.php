@@ -143,7 +143,7 @@
             mousewheel: false,
             controlNav: false,
             directionNav: true,
-<?php global $jquery_options; if($jquery_options) { echo $jquery_options; } ?>
+<?php if(lc_data('slider_jquery_options')) { echo lc_data('slider_jquery_options'); } ?>
 
           }));
           $('.runon li:nth-child(odd)').addClass('alternate');

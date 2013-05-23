@@ -13,15 +13,7 @@
 
 $TRACE_PREFIX = 'pods-main-frontpage';
 
-lc_data('TILES_PER_COLUMN', 2);
-
-$pod_slug = get_post_meta($post->ID, 'pod_slug', true);
-$obj = pods_prepare_slider($pod_slug);
-
-$news_categories = $obj['news_categories'];
-$jquery_options = $obj['jquery_options'];
-$slides = $obj['slides'];
-$linked_events = $obj['linked_events'];
+$obj = pods_prepare_slider(get_post_meta($post->ID, 'pod_slug', true));
 
 ?><?php get_header(); ?>
 
@@ -35,9 +27,8 @@ $linked_events = $obj['linked_events'];
     <div class='row' id='core'>
       <div class='twelvecol' id="contentarea">
 <div class="flexslider">
-  <?php var_trace(var_export($slides, true), 'SLIDES'); ?>
               <ul class="slides">
-                <?php foreach($slides as $slide_content): ?>
+                <?php foreach($obj['slides'] as $slide_content): ?>
                 <li>
                   <div class="slide-inner row">
                     <?php foreach($slide_content['columns'] as $slide_column): ?>
@@ -95,9 +86,9 @@ $linked_events = $obj['linked_events'];
               </ul>
             </div>
       </div>      
-      <div class="extra-content<?php if(count($linked_events) > 0): ?> multi-section<?php endif; ?>">
+      <div class="extra-content<?php if(count($obj['linked_events']) > 0): ?> multi-section<?php endif; ?>">
       <?php
-        component_news($news_categories, '', $linked_events);
+        component_news($obj['news_categories'], '', $obj['linked_events']);
       ?>
       </div><!-- .extra-content -->
 <?php include_once('includes/snippets/page-meta.php'); ?>

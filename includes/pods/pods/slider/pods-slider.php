@@ -1,5 +1,10 @@
 <?php
 function pods_prepare_slider($pod_slug) {  
+  /**
+   * Initialize constants
+   */
+  lc_data('TILES_PER_COLUMN', 2);
+  
   $pod = new Pod('slider', $pod_slug);
 
   if(!$pod->getTotalRows()) {
@@ -18,7 +23,12 @@ function pods_prepare_slider($pod_slug) {
   var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
 
   $obj['news_categories'] = news_categories($pod->get_field('news_category'));
-  $obj['jquery_options'] = $pod->get_field('jquery_options');
+  
+  /**
+   * Read any jquery options and set global variable accordingly; these
+   * options are used in the footer.php template.
+   */
+  lc_data('slider_jquery_options', $pod->get_field('slider_jquery_options'));
   
   $obj['slides'] = array();
   
