@@ -102,7 +102,7 @@ function pods_prepare_event($pod_slug) {
   var_trace($obj['event_blurb_after_event'], $TRACE_PREFIX . 'blurb_after_event', $TRACE_ENABLED);
   $obj['event_contact_info'] = do_shortcode($pod->get_field('contact_info'));
 
-  $event_media_items = $pod->get_field('media_attachments');
+  $event_media_items = $pod->get_field('media_attachments') || array();
   
   foreach($event_media_items as $item) {
     $item_pod = new Pod('media_item_v0', $item['id']);
