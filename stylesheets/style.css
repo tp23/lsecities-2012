@@ -640,10 +640,9 @@ right: -21px; */ }
 @media only screen and (min-width: 768px) { .lc-newspaper-article .lc-galleria { width: 150%; } }
 
 .lc-research-project .heading-image .lc-galleria { width: 100%; max-width: 100%; }
+.lc-research-project section .lc-galleria, .lc-research-project section .lc-galleria-picasa { margin: 1em 0; }
 
 .lc-conference-frontpage .lc-galleria-picasa { width: 100%; max-width: 100%; }
-
-.dd-options { height: 300px; width: 100%; overflow: auto; }
 
 .lc-newspaper-article header.heading-image img { max-width: 100%; width: 100%; }
 .lc-newspaper-article .has-pullquote::before { content: attr(data-pullquote); font-weight: bold; opacity: 0.8; float: right; width: 50%; margin: 0.5em -30% 0 0; padding-left: 1.5em; padding-bottom: 0.5em; font-style: italic; position: relative; font-size: 1.5em; line-height: 1.25em; }
