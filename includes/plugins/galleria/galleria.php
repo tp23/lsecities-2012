@@ -12,12 +12,13 @@ define(LC_GALLERIA_BASE_PATH, lc_data('theme_base_path') . '/javascripts/vendor/
 
 function galleria_shortcode($args) {
   ob_start();
+  $gallery_uniqid = uniqid();
   ?>
-  <div id="galleria" style="width: <?php echo ($args['container-width'] ? $args['container-width'] : '100%'); ?>;"></div>
+  <div id="galleria_<?php echo $gallery_uniqid; ?>" style="width: <?php echo ($args['container-width'] ? $args['container-width'] : '100%'); ?>;"></div>
   <script type="text/javascript">
   jQuery(document).ready(function() {
     Galleria.loadTheme('<?php echo LC_GALLERIA_BASE_PATH . '/themes/classic/galleria.classic.js'; ?>');
-    Galleria.run('#galleria', {
+    Galleria.run('#galleria_<?php echo $gallery_uniqid; ?>', {
       wait: true,
       debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>,
       <?php if($args['picasa_album']) : ?>
