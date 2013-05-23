@@ -6,8 +6,6 @@ function pods_prepare_slider($pod_slug) {
     redirect_to_404();
   }
 
-  // $pod->fetchRecord();
-
   // for menus etc.
   global $this_pod;
   $this_pod = new LC\PodObject($pod, 'Frontpage');
@@ -21,7 +19,13 @@ function pods_prepare_slider($pod_slug) {
 
   $obj['news_categories'] = news_categories($pod->get_field('news_category'));
   $obj['jquery_options'] = $pod->get_field('jquery_options');
-  $obj['slides'] = $pod->get_field('slides', 'displayorder ASC');
+  
+  $obj['slides'] = array();
+  
+  foreach($slides = $pod->get_field('slides', 'displayorder ASC') as $slide) {
+    $obj['slides'][] = compose_slide($slide->get_field('slug'));
+  }
+  
   $obj['linked_events'] = $pod->get_field('linked_events', 'date_start DESC');
   
   return $obj;
@@ -60,7 +64,42 @@ function get_tile_classes($tile_layout) {
   return $element_classes;
 }
 
-function compose_slide($column_spans, $tiles) {
+function compose_slide($slide_slug) {
+  $current_slide_pod = new Pod('slide', $slide_slug);
+  $slide_layout = $current_slide_pod->get_field('slide_layout.slug');
+
+  /**
+   * build array of slides for this tile by reading in sequence
+   * all the tile_NN fields of the slide Pod (initially these are 8)
+   */
+  $tiles = array();
+  foreach(array(0, 1, 2, 3, 4, 5, 6, 7) as $tile_counter) {
+    $this_tile_slug = $current_slide_pod->get_field('tile_' . sprintf('%02d', $tile_counter) . '.slug');
+    array_push($tiles, array('slug' => $this_tile_slug));
+  }
+  
+  var_trace('tiles: ' . var_export($tiles, true), $TRACE_PREFIX, $TRACE_ENABLED);
+  var_trace('slide_layout: ' . var_export($slide_layout, true), $TRACE_PREFIX, $TRACE_ENABLED);
+  
+  switch($slide_layout) {
+    case 'two-two-one':
+      $slide_content = compose_slide_content(array(2, 2, 1), $tiles);
+      var_trace(var_export($slide_content, true), 'slide_content_array');
+      break;
+    case 'four-one':
+      $slide_content = compose_slide_content(array(4, 1), $tiles);
+      var_trace(var_export($slide_content, true), 'slide_content_array');
+      break;
+    case 'five':
+      $slide_content = compose_slide_content(array(5), $tiles);
+      var_trace(var_export($slide_content, true), 'slide_content_array');
+      break;
+    default:
+      break;
+  }
+}
+
+function compose_slide_content($column_spans, $tiles) {
   $TILES_PER_COLUMN = lc_data('TILES_PER_COLUMN');
   
   var_trace(var_export($tiles, true), 'compose_slide|tiles');

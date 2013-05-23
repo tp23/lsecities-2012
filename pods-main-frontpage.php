@@ -37,37 +37,7 @@ $linked_events = $obj['linked_events'];
 <div class="flexslider">
   <?php var_trace(var_export($slides, true), $TRACE_PREFIX, $TRACE_ENABLED); ?>
               <ul class="slides">
-                <?php foreach($slides as $current_slide): ?>
-                <?php
-                  $current_slide_pod = new Pod('slide', $current_slide['slug']);
-                  $slide_layout = $current_slide_pod->get_field('slide_layout.slug');
-                  // $tiles = $current_slide_pod->get_field('tiles', 'displayorder ASC');
-                  $tiles = array();
-                  foreach(array(0, 1, 2, 3, 4, 5, 6, 7) as $tile_counter) {
-                    $this_tile_slug = $current_slide_pod->get_field('tile_' . sprintf('%02d', $tile_counter) . '.slug');
-                    array_push($tiles, array('slug' => $this_tile_slug));
-                  }
-                  
-                  var_trace('tiles: ' . var_export($tiles, true), $TRACE_PREFIX, $TRACE_ENABLED);
-                  var_trace('slide_layout: ' . var_export($slide_layout, true), $TRACE_PREFIX, $TRACE_ENABLED);
-                  
-                  switch($slide_layout) {
-                    case 'two-two-one':
-                      $slide_content = compose_slide(array(2, 2, 1), $tiles);
-                      var_trace(var_export($slide_content, true), 'slide_content_array');
-                      break;
-                    case 'four-one':
-                      $slide_content = compose_slide(array(4, 1), $tiles);
-                      var_trace(var_export($slide_content, true), 'slide_content_array');
-                      break;
-                    case 'five':
-                      $slide_content = compose_slide(array(5), $tiles);
-                      var_trace(var_export($slide_content, true), 'slide_content_array');
-                      break;
-                    default:
-                      break;
-                  }
-                ?>
+                <?php foreach($slides as $slide_content): ?>
                 <li>
                   <div class="slide-inner row">
                     <?php foreach($slide_content['columns'] as $slide_column): ?>
