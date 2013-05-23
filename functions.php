@@ -30,6 +30,7 @@ require_fragment('/includes/plugins/galleria/galleria.php' );
 
 // Pages templates - data init functions
 require_fragment('/includes/pages/newsletter/pages-newsletter.php' );
+require_fragment('/includes/pages/people-list/pages-people-list.php' );
 
 // Pods function files go below
 

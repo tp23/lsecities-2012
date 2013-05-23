@@ -11,7 +11,7 @@ if($people_list):
   <dd>
 <?php endif; ?>
     <nav id="whoswho-side-toc">
-    <?php echo generate_list($people_list, 'summary'); ?>
+    <?php echo $people_list['summary']; ?>
     </nav>
 <?php if(is_user_logged_in()) : ?>
   </dd>
