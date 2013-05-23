@@ -10,7 +10,7 @@
 function hide_editor_box_when_editing_pods_pages($hook) {
     if($hook != 'post.php')
         return;
-    wp_enqueue_script('hide_editor_box', lc_data('theme_base_path') . '/lsecities-pods-ui.js');
+    wp_enqueue_script('hide_editor_box', lc_data('theme_base_path') . '/javascripts/lsecities-pods-ui.js');
 }
 add_action('admin_enqueue_scripts', 'hide_editor_box_when_editing_pods_pages');
 
