@@ -48,9 +48,9 @@ function galleria_shortcode($args) {
 }
 
 function galleria_init() {
-  wp_enqueue_script('galleria', LC_GALLERIA_BASE_PATH . '/galleria.js', 'jquery');
-  wp_enqueue_script('galleria_picasa', LC_GALLERIA_BASE_PATH . '/plugins/picasa/galleria.picasa.js', 'galleria');
-  wp_enqueue_script('galleria_theme_classic', LC_GALLERIA_BASE_PATH . '/themes/classic/galleria.classic.js', 'galleria');
+  wp_enqueue_script('galleria', LC_GALLERIA_BASE_PATH . '/galleria.js', 'jquery', false, true);
+  wp_enqueue_script('galleria_picasa', LC_GALLERIA_BASE_PATH . '/plugins/picasa/galleria.picasa.js', 'galleria', false, true);
+  wp_enqueue_script('galleria_theme_classic', LC_GALLERIA_BASE_PATH . '/themes/classic/galleria.classic.js', 'galleria', false, true);
   wp_enqueue_style('galleria_theme_classic', LC_GALLERIA_BASE_PATH . '/themes/classic/galleria.classic.css');
   wp_enqueue_style('galleria_theme_classic_lsecities', lc_data('theme_base_path') . '/stylesheets/plugins/galleria.io/galleria.classic.lsecities.css');
 }
