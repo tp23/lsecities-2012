@@ -46,13 +46,13 @@ if($current_post_id == 94) {
 
 // /research (the whole Research section) or individual Research project pod items
 if($current_post_id == 306 or in_array(306, get_post_ancestors($current_post_id)) or (lc_data('pods_toplevel_ancestor') == 306)) {
-  get_template_part('nav', 'research');
+  get_template_part('templates/nav/nav', 'research');
   $nav_generated = true;
 }
 
 // /publications (the whole Publications section)
 if($current_post_id == 309 or in_array(309, get_post_ancestors($current_post_id))) {
-  get_template_part('nav', 'publications');
+  get_template_part('templates/nav/nav', 'publications');
   $nav_generated = true;
 }
 
@@ -63,7 +63,7 @@ if(lc_data('pods_toplevel_ancestor') == 309) {
 
 // /events (the whole Events section) or individual Event pod items
 if($current_post_id == 311 or in_array(311, get_post_ancestors($current_post_id)) or (lc_data('pods_toplevel_ancestor') == 311)) {
-  get_template_part('nav', 'events');
+  get_template_part('templates/nav/nav', 'events');
   $nav_generated = true;
 }
 
@@ -75,7 +75,7 @@ if($current_post_id == 489 or in_array(1890, get_post_ancestors($current_post_id
 
 // /ua/conferences/
 if(lc_data('nav_show_conferences') or check_parent_conference(191) or check_parent_conference(229) or check_parent_conference(250) or check_parent_conference(268) or check_parent_conference(211) or check_parent_conference(284) or check_parent_conference(286) or check_parent_conference(106) or check_parent_conference(381) or check_parent_conference(391) or check_parent_conference(577) or check_parent_conference(1388)) {
-  get_template_part('nav', 'conferences');
+  get_template_part('templates/nav/nav', 'conferences');
   $nav_generated = true;
 }
 
@@ -88,12 +88,12 @@ if($current_post_id == 421 or in_array(421, get_post_ancestors($current_post_id)
 
 // /urban-at-lse/
 if($current_post_id == 3338 or in_array(3338, get_post_ancestors($current_post_id))) {
-  get_template_part('nav', 'urbanatlse');
+  get_template_part('templates/nav/nav', 'urbanatlse');
   $nav_generated = true;
 }
 
 if($nav_generated == false) {
-  get_template_part('nav', 'generic');
+  get_template_part('templates/nav/nav', 'generic');
 }
 ?>
             
