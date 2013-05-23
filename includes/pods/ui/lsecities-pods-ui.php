@@ -8,9 +8,9 @@
  * template that doesn't grab content from the WP Page itself
  */
 function hide_editor_box_when_editing_pods_pages($hook) {
-    if($hook != 'post.php')
-        return;
-    wp_enqueue_script('hide_editor_box', lc_data('theme_base_path') . '/javascripts/lsecities-pods-ui.js');
+    if($hook === 'post.php' or $hook === 'post-new.php') {
+      wp_enqueue_script('hide_editor_box', lc_data('theme_base_path') . '/javascripts/lsecities-pods-ui.js');
+    }
 }
 add_action('admin_enqueue_scripts', 'hide_editor_box_when_editing_pods_pages');
 
