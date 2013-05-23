@@ -22,7 +22,8 @@ function pods_prepare_slider($pod_slug) {
   
   $obj['slides'] = array();
   
-  foreach($slides = $pod->get_field('slides', 'displayorder ASC') as $slide) {
+  $slides = $pod->get_field('slides', 'displayorder ASC');
+  foreach($slides as $slide) {
     $obj['slides'][] = compose_slide($slide->get_field('slug'));
   }
   
