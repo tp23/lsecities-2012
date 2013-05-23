@@ -54,6 +54,6 @@ function lc_data($key, $value = false) {
  */
 lc_data('meta_description', 'LSE Cities is an international centre at the London School of Economics and Political Science that studies how people and cities interact in a rapidly urbanising world, focussing on how the design of cities impacts on society, culture and the environment. Through research, conferences, teaching and projects, the centre aims to shape new thinking and practice on how to make cities fairer and more sustainable for the next generation of urban dwellers, who will make up some 70 per cent of the global population by 2050.');
 /**
- * protocol-relative base URI of theme
+ * base URI of theme
  */
-lc_data('theme_base_path', '//' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/lsecities-2012');
+lc_data('theme_base_path', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content/themes/lsecities-2012');
