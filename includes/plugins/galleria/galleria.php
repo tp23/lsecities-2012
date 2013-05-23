@@ -16,7 +16,8 @@ function galleria_shortcode($args) {
   <div id="galleria" style="width: <?php echo ($args['container-width'] ? $args['container-width'] : '100%'); ?>;"></div>
   <script type="text/javascript">
   jQuery(document).ready(function() {
-    jQuery('#galleria').galleria({
+    Galleria.loadTheme('<?php echo LC_GALLERIA_BASE_PATH . '/themes/classic/galleria.classic.js'; ?>');
+    Galleria.run('#galleria', {
       wait: true,
       debug: <?php echo is_user_logged_in() ? 'true' : 'false'; ?>,
       <?php if($args['picasa_album']) : ?>
