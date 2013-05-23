@@ -4,7 +4,7 @@
 if ( !defined('ABSPATH')) exit;
 
 function pods_prepare_article($post_id) {
-
+  var_trace($post_id, 'POST_ID');
   /* URI: /media/objects/articles/<article-slug>[?lang=<language>] */
 
   $pod_slug = get_post_meta($post_id, 'pod_slug', true);

@@ -43,7 +43,6 @@ $gallery = $obj['gallery'];
                   <?php endif; ?>
                 </header><!-- .entry-header -->
                 <div class="entry-content">    
-                <?php if(!empty($pod->data)): ?>
                   <div class="article">
                     <div class="entry-content article-text<?php if($obj['article_layout']) { echo ' ' . $obj['article_layout']; } ?>">
                     <?php if($obj['article_text']): ?>
@@ -57,7 +56,6 @@ $gallery = $obj['gallery'];
                     <div class="extra-content"><?php echo $obj['article_extra_content']; ?></div>
                     <?php endif; ?>
                   </div>
-                <?php endif; ?>
                     
                 <?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
                 </div><!-- .entry-content -->
