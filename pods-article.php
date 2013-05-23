@@ -7,7 +7,7 @@
  */
 $TRACE_ENABLED = is_user_logged_in();
 
-$article_data = pods_prepare_article($post->ID);
+$obj = pods_prepare_article($post->ID);
 
 /**
  * Copy gallery object to own variable for compatibility with
