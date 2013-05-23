@@ -11,7 +11,7 @@ $BASE_URI = PODS_BASEURI_RESEARCH_PROJECTS;
 $TRACE_ENABLED = is_user_logged_in();
 global $IN_CONTENT_AREA, $HIDE_CURRENT_PROJECTS, $HIDE_PAST_PROJECTS;
 $TRACE_PREFIX = 'pods-research-projects';
-$pods_toplevel_ancestor = 306;
+lc_data('pods_toplevel_ancestor', 306);
 
 $pod_slug = get_post_meta($post->ID, 'pod_slug', true);
 if($pod_slug) {
@@ -22,9 +22,7 @@ if($pod_slug) {
 
 if(!$pod_from_page) {
   // set toplevel ancestor explicitly as we are outside of WP's hierarchy
-  global $pods_toplevel_ancestor;
-
-  $pods_toplevel_ancestor = 306;
+  lc_data('pods_toplevel_ancestor', 306);
 }
 
 var_trace('pod_slug: ' . $pod_slug, $TRACE_PREFIX, $TRACE_ENABLED);
