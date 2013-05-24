@@ -9,7 +9,7 @@
 ?><?php
 $TRACE_ENABLED = is_user_logged_in();
 var_trace('header.php starting for post with ID' . $post->ID);
-var_trace(var_export($page, true));
+var_trace(var_export($post, true), 'post object');
 $ancestors = get_ancestors($post->ID, 'page');
 array_unshift($ancestors, $post->ID);
 $pods_toplevel_ancestor = lc_data('pods_toplevel_ancestor');
