@@ -1,6 +1,7 @@
 <?php
 global $post;
-$obj = pods_prepare_conference(parent_conference_page($post->ID));
+$parent_conference_page = parent_conference_page($post->ID);
+$obj = pods_prepare_conference($parent_conference_page['id']);
 
 if(count($obj['button_links'])) :
 ?>
