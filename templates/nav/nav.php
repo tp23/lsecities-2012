@@ -17,10 +17,9 @@ $ancestors = get_post_ancestors($current_post_id);
 
 var_trace(var_export($ancestors, true), $TRACE_PREFIX . 'ancestors: ');
 
-global $parent_post_id;
-$parent_post_id = count($ancestors) > 1 ? array_shift($ancestors) : $current_post_id;
+lc_data('parent_post_id', count($ancestors) > 1 ? array_shift($ancestors) : $current_post_id);
 
-var_trace($current_post_id, $TRACE_PREFIX . 'post ID: ');
+var_trace(lc_data('parent_post_id'), $TRACE_PREFIX . 'post ID: ');
 var_trace($parent_post_id, $TRACE_PREFIX . 'parent post ID: ');
 var_trace(var_export($ancestors, true), $TRACE_PREFIX . 'ancestors: ');
 var_trace(var_export($pods_toplevel_ancestor, true), $TRACE_PREFIX . 'pods_toplevel_ancestor: ');
@@ -31,12 +30,6 @@ var_trace(var_export($pods_toplevel_ancestor, true), $TRACE_PREFIX . 'pods_tople
 
 <?php
 $nav_generated = false;
-
-// / (main frontpage)
-if($current_post_id === 393) {
-  get_template_part('templates/partials/lsecities-frontpage');
-  $nav_generated = true;
-}
 
 // /ua/ (Urban Age frontpage)
 if($current_post_id === 94) {
