@@ -93,6 +93,7 @@ function parent_conference_page($post_id) {
   var_trace(var_export($ancestor_pages, true), 'fn:parent_conference_page -- ancestor_pages');
   
   foreach($ancestor_pages as $page) {
+    var_trace($page->ID . ':' . get_post_meta($page->ID, '_wp_page_template', true), '_wp_page_template');
     if(lc_data('pods_conference__wp_page_template') === get_post_meta($page->ID, '_wp_page_template', true)) {
       return array('id' => $page->ID, 'slug' => $page->post_name);
     }
