@@ -92,10 +92,11 @@ function parent_conference_page($post_id) {
   var_trace($post_id, 'fn:parent_conference_page -- post_id');
   var_trace(var_export($ancestor_pages, true), 'fn:parent_conference_page -- ancestor_pages');
   
-  foreach($ancestor_pages as $page) {
-    var_trace($page->ID . ':' . get_post_meta($page->ID), 'post_meta');
-    if(lc_data('pods_conference__wp_page_template') === get_post_meta($page->ID, '_wp_page_template', true)) {
-      return array('id' => $page->ID, 'slug' => $page->post_name);
+  foreach($ancestor_pages as $page_id) {
+    var_trace(var_export(get_post_meta($page_id)), 'post_meta for post ' . $page_id);
+    if(lc_data('pods_conference__wp_page_template') === get_post_meta($page_id, '_wp_page_template', true)) {
+      $post_obj = get_post($page_id, ARRAY_A);
+      return array('id' => $page_id, 'slug' => $post_obj->post_name);
     }
   }
   
