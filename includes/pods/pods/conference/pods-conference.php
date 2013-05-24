@@ -67,6 +67,38 @@ function pods_prepare_conference($pod_slug) {
   $obj['research_summary_tile_image'] = wp_get_attachment_url($tile_pod->get_field('image.ID'));
   $obj['research_summary_pdf_uri'] = $pod->get_field('research_summary.data_section_pdf_uri');
 
+  // generate list of items for conference menu (used in nav partial)
+  $button_links = $pod->get_field('links') ? $pod->get_field('links') : array();
+  $conference_menu = array();
+  if(count($button_links)) {
+    // sort by menu_order of linked items
+    foreach($button_links as $sort_key => $sort_value) {
+      $conference_menu[$sort_key] = $sort_value['menu_order'];
+    }
+    array_multisort($conference_menu, SORT_ASC, $button_links);
+  }
+  // add the conference homepage itself
+  array_unshift($button_links, array('post_title' => $obj['conference_title'], 'guid' => '/ua/conferences/' . $pod_slug));
+  $obj['button_links'] = $button_links;
+  
+  $conference_list = new Pod('list', 'urban-age-conferences');
+  $pod_type = $conference_list->get_field('pod_type.slug');
+  $pod_list = $conference_list->get_field('list_pages', 'menu_order DESC');
+
+  $obj['conferences_menu_items'] = array();
+  
+  if(count($pod_list)) {
+    foreach($pod_list as $key => $item) {
+      $item_pod = new Pod($pod_type, get_post_meta($item['ID'], 'pod_slug', true));
+      $menu_conference_title = $item_pod->get_field('conference_title');
+      $menu_conference_city_year = $item_pod->get_field('city') . ' | ' . $item_pod->get_field('year');
+      $obj['conferences_menu_items'][] = array(
+        'permalink' => get_permalink($item['ID']),
+        'title' => ($menu_conference_title and $item_pod->get_field('show_title_in_navigation')) ? $menu_conference_title . '<br/>' . $menu_conference_city_year : $menu_conference_city_year
+      );
+    }
+  }
+  
   $obj['gallery'] = array(
    'picasa_gallery_id' => $pod->get_field('photo_gallery'),
    'slug' => $pod->get_field('slug')
@@ -89,11 +121,7 @@ function parent_conference_page($post_id) {
   // include current page in array (we need to check current page as well)
   array_push($ancestor_pages, $post_id);
   
-  var_trace($post_id, 'fn:parent_conference_page -- post_id');
-  var_trace(var_export($ancestor_pages, true), 'fn:parent_conference_page -- ancestor_pages');
-  
   foreach($ancestor_pages as $page_id) {
-    var_trace(var_export(get_post_meta($page_id), true), 'post_meta for post ' . $page_id);
     if(lc_data('pods_conference__wp_page_template') === get_post_meta($page_id, '_wp_page_template', true)) {
       $post_obj = get_post($page_id, ARRAY_A);
       return array('id' => $page_id, 'slug' => $post_obj['post_name']);
