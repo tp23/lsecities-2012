@@ -83,7 +83,12 @@ function pods_prepare_conference($pod_slug) {
  * ancestry line in case nested page structures are used in the future.
  */
 function parent_conference_page($post_id) {
+  // get IDs of ancestor pages
   $ancestor_pages = get_post_ancestors($post_id);
+  
+  // include current page in array (we need to check current page as well)
+  array_push($ancestor_pages, $post_id);
+  
   var_trace($post_id, 'fn:parent_conference_page -- post_id');
   var_trace(var_export($ancestor_pages, true), 'fn:parent_conference_page -- ancestor_pages');
   
