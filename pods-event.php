@@ -182,7 +182,7 @@ $media_items_output_counter = 1;
               </section><!-- #speaker-profiles -->
               <?php endif; // ($obj['people_with_blurb']) ?>
             </div><!-- .extra-content -->
-<?php include_once('includes/snippets/page-meta.php'); ?>
+<?php include_once('templates/partials/page-meta.php'); ?>
           </div>
 
           <?php get_template_part('nav'); ?>

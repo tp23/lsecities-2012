@@ -53,8 +53,8 @@
           <?php endif; // (lc_data('site-ec2012')) ?>
         </div>
         <div class="twocol">
-          <?php get_template_part('snippet-organizers'); ?>
-          <?php get_template_part('snippet-colophon'); ?>
+          <?php get_template_part('templates/partials/organizers'); ?>
+          <?php get_template_part('templates/partials/colophon'); ?>
         </div>
         <div class="onecol last">&nbsp;</div>
       </div>

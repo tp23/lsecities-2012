@@ -34,7 +34,7 @@ set_query_var('people_list', $people_list);
           <div class='entry-content article-text'>
             <?php echo $people_list['full_list']; ?>
           </div>
-          <?php get_template_part('snippet-socialmedia-share'); ?>
+          <?php get_template_part('templates/partials/socialmedia-share'); ?>
         </article>
       </div><!-- .top-content -->
     </div><!-- #contentarea -->

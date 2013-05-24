@@ -128,7 +128,7 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
             </ul>
           </section>
           <?php endif; ?>
-          <?php get_template_part('snippet-socialmedia-share'); ?>
+          <?php get_template_part('templates/partials/socialmedia-share'); ?>
         </article>
         <aside class='wireframe fourcol last entry-meta' id='keyfacts'>
           <div>

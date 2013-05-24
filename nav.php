@@ -34,13 +34,13 @@ $nav_generated = false;
 
 // / (main frontpage)
 if($current_post_id == 393) {
-  get_template_part('snippet-lsecities-frontpage');
+  get_template_part('templates/partials/lsecities-frontpage');
   $nav_generated = true;
 }
 
 // /ua/ (Urban Age frontpage)
 if($current_post_id == 94) {
-  get_template_part('snippet-organizers');
+  get_template_part('templates/partials/organizers');
   $nav_generated = true;
 }
 

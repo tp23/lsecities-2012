@@ -11,7 +11,7 @@ $obj = pods_prepare_article($post->ID);
 
 /**
  * Copy gallery object to own variable for compatibility with
- * gallery snippet.
+ * gallery partial.
  */
 $gallery = $obj['gallery'];
 
@@ -111,7 +111,7 @@ $gallery = $obj['gallery'];
                   </div>
                   <?php endif; ?>           
   
-                  <?php get_template_part('snippet-socialmedia-share'); ?>
+                  <?php get_template_part('templates/partials/socialmedia-share'); ?>
                   <div class="media-items">
                     
                   </div>

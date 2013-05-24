@@ -91,7 +91,7 @@ $obj = pods_prepare_slider(get_post_meta($post->ID, 'pod_slug', true));
         component_news($obj['news_categories'], '', $obj['linked_events']);
       ?>
       </div><!-- .extra-content -->
-<?php include_once('includes/snippets/page-meta.php'); ?>
+<?php include_once('templates/partials/page-meta.php'); ?>
     </div><!-- #core.row -->
     </div>        
 		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'twentyeleven' ) . '</span>', 'after' => '</div>' ) ); ?>
