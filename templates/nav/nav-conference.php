@@ -4,6 +4,7 @@ $TRACE_PREFIX = 'nav-conferences';
 
 global $post;
 $conference_page = parent_conference($post->ID);
+var_trace(var_export($conference_page, true), 'CONFERENCE_PAGE'); 
 $pod_slug = $conference_page['slug'];
 
 $pod = new Pod('conference', $pod_slug);
