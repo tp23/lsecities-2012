@@ -75,7 +75,7 @@ if($current_post_id == 489 or in_array(1890, get_post_ancestors($current_post_id
 
 // /ua/conferences/
 if(lc_data('nav_show_conferences') or check_parent_conference(191) or check_parent_conference(229) or check_parent_conference(250) or check_parent_conference(268) or check_parent_conference(211) or check_parent_conference(284) or check_parent_conference(286) or check_parent_conference(106) or check_parent_conference(381) or check_parent_conference(391) or check_parent_conference(577) or check_parent_conference(1388)) {
-  get_template_part('templates/nav/nav', 'conferences');
+  get_template_part('templates/nav/nav', 'conference');
   $nav_generated = true;
 }
 
