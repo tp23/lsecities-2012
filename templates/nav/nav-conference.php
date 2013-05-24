@@ -3,7 +3,7 @@ $TRACE_ENABLED = is_user_logged_in();
 $TRACE_PREFIX = 'nav-conferences';
 
 global $post;
-$conference_page = parent_conference($post->ID);
+$conference_page = parent_conference_page($post->ID);
 var_trace(var_export($conference_page, true), 'CONFERENCE_PAGE'); 
 $pod_slug = $conference_page['slug'];
 
