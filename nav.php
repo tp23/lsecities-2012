@@ -69,7 +69,7 @@ if($current_post_id == 311 or in_array(311, get_post_ancestors($current_post_id)
 
 // /ua/award/ or /about/collaboration-opportunities/
 if($current_post_id == 489 or in_array(1890, get_post_ancestors($current_post_id))) {
-  get_template_part('nav', 'empty');
+  get_template_part('templates/nav/nav', 'empty');
   $nav_generated = true;
 }
 
