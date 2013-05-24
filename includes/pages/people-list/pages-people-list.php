@@ -16,7 +16,7 @@ function pages_prepare_people_list($people_list_slug) {
   $people_in_output_full = array();
   $people_in_output_summary = array();
 
-  lc_data('people_lists', array(
+  lc_data('staff_groups', array(
     'lsecities-staff' => array(
       array('slug' => 'lsecities-staff-mgmt', 'label' => 'Executive'),
       array('slug' => 'lsecities-staff', 'label' => 'Centre staff')
@@ -47,12 +47,12 @@ function pages_prepare_people_list($people_list_slug) {
 }
 
 function people_list_generate_list($list_id, $check_list, $mode = 'full_list') {
-  $lists = lc_data('people_lists');
+  $lists = lc_data('staff_groups');
 
   // Some lists of people need segmentation into sub-lists:
   // for each sub-list, generate the corresponding section
   if(count($lists[$list_id])) {
-    $output = implode(array_map(function($section) use ($mode) {
+    $output = implode(array_map(function($section) use ($check_list, $mode) {
       return people_list_generate_section($section['slug'], $check_list, $section['label'], $mode);
     }, $lists[$list_id]));
   }
