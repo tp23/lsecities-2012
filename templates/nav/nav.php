@@ -11,6 +11,7 @@ $TRACE_PREFIX = 'nav.php -- ';
 global $current_post_id;
 global $BASE_URI;
 global $IN_CONTENT_AREA;
+global $post;
 $current_post_id = $post->ID;
 $IN_CONTENT_AREA = false;
 $ancestors = get_post_ancestors($current_post_id);
