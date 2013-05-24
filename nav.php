@@ -81,6 +81,10 @@ if(lc_data('nav_show_conferences') or check_parent_conference(191) or check_pare
 
 // /about/whos-who/
 if($current_post_id == 421 or in_array(421, get_post_ancestors($current_post_id))) {
+  // first display navigation for this section
+  get_template_part('templates/nav/nav', 'generic');
+  
+  // and then display in-page navigation
   get_template_part('templates/nav/nav', 'people-list');
   $nav_generated = true;
 }
