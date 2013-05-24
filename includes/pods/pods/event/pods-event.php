@@ -1,5 +1,8 @@
 <?php
 
+// Exit if accessed directly
+if ( !defined('ABSPATH')) exit;
+
 function people_list($people, $heading_singular, $heading_plural) {
   $output = '';
   $people_count = 0;

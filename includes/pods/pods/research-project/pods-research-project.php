@@ -1,4 +1,8 @@
 <?php
+
+// Exit if accessed directly
+if ( !defined('ABSPATH')) exit;
+
 function pods_prepare_research_project($pod_slug) {
   $pod = new Pod('research_project');
   $pod->findRecords(array('where' => "t.slug = '" . $pod_slug . "'"));
