@@ -2,31 +2,9 @@
 $TRACE_ENABLED = is_user_logged_in();
 $TRACE_PREFIX = 'nav-conferences';
 
-if(check_parent_conference(1388)) : // /ua/conferences/2012-london
-  $pod_slug = '2012-london';
-elseif(check_parent_conference(577)) : // /ua/conferences/2011-hongkong
-  $pod_slug = '2011-hongkong';
-elseif(check_parent_conference(391)) : // /ua/conferences/2010-chicago
-  $pod_slug = '2010-chicago';
-elseif(check_parent_conference(381)) : // /ua/conferences/2009-istanbul
-  $pod_slug = '2009-istanbul';
-elseif(check_parent_conference(106)) : // /ua/conferences/2008-sao-paulo
-  $pod_slug = '2008-sao-paulo';
-elseif(check_parent_conference(286)) : // /ua/conferences/2007-mumbai
-  $pod_slug = '2007-mumbai';
-elseif(check_parent_conference(284)) : // /ua/conferences/2006-berlin
-  $pod_slug = '2006-berlin';
-elseif(check_parent_conference(211)) : // /ua/conferences/2006-johannesburg
-  $pod_slug = '2006-johannesburg';
-elseif(check_parent_conference(268)) : // /ua/conferences/2006-mexico-city
-  $pod_slug = '2006-mexico-city';
-elseif(check_parent_conference(250)) : // /ua/conferences/2005-london
-  $pod_slug = '2005-london';
-elseif(check_parent_conference(229)) : // /ua/conferences/2005-shanghai
-  $pod_slug = '2005-shanghai';
-elseif(check_parent_conference(191)) : // /ua/conferences/2005-new-york
-  $pod_slug = '2005-new-york';
-endif;
+global $post;
+$conference_page = parent_conference($post->ID);
+$pod_slug = $conference_page['slug'];
 
 $pod = new Pod('conference', $pod_slug);
 $button_links = $pod->get_field('links') ? $pod->get_field('links') : array();

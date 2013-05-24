@@ -104,17 +104,6 @@ function admin_add_assets() {
 
 add_action('admin_init', 'admin_add_assets');
 
-function check_parent_conference($post_id) {
-  global $post;
-  $current_post_id = $post->ID;
-  var_trace('current_post_id: ' . $current_post_id, TRACE_PREFIX, TRACE_ENABLED);
-  if($current_post_id == $post_id or in_array($post_id, get_post_ancestors($current_post_id))) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 /*  Returns the first $wordsreturned out of $string.  If string
 contains fewer words than $wordsreturned, the entire string
 is returned.

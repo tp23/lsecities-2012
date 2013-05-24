@@ -48,6 +48,18 @@ function lc_data($key, $value = false) {
 /**
  * add configuration constants here
  */
+ 
+/**
+ * Filename for the template used for conference frontpage WP Pages.
+ * This is used in id_of_parent_conference(). If the name of the
+ * template file is changed, update the following constant.
+ * We throw a warning in any case if a file with this name is not found
+ * at this stage, but someone will have to notice that warning :)
+ */
+lc_data('pods_conference__wp_page_template', 'pods-conference-frontpage.php');
+if('' === locate_template(array(lc_data('pods_conference__wp_page_template')))) {
+  trigger_error('pods_conference__wp_page_template set to ' . lc_data('pods_conference__wp_page_template') . ' but no such template file exists in theme. Please set pods_conference__wp_page_template to new name of Conference page template', E_USER_WARNING);
+}
 
 /**
  * meta description

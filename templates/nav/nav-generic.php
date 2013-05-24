@@ -1,7 +1,7 @@
 <?php
-global $current_post_id, $parent_post_id;
+global $current_post_id;
 if($current_post_id) {
-  $children = wp_list_pages('title_li=&depth=1&child_of='.$parent_post_id.'&echo=0');
+  $children = wp_list_pages('title_li=&depth=1&child_of='.lc_data('parent_post_id').'&echo=0');
   
   // if we are in the labs folder, hide lsecities hostname in links
   /*
@@ -12,7 +12,7 @@ if($current_post_id) {
 if ($children) : ?>
 <nav>
   <dl>
-    <dt><?php echo get_the_title($parent_post_id); ?></dt>
+    <dt><?php echo get_the_title(lc_data('parent_post_id')); ?></dt>
     <dd>
       <ul>
       <?php echo $children; ?>

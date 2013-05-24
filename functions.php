@@ -39,6 +39,7 @@ require_fragment('/includes/pods/ui/lsecities-pods-ui.php' );
 
 // Pods document types
 require_fragment('/includes/pods/pods/article/pods-article.php' );
+require_fragment('/includes/pods/pods/conference/pods-conference.php' );
 require_fragment('/includes/pods/pods/event/pods-event.php' );
 require_fragment('/includes/pods/pods/slider/pods-slider.php' );
 require_fragment('/includes/pods/pods/research-project/pods-research-project.php' );
