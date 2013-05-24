@@ -20,8 +20,8 @@ var_trace(var_export($ancestors, true), $TRACE_PREFIX . 'ancestors: ');
 
 lc_data('parent_post_id', count($ancestors) > 1 ? array_shift($ancestors) : $current_post_id);
 
-var_trace(lc_data('parent_post_id'), $TRACE_PREFIX . 'post ID: ');
-var_trace($parent_post_id, $TRACE_PREFIX . 'parent post ID: ');
+var_trace($current_post_id, $TRACE_PREFIX . 'post ID: ');
+var_trace(lc_data('parent_post_id'), $TRACE_PREFIX . 'parent post ID: ');
 var_trace(var_export($ancestors, true), $TRACE_PREFIX . 'ancestors: ');
 var_trace(var_export($pods_toplevel_ancestor, true), $TRACE_PREFIX . 'pods_toplevel_ancestor: ');
 ?>
