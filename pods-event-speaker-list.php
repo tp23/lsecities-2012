@@ -11,29 +11,6 @@ namespace LSECitiesWPTheme\event_programme;
  * @package LSECities2012
  */
 
-$pod_slug = get_post_meta($post->ID, 'pod_slug', true);
-$pod = new Pod('event_programme', $pod_slug);
-$pod_title = $pod->get_field('name');
-$subsessions = $pod->get_field('sessions.slug');
-if(count($subsessions) == 1) { $subsessions = array(0 => $subsessions); }
-
-$for_conference = $pod->get_field('for_conference.slug');
-$for_event = $pod->get_field('for_event.slug');
-
-var_trace(var_export($subsessions, true), 'sessions');
-
-/**
- * If we use special fields from the speakers objects to generate
- * speaker blurb and affiliation information for the programme.
- * The following field will be set and contain the prefix for the
- * fields to use in the people pod.
- * e.g. if the special_ec2012 prefix is provided, we expect to
- * fetch speaker blurb and affiliation from the following fields
- * in the people pod:
- * - special_ec2012_blurb
- * - special_ec2012_affiliation
-*/
-
 $obj = pods_prepare_event_programme(get_post_meta($post->ID, 'pod_slug', true));
 
 ?>
