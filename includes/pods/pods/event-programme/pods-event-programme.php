@@ -77,7 +77,7 @@ function process_session($session_slug, $special_fields_prefix) {
     'blurb' => $pod->get_field('extra_session_blurb'),
     'show_times' => $pod->get_field('show_times'),
     'start_datetime' => $session_start_datetime->format('H:i'),
-    'end_datetime' => is_null($session_end_datetime) ? '' : $session_end_datetime->format('H:i'),
+    'end_datetime' => is_null($session_end_datetime) ? NULL : $session_end_datetime->format('H:i'),
     'hide_title' => $pod->get_field('hide_title'),
     'type' => $session_type,
     'speakers_blurb' => !is_array($session_speakers) ? NULL : generate_session_people_blurb($pod, 'speakers_blurb', $special_fields_prefix, $session_speakers),
