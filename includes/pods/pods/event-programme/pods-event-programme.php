@@ -29,16 +29,26 @@ function pods_prepare_event_programme($pod_slug) {
   
   $for_conference = $pod->get_field('for_conference.slug');
   $for_event = $pod->get_field('for_event.slug');
+  $all_speakers = array();
+  
   $obj['page_title'] = !empty($for_conference) ? "Conference programme" : "Event programme";
   
   foreach($subsession_slugs as $session_slug) {
-    $obj['sessions'][] = process_session($session_slug, $special_fields_prefix);
+    $obj['sessions'][] = process_session($session_slug, $special_fields_prefix, $all_speakers);
   }
+  
+  // sort speakers by family name
+  $family_names = array();
+  foreach ($all_speakers as $key => $row) {
+    $family_names[$key]  = $row['family_name'];
+  }
+  array_multisort($family_names, SORT_ASC, $all_speakers);
+  $obj['all_speakers'] = $all_speakers;
   
   return $obj;
 }
 
-function process_session($session_slug, $special_fields_prefix) {
+function process_session($session_slug, $special_fields_prefix, $all_speakers) {
   global $TRACE_ENABLED;
   
   $pod = new \Pod('event_session', $session_slug);
@@ -57,6 +67,13 @@ function process_session($session_slug, $special_fields_prefix) {
     $session_slides = 'http://downloads0.cloud.lsecities.net/' . $pod->get_field('media_items.slides_uri');
   }
   
+  if(is_array($session_speakers)) {
+    add_speakers_to_stash($special_fields_prefix, $all_speakers, $session_speakers, $session_id, $session_title);
+  }
+  if(is_array($session_chairs)) {
+    add_speakers_to_stash($special_fields_prefix, $all_speakers, $session_chairs, $session_id, $session_title);
+  }
+  
   /**
    * Recursively process subsessions. HSL.
    */
@@ -66,7 +83,7 @@ function process_session($session_slug, $special_fields_prefix) {
   if($TRACE_ENABLED) { error_log($TRACE_PREFIX . 'sessions: ' . var_export($subsessions, true)); }
   if($sessions) {
     foreach($sessions as $session) {
-      $sessions_data[] = process_session($session, $special_fields_prefix);
+      $sessions_data[] = process_session($session, $special_fields_prefix, $all_speakers);
     }
   }
   
@@ -156,4 +173,54 @@ function generate_session_people_blurb($pod, $blurb_field, $special_fields_prefi
   }
   
   return $session_people_blurb;
+}
+
+function add_speakers_to_stash($special_fields_prefix, $all_speakers, $session_speakers, $session_id, $session_title) {
+  if(!is_array($session_speakers)) return $all_speakers;
+  
+  foreach($session_speakers as $session_speaker) {
+    // don't process speaker if already in all_speakers list
+    if(is_array($all_speakers[$session_speaker['slug']])) continue;
+    
+    // otherwise, fetch speaker info and add it to all_speakers
+    $this_speaker = new \Pod('authors', $session_speaker['slug']);
+    $speaker_blurb_and_affiliation = generate_speaker_card_data($special_fields_prefix, $session_speaker['slug']);
+
+    $all_speakers[$session_speaker['slug']]['name'] = $session_speaker['name'];
+    $all_speakers[$session_speaker['slug']]['family_name'] = $session_speaker['family_name'];
+    $all_speakers[$session_speaker['slug']]['blurb'] = $speaker_blurb_and_affiliation['blurb'];
+    if($this_speaker->get_field('photo')) {
+      $all_speakers[$session_speaker['slug']]['photo_uri'] = wp_get_attachment_url($this_speaker->get_field('photo.ID'));
+    } elseif($session_speaker['photo_legacy']) {
+      $all_speakers[$session_speaker['slug']]['photo_uri'] = 'http://v0.urban-age.net' . $session_speaker['photo_legacy'];
+    }
+    $all_speakers[$session_speaker['slug']]['affiliation'] = $speaker_blurb_and_affiliation['affiliation'];
+    $all_speakers[$session_speaker['slug']]['speaker_in'][] = array($session_id, $session_title);
+  }
+  
+  return $all_speakers;
+}
+
+function generate_speaker_card_data($special_fields_prefix, $person_slug) {
+  $pod = new \Pod('authors', $person_slug);
+  
+  if($special_fields_prefix) {
+    $affiliation = $pod->get_field($special_fields_prefix . '_affiliation');
+    $blurb = $pod->get_field($special_fields_prefix . '_blurb');
+  } else {
+    $role = $pod->get_field('role');
+    $organization = $pod->get_field('organization');
+    
+    if($role and $organization) {
+      $affiliation = $role . ', ' . $organization;
+    } elseif($organization) {
+      $affiliation = $organization;
+    }
+    $blurb = $pod->get_field('profile_text');
+  }
+  
+  return array(
+    'blurb' => $blurb,
+    'affiliation' => $affiliation
+  );
 }

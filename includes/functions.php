@@ -433,30 +433,6 @@ function news_categories($pod_news_categories) {
   return $news_categories;
 }
 
-function generate_speaker_card_data($special_fields_prefix, $person_slug) {
-  $pod = new Pod('authors', $person_slug);
-  
-  if($special_fields_prefix) {
-    $affiliation = $pod->get_field($special_fields_prefix . '_affiliation');
-    $blurb = $pod->get_field($special_fields_prefix . '_blurb');
-  } else {
-    $role = $pod->get_field('role');
-    $organization = $pod->get_field('organization');
-    
-    if($role and $organization) {
-      $affiliation = $role . ', ' . $organization;
-    } elseif($organization) {
-      $affiliation = $organization;
-    }
-    $blurb = $pod->get_field('profile_text');
-  }
-  
-  return array(
-    'blurb' => $blurb,
-    'affiliation' => $affiliation
-  );
-}
-
 /**
  * Loop shortcode
  * credits: http://digwp.com/2010/01/custom-query-shortcode/
