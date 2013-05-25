@@ -433,63 +433,6 @@ function news_categories($pod_news_categories) {
   return $news_categories;
 }
 
-function generate_session_people_blurb($pod, $blurb_field, $special_fields_prefix, $session_people) {
-  if(!isset($pod)) {
-    error_log('No pod objet provided');
-    return;
-  }
-  if(!isset($blurb_field)) {
-    error_log('No blurb field name provided');
-    return;
-  }
-  if(!is_array($session_people) or count($session_people) === 0) {
-    error_log('No people list provided');
-    return;
-  }
-  
-  $session_people_blurb = '';
-
-  /* If we have event-specific author info, use this */
-  if($special_fields_prefix) {
-    foreach($session_people as $this_person) {
-      $affiliation = '';
-      $session_people_blurb .= '<strong>' . $this_person['name'] . ' ' . $this_person['family_name'] . '</strong>';
-      $affiliation = $this_person[$special_fields_prefix . '_affiliation'];
-      
-      /* if no event-specific blurb is available for person, fetch
-       * generic person role and affiliation information from their
-       * record */
-      if(!$affiliation) { 
-        $this_person_role = $this_person['role'];
-        $this_person_organization = $this_person['organization'];
-        var_trace($this_person_role, 'this_person_role');
-        var_trace($this_person_organization, 'this_person_organization');
-        if($this_person_role and $this_person_organization) {
-          $affiliation = $this_person_role . ', ' . $this_person_organization;
-        } elseif($this_person_organization) {
-          $affiliation = $this_person_organization;
-        }
-      }
-      
-      /* if any blurb is available, add it to the session people blurb */
-      if($affiliation) {
-        $session_people_blurb .= ', ' . $affiliation;
-      }
-      
-      /* add separator semicolon */
-      $session_people_blurb .= '; ';
-    }
-    
-    /* remove trailing semicolon */
-    $session_people_blurb = preg_replace('/; $/', '', $session_people_blurb);
-    var_trace($session_people_blurb, 'session_people_blurb');
-  } elseif($pod->get_field($blurb_field)) { /* otherwise, if per-session blurb is available, use this */
-    $session_people_blurb = strip_tags($pod->get_field($blurb_field), $ALLOWED_TAGS_IN_BLURBS);
-  }
-  
-  return $session_people_blurb;
-}
-
 function generate_speaker_card_data($special_fields_prefix, $person_slug) {
   $pod = new Pod('authors', $person_slug);
   

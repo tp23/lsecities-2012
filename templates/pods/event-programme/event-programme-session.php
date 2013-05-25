@@ -17,13 +17,13 @@
 
 <?php if($session['chairs_blurb']): ?>
 <dl class='session-chairs'>
-  <dt><?php echo $session['chairs_label']; ?></dt>
+  <dt><?php echo $session['chairs_label']; ?>:</dt>
   <dd><?php echo $session['chairs_blurb']; ?></dd>
 </dl>
 <?php endif; ?>
 <?php if($session['respondents_blurb']): ?>
 <dl class='session-respondents'>
-  <dt><?php echo $session['respondents_label']; ?></dt>
+  <dt><?php echo $session['respondents_label']; ?>:</dt>
   <dd><?php echo $session['respondents_blurb']; ?></dd>
 </dl>
 <?php endif; ?>
