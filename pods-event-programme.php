@@ -27,7 +27,7 @@ $obj = pods_prepare_event_programme(get_post_meta($post->ID, 'pod_slug', true));
     <?php if(!empty($obj['sessions'])) : ?>
       <div class="article row">
         <div class="ninecol event-programme">
-        <?php process_subsession_templates($obj['sessions']); ?>
+        <?php process_session_templates($obj['sessions']); ?>
         </div>
         <div class="threecol last">
           <div>

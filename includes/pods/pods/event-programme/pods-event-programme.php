@@ -44,12 +44,12 @@ function process_session($session_slug) {
   var_trace($special_fields_prefix, 'special_fields_prefix');
   $ALLOWED_TAGS_IN_BLURBS = '<strong><em>';
   
-  $pod = new Pod('event_session', $session_slug);
+  $pod = new \Pod('event_session', $session_slug);
   $session_speakers = $pod->get_field('speakers');
   $session_chairs = $pod->get_field('chairs');
   $session_respondents = $pod->get_field('respondents');
-  $session_start_datetime = new DateTime($pod->get_field('start'));
-  $session_end_datetime = $pod->get_field('end') === '0000-00-00 00:00:00' ? null : new DateTime($pod->get_field('end'));
+  $session_start_datetime = new \DateTime($pod->get_field('start'));
+  $session_end_datetime = $pod->get_field('end') === '0000-00-00 00:00:00' ? null : new \DateTime($pod->get_field('end'));
   $session_type = $pod->get_field('session_type.slug');
   if($session_type != 'session') { $session_type = "session $session_type"; }
 
@@ -82,7 +82,7 @@ function process_session($session_slug) {
     'start_datetime' => $session_start_datetime->format('H:i'),
     'end_datetime' => is_null($session_end_datetime) ? '' : $session_end_datetime->format('H:i'),
     'hide_title' => $pod->get_field('hide_title'),
-    'session_type' => $session_type,
+    'type' => $session_type,
     'speakers_blurb' => generate_session_people_blurb($pod, 'speakers_blurb', $special_fields_prefix, $session_speakers),
     'chairs_label' => count($session_chairs) > 1 ? "Chairs" : "Chair",
     'chairs_blurb' => generate_session_people_blurb($pod, 'chairs_blurb', $special_fields_prefix, $session_chairs),
@@ -98,6 +98,6 @@ function process_session($session_slug) {
 
 function process_session_templates($sessions) {
   foreach($sessions as $session) {
-    include('templates/pods/event-programme/programme-session.php');
+    include(lc_data('theme_filesystem_abspath') . '/templates/pods/event-programme/event-programme-session.php');
   }
 }
