@@ -52,6 +52,8 @@ function process_session($session_slug, $special_fields_prefix, &$all_speakers) 
   global $TRACE_ENABLED;
   
   $pod = new \Pod('event_session', $session_slug);
+  $session_id = $pod->get_field('slug');
+  $session_title = $pod->get_field('name');
   $session_speakers = $pod->get_field('speakers');
   $session_chairs = $pod->get_field('chairs');
   $session_respondents = $pod->get_field('respondents');
@@ -88,8 +90,8 @@ function process_session($session_slug, $special_fields_prefix, &$all_speakers) 
   }
   
   $obj = array(  
-    'id' => $pod->get_field('slug'),
-    'title' => $pod->get_field('name'),
+    'id' => $session_id,
+    'title' => $session_title,
     'subtitle' => $pod->get_field('sub_title'),
     'blurb' => $pod->get_field('extra_session_blurb'),
     'show_times' => $pod->get_field('show_times'),
