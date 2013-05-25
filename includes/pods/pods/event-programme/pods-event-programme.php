@@ -5,13 +5,13 @@ namespace LSECitiesWPTheme\event_programme;
 if ( !defined('ABSPATH')) exit;
 
 function pods_prepare_event_programme($pod_slug) {
-  $pod = new Pod('event_programme', $pod_slug);
+  $pod = new \Pod('event_programme', $pod_slug);
   
   $obj = array();
   
   $obj['pod_title'] = $pod->get_field('name');
   $obj['pod_subtitle'] = $pod->get_field('programme_subtitle');
-  $subsessions_slugs = $pod->get_field('sessions.slug');
+  $subsession_slugs = $pod->get_field('sessions.slug');
   if(count($subsession_slugs) == 1) { $subsession_slugs = array(0 => $subsession_slugs); }
   
   /**
@@ -32,7 +32,7 @@ function pods_prepare_event_programme($pod_slug) {
   $obj['page_title'] = !empty($for_conference) ? "Conference programme" : "Event programme";
   
   foreach($subsession_slugs as $session_slug) {
-    $obj['subsessions'][] = process_session($session_slug, $special_fields_prefix);
+    $obj['sessions'][] = process_session($session_slug, $special_fields_prefix);
   }
   
   return $obj;

@@ -8,7 +8,6 @@ namespace LSECitiesWPTheme\event_programme;
  */
 
 $obj = pods_prepare_event_programme(get_post_meta($post->ID, 'pod_slug', true));
-$sessions = $obj['subsessions'];
 
 ?><?php get_header(); ?>
 
