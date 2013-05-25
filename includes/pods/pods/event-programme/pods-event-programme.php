@@ -48,7 +48,7 @@ function pods_prepare_event_programme($pod_slug) {
   return $obj;
 }
 
-function process_session($session_slug, $special_fields_prefix, $all_speakers) {
+function process_session($session_slug, $special_fields_prefix, &$all_speakers) {
   global $TRACE_ENABLED;
   
   $pod = new \Pod('event_session', $session_slug);
@@ -68,10 +68,10 @@ function process_session($session_slug, $special_fields_prefix, $all_speakers) {
   }
   
   if(is_array($session_speakers)) {
-    add_speakers_to_stash($special_fields_prefix, $all_speakers, $session_speakers, $session_id, $session_title);
+    $all_speakers = add_speakers_to_stash($special_fields_prefix, $all_speakers, $session_speakers, $session_id, $session_title);
   }
   if(is_array($session_chairs)) {
-    add_speakers_to_stash($special_fields_prefix, $all_speakers, $session_chairs, $session_id, $session_title);
+    $all_speakers = add_speakers_to_stash($special_fields_prefix, $all_speakers, $session_chairs, $session_id, $session_title);
   }
   
   /**
