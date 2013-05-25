@@ -181,10 +181,8 @@ function add_speakers_to_stash($special_fields_prefix, $all_speakers, $session_s
   if(!is_array($session_speakers)) return $all_speakers;
   
   foreach($session_speakers as $session_speaker) {
-    // don't process speaker if already in all_speakers list
-    if(is_array($all_speakers[$session_speaker['slug']])) continue;
-    
-    // otherwise, fetch speaker info and add it to all_speakers
+    // Process speaker whether they are already in list or not as
+    // we need to list all the sessions they are taking part in.
     $this_speaker = new \Pod('authors', $session_speaker['slug']);
     $speaker_blurb_and_affiliation = generate_speaker_card_data($special_fields_prefix, $session_speaker['slug']);
 
