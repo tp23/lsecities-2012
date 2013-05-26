@@ -52,7 +52,7 @@ function people_list_generate_list($list_id, $check_list, $mode = 'full_list') {
   // Some lists of people need segmentation into sub-lists:
   // for each sub-list, generate the corresponding section
   if(count($lists[$list_id])) {
-    $output = implode(array_map(function($section) use ($check_list, $mode) {
+    $output = implode(array_map(function($section) use (&$check_list, $mode) {
       return people_list_generate_section($section['slug'], $check_list, $section['label'], $mode);
     }, $lists[$list_id]));
   }
@@ -66,7 +66,7 @@ function people_list_generate_list($list_id, $check_list, $mode = 'full_list') {
   return $output;
 }
 
-function people_list_generate_section($section_slug, $check_list, $section_heading = false, $mode = 'full_list') {
+function people_list_generate_section($section_slug, &$check_list, $section_heading = false, $mode = 'full_list') {
   $pod = new Pod('people_group', $section_slug);
   $people = (array)$pod->get_field('members', 'family_name ASC');
   // global $people_in_output_full, $people_in_output_summary;
