@@ -481,7 +481,7 @@ function custom_query_shortcode($atts) {
 add_shortcode("loop", "custom_query_shortcode");
 
 /* components */
-define(COMPONENTS_ROOT, 'components');
+define(COMPONENTS_ROOT, 'templates/partials');
 
 /**
  * News component
@@ -520,7 +520,7 @@ function component_news($news_categories_slugs, $news_prefix = '', $linked_event
   }
   if($template) {
     ob_start();
-    include $template;
+    lc_include($template);
     $output = ob_end_flush();
   }
   return $output;
