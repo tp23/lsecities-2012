@@ -14,7 +14,6 @@ namespace LSECitiesWPTheme\pods_list;
  */
 $obj = pods_prepare_list(get_post_meta($post->ID, 'pod_slug', false));
 
-var_trace(var_export($obj, true), 'LIST');
 ?>
 
 <?php get_header(); ?>
