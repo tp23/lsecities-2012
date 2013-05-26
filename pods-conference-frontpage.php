@@ -106,7 +106,7 @@ $gallery = $obj['gallery'];
               </section><!-- #research-summary -->
               <?php endif; ?>
               <aside id="photoarea" class="eightcol">
-                <?php include('includes/components/galleria.inc.php'); ?>
+                <?php include('templates/partials/galleria.inc.php'); ?>
               </aside>
               <aside id="publicationsarea" class="fourcol last">
                 <?php if($obj['conference_publication_cover'] and $obj['conference_publication_blurb']): ?>

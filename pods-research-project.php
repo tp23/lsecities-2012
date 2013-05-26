@@ -232,7 +232,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
       <div class='top-content'>
         <?php if(count($gallery['slides'])) : ?>
         <header class='heading-image'>
-          <?php include('includes/components/galleria.inc.php'); ?>
+          <?php include('../partials/galleria.inc.php'); ?>
         </header>
         <?php endif; ?>
         
@@ -381,7 +381,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
               foreach($research_photo_galleries as $key => $gallery): ?>
                 <div class="sixcol<?php if((($key + 1) % 2) == 0): ?> last<?php endif; ?>">
                 <?php
-                include('includes/components/galleria.inc.php'); ?>
+                include('templates/partials/galleria.inc.php'); ?>
                 </div>
                 <?php
               endforeach; // ($research_photo_galleries as $key => $gallery) ?>

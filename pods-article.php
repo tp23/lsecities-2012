@@ -51,7 +51,7 @@ $gallery = $obj['gallery'];
                       <?php echo $obj['article_summary']; ?>
                     <?php endif; ?>
                     </div>
-                    <?php include('includes/components/galleria.inc.php'); ?>
+                    <?php include('templates/partials/galleria.inc.php'); ?>
                     <?php if($obj['article_extra_content']): ?>
                     <div class="extra-content"><?php echo $obj['article_extra_content']; ?></div>
                     <?php endif; ?>

@@ -106,7 +106,7 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
       <div class='top-content'>
         <?php if(count($gallery['slides'])) : ?>
         <header class='heading-image'>
-          <?php include('includes/components/galleria.inc.php'); ?>
+          <?php include('templates/partials/galleria.inc.php'); ?>
         </header>
         <?php endif; ?>
         
