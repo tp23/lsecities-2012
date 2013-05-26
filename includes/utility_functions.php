@@ -44,10 +44,9 @@ function hide_lsecities_page_hierarchy_in_labs_links($string_blob) {
 }
 
 /**
- * Wrapper around PHP's stock include(), making sure every path is
- * always relative to the theme's root.
+ * Turn a filename relative to the theme's root to an absolute path
+ * for reliable use in includes.
  */
-function lc_include($file) {
-  var_trace(lc_data('theme_filesystem_abspath') . '/' . $file, 'LC_INCLUDE');
-  include lc_data('theme_filesystem_abspath') . '/' . $file;
+function abspath_to($file) {
+  return lc_data('theme_filesystem_abspath') . '/' . $file;
 }

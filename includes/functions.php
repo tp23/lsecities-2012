@@ -520,7 +520,7 @@ function component_news($news_categories_slugs, $news_prefix = '', $linked_event
   }
   if($template) {
     ob_start();
-    lc_include($template);
+    include(abspath_to($template));
     $output = ob_end_flush();
   }
   return $output;
