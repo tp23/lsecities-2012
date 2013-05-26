@@ -42,3 +42,11 @@ function class_if_last_item($class, $current_item_index, $items_per_row) {
 function hide_lsecities_page_hierarchy_in_labs_links($string_blob) {
   return preg_replace('/https?:\/\/lsecities\.net\/labs/', '', $string_blob);
 }
+
+/**
+ * Wrapper around PHP's stock include(), making sure every path is
+ * always relative to the theme's root.
+ */
+function lc_include($file) {
+  include lc_data('theme_filesystem_abspath') . '/' . $file;
+}

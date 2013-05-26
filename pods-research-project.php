@@ -232,7 +232,7 @@ $news_categories = news_categories($pod->get_field('news_category'));
       <div class='top-content'>
         <?php if(count($gallery['slides'])) : ?>
         <header class='heading-image'>
-          <?php include('../partials/galleria.inc.php'); ?>
+          <?php include('templates/partials/galleria.inc.php'); ?>
         </header>
         <?php endif; ?>
         

@@ -13,6 +13,6 @@ var_trace(var_export($gallery, true), 'gallery');
 
 if(count($gallery['slides'])) : ?>
 <div>
-  <?php include('templates/partials/galleria.inc.php'); ?>
+  <?php lc_include('templates/partials/galleria.inc.php'); ?>
 </div>
 <?php endif; ?>
