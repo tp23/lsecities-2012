@@ -48,5 +48,6 @@ function hide_lsecities_page_hierarchy_in_labs_links($string_blob) {
  * always relative to the theme's root.
  */
 function lc_include($file) {
+  var_trace(lc_data('theme_filesystem_abspath') . '/' . $file, 'LC_INCLUDE');
   include lc_data('theme_filesystem_abspath') . '/' . $file;
 }
