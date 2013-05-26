@@ -712,6 +712,10 @@ right: -21px; */ }
 .lc-conference-live-page .livestream-box > * { margin-left: auto; margin-right: auto; }
 .lc-conference-live-page .storify-box { margin-top: 6em; }
 
+.lc-article.lc-list { /** depending on how many items we want per row (say N), make every Nth item last of row by setting margin-right: 0 and floating it right, then clear floats to the left on every N+1th element. */ }
+.lc-article.lc-list section.list.by-four ul li:nth-of-type(4n) { margin-right: 0; float: right; }
+.lc-article.lc-list section.list.by-four ul li:nth-of-type(4n+1) { clear: left; }
+
 .lc-media-archive-search input[type="checkbox"] { margin-right: 0.5em; }
 .lc-media-archive-search .queryarea { background: url("//lsecities.net/wp-content/themes/lsecities-2012/images/backgrounds/mal/pixelpattern_lightgrey_120420.gif"); -webkit-box-shadow: 1px 1px 10px #cccccc; -moz-box-shadow: 1px 1px 10px #cccccc; box-shadow: 1px 1px 10px #cccccc; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; padding: 1em; margin-bottom: 2em; }
 .lc-media-archive-search .queryarea h3 { font-weight: bold; margin-bottom: 0.5em; }
