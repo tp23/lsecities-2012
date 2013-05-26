@@ -14,6 +14,7 @@ namespace LSECitiesWPTheme\pods_list;
  */
 $obj = pods_prepare_list(get_post_meta($post->ID, 'pod_slug', false));
 
+var_trace(var_export($obj, true), 'LIST');
 ?>
 
 <?php get_header(); ?>
@@ -34,11 +35,10 @@ var_trace(var_export($pod_list, true), $TRACE_PREFIX . ' - pod_list');
     <div class="entry-content">
     <?php
     foreach($obj['lists'] as $list) {
-
       if(empty($list['items'])) continue;
 
-      if($list['type'] == 'research_output') {
-        include('templates/pods/list/list-content-research-output.php');
+      if($list['type'] === 'research_output') {
+        include('templates/pods/list/list-content-research-outputs.php');
       } else {
         include('templates/pods/list/list-content-generic.php');
       }
