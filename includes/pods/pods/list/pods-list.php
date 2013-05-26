@@ -49,8 +49,9 @@ function pods_prepare_list($pod_slugs) {
       $item_pages = $this_pod->get_field('list_pages', 'menu_order ' . $sort_order);
       
       foreach($item_pages as $item) {
-        $item_pod = new \Pod($this_pod->get_field('type'), get_post_meta($item['ID'], 'pod_slug', true));
+        $item_pod = new \Pod($this_pod->get_field('pod_type.slug'), get_post_meta($item['ID'], 'pod_slug', true));
         var_trace(var_export($item_pod, true), 'ITEM_POD');
+        
         $items[] = array(
           'title' => $item_pod->get_field('name'),
           'permalink' => get_permalink($item['ID']),
