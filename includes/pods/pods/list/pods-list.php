@@ -48,6 +48,8 @@ function pods_prepare_list($pod_slugs) {
       // Otherwise, we get all the pages selected in the list_pages multi-select pick field
       $item_pages = $this_pod->get_field('list_pages', 'menu_order ' . $sort_order);
       
+      $items = array();
+      
       foreach($item_pages as $item) {
         $item_pod = new \Pod($this_pod->get_field('pod_type.slug'), get_post_meta($item['ID'], 'pod_slug', true));
         var_trace(var_export($item_pod, true), 'ITEM_POD');
