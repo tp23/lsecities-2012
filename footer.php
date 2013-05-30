@@ -97,8 +97,32 @@
           regex = new RegExp(matchParams.join('').replace(/^\s+|\s+$/g,''), regexFlags);
           return regex.test(jQuery(elem)[attr.method](attr.property));
         };
-          
+        
         jQuery(document).ready(function($) {
+          /**
+           * jQuery plugin to change element type (http://stackoverflow.com/questions/8584098/how-to-change-an-element-type-using-jquery)
+           */
+          (function($) {
+            $.fn.changeElementType = function(newType) {
+              var attrs = {};
+
+              $.each(this[0].attributes, function(idx, attr) {
+                attrs[attr.nodeName] = attr.nodeValue;
+              });
+
+              this.replaceWith(function() {
+                return $("<" + newType + "/>", attrs).append($(this).contents());
+              });
+            };
+          })(jQuery);
+        
+          /**
+           * MONKEYPATCH
+           * Rio 2013 conference signup form - change input field for "reasons for interest in conference"
+           * to textarea.
+           */
+          $('#mc_embed_signup input#mce-2013CONF').changeElementType('textarea').css({height: '100px', width: '100%', padding: '8px 0', border: '1px solid #999', 'border-color': '#333'});
+                  
           // enable Galleria for embedded slideshows
           try {
             if(jQuery('.lc-newspaper-article .lc-galleria').length > 0) {
