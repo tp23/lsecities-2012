@@ -123,7 +123,7 @@
            */
           if($('#mc_embed_signup input#mce-2013CONF').length > 0) {
             $('#mc_embed_signup input#mce-2013CONF').changeElementType('textarea');
-            $('#mc_embed_signup textarea#mce-2013CONF').css({height: '100px', width: '100%', padding: '8px 0', border: '1px solid #999', 'border-color': '#333', 'text-indent': '2%'}).attr({placeholder: 'Please tell us why you are interested in the Urban Age City Transformations conference'});
+            $('#mc_embed_signup textarea#mce-2013CONF').css({height: '100px', width: '100%', padding: '8px', border: '1px solid #999', 'border-color': '#333', 'box-sizing': 'border-box'}).attr({placeholder: 'Please tell us why you are interested in the Urban Age City Transformations conference'});
           }
                   
           // enable Galleria for embedded slideshows
