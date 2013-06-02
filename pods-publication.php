@@ -33,12 +33,23 @@ foreach((array)$slider_pod->get_field('tiles.slug') as $tile_slug) {
   }
 }
 
+/**
+ * Fetch data for English language publication PDF and extra ('alt') publication PDF
+ */
 $pod_pdf = $pod->get_field('publication_pdf.guid') ? wp_get_attachment_url($pod->get_field('publication_pdf.ID')) : $pod->get_field('publication_pdf_uri');
 $pod_pdf_filesize = $pod->get_field('publication_pdf.guid') ? sprintf("%0.1f MB", filesize(get_attached_file($pod->get_field('publication_pdf.ID'))) / 1e+6 ) : '';
-var_trace($pod_pdf_filesize, 'PDF_SIZE for ' . get_attached_file($pod->get_field('publication_pdf.ID')) . " (" . $pod->get_field('publication_pdf.ID') . ")");
 $pod_alt_pdf = $pod->get_field('publication_alt_pdf.guid') ? wp_get_attachment_url($pod->get_field('publication_alt_pdf.ID')) : $pod->get_field('publication_alt_pdf_uri');
+$pod_alt_pdf_filesize = $pod->get_field('publication_alt_pdf.guid') ? sprintf("%0.1f MB", filesize(get_attached_file($pod->get_field('publication_alt_pdf.ID'))) / 1e+6 ) : '';
+$pod_alt_pdf_label = $pod->get_field('publication_alt_pdf.guid') && $pod->get_field('publication_alt_pdf_label') ? $pod->get_field('publication_alt_pdf_label') : 'Download extra content';
+
+/**
+ * Fetch data for 2nd language publication PDF and extra ('alt') publication PDF
+ */
 $pod_pdf_lang2 = $pod->get_field('publication_pdf_lang2.guid') ? wp_get_attachment_url($pod->get_field('publication_pdf_lang2.ID')) : $pod->get_field('publication_pdf_lang2_uri');
+$pod_pdf_filesize_lang2 = $pod->get_field('publication_pdf_lang2.guid') ? sprintf("%0.1f MB", filesize(get_attached_file($pod->get_field('publication_pdf_lang2.ID'))) / 1e+6 ) : '';
 $pod_alt_pdf_lang2 = $pod->get_field('publication_alt_pdf_lang2.guid') ? wp_get_attachment_url($pod->get_field('publication_alt_pdf_lang2.ID')) : $pod->get_field('publication_alt_pdf_lang2_uri');
+$pod_alt_pdf_filesize_lang2 = $pod->get_field('publication_alt_pdf_lang2.guid') ? sprintf("%0.1f MB", filesize(get_attached_file($pod->get_field('publication_alt_pdf_lang2.ID'))) / 1e+6 ) : '';
+$pod_alt_pdf_label_lang2 = $pod->get_field('publication_alt_pdf_label_lang2');
 
 $extra_publication_metadata = $pod->get_field('extra_publication_metadata');
 
@@ -140,6 +151,9 @@ $gallery = galleria_prepare($pod, 'fullbleed wireframe');
             <ul>
               <?php if($pod_pdf) : ?>
               <li><a class="downloadthis pdf button" href="<?php echo $pod_pdf; ?>">Download PDF</a><?php if(!empty($pod_pdf_filesize)) : ?> (<?php echo $pod_pdf_filesize; ?>)<?php endif; ?></li>
+              <?php endif ; ?>
+              <?php if($pod_pdf and $pod_alt_pdf) : // do not bother displaying extra PDF if main is not available ?>
+              <li><a class="downloadthis pdf button" href="<?php echo $pod_alt_pdf; ?>"><?php echo $pod_alt_pdf_label; ?></a><?php if(!empty($pod_alt_pdf_filesize)) : ?> (<?php echo $pod_alt_pdf_filesize; ?>)<?php endif; ?></li>
               <?php endif ; ?>
               <?php if($pod_issuu_uri) : ?>
               <li><a class="readthis online issuu button" href="<?php echo $pod_issuu_uri; ?>">Online browser</a></li>
