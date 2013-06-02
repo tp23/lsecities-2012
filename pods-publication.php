@@ -34,7 +34,7 @@ foreach((array)$slider_pod->get_field('tiles.slug') as $tile_slug) {
 }
 
 $pod_pdf = $pod->get_field('publication_pdf.guid') ? wp_get_attachment_url($pod->get_field('publication_pdf.ID')) : $pod->get_field('publication_pdf_uri');
-$pod_pdf_filesize = $pod->get_field('publication_pdf.guid') ? sprintf("%0.02d MB", filesize(get_attached_file($pod->get_field('publication_pdf.ID'))) / 1e+6 ) : '';
+$pod_pdf_filesize = $pod->get_field('publication_pdf.guid') ? sprintf("%0.1f MB", filesize(get_attached_file($pod->get_field('publication_pdf.ID'))) / 1e+6 ) : '';
 var_trace($pod_pdf_filesize, 'PDF_SIZE for ' . get_attached_file($pod->get_field('publication_pdf.ID')) . " (" . $pod->get_field('publication_pdf.ID') . ")");
 $pod_alt_pdf = $pod->get_field('publication_alt_pdf.guid') ? wp_get_attachment_url($pod->get_field('publication_alt_pdf.ID')) : $pod->get_field('publication_alt_pdf_uri');
 $pod_pdf_lang2 = $pod->get_field('publication_pdf_lang2.guid') ? wp_get_attachment_url($pod->get_field('publication_pdf_lang2.ID')) : $pod->get_field('publication_pdf_lang2_uri');
