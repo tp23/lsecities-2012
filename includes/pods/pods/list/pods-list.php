@@ -26,7 +26,7 @@ function pods_prepare_list($pod_slugs) {
     if($this_pod->get_field('list_research_output_category')) {
       $items_pod = new \Pod('research_output', array(
         'where' => 'category.slug = "' . $this_pod->get_field('list_research_output_category.slug' ) . '"',
-        'sort' => 'date ' . $sort_order
+        'orderby' => 'date ' . $sort_order
       ));
       
       $items = array();
