@@ -125,6 +125,11 @@
             $('#mc_embed_signup input#mce-2013CONF').changeElementType('textarea');
             $('#mc_embed_signup textarea#mce-2013CONF').css({height: '100px', width: '100%', padding: '8px', border: '1px solid #999', 'box-sizing': 'border-box'}).attr({placeholder: 'Please tell us why you are interested in the Urban Age City Transformations conference'}).attr({maxlength: 255});
           }
+          /** 
+           * MONKEYPATCH
+           * Rio 2013 conference signup form - add note for existing list subscribers
+           */
+          $('#mc_embed_signup #mce-responses').after("<p>Please note - if you are already subscribed to LSE Cities email updates, you will be asked to update your subscription profile after submitting this form: please follow the 'Click here to update your profile' link on the next page to register your interest in the Urban Age City Transformations conference.</p>");
                   
           // enable Galleria for embedded slideshows
           try {
