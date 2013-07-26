@@ -521,6 +521,11 @@ table { border-bottom: 1px solid #fff; }
 
 label { display: block; }
 
+ul.run-in.comma-separated { display: inline; }
+ul.run-in.comma-separated > li { display: inline; }
+ul.run-in.comma-separated li:after { content: ', '; }
+ul.run-in.comma-separated li:last-child:after { content: '' !important; }
+
 header.heading-image { margin-bottom: 1em; }
 header.heading-image .flexslider .flex-direction-nav li a { top: 352 -64/2 px; }
 header.heading-image img { width: 100%; max-width: 100%; height: auto; }
