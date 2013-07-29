@@ -109,10 +109,24 @@ function people_list_generate_section($section_slug, &$check_list, $section_head
  * @return string HTML fragment with project involvement list for this person
  */
 function person_data__project_involvement($pod) {
+  // fetch list of projects on which this person is a researcher
   $p1_list = $pod->get_field('research_projects') ? $pod->get_field('research_projects') : array();
+  // ... or a coordinator
   $p2_list = $pod->get_field('projects_coordinated') ? $pod->get_field('projects_coordinated') : array();
-  $projects_list = array_unique(array_merge($p1_list, $p2_list));
-  
+  // initialize full project list
+  $projects_list = array();
+
+  // merge the two project lists
+  foreach(array_merge($p1_list, $p2_list) as $project) {
+    $projects_list[$project['slug']] = array (
+      'slug' => $project['slug'],
+      'name' => $project['name']
+    );
+  }
+  // sort merged list by project name
+  uasort($projects_list, function($a, $b) { return ($a['name'] < $b['name']) ? -1 : 1; });
+
+  // generate HTML list with list of projects for this person
   if(count($projects_list) > 0) {
     $output = "<dl><dt>Research projects</dt>";
     $output .= "  <dd><ul class='run-in comma-separated'>";
@@ -125,10 +139,11 @@ function person_data__project_involvement($pod) {
       if ($project['slug']) {
         $output .=  '</a>';
       }
-      $output .= "  </li>";  			
+      $output .= "</li>";  			
     }
     $output .= "  </ul> <!-- .run-in .comma-separated --> \n</dd>";
   }
+
   return $output;
 }
 
