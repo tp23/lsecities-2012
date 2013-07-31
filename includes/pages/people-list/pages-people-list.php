@@ -103,6 +103,50 @@ function people_list_generate_section($section_slug, &$check_list, $section_head
   return $output;
 }
 
+/**
+ * Compile list of projects a person is involved in
+ *
+ * @return string HTML fragment with project involvement list for this person
+ */
+function person_data__project_involvement($pod) {
+  // fetch list of projects on which this person is a researcher
+  $p1_list = $pod->get_field('research_projects') ? $pod->get_field('research_projects') : array();
+  // ... or a coordinator
+  $p2_list = $pod->get_field('projects_coordinated') ? $pod->get_field('projects_coordinated') : array();
+  // initialize full project list
+  $projects_list = array();
+
+  // merge the two project lists
+  foreach(array_merge($p1_list, $p2_list) as $project) {
+    $projects_list[$project['slug']] = array (
+      'slug' => $project['slug'],
+      'name' => $project['name']
+    );
+  }
+  // sort merged list by project name
+  uasort($projects_list, function($a, $b) { return ($a['name'] < $b['name']) ? -1 : 1; });
+
+  // generate HTML list with list of projects for this person
+  if(count($projects_list) > 0) {
+    $output = "<dl><dt>Research projects</dt>";
+    $output .= "  <dd><ul class='run-in comma-separated'>";
+    foreach($projects_list as $project) {
+      $output .= "  <li>";
+      if ($project['slug']) {
+        $output .= '<a href="http://lsecities.net' . PODS_BASEURI_RESEARCH_PROJECTS . '/' . $project['slug'] . '">';
+      }
+      $output .=  $project['name'];
+      if ($project['slug']) {
+        $output .=  '</a>';
+      }
+      $output .= "</li>";  			
+    }
+    $output .= "  </ul> <!-- .run-in .comma-separated --> \n</dd>";
+  }
+
+  return $output;
+}
+
 function people_list_generate_person_profile($slug, $extra_title, $mode = 'full_list') {
   $LEGACY_PHOTO_URI_PREFIX = 'http://v0.urban-age.net';
   $pod = new Pod('authors', $slug);
@@ -184,25 +228,12 @@ function people_list_generate_person_profile($slug, $extra_title, $mode = 'full_
     if($blurb) {
       $output .= "  $blurb";
     }
+
     // project involvement (i.e. list of projects this person is involved in as coordinator or researcher), if applicable
-    $p1_list = $pod->get_field('research_projects') ? $pod->get_field('research_projects') : array();
-	$p2_list = $pod->get_field('projects_coordinated') ? $pod->get_field('projects_coordinated') : array();
-	$projects_list = array_unique(array_merge($p1_list, $p2_list));
-    if(count($projects_list) > 0) {
-    	$output .= "  <ul class='run-in comma-separated'>";
-    	foreach($projects_list as $project) {
-    		$output .= "  <li>";
-    		if ($project['slug']) {
-    			$output .= '<a href="http://lsecities.net' . PODS_BASEURI_RESEARCH_PROJECTS . '/' . $project['slug'] . '">';
-    		}
-    		$output .=  $project['name'];
-    		if ($project['slug']) {
-    			$output .=  '</a>';
-    		}
-    		$output .= "  </li>";  			
-    	}
-    	$output .= "  </ul>";
+    if(is_user_logged_in()) {
+      $output .= person_data__project_involvement($pod);
     }
+
     $output .= "  </div>";
     $output .= "</li>";
   } elseif($mode === 'summary') {
